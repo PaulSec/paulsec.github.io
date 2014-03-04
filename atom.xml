@@ -4,7 +4,7 @@
   <title><![CDATA[My portfolio]]></title>
   <link href="http://paulsec.github.io/atom.xml" rel="self"/>
   <link href="http://paulsec.github.io/"/>
-  <updated>2014-03-04T18:12:31+01:00</updated>
+  <updated>2014-03-04T20:31:13+01:00</updated>
   <id>http://paulsec.github.io/</id>
   <author>
     <name><![CDATA[Paul A. (PaulSec)]]></name>
@@ -12,5 +12,26 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Starting My Own Blog]]></title>
+    <link href="http://paulsec.github.io/blog/2014/03/04/starting-my-own-blog/"/>
+    <updated>2014-03-04T20:21:39+01:00</updated>
+    <id>http://paulsec.github.io/blog/2014/03/04/starting-my-own-blog</id>
+    <content type="html"><![CDATA[<p>Starting my own blog has been something I really wanted to do.
+I&rsquo;ll add post related to my different projects but also on Web security.</p>
+
+<p>Here are my different motivations :</p>
+
+<h4>1. Provide a portfolio of my different projects.</h4>
+
+<h4>2. Explain some problems I had and provide the solution</h4>
+
+<h4>3. Talk about some geek stuffs. Let&rsquo;s see :)</h4>
+
+<p>Hope you&rsquo;ll have fun to read me.
+Cheers and see you soon.</p>
+]]></content>
+  </entry>
   
 </feed>
