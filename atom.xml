@@ -4,7 +4,7 @@
   <title><![CDATA[My portfolio]]></title>
   <link href="http://paulsec.github.io/atom.xml" rel="self"/>
   <link href="http://paulsec.github.io/"/>
-  <updated>2014-03-05T17:56:14+01:00</updated>
+  <updated>2014-03-09T22:34:20+01:00</updated>
   <id>http://paulsec.github.io/</id>
   <author>
     <name><![CDATA[Paul A. (PaulSec)]]></name>
@@ -12,6 +12,78 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Dealing with HTML Submit's conflict]]></title>
+    <link href="http://paulsec.github.io/blog/2014/03/09/dealing-with-html-submits-conflict/"/>
+    <updated>2014-03-09T21:49:34+01:00</updated>
+    <id>http://paulsec.github.io/blog/2014/03/09/dealing-with-html-submits-conflict</id>
+    <content type="html"><![CDATA[<p>This first post is related with one of my project : CSRFT.
+CSRFT is a Cross Site Request Forgery (CSRF) vulnerabilities Toolkit.</p>
+
+<p>My toolkit allows you to exploit either GET and POST HTTP Requests.
+During some testings, I had issues with some specific forms.</p>
+
+<p>Let&rsquo;s take an example of such form :</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;form action="http://website.com/blog/" id="form" method="get"&gt;
+</span><span class='line'>&lt;label class="assistive-text" for="s"&gt;Search&lt;/label&gt;
+</span><span class='line'>&lt;input class="field" id="s" name="s" placeholder="Search" type="text" value="Search Value"/&gt;
+</span><span class='line'>&lt;input class="submit" id="searchsubmit" name="submit" type="submit" value="Search"/&gt;</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The code injected on the page to submit the form was like that :</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$("#form").submit();</span></code></pre></td></tr></table></div></figure>
+
+
+<p>However, the form was not submitted.</p>
+
+<h2>Why ?</h2>
+
+<p>After browsing the internet, I found that there was a conflict with the <strong>submit</strong> input.</p>
+
+<p>Let&rsquo;s try to debug wih <strong>FireBug</strong> :</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$("#form").submit();
+</span><span class='line'>TypeError: $(...).submit is not a function</span></code></pre></td></tr></table></div></figure>
+
+
+<p>And then :</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$("#form").submit
+</span><span class='line'>&lt;input id="searchsubmit" class="submit" type="submit" value="Search" name="submit"&gt;</span></code></pre></td></tr></table></div></figure>
+
+
+<p>As I said earlier, this is because there&rsquo;s a conflict with the <strong>Submit</strong> input.
+When there&rsquo;s such input, it&rsquo;s then not possible to &ldquo;force&rdquo; the victim to send the payload.</p>
+
+<h2>How to force submitting it ?</h2>
+
+<p>To submit a form, you can use the <strong>native function</strong>.</p>
+
+<p>Basic example :</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>HTMLFormElement.prototype.submit.call($("forum")[0]);</span></code></pre></td></tr></table></div></figure>
+
+
+<p>With such example, the argument of the function is the selector of the form.
+Here, you submit the first form that you find in the DOM.
+Using this technique, I&rsquo;ve been able to &ldquo;overwrite&rdquo; those (conflicts) inputs and submit the form even if it contains some.</p>
+
+<p>Have fun !</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Starting my own blog]]></title>

@@ -2,15 +2,19 @@
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
         <loc>http://paulsec.github.io/blog/2014/03/04/starting-my-own-blog/</loc>
-        <lastmod>2014-03-05T17:56:08+01:00</lastmod>
+        <lastmod>2014-03-05T19:30:42+01:00</lastmod>
+    </url>
+    <url>
+        <loc>http://paulsec.github.io/blog/2014/03/09/dealing-with-html-submits-conflict/</loc>
+        <lastmod>2014-03-09T22:34:19+01:00</lastmod>
     </url>
     <url>
         <loc>http://paulsec.github.io/blog/archives/</loc>
-        <lastmod>2014-03-05T17:56:08+01:00</lastmod>
+        <lastmod>2014-03-09T22:34:19+01:00</lastmod>
     </url>
     <url>
         <loc>http://paulsec.github.io/</loc>
-        <lastmod>2014-03-05T17:56:08+01:00</lastmod>
+        <lastmod>2014-03-09T22:34:19+01:00</lastmod>
     </url>
     <url>
         <loc>http://paulsec.github.io/robots.txt</loc>
