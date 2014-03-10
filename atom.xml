@@ -4,7 +4,7 @@
   <title><![CDATA[My portfolio]]></title>
   <link href="http://paulsec.github.io/atom.xml" rel="self"/>
   <link href="http://paulsec.github.io/"/>
-  <updated>2014-03-09T22:54:30+01:00</updated>
+  <updated>2014-03-10T18:37:09+01:00</updated>
   <id>http://paulsec.github.io/</id>
   <author>
     <name><![CDATA[Paul A. (PaulSec)]]></name>
@@ -30,10 +30,12 @@ During some testings, I had issues with some specific forms.</p>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
+<span class='line-number'>5</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>&lt;form action="http://website.com/blog/" id="form" method="get"&gt;
 </span><span class='line'>&lt;label class="assistive-text" for="s"&gt;Search&lt;/label&gt;
 </span><span class='line'>&lt;input class="field" id="s" name="s" placeholder="Search" type="text" value="Search Value"/&gt;
-</span><span class='line'>&lt;input class="submit" id="searchsubmit" name="submit" type="submit" value="Search"/&gt;</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'>&lt;input class="submit" id="searchsubmit" name="submit" type="submit" value="Search"/&gt;
+</span><span class='line'>&lt;/form&gt;</span></code></pre></td></tr></table></div></figure>
 
 
 <p>The code injected on the page to submit the form was like that :</p>
