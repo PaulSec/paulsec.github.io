@@ -4,7 +4,7 @@
   <title><![CDATA[My portfolio]]></title>
   <link href="http://paulsec.github.io/atom.xml" rel="self"/>
   <link href="http://paulsec.github.io/"/>
-  <updated>2014-03-20T18:14:43+01:00</updated>
+  <updated>2014-03-20T23:47:51+01:00</updated>
   <id>http://paulsec.github.io/</id>
   <author>
     <name><![CDATA[Paul A. (PaulSec)]]></name>
@@ -87,22 +87,24 @@ During some testings, I had issues with some specific forms.</p>
 
 <p>Let&rsquo;s take an example of such form :</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;form action="http://website.com/blog/" id="form" method="get"&gt;
-</span><span class='line'>&lt;label class="assistive-text" for="s"&gt;Search&lt;/label&gt;
-</span><span class='line'>&lt;input class="field" id="s" name="s" placeholder="Search" type="text" value="Search Value"/&gt;
-</span><span class='line'>&lt;input class="submit" id="searchsubmit" name="submit" type="submit" value="Search"/&gt;
-</span><span class='line'>&lt;/form&gt;</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">&quot;http://website.com/blog/&quot;</span> <span class="na">id=</span><span class="s">&quot;form&quot;</span> <span class="na">method=</span><span class="s">&quot;get&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'><span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;assistive-text&quot;</span> <span class="na">for=</span><span class="s">&quot;s&quot;</span><span class="nt">&gt;</span>Search<span class="nt">&lt;/label&gt;</span>
+</span><span class='line'><span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">&quot;field&quot;</span> <span class="na">id=</span><span class="s">&quot;s&quot;</span> <span class="na">name=</span><span class="s">&quot;s&quot;</span> <span class="na">placeholder=</span><span class="s">&quot;Search&quot;</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">value=</span><span class="s">&quot;Search Value&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">&quot;submit&quot;</span> <span class="na">id=</span><span class="s">&quot;searchsubmit&quot;</span> <span class="na">name=</span><span class="s">&quot;submit&quot;</span> <span class="na">type=</span><span class="s">&quot;submit&quot;</span> <span class="na">value=</span><span class="s">&quot;Search&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;/form&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>The code injected on the page to submit the form was like that :</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$("#form").submit();</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#form&quot;</span><span class="p">).</span><span class="nx">submit</span><span class="p">();</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>However, the form was not submitted.</p>
@@ -113,18 +115,20 @@ During some testings, I had issues with some specific forms.</p>
 
 <p>Let&rsquo;s try to debug wih <strong>FireBug</strong> :</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$("#form").submit();
-</span><span class='line'>TypeError: $(...).submit is not a function</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#form&quot;</span><span class="p">).</span><span class="nx">submit</span><span class="p">();</span>
+</span><span class='line'><span class="nx">TypeError</span><span class="o">:</span> <span class="nx">$</span><span class="p">(...).</span><span class="nx">submit</span> <span class="nx">is</span> <span class="nx">not</span> <span class="nx">a</span> <span class="kd">function</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>And then :</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$("#form").submit
-</span><span class='line'>&lt;input id="searchsubmit" class="submit" type="submit" value="Search" name="submit"&gt;</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#form&quot;</span><span class="p">).</span><span class="nx">submit</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">input</span> <span class="nx">id</span><span class="o">=</span><span class="s2">&quot;searchsubmit&quot;</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;submit&quot;</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&quot;submit&quot;</span> <span class="nx">value</span><span class="o">=</span><span class="s2">&quot;Search&quot;</span> <span class="nx">name</span><span class="o">=</span><span class="s2">&quot;submit&quot;</span><span class="o">&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>As I said earlier, this is because there&rsquo;s a conflict with the <strong>Submit</strong> input.
@@ -136,8 +140,9 @@ When there&rsquo;s such input, it&rsquo;s then not possible to &ldquo;force&rdqu
 
 <p>Basic example :</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>HTMLFormElement.prototype.submit.call($("forum")[0]);</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">HTMLFormElement</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">submit</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;forum&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]);</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>With such example, the argument of the function is the selector of the form.
