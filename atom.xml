@@ -4,7 +4,7 @@
   <title><![CDATA[My portfolio]]></title>
   <link href="http://paulsec.github.io/atom.xml" rel="self"/>
   <link href="http://paulsec.github.io/"/>
-  <updated>2014-03-20T23:47:51+01:00</updated>
+  <updated>2014-03-28T19:28:32+01:00</updated>
   <id>http://paulsec.github.io/</id>
   <author>
     <name><![CDATA[Paul A. (PaulSec)]]></name>
@@ -12,6 +12,134 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Python + Transmission-daemon = Download easily your favorite TV Show]]></title>
+    <link href="http://paulsec.github.io/blog/2014/03/28/python-plus-transmission-daemon-equals-download-easily-your-favorite-tv-show/"/>
+    <updated>2014-03-28T18:23:59+01:00</updated>
+    <id>http://paulsec.github.io/blog/2014/03/28/python-plus-transmission-daemon-equals-download-easily-your-favorite-tv-show</id>
+    <content type="html"><![CDATA[<p>This post is about my last project : my <em>TV Show Manager</em>.</p>
+
+<p>I decided to start it because I wanted something <strong>really</strong> simple to download my favorite TV Shows.
+In this post, I&rsquo;ll explain step by step how to reproduce it at home.</p>
+
+<p>Basically, with this tutorial you&rsquo;ll set up your <strong>Raspberry</strong> box by :</p>
+
+<ul>
+<li>Installing / set-uping transmission-daemon</li>
+<li>Getting one of my latest project <a href="https://github.com/PaulSec/TVShowsManager">TVShowManager</a> that uses my <a href="https://github.com/PaulSec/eztv_api">EZTV Python API</a>.</li>
+</ul>
+
+
+<blockquote><p>Well.. let&rsquo;s start ?</p></blockquote>
+
+<p>I&rsquo;m a <strong>Raspberry Pi</strong> enthusiast, so this project runs at home on a basic installation of <em>Raspbmc</em>.</p>
+
+<p>First, you need to install <strong>transmission-remote</strong> :</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>sudo apt-get install transmission-daemon
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The basic installation will launch a basic HTTP server.
+Let&rsquo;s imagine the IP of your Raspberry server is : <strong>192.168.0.12</strong>.</p>
+
+<p>The HTTP Server is accessible on the port 9091, like : <a href="http://192.168.0.12:9091/transmission/web/">http://192.168.0.12:9091/transmission/web/</a></p>
+
+<p>To access this URL, there will be a .htaccess asking some credentials to access the page.</p>
+
+<p>To display/update them, just access the settings.json configuration file :</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>sudo vim /etc/transmission-daemon/settings.json
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>And check for the variables <strong>rpc-username</strong> and <strong>rpc-password</strong>.
+Moreover, if you want to send commands over the network, check the <strong>rpc-whitelist</strong> variable and add your private network range if you want to access it over the LAN, like:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='json'><span class='line'><span class="s2">&quot;rpc-whitelist&quot;</span><span class="err">:</span> <span class="s2">&quot;127.0.0.1, 192.168.1.*&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<blockquote><p>After setting up Transmission-remote, what do we have to do ?</p></blockquote>
+
+<p>Well, you need to get TVShowManager, one of my project : <a href="git@github.com:PaulSec/TVShowsManager.git">TVShowManager</a>.</p>
+
+<p>Start by cloning the projet by using <strong>git</strong> :</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>git clone git@github.com:PaulSec/TVShowsManager.git
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Then, just go in the folder and see the files which are present :</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nb">cd </span>TVShowsManager <span class="o">&amp;&amp;</span> ls
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li><strong>eztv_api</strong> : (Unofficial) Python API for the website EZTV.it.</li>
+<li><strong>TVShowsManager.py</strong> : the launcher for this project</li>
+<li><strong>config.ini</strong> : the most important because it contains all the configuration !</li>
+</ul>
+
+
+<blockquote><p>Setting up TVShowsManager</p></blockquote>
+
+<p>To use it, you have to create a configuration file called <strong>config.ini</strong>, let&rsquo;s take an example :</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="o">[</span>config<span class="o">]</span>
+</span><span class='line'><span class="nv">username</span> <span class="o">=</span> myUsernameTr
+</span><span class='line'><span class="nv">password</span> <span class="o">=</span> myPassword!!!
+</span><span class='line'><span class="nv">ip</span> <span class="o">=</span> 192.168.0.12
+</span><span class='line'><span class="nv">timer</span> <span class="o">=</span> 5
+</span><span class='line'>
+</span><span class='line'><span class="o">[</span>Vikings<span class="o">]</span>
+</span><span class='line'><span class="nv">season</span> <span class="o">=</span> 1
+</span><span class='line'><span class="nv">episode</span> <span class="o">=</span> 7
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The first section is the <em><em>config</em></em> one.
+You define different fields such as :</p>
+
+<ul>
+<li><em>Username</em>: Credentials to connect to your transmission.</li>
+<li><em>Password</em>: Bis.</li>
+<li><em>IP</em>: IP where your Transmission-remote is running</li>
+<li><em>timer</em>: How many minutes you want to wait between 2 re-try.</li>
+</ul>
+
+
+<p>Then, the other sections are for your different tv show.
+Based on this example, you&rsquo;re watching <em>Vikings</em> and stopped at the episode 7, season 1.</p>
+
+<p>You can get those files on your Raspberry and the ip address will then be : <strong>127.0.0.1</strong> if transmission-daemon is running on it as well.</p>
+
+<blockquote><p>Launch the app !</p></blockquote>
+
+<p>To launch the app, after creating your own <strong>config.ini</strong> file, just type this command :</p>
+
+<p><code>python TVShowsManager.py</code></p>
+
+<p>And that&rsquo;s it !
+If you want more details, I redacted a nice README for the project just <a href="https://github.com/PaulSec/TVShowsManager">here</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[XSS Callback]]></title>
