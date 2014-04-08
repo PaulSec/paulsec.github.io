@@ -4,7 +4,7 @@
   <title><![CDATA[My portfolio]]></title>
   <link href="http://paulsec.github.io/atom.xml" rel="self"/>
   <link href="http://paulsec.github.io/"/>
-  <updated>2014-04-08T23:09:19+02:00</updated>
+  <updated>2014-04-08T23:23:03+02:00</updated>
   <id>http://paulsec.github.io/</id>
   <author>
     <name><![CDATA[Paul A. (PaulSec)]]></name>
@@ -18,7 +18,9 @@
     <link href="http://paulsec.github.io/blog/2014/04/08/vulnos-write-up/"/>
     <updated>2014-04-08T21:47:04+02:00</updated>
     <id>http://paulsec.github.io/blog/2014/04/08/vulnos-write-up</id>
-    <content type="html"><![CDATA[<p>This is my first write-up for a VM and I&rsquo;m doing it for VulnOS which is hosted on <a href="http://vulnhub.com/">VulnHub</a> (Great resource if you want to improve your pentesting skills).</p>
+    <content type="html"><![CDATA[<p><strong>This contains the solution of the VM: VulnOS.</strong></p>
+
+<p>This is my first write-up for a VM and I&rsquo;m doing it for VulnOS which is hosted on <a href="http://vulnhub.com/">VulnHub</a> (Great resource if you want to improve your pentesting skills).</p>
 
 <p>In this &lsquo;tutorial&rsquo;, I&rsquo;m gonna give you the steps I reproduced to get a shell on the machine.</p>
 
