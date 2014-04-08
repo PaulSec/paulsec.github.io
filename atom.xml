@@ -4,7 +4,7 @@
   <title><![CDATA[My portfolio]]></title>
   <link href="http://paulsec.github.io/atom.xml" rel="self"/>
   <link href="http://paulsec.github.io/"/>
-  <updated>2014-04-08T23:07:30+02:00</updated>
+  <updated>2014-04-08T23:09:19+02:00</updated>
   <id>http://paulsec.github.io/</id>
   <author>
     <name><![CDATA[Paul A. (PaulSec)]]></name>
@@ -189,58 +189,6 @@ Let&rsquo;s do some fingerprinting.</p>
 </span><span class='line'>---------------------------------------------------------------------------
 </span><span class='line'>+ 1 host(s) tested
 </span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>./nikto.pl -h http://192.168.56.105:8080
-</span><span class='line'>- Nikto v2.1.5
-</span><span class='line'>---------------------------------------------------------------------------
-</span><span class='line'>+ Target IP:          192.168.56.105
-</span><span class='line'>+ Target Hostname:    192.168.56.105
-</span><span class='line'>+ Target Port:        8080
-</span><span class='line'>+ Start Time:         2014-04-08 21:55:59 (GMT2)
-</span><span class='line'>---------------------------------------------------------------------------
-</span><span class='line'>+ Server: Apache-Coyote/1.1
-</span><span class='line'>+ Server leaks inodes via ETags, header found with file /, fields: 0xW/1887 0x1394395959000 
-</span><span class='line'>+ The anti-clickjacking X-Frame-Options header is not present.
-</span><span class='line'>+ No CGI Directories found (use '-C all' to force check all possible dirs)
-</span><span class='line'>+ Allowed HTTP Methods: GET, HEAD, POST, PUT, DELETE, OPTIONS 
-</span><span class='line'>+ OSVDB-397: HTTP method ('Allow' Header): 'PUT' method could allow clients to save files on the web server.
-</span><span class='line'>+ OSVDB-5646: HTTP method ('Allow' Header): 'DELETE' may allow clients to remove files on the web server.
-</span><span class='line'>+ /: Appears to be a default Apache Tomcat install.
-</span><span class='line'>+ /examples/servlets/index.html: Apache Tomcat default JSP pages present.
-</span><span class='line'>+ Cookie JSESSIONID created without the httponly flag
-</span><span class='line'>+ OSVDB-3720: /examples/jsp/snp/snoop.jsp: Displays information about page retrievals, including other users.
-</span><span class='line'>+ /manager/html: Default Tomcat Manager interface found
-</span><span class='line'>+ 6544 items checked: 0 error(s) and 10 item(s) reported on remote host
-</span><span class='line'>+ End Time:           2014-04-08 21:57:01 (GMT2) (62 seconds)
-</span><span class='line'>---------------------------------------------------------------------------
-</span><span class='line'>+ 1 host(s) tested</span></code></pre></td></tr></table></div></figure>
 
 
 <p>I also used DirBuster to get some folders :</p>
