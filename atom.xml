@@ -4,7 +4,7 @@
   <title><![CDATA[My portfolio]]></title>
   <link href="http://paulsec.github.io/atom.xml" rel="self"/>
   <link href="http://paulsec.github.io/"/>
-  <updated>2014-04-10T22:29:52+02:00</updated>
+  <updated>2014-04-10T22:34:02+02:00</updated>
   <id>http://paulsec.github.io/</id>
   <author>
     <name><![CDATA[Paul A. (PaulSec)]]></name>
@@ -50,7 +50,7 @@ Let&rsquo;s do some fingerprinting.</p>
 <h4>Fingerprinting</h4>
 
 <p>I still used <a href="http://nmap.org/">nmap</a> to do this :
-<img src="http://paulsec.github.io/images/vulnos/nmap_scan.png" /></p>
+<img src="http://paulsec.github.io/images/vulnos/nmap_scan.png" width="75%" height="75%"/></p>
 
 <p>Port 80 and 8080 are open. I used <a href="https://www.cirt.net/Nikto2">nikto</a> and <a href="https://www.owasp.org/index.php/Category:OWASP_DirBuster_Project">DirBuster</a> to do even more fingerprinting.</p>
 
@@ -414,11 +414,11 @@ Thanks to this, I&rsquo;ve been able to detect even more Web applications: Media
 <p>I also had access to all the files I wanted, so I gathered credentials for the database.
 It was then possible to login through the phpmyadmin pannel using: <strong>webmin</strong>/<strong>webmin</strong>.</p>
 
-<p><img src="http://paulsec.github.io/images/vulnos/phpmyadmin_wikiuser.png" /></p>
+<p><img src="http://paulsec.github.io/images/vulnos/phpmyadmin_wikiuser.png" width="75%" height="75%"/></p>
 
 <p>And here is the output of the table <strong>user</strong> in <strong>Mysql</strong> database.</p>
 
-<p><img src="http://paulsec.github.io/images/vulnos/mysql_users.png" /></p>
+<p><img src="http://paulsec.github.io/images/vulnos/mysql_users.png" width="75%" height="75%"/></p>
 
 <h4>Access maintenance</h4>
 
@@ -453,7 +453,7 @@ It&rsquo;s time to get a reverse shell !</p>
 
 <p>Using Webmin&rsquo;s exploit, just change <em>RPATH</em> to the new file and <strong>exploit</strong>.</p>
 
-<p><img src="http://paulsec.github.io/images/vulnos/webmin_root_script_result.png" /></p>
+<p><img src="http://paulsec.github.io/images/vulnos/webmin_root_script_result.png" width="75%" height="75%"/></p>
 
 <p>Hope you liked it and that you learnt something. :&ndash;)</p>
 ]]></content>
