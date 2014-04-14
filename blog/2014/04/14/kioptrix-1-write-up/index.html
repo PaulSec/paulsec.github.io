@@ -1,0 +1,219 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Kioptrix 1: Write-up - My portfolio</title>
+  <meta name="author" content="Paul A. (PaulSec)">
+
+  
+  <meta name="description" content="This post contains the steps to get a root shell with Kioptrix level 1 VM This VM can he found here. Have a look to find even more VMs Host discovery &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://paulsec.github.io/blog/2014/04/14/kioptrix-1-write-up">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="My portfolio" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href='http://fonts.googleapis.com/css?family=Quattrocento+Sans|Roboto:400,300' rel='stylesheet' type='text/css'>
+
+  
+
+</head>
+
+
+<body>
+	<div class="container">
+		<aside class="left">
+			<div class="inner-left">
+				<header>
+					
+  <img src="http://www.gravatar.com/avatar/0b0f4cb32c81edd3e8dca37bde08910c?s=200" alt="Gravatar of Paul A. (PaulSec) " title="Gravatar of Paul A. (PaulSec)" class="profilepic" />
+
+<hgroup>
+  <h1><a href="/">My portfolio</a></h1>
+  
+    <h2 class="subtitle">Blog of a (Web) Security enthusiast.</h2>
+   
+</hgroup>
+
+
+				</header>
+				<footer>
+					<p>
+	
+	
+</p>
+				</footer>
+			</div>
+		</aside>
+    	<section class="right">
+    		<div class="inner-right">
+    			<div id="posts">
+    			  	<article class="post">
+    
+  <header>
+    
+      <h1 class="entry-title">Kioptrix 1: Write-up</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-04-14T21:52:50+02:00" pubdate data-updated="true">Apr 14<span>th</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p><strong>This post contains the steps to get a root shell with Kioptrix level 1 VM</strong></p>
+
+<p>This VM can he found <a href="http://vulnhub.com/entry/kioptrix_level-1-1,22/">here</a>. Have a look to find even more VMs</p>
+
+<h4><strong>Host discovery</strong></h4>
+
+<p>First, we need to discover where the machine is on our network.
+To do so, let&rsquo;s use Nmap:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>nmap -sP 192.168.1.1/24 </span></code></pre></td></tr></table></div></figure>
+
+
+<h4><strong>Fingerprinting</strong></h4>
+
+<p>After getting the IP address, we need to do some fingerprinting.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>nmap -sP 192.168.1.1/24 </span></code></pre></td></tr></table></div></figure>
+
+
+<p><img src="/images/kioptrix/1/nmap.png" width="75%" height="75%"/></p>
+
+<p><em>Fig. Nmap scan result</em></p>
+
+<p>As I saw it in the scan report, I decided to scan on the port 80 and 443 with <strong>DirBuster</strong> and <strong>Nikto</strong>.</p>
+
+<p>Here are the reports :</p>
+
+<p><img src="/images/kioptrix/1/dirbuster.png" width="75%" height="75%"/></p>
+
+<p><em>Fig. DirBuster Report on the port 80</em></p>
+
+<p><img src="/images/kioptrix/1/nikto.png" width="75%" height="75%"/></p>
+
+<p><em>Fig. Nikto report on ports 80 (HTTP) and 443 (HTTPS)</em></p>
+
+<p>There was no vulnerable web application or any interesting file.
+However, the Apache version is vulnerable..</p>
+
+<h4><strong>Exploitation with Apache OpenSSL Exploit</strong></h4>
+
+<p>Thanks to Nmap result, I saw that the Apache version was vulnerable: <strong>Apache 1.3.20</strong>.
+Then, I decided to look on the internet and I found this expoit: <a href="http://www.exploit-db.com/exploits/764/">Apache OpenSSL &ndash; Remote Exploit (Multiple Targets) (OpenFuckV2.c)</a></p>
+
+<p>I had issues with this exploit because it&rsquo;s quite an old one and the instructions were outdated.
+You can follow the instructions <a href="http://paulsec.github.io/blog/2014/04/14/updating-openfuck-exploit/">here</a> to update the exploit and run it on your computer. (Tested on <a href="http://www.kali.org/">Kali Linux</a>).</p>
+
+<p>We had information on the box and I did a <code>grep</code> to see what OS were vulnerable to Apache 1.3.20 :</p>
+
+<p><img src="/images/kioptrix/1/openfuck_select.png" width="75%" height="75%"/></p>
+
+<p><em>Fig. Selecting the option (depending on the OS) for the exploit</em></p>
+
+<p>Then, I tried the exploit :</p>
+
+<p><img src="/images/kioptrix/1/openfuck_exploit.png" width="75%" height="75%"/></p>
+
+<p><em>Fig. Using OpenFuck Exploit after multiple attempts</em></p>
+
+<h4><strong>Interesting files</strong></h4>
+
+<p>We got the root shell and that was the goal of this VM.
+Then, you can do everything like get content of <code>/etc/shadow</code>.</p>
+
+<p><img src="/images/kioptrix/1/cat_shadow.png" width="75%" height="75%"/></p>
+
+<p><em>Fig. Shadow file on the vulnerable server</em></p>
+
+<p>Hope you liked it ! Cheers.</p>
+
+<p>ps: I&rsquo;ll add exploitation using Samba in the next few days. Keep tuned !</p>
+</div>
+
+
+</article>
+
+
+        <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://paulsec.github.io/blog/2014/04/14/kioptrix-1-write-up/" data-via="" data-counturl="http://paulsec.github.io/blog/2014/04/14/kioptrix-1-write-up/" >Tweet</a>
+  
+  
+  
+</div>
+
+
+
+
+
+    			</div>
+    			<footer id="footer">
+    				<p class="credit">
+  Copyright &copy; 2014 - Paul A. (PaulSec). Powered by <a href="http://octopress.org">Octopress</a>
+</p>
+
+
+    			</footer>
+    			
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+<link href='http://fonts.googleapis.com/css?family=Quattrocento+Sans|Roboto:400,300' rel='stylesheet' type='text/css'>
+
+
+
+
+
+    		</div>
+    	</section>
+  	</div>
+</body>
+</html>

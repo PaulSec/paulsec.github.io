@@ -4,7 +4,7 @@
   <title><![CDATA[My portfolio]]></title>
   <link href="http://paulsec.github.io/atom.xml" rel="self"/>
   <link href="http://paulsec.github.io/"/>
-  <updated>2014-04-14T21:11:46+02:00</updated>
+  <updated>2014-04-14T22:22:22+02:00</updated>
   <id>http://paulsec.github.io/</id>
   <author>
     <name><![CDATA[Paul A. (PaulSec)]]></name>
@@ -12,6 +12,86 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Kioptrix 1: Write-up]]></title>
+    <link href="http://paulsec.github.io/blog/2014/04/14/kioptrix-1-write-up/"/>
+    <updated>2014-04-14T21:52:50+02:00</updated>
+    <id>http://paulsec.github.io/blog/2014/04/14/kioptrix-1-write-up</id>
+    <content type="html"><![CDATA[<p><strong>This post contains the steps to get a root shell with Kioptrix level 1 VM</strong></p>
+
+<p>This VM can he found <a href="http://vulnhub.com/entry/kioptrix_level-1-1,22/">here</a>. Have a look to find even more VMs</p>
+
+<h4><strong>Host discovery</strong></h4>
+
+<p>First, we need to discover where the machine is on our network.
+To do so, let&rsquo;s use Nmap:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>nmap -sP 192.168.1.1/24 </span></code></pre></td></tr></table></div></figure>
+
+
+<h4><strong>Fingerprinting</strong></h4>
+
+<p>After getting the IP address, we need to do some fingerprinting.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>nmap -sP 192.168.1.1/24 </span></code></pre></td></tr></table></div></figure>
+
+
+<p><img src="http://paulsec.github.io/images/kioptrix/1/nmap.png" width="75%" height="75%"/></p>
+
+<p><em>Fig. Nmap scan result</em></p>
+
+<p>As I saw it in the scan report, I decided to scan on the port 80 and 443 with <strong>DirBuster</strong> and <strong>Nikto</strong>.</p>
+
+<p>Here are the reports :</p>
+
+<p><img src="http://paulsec.github.io/images/kioptrix/1/dirbuster.png" width="75%" height="75%"/></p>
+
+<p><em>Fig. DirBuster Report on the port 80</em></p>
+
+<p><img src="http://paulsec.github.io/images/kioptrix/1/nikto.png" width="75%" height="75%"/></p>
+
+<p><em>Fig. Nikto report on ports 80 (HTTP) and 443 (HTTPS)</em></p>
+
+<p>There was no vulnerable web application or any interesting file.
+However, the Apache version is vulnerable..</p>
+
+<h4><strong>Exploitation with Apache OpenSSL Exploit</strong></h4>
+
+<p>Thanks to Nmap result, I saw that the Apache version was vulnerable: <strong>Apache 1.3.20</strong>.
+Then, I decided to look on the internet and I found this expoit: <a href="http://www.exploit-db.com/exploits/764/">Apache OpenSSL &ndash; Remote Exploit (Multiple Targets) (OpenFuckV2.c)</a></p>
+
+<p>I had issues with this exploit because it&rsquo;s quite an old one and the instructions were outdated.
+You can follow the instructions <a href="http://paulsec.github.io/blog/2014/04/14/updating-openfuck-exploit/">here</a> to update the exploit and run it on your computer. (Tested on <a href="http://www.kali.org/">Kali Linux</a>).</p>
+
+<p>We had information on the box and I did a <code>grep</code> to see what OS were vulnerable to Apache 1.3.20 :</p>
+
+<p><img src="http://paulsec.github.io/images/kioptrix/1/openfuck_select.png" width="75%" height="75%"/></p>
+
+<p><em>Fig. Selecting the option (depending on the OS) for the exploit</em></p>
+
+<p>Then, I tried the exploit :</p>
+
+<p><img src="http://paulsec.github.io/images/kioptrix/1/openfuck_exploit.png" width="75%" height="75%"/></p>
+
+<p><em>Fig. Using OpenFuck Exploit after multiple attempts</em></p>
+
+<h4><strong>Interesting files</strong></h4>
+
+<p>We got the root shell and that was the goal of this VM.
+Then, you can do everything like get content of <code>/etc/shadow</code>.</p>
+
+<p><img src="http://paulsec.github.io/images/kioptrix/1/cat_shadow.png" width="75%" height="75%"/></p>
+
+<p><em>Fig. Shadow file on the vulnerable server</em></p>
+
+<p>Hope you liked it ! Cheers.</p>
+
+<p>ps: I&rsquo;ll add exploitation using Samba in the next few days. Keep tuned !</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Updating OpenFuck Exploit]]></title>
