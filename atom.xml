@@ -4,7 +4,7 @@
   <title><![CDATA[My portfolio]]></title>
   <link href="http://paulsec.github.io/atom.xml" rel="self"/>
   <link href="http://paulsec.github.io/"/>
-  <updated>2014-04-10T22:34:02+02:00</updated>
+  <updated>2014-04-14T21:11:46+02:00</updated>
   <id>http://paulsec.github.io/</id>
   <author>
     <name><![CDATA[Paul A. (PaulSec)]]></name>
@@ -12,6 +12,92 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Updating OpenFuck Exploit]]></title>
+    <link href="http://paulsec.github.io/blog/2014/04/14/updating-openfuck-exploit/"/>
+    <updated>2014-04-14T20:46:29+02:00</updated>
+    <id>http://paulsec.github.io/blog/2014/04/14/updating-openfuck-exploit</id>
+    <content type="html"><![CDATA[<p>This blog post will be quite fast and will provide you the steps to update the <a href="http://www.exploit-db.com/exploits/764/">OpenFuck</a> exploit.</p>
+
+<p>This exploit is pretty old but you might need it if you have fun with some vulnerable VMs. Not giving any hint. :&ndash;)</p>
+
+<p>Thanks to this <a href="http://hackingbalg.blogspot.fr/">blog</a>, I&rsquo;ve been able to update the exploit.</p>
+
+<p>Here are the steps to make this work :</p>
+
+<ul>
+<li><strong>1) Add those headers :</strong></li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="cp">#include &lt;openssl/rc4.h&gt;</span>
+</span><span class='line'><span class="cp">#include &lt;openssl/md5.h&gt; </span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li><strong>2) Update the URL of the C file.</strong></li>
+</ul>
+
+
+<p>Search for <code>wget</code></p>
+
+<p>and replace the URL with this new one :</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="nl">http:</span><span class="c1">//dl.packetstormsecurity.net/0304-exploits/ptrace-kmod.c</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li><strong>3) Get libssl-dev lib</strong></li>
+</ul>
+
+
+<p>Install them :</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">libssl</span><span class="o">-</span><span class="n">dev</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li><strong>4) Update declaration of variables</strong></li>
+</ul>
+
+
+<p>Line 961, change :</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="kt">unsigned</span> <span class="kt">char</span> <span class="o">*</span><span class="n">p</span><span class="p">,</span> <span class="o">*</span><span class="n">end</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>By adding <strong>const</strong> :</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="o">*</span><span class="n">p</span><span class="p">,</span> <span class="o">*</span><span class="n">end</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li><strong>5) Compile then code and you&rsquo;re done</strong></li>
+</ul>
+
+
+<p>To compile :</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="n">gcc</span> <span class="o">-</span><span class="n">o</span> <span class="n">OpenFuck</span> <span class="mf">764.</span><span class="n">c</span> <span class="o">-</span><span class="n">lcrypto</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Hope this can help you out if you got stuck with this exploit. Cheers !</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[VulnOS: Write-up]]></title>
