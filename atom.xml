@@ -4,7 +4,7 @@
   <title><![CDATA[My portfolio]]></title>
   <link href="http://paulsec.github.io/atom.xml" rel="self"/>
   <link href="http://paulsec.github.io/"/>
-  <updated>2014-04-14T22:22:22+02:00</updated>
+  <updated>2014-04-15T21:00:13+02:00</updated>
   <id>http://paulsec.github.io/</id>
   <author>
     <name><![CDATA[Paul A. (PaulSec)]]></name>
@@ -12,6 +12,115 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Exploit KB Vulnerable Web App 1: Write-up]]></title>
+    <link href="http://paulsec.github.io/blog/2014/04/15/exploit-kb-vulnerable-web-app-1-write-up/"/>
+    <updated>2014-04-15T20:29:34+02:00</updated>
+    <id>http://paulsec.github.io/blog/2014/04/15/exploit-kb-vulnerable-web-app-1-write-up</id>
+    <content type="html"><![CDATA[<p><strong>This post contains the steps to get a root shell with Exploit KB Vulnerable Web App 1 VM</strong></p>
+
+<p>This VM can he found <a href="http://vulnhub.com/entry/exploit-kb-vulnerable-web-app-1,44/">here</a>. Have a look to find even more VMs</p>
+
+<h3><strong>Host discovery</strong></h3>
+
+<p>First, we need to discover where the machine is on our network.
+To do so, let&rsquo;s use Nmap:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>nmap -sP 192.168.1.1/24 </span></code></pre></td></tr></table></div></figure>
+
+
+<h3><strong>Fingerprinting</strong></h3>
+
+<p>After getting the IP address, we need to do some fingerprinting.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>nmap -sV 192.168.1.23</span></code></pre></td></tr></table></div></figure>
+
+
+<p><img src="http://paulsec.github.io/images/exploit-kb/nmap-result.png" width="75%" height="75%"/></p>
+
+<p><em>Fig. Nmap scan result</em></p>
+
+<p>As we saw it, there were only two services available on this host: SSH and Apache.
+I decided to use Nikto to scan the Web server.</p>
+
+<p>Here are the report :</p>
+
+<p><img src="http://paulsec.github.io/images/exploit-kb/nikto-result.png" width="75%" height="75%"/></p>
+
+<p><em>Fig. Nikto report on ports 80 (HTTP)</em></p>
+
+<p>There were (loads) of interesting things here, but some of the most interesting :</p>
+
+<ul>
+<li>/database/</li>
+<li>/admin/</li>
+<li>and the website itself !</li>
+</ul>
+
+
+<p>Let&rsquo;s exploit it !</p>
+
+<h3><strong>Exploitation</strong></h3>
+
+<p>First, there&rsquo;s some <em>directory listing</em> on /database/ and there was an interesting backup: <strong>exploit.sql</strong>.
+In this file, we managed to gather some credentials which were not hashed !</p>
+
+<p><img src="http://paulsec.github.io/images/exploit-kb/directory-listing-exploit.png" width="50%" height="50%"/></p>
+
+<p><em>Fig. Directory Listing of /database/</em></p>
+
+<p><img src="http://paulsec.github.io/images/exploit-kb/exploit-sql.png" width="50%" height="50%"/></p>
+
+<p><em>Fig. SQL Backup: Exploit.sql</em></p>
+
+<p>Then, we were able to connect to the platform.</p>
+
+<p><img src="http://paulsec.github.io/images/exploit-kb/admin-login-page.png" width="50%" height="50%"/></p>
+
+<p><em>Fig. Admin login page</em></p>
+
+<p><img src="http://paulsec.github.io/images/exploit-kb/admin-logged.png" width="75%" height="75%"/></p>
+
+<p><em>Fig. Connected as &lsquo;Admin&rsquo;</em></p>
+
+<p>While playing with the application, some URLs were interesting :</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>http://192.168.1.23/newspage.php?id=1</span></code></pre></td></tr></table></div></figure>
+
+
+<p>I decided to check for some SQL injection and used SQLmap to exploit those:</p>
+
+<p><img src="http://paulsec.github.io/images/exploit-kb/sqlmap-database.png" width="75%" height="75%"/></p>
+
+<p><em>Fig. Dumping all databases through SQL Injection</em></p>
+
+<p><img src="http://paulsec.github.io/images/exploit-kb/sqlmap-crack-password.png" width="75%" height="75%"/></p>
+
+<p><em>Fig. Dumping all MySQL&rsquo;s users/passwords, and cracking them</em></p>
+
+<p>Thanks to this vulnerability, we&rsquo;ve been able to dump the entire Database System (Which was a MySQL Backend System).
+We managed to crack Mysql users&rsquo;s password which was&hellip;: <strong>toor</strong>.</p>
+
+<p>With those (re-used &amp; weak) credentials, we were able to connect to the root&rsquo;s account through SSH.
+Then, we had <em>root</em> access.</p>
+
+<p><img src="http://paulsec.github.io/images/exploit-kb/shell-root-id.png" width="75%" height="75%"/></p>
+
+<p><em>Fig. Connecting through SSH with root&rsquo;s credential</em></p>
+
+<p><img src="http://paulsec.github.io/images/exploit-kb/shell-root-cat-shadow.png" width="75%" height="75%"/></p>
+
+<p><em>Fig. Cat /etc/shadow</em></p>
+
+<p>Really easy VM but really interesting one to practice with.</p>
+
+<p>Hope you liked it ! Cheers.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Kioptrix 1: Write-up]]></title>
@@ -36,7 +145,7 @@ To do so, let&rsquo;s use Nmap:</p>
 <p>After getting the IP address, we need to do some fingerprinting.</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>nmap -sP 192.168.1.1/24 </span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class=''><span class='line'>nmap -sV 192.168.1.2</span></code></pre></td></tr></table></div></figure>
 
 
 <p><img src="http://paulsec.github.io/images/kioptrix/1/nmap.png" width="75%" height="75%"/></p>

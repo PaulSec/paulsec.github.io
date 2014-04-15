@@ -28,15 +28,21 @@
     </url>
     <url>
         <loc>http://paulsec.github.io/blog/2014/04/14/kioptrix-1-write-up/</loc>
-        <lastmod>2014-04-14T22:22:21+02:00</lastmod>
+        <lastmod>2014-04-15T20:32:25+02:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            http://paulsec.github.io/blog/2014/04/15/exploit-kb-vulnerable-web-app-1-write-up/
+        </loc>
+        <lastmod>2014-04-15T21:00:13+02:00</lastmod>
     </url>
     <url>
         <loc>http://paulsec.github.io/blog/archives/</loc>
-        <lastmod>2014-04-14T22:22:21+02:00</lastmod>
+        <lastmod>2014-04-15T21:00:13+02:00</lastmod>
     </url>
     <url>
         <loc>http://paulsec.github.io/</loc>
-        <lastmod>2014-04-14T22:22:21+02:00</lastmod>
+        <lastmod>2014-04-15T21:00:13+02:00</lastmod>
     </url>
     <url>
         <loc>http://paulsec.github.io/robots.txt</loc>
