@@ -4,7 +4,7 @@
   <title><![CDATA[My portfolio]]></title>
   <link href="http://paulsec.github.io/atom.xml" rel="self"/>
   <link href="http://paulsec.github.io/"/>
-  <updated>2014-04-16T22:05:47+02:00</updated>
+  <updated>2014-04-16T22:28:35+02:00</updated>
   <id>http://paulsec.github.io/</id>
   <author>
     <name><![CDATA[Paul A. (PaulSec)]]></name>
@@ -234,11 +234,7 @@ Download it, change the configuration, send it using Netcat / wget like this :</
 
 <p><em>Fig. Exploit worked and we&rsquo;re now root</em></p>
 
-<p>Then, we read the <strong>/etc/shadow</strong> :</p>
-
-<p><img src="http://paulsec.github.io/images/kioptrix/2/root-etc-shadow.png" width="75%" height="75%"/></p>
-
-<p><em>Fig. /etc/shadow from the vulnerable machine</em></p>
+<p>Then, we read the <strong>/etc/shadow</strong>, crack the password etc.</p>
 
 <p>Hope you liked it and good evening !</p>
 ]]></content>
