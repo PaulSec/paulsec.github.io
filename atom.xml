@@ -4,7 +4,7 @@
   <title><![CDATA[My portfolio]]></title>
   <link href="http://paulsec.github.io/atom.xml" rel="self"/>
   <link href="http://paulsec.github.io/"/>
-  <updated>2014-04-15T23:16:23+02:00</updated>
+  <updated>2014-04-16T17:36:39+02:00</updated>
   <id>http://paulsec.github.io/</id>
   <author>
     <name><![CDATA[Paul A. (PaulSec)]]></name>
@@ -49,7 +49,7 @@ To do so, let&rsquo;s use Nmap:</p>
 
 <p><em>Fig. Nikto report on ports 80 (HTTP)</em></p>
 
-<p>There was no vulnerable web application or any interesting file.
+<p>There was no interesting file or any &lsquo;obvious&rsquo; vulnerability.
 So, I decided to check the Web application.</p>
 
 <h3><strong>Exploitation</strong></h3>
