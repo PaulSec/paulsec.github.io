@@ -4,7 +4,7 @@
   <title><![CDATA[My portfolio]]></title>
   <link href="http://paulsec.github.io/atom.xml" rel="self"/>
   <link href="http://paulsec.github.io/"/>
-  <updated>2014-04-21T10:58:48+02:00</updated>
+  <updated>2014-04-21T11:00:12+02:00</updated>
   <id>http://paulsec.github.io/</id>
   <author>
     <name><![CDATA[Paul A. (PaulSec)]]></name>
@@ -1009,6 +1009,13 @@ Moreover, if you want to send commands over the network, check the <strong>rpc-w
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='json'><span class='line'><span class="s2">&quot;rpc-whitelist&quot;</span><span class="err">:</span> <span class="s2">&quot;127.0.0.1, 192.168.1.*&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Then, restart your transmission-daemon:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>killall -HUP transmission-da
 </span></code></pre></td></tr></table></div></figure>
 
 
