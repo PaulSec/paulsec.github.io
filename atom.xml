@@ -4,7 +4,7 @@
   <title><![CDATA[My portfolio]]></title>
   <link href="http://paulsec.github.io/atom.xml" rel="self"/>
   <link href="http://paulsec.github.io/"/>
-  <updated>2014-04-16T22:28:35+02:00</updated>
+  <updated>2014-04-21T10:58:48+02:00</updated>
   <id>http://paulsec.github.io/</id>
   <author>
     <name><![CDATA[Paul A. (PaulSec)]]></name>
@@ -108,7 +108,7 @@ In few words, it allows you to dump passwords with are stored in the memory.</p>
 
 <p><em>Fig. Dumping passwords using Mimikatz</em></p>
 
-<p>First Windows VM I&rsquo;ve tried here and it was a great surprised. I learnt few tricks and that was nice.<br/>
+<p>First Windows VM I&rsquo;ve tried here and it was a great surprise. I learnt few tricks and that was nice.<br/>
 Hope you liked it and good evening !</p>
 ]]></content>
   </entry>
