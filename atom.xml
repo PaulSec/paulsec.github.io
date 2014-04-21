@@ -4,7 +4,7 @@
   <title><![CDATA[My portfolio]]></title>
   <link href="http://paulsec.github.io/atom.xml" rel="self"/>
   <link href="http://paulsec.github.io/"/>
-  <updated>2014-04-21T15:35:54+02:00</updated>
+  <updated>2014-04-21T15:39:20+02:00</updated>
   <id>http://paulsec.github.io/</id>
   <author>
     <name><![CDATA[Paul A. (PaulSec)]]></name>
@@ -34,7 +34,7 @@ To do so, let&rsquo;s use Nmap:</p>
 <p>After getting the IP address (<em>192.168.1.10</em>), we need to do some fingerprinting.</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>nmap -sV 192.168.1.2</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class=''><span class='line'>nmap -sV 192.168.1.10</span></code></pre></td></tr></table></div></figure>
 
 
 <p><img src="http://paulsec.github.io/images/bWAPP/nmap-result.png" width="75%" height="75%"/></p>
