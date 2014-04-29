@@ -4,7 +4,7 @@
   <title><![CDATA[My portfolio]]></title>
   <link href="http://paulsec.github.io/atom.xml" rel="self"/>
   <link href="http://paulsec.github.io/"/>
-  <updated>2014-04-29T07:21:10+02:00</updated>
+  <updated>2014-04-29T20:21:12+02:00</updated>
   <id>http://paulsec.github.io/</id>
   <author>
     <name><![CDATA[Paul A. (PaulSec)]]></name>
@@ -12,6 +12,27 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[BSides Slides - CSRFT]]></title>
+    <link href="http://paulsec.github.io/blog/2014/04/29/bsides-slides-csrft/"/>
+    <updated>2014-04-29T20:09:17+02:00</updated>
+    <id>http://paulsec.github.io/blog/2014/04/29/bsides-slides-csrft</id>
+    <content type="html"><![CDATA[<p>Hey,</p>
+
+<p>Just a quick post to give you the link to my slides for BSides London today: <a href="http://paulsec.github.io/bsides-london-2014/">Here</a>
+Don&rsquo;t hesitate if you have any feedback, or any good feature.</p>
+
+<p>You can reach me either on <a href="https://github.com/PaulSec">Github</a> and <a href="https://twitter.com/PaulWebSec">Twitter</a></p>
+
+<p>Just few words about the conference which was absolutely amazing.
+Some really great people were here, good atmosphere and people were really helpful.</p>
+
+<p>For sure, I&rsquo;ll attend it next year.</p>
+
+<p>Cheers,</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[bWAPP: Write-up]]></title>
