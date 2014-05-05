@@ -4,7 +4,7 @@
   <title><![CDATA[My portfolio]]></title>
   <link href="http://paulsec.github.io/atom.xml" rel="self"/>
   <link href="http://paulsec.github.io/"/>
-  <updated>2014-04-29T20:21:12+02:00</updated>
+  <updated>2014-05-05T22:53:06+02:00</updated>
   <id>http://paulsec.github.io/</id>
   <author>
     <name><![CDATA[Paul A. (PaulSec)]]></name>
@@ -12,6 +12,108 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Blind HQL Injection in REST API using H2 dbms]]></title>
+    <link href="http://paulsec.github.io/blog/2014/05/05/blind-hql-injection-in-rest-api-using-h2-dbms/"/>
+    <updated>2014-05-05T22:39:22+02:00</updated>
+    <id>http://paulsec.github.io/blog/2014/05/05/blind-hql-injection-in-rest-api-using-h2-dbms</id>
+    <content type="html"><![CDATA[<p>This post deals with some research I just did regarding (Blind) HQL injections with H2 as the DataBase Management System.</p>
+
+<p>First, you should read this post which gives some really useful information regarding HQL injections in general: <a href="http://blog.h3xstream.com/2014/02/hql-for-pentesters.html">HQL for pentesters</a>.</p>
+
+<p>During the assessment, I checked the API calls by using Burp as a proxy and one call was:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>http://application/API/Users/?req=id=1</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The output was a JSON response, such as:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>[{user: "admin", id: "1", firstName:"Admin"}]</span></code></pre></td></tr></table></div></figure>
+
+
+<p>If you changed the id with the numeric value <strong>2</strong>, and so on.. it was working.</p>
+
+<p>On the back-end system, the request should have been something like :</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>select * from users where id = '&lt;id&gt;'</span></code></pre></td></tr></table></div></figure>
+
+
+<p>By inserting a single-quote character, I raised an exception and I got the SQL statement.
+Nice, because it was the same one as below.</p>
+
+<p>Some special characters/words were banned such as &lsquo;=&rsquo;, etc. But there was still the operator &lsquo;LIKE&rsquo; remaining.
+Then, I started to insert conditions to see how the system was reacting such as:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>http://application/API/Users/?req=id=1' AND '1' LIKE '1</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The output was the same:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>[{user: "admin", id: "1", firstName:"Admin"}]</span></code></pre></td></tr></table></div></figure>
+
+
+<p>However, when the condition was false, such as:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>http://application/API/Users/?req=id=1' AND '1' LIKE '2</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The JSON response was empty.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>[]</span></code></pre></td></tr></table></div></figure>
+
+
+<p>So, if the condition is false the output is empty.</p>
+
+<p>(Blind) HQL injections are similar to (Blind) SQL injections but due to HQL syntax, this is really limited.
+Moreover, exploitation techniques depends on the dbms system behind.
+For this example, <a href="http://www.h2database.com/html/functions.html">H2 Database website</a> is the reference where you can find out what you&rsquo;re allowed to do.</p>
+
+<p>Basically, what you&rsquo;ll be able to do is:</p>
+
+<ul>
+<li>Enumerate tables, columns by bruteforcing it</li>
+<li>And use built-in functions</li>
+</ul>
+
+
+<p>I listed here some (useful) built-in functions that you can use:</p>
+
+<ul>
+<li><strong>user()</strong>: returns the user which is used</li>
+<li><strong>database_path()</strong>: returns the path of the database on the filesystem</li>
+<li><strong>FILE_READ(FILE, NULL)</strong>: read FILE on the filesystem. (hint: /etc/passwd)</li>
+</ul>
+
+
+<p>Quick example, I managed to retrieve the current <code>user()</code> this way:</p>
+
+<p><em>First</em>, let&rsquo;s get the length of the user:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>http://application/API/Users/?req=id=1' AND length(user()) LIKE '2</span></code></pre></td></tr></table></div></figure>
+
+
+<p><em>Then</em>, we can use <code>substring()</code> to iterate on each characters using <code>LIKE</code> operator.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>http://application/API/Users/?req=id=1' AND substring(user(), 1,1) LIKE 'S</span></code></pre></td></tr></table></div></figure>
+
+
+<p>As you know, process to extract those information is quite long. I will update my <a href="https://github.com/PaulSec/HQLmap">HQLmap Project</a> to automate the process in the next few days. (So far, it supports HQL Injections)</p>
+
+<p>I hope it might have helped you during your assessment and feel free to contact me if you have other techniques for h2 database, I&rsquo;ll update this blog post.</p>
+
+<p>Cheers,</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[BSides Slides - CSRFT]]></title>

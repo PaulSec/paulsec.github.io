@@ -1,0 +1,241 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Blind HQL Injection in REST API using H2 dbms - My portfolio</title>
+  <meta name="author" content="Paul A. (PaulSec)">
+
+  
+  <meta name="description" content="This post deals with some research I just did regarding (Blind) HQL injections with H2 as the DataBase Management System. First, you should read this &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://paulsec.github.io/blog/2014/05/05/blind-hql-injection-in-rest-api-using-h2-dbms">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="My portfolio" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href='http://fonts.googleapis.com/css?family=Quattrocento+Sans|Roboto:400,300' rel='stylesheet' type='text/css'>
+
+  
+
+</head>
+
+
+<body>
+	<div class="container">
+		<aside class="left">
+			<div class="inner-left">
+				<header>
+					
+  <img src="http://www.gravatar.com/avatar/0b0f4cb32c81edd3e8dca37bde08910c?s=200" alt="Gravatar of Paul A. (PaulSec) " title="Gravatar of Paul A. (PaulSec)" class="profilepic" />
+
+<hgroup>
+  <h1><a href="/">My portfolio</a></h1>
+  
+    <h2 class="subtitle">Blog of a (Web) Security enthusiast.</h2>
+   
+</hgroup>
+
+
+				</header>
+				<footer>
+					<p>
+	
+	
+</p>
+				</footer>
+			</div>
+		</aside>
+    	<section class="right">
+    		<div class="inner-right">
+    			<div id="posts">
+    			  	<article class="post">
+    
+  <header>
+    
+      <h1 class="entry-title">Blind HQL Injection in REST API Using H2 Dbms</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-05-05T22:39:22+02:00" pubdate data-updated="true">May 5<span>th</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>This post deals with some research I just did regarding (Blind) HQL injections with H2 as the DataBase Management System.</p>
+
+<p>First, you should read this post which gives some really useful information regarding HQL injections in general: <a href="http://blog.h3xstream.com/2014/02/hql-for-pentesters.html">HQL for pentesters</a>.</p>
+
+<p>During the assessment, I checked the API calls by using Burp as a proxy and one call was:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>http://application/API/Users/?req=id=1</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The output was a JSON response, such as:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>[{user: "admin", id: "1", firstName:"Admin"}]</span></code></pre></td></tr></table></div></figure>
+
+
+<p>If you changed the id with the numeric value <strong>2</strong>, and so on.. it was working.</p>
+
+<p>On the back-end system, the request should have been something like :</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>select * from users where id = '&lt;id&gt;'</span></code></pre></td></tr></table></div></figure>
+
+
+<p>By inserting a single-quote character, I raised an exception and I got the SQL statement.
+Nice, because it was the same one as below.</p>
+
+<p>Some special characters/words were banned such as &lsquo;=&rsquo;, etc. But there was still the operator &lsquo;LIKE&rsquo; remaining.
+Then, I started to insert conditions to see how the system was reacting such as:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>http://application/API/Users/?req=id=1' AND '1' LIKE '1</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The output was the same:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>[{user: "admin", id: "1", firstName:"Admin"}]</span></code></pre></td></tr></table></div></figure>
+
+
+<p>However, when the condition was false, such as:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>http://application/API/Users/?req=id=1' AND '1' LIKE '2</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The JSON response was empty.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>[]</span></code></pre></td></tr></table></div></figure>
+
+
+<p>So, if the condition is false the output is empty.</p>
+
+<p>(Blind) HQL injections are similar to (Blind) SQL injections but due to HQL syntax, this is really limited.
+Moreover, exploitation techniques depends on the dbms system behind.
+For this example, <a href="http://www.h2database.com/html/functions.html">H2 Database website</a> is the reference where you can find out what you&rsquo;re allowed to do.</p>
+
+<p>Basically, what you&rsquo;ll be able to do is:</p>
+
+<ul>
+<li>Enumerate tables, columns by bruteforcing it</li>
+<li>And use built-in functions</li>
+</ul>
+
+
+<p>I listed here some (useful) built-in functions that you can use:</p>
+
+<ul>
+<li><strong>user()</strong>: returns the user which is used</li>
+<li><strong>database_path()</strong>: returns the path of the database on the filesystem</li>
+<li><strong>FILE_READ(FILE, NULL)</strong>: read FILE on the filesystem. (hint: /etc/passwd)</li>
+</ul>
+
+
+<p>Quick example, I managed to retrieve the current <code>user()</code> this way:</p>
+
+<p><em>First</em>, let&rsquo;s get the length of the user:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>http://application/API/Users/?req=id=1' AND length(user()) LIKE '2</span></code></pre></td></tr></table></div></figure>
+
+
+<p><em>Then</em>, we can use <code>substring()</code> to iterate on each characters using <code>LIKE</code> operator.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>http://application/API/Users/?req=id=1' AND substring(user(), 1,1) LIKE 'S</span></code></pre></td></tr></table></div></figure>
+
+
+<p>As you know, process to extract those information is quite long. I will update my <a href="https://github.com/PaulSec/HQLmap">HQLmap Project</a> to automate the process in the next few days. (So far, it supports HQL Injections)</p>
+
+<p>I hope it might have helped you during your assessment and feel free to contact me if you have other techniques for h2 database, I&rsquo;ll update this blog post.</p>
+
+<p>Cheers,</p>
+</div>
+
+
+</article>
+
+
+        <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://paulsec.github.io/blog/2014/05/05/blind-hql-injection-in-rest-api-using-h2-dbms/" data-via="" data-counturl="http://paulsec.github.io/blog/2014/05/05/blind-hql-injection-in-rest-api-using-h2-dbms/" >Tweet</a>
+  
+  
+  
+</div>
+
+
+
+
+
+    			</div>
+    			<footer id="footer">
+    				<p class="credit">
+  Copyright &copy; 2014 - Paul A. (PaulSec). Powered by <a href="http://octopress.org">Octopress</a>
+</p>
+
+
+    			</footer>
+    			
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+<link href='http://fonts.googleapis.com/css?family=Quattrocento+Sans|Roboto:400,300' rel='stylesheet' type='text/css'>
+
+
+
+
+
+    		</div>
+    	</section>
+  	</div>
+</body>
+</html>
