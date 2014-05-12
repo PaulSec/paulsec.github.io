@@ -4,7 +4,7 @@
   <title><![CDATA[My portfolio]]></title>
   <link href="http://paulsec.github.io/atom.xml" rel="self"/>
   <link href="http://paulsec.github.io/"/>
-  <updated>2014-05-05T22:53:06+02:00</updated>
+  <updated>2014-05-12T21:33:51+02:00</updated>
   <id>http://paulsec.github.io/</id>
   <author>
     <name><![CDATA[Paul A. (PaulSec)]]></name>
@@ -12,6 +12,26 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[SecOS-1: First VM out]]></title>
+    <link href="http://paulsec.github.io/blog/2014/05/12/secos-1-first-vm-out/"/>
+    <updated>2014-05-12T17:54:04+02:00</updated>
+    <id>http://paulsec.github.io/blog/2014/05/12/secos-1-first-vm-out</id>
+    <content type="html"><![CDATA[<p>Hey there,</p>
+
+<p>Quick blog post for the first VM I created to experiment some of your pentesting skills.</p>
+
+<p>The idea grew when I developed some security tools (especially the one (<a href="https://github.com/PaulSec/CSRFT">CSRFT</a>) I presented at BSides London few weeks ago) to create a legal environment where you could try it out.</p>
+
+<p>I really liked creating this Boot2root VM.
+So, I&rsquo;ll create few more that will rely on each other so keep the flags because you&rsquo;ll need it for the next ones.</p>
+
+<p>You can find the VM on <a href="http://vulnhub.com/">VulnHub</a> and I hope you&rsquo;ll have some fun in solving it.</p>
+
+<p>To conclude, I&rsquo;d like to thank <a href="https://twitter.com/g0tmi1k">g0tmi1k</a> for his feedbacks, ideas, and also <a href="https://twitter.com/barrebas">Bas</a> to beta-test the VM. Thanks!</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Blind HQL Injection in REST API using H2 dbms]]></title>
