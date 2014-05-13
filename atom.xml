@@ -4,7 +4,7 @@
   <title><![CDATA[My portfolio]]></title>
   <link href="http://paulsec.github.io/atom.xml" rel="self"/>
   <link href="http://paulsec.github.io/"/>
-  <updated>2014-05-12T21:33:51+02:00</updated>
+  <updated>2014-05-13T20:38:49+02:00</updated>
   <id>http://paulsec.github.io/</id>
   <author>
     <name><![CDATA[Paul A. (PaulSec)]]></name>
@@ -12,6 +12,140 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[HTTP Security Headers on top 10k Alexa websites]]></title>
+    <link href="http://paulsec.github.io/blog/2014/05/13/http-security-headers-on-top-10k-alexa-websites/"/>
+    <updated>2014-05-13T18:32:58+02:00</updated>
+    <id>http://paulsec.github.io/blog/2014/05/13/http-security-headers-on-top-10k-alexa-websites</id>
+    <content type="html"><![CDATA[<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+
+
+<script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        // all headers
+        var data = google.visualization.arrayToDataTable([
+          ['Header', 'Value'],
+          ['X-Frame-Options', 799],
+          ['X-XSS-Protection', 374],
+          ['X-Content-Type-Options', 202],
+          ['Strict-Transport-Security', 97],
+          ['Content-Security-Policy', 16],
+          ['Content-Security-Policy-Report-Only', 2]
+        ]);
+
+        var options = {
+          title: 'Presence of Security Headers'
+        };
+
+        var chart = new google.visualization.ColumnChart(document.getElementById('hosts-up'));
+        chart.draw(data, options);
+
+        // X-Frame-Options
+        var data = google.visualization.arrayToDataTable([
+          ['Value', 'Occurence'],  
+          ['SAMEORIGIN', 665],
+          ['DENY', 127],
+          ['ALLOW-FROM', 5],
+          ['ALLOWALL', 1],
+          ['GOFORIT', 1]
+        ]);
+
+        var options = {
+          title: 'X-Frame-Options Statistics'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('x-frame-options-stats'));
+        chart.draw(data, options);
+
+        // X-XSS-Protection
+        var data = google.visualization.arrayToDataTable([
+          ['Value', 'Occurence'],  
+          ['1; mode=block', 340],
+          ['0', 24],
+          ['1', 10]
+        ]);
+
+        var options = {
+          title: 'X-XSS-Protection Statistics'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('x-xss-protection-stats'));
+        chart.draw(data, options);
+
+        // Strict-Transport-Security
+        var data = google.visualization.arrayToDataTable([
+          ['Value', 'Occurence'],  
+          ['Only max-age', 68],
+          ['max-age and includeSubDomains', 29]
+        ]);
+
+        var options = {
+          title: 'Strict-Transport-Security Statistics'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('strict-transport-security-stats'));
+        chart.draw(data, options);
+      }
+</script>
+
+
+<p>Hi there,</p>
+
+<p>This blog post deals with HTTP Security Headers on top 10k Alexa websites.
+Based on <a href="https://www.reddit.com/r/netsec/comments/254om6/how_common_are_http_security_headers_really_lzone/">this</a>  discussion on <a href="https://www.reddit.com/r/netsec/">netsec</a>, I decided to do some statistics on Alexa ranking.</p>
+
+<p>To do this study, I did a GET HTTP Request and saved the headers in the HTTP response. This has been done using Python.</p>
+
+<p>First of all, I scanned 10000 hosts. 555 hosts didn&rsquo;t respond so those statistics are based on <strong>9445</strong> hosts.</p>
+
+<p>Then, I checked the presence of HTTP security Headers.
+OWASP provides a good resource <a href="https://www.owasp.org/index.php/List_of_useful_HTTP_headers">here</a> where they define HTTP Security Headers.</p>
+
+<p>Basically, I checked the presence of those ones:</p>
+
+<ul>
+<li>X-Frame-Options</li>
+<li>X-XSS-Protection</li>
+<li>X-Content-Type-Options</li>
+<li>Strict-Transport-Security</li>
+<li>Content-Security-Policy</li>
+<li>Content-Security-Policy-Report-Only</li>
+</ul>
+
+
+<p>Here are the results:</p>
+
+<div id="hosts-up" style="width: 900px; height: 500px;"></div>
+
+
+<p>Then, I decided to realize statistics on the different values for some of the most used HTTP header.</p>
+
+<h3>X-Frame-Options</h3>
+
+<div id="x-frame-options-stats" style="width: 900px; height: 500px;"></div>
+
+
+<h3>X-XSS-Protection</h3>
+
+<div id="x-xss-protection-stats" style="width: 900px; height: 500px;"></div>
+
+
+<h3>Strict-Transport-Security</h3>
+
+<div id="strict-transport-security-stats" style="width: 900px; height: 500px;"></div>
+
+
+<h3>X-Content-Type-Options</h3>
+
+<p>This header doesn&rsquo;t allow options so the only value is <code>NOSNIFF</code>.
+All <strong>202</strong> hosts had this value.</p>
+
+<p>Hope you liked it and that it gave you updated information about the (bad, unfortunately) usage of Security headers.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[SecOS-1: First VM out]]></title>
@@ -22,7 +156,7 @@
 
 <p>Quick blog post for the first VM I created to experiment some of your pentesting skills.</p>
 
-<p>The idea grew when I developed some security tools (especially the one (<a href="https://github.com/PaulSec/CSRFT">CSRFT</a>) I presented at BSides London few weeks ago) to create a legal environment where you could try it out.</p>
+<p>The idea grew up when I developed some security tools (especially the one (<a href="https://github.com/PaulSec/CSRFT">CSRFT</a>) I presented at BSides London few weeks ago) to create a legal environment where you could try it out.</p>
 
 <p>I really liked creating this Boot2root VM.
 So, I&rsquo;ll create few more that will rely on each other so keep the flags because you&rsquo;ll need it for the next ones.</p>
