@@ -4,7 +4,7 @@
   <title><![CDATA[My portfolio]]></title>
   <link href="http://paulsec.github.io/atom.xml" rel="self"/>
   <link href="http://paulsec.github.io/"/>
-  <updated>2014-05-13T20:39:37+02:00</updated>
+  <updated>2014-05-14T19:34:00+02:00</updated>
   <id>http://paulsec.github.io/</id>
   <author>
     <name><![CDATA[Paul A. (PaulSec)]]></name>
@@ -88,9 +88,58 @@
 
         var chart = new google.visualization.PieChart(document.getElementById('strict-transport-security-stats'));
         chart.draw(data, options);
+
+        // max-age statistics
+        var data = google.visualization.arrayToDataTable([
+          ['Value', 'Occurence'],  
+          ['1', 1],
+          ['600', 1],
+          ['3600', 1],
+          ['14400', 1],
+          ['86400', 1],
+          ['86400', 1],
+          ['864000', 1],
+          ['1728000', 1],
+          ['2592000', 1],
+          ['2592000', 1],
+          ['3000000', 1],
+          ['5184000', 1],
+          ['7776000', 1],
+          ['8640000', 1],
+          ['10886400', 1],
+          ['15552000', 1],
+          ['15768000', 1],
+          ['15768000', 1],
+          ['16070400', 1],
+          ['31556926', 1],
+          ['31557600', 1],
+          ['47336400', 1],
+          ['63072000', 1],
+          ['86400000', 1],
+          ['631152000', 1],
+          ['31556926', 2],
+          ['63072000', 2],
+          ['631138519', 2],
+          ['15768000', 4],
+          ['604800', 5],
+          ['10893354', 7],
+          ['0', 8],
+          ['31536000', 8],
+          ['31536000', 32]
+        ]);
+
+        var options = {
+          title: 'Max-age Statistics'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('max-age-stats'));
+        chart.draw(data, options);
+
       }
 </script>
 
+
+<p><strong>EDIT</strong>: Added statistics of <em>max-age</em> option.</p>
 
 <p>Hi there,</p>
 
@@ -136,6 +185,11 @@ OWASP provides a good resource <a href="https://www.owasp.org/index.php/List_of_
 <h3>Strict-Transport-Security</h3>
 
 <div id="strict-transport-security-stats" style="width: 900px; height: 500px;"></div>
+
+
+<h4>Max-age statistics</h4>
+
+<div id="max-age-stats" style="width: 900px; height: 500px;"></div>
 
 
 <h3>X-Content-Type-Options</h3>
