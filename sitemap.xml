@@ -66,15 +66,19 @@
         <loc>
             http://paulsec.github.io/blog/2014/05/13/http-security-headers-on-top-10k-alexa-websites/
         </loc>
-        <lastmod>2014-05-14T19:34:43+02:00</lastmod>
+        <lastmod>2014-05-14T20:25:43+02:00</lastmod>
+    </url>
+    <url>
+        <loc>http://paulsec.github.io/blog/2014/05/15/bobby-write-up/</loc>
+        <lastmod>2014-05-15T22:18:35+02:00</lastmod>
     </url>
     <url>
         <loc>http://paulsec.github.io/blog/archives/</loc>
-        <lastmod>2014-05-14T19:34:43+02:00</lastmod>
+        <lastmod>2014-05-15T22:18:35+02:00</lastmod>
     </url>
     <url>
         <loc>http://paulsec.github.io/</loc>
-        <lastmod>2014-05-14T19:34:43+02:00</lastmod>
+        <lastmod>2014-05-15T22:18:35+02:00</lastmod>
     </url>
     <url>
         <loc>http://paulsec.github.io/robots.txt</loc>

