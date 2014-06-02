@@ -4,7 +4,7 @@
   <title><![CDATA[My portfolio]]></title>
   <link href="http://paulsec.github.io/atom.xml" rel="self"/>
   <link href="http://paulsec.github.io/"/>
-  <updated>2014-06-02T21:04:45+02:00</updated>
+  <updated>2014-06-02T21:05:22+02:00</updated>
   <id>http://paulsec.github.io/</id>
   <author>
     <name><![CDATA[Paul A. (PaulSec)]]></name>
@@ -18,7 +18,7 @@
     <link href="http://paulsec.github.io/blog/2014/06/02/diving-into-xss-googles-game/"/>
     <updated>2014-06-02T19:34:12+02:00</updated>
     <id>http://paulsec.github.io/blog/2014/06/02/diving-into-xss-googles-game</id>
-    <content type="html"><![CDATA[<p>Hi there, this post deals with the game released by Google few days ago about XSS vulnerabilities that you can find <a href="http://xss-game.appspot.com/">here</a>.</p>
+    <content type="html"><![CDATA[<p>Hi there, this post deals with the game released by Google few days ago about XSS vulnerabilities that you can find <a href="https://xss-game.appspot.com/">here</a>.</p>
 
 <p>I&rsquo;ll enumerate some of the solution I found on the Internet which were (in my opnion) interesting/fun.
 This post contains the solutions for all levels. <strong>Big spoil.</strong></p>
