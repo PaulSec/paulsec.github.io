@@ -4,7 +4,7 @@
   <title><![CDATA[PaulSec's blog]]></title>
   <link href="http://paulsec.github.io/atom.xml" rel="self"/>
   <link href="http://paulsec.github.io/"/>
-  <updated>2014-07-31T23:19:57+02:00</updated>
+  <updated>2015-06-07T20:07:06+01:00</updated>
   <id>http://paulsec.github.io/</id>
   <author>
     <name><![CDATA[Paul A. (PaulSec)]]></name>
@@ -14,9 +14,426 @@
 
   
   <entry>
+    <title type="html"><![CDATA[Running sslscan on 5k servers taken from Alexa's top 10k]]></title>
+    <link href="http://paulsec.github.io/blog/2015/06/07/running-sslscan-on-5k-servers-taken-from-alexas-top-10k/"/>
+    <updated>2015-06-07T19:01:31+01:00</updated>
+    <id>http://paulsec.github.io/blog/2015/06/07/running-sslscan-on-5k-servers-taken-from-alexas-top-10k</id>
+    <content type="html"><![CDATA[<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+
+
+<script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        // Protocol Versions
+        var data = google.visualization.arrayToDataTable([
+            ['Value', 'Occurence'],
+            ['SSLv3', 16986],
+            ['TLSv1.1', 29325],
+            ['TLSv1.0', 40259],
+            ['TLSv1.2', 53933],
+        ]);
+
+        var options = {
+          title: 'Protocol Versions'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('protocol-versions'));
+        chart.draw(data, options);
+
+        // SSLv3 statistics
+        var data = google.visualization.arrayToDataTable([
+            ['Value', 'Occurence'],  
+            ['SSLv3 128 bits ADH-CAMELLIA128-SHA-29', 3],
+            ['SSLv3 128 bits ADH-SEED-SHA-29', 3],
+            ['SSLv3 256 bits ADH-CAMELLIA256-SHA-29', 3],
+            ['SSLv3 40 bits EXP-ADH-DES-CBC-SHA-29', 4],
+            ['SSLv3 40 bits EXP-ADH-RC4-MD5-29', 4],
+            ['SSLv3 56 bits ADH-DES-CBC-SHA-29', 4],
+            ['SSLv3 0 bits NULL-MD5', 4],
+            ['SSLv3 0 bits NULL-SHA', 4],
+            ['SSLv3 256 bits ADH-AES256-SHA-29', 6],
+            ['SSLv3 128 bits ADH-AES128-SHA-29', 7],
+            ['SSLv3 168 bits ADH-DES-CBC3-SHA-29', 7],
+            ['SSLv3 128 bits ADH-RC4-MD5-29', 8],
+            ['SSLv3 128 bits AECDH-RC4-SHA-29', 62],
+            ['SSLv3 128 bits AECDH-AES128-SHA-29', 64],
+            ['SSLv3 256 bits AECDH-AES256-SHA-29', 69],
+            ['SSLv3 168 bits AECDH-DES-CBC3-SHA-29', 70],
+            ['SSLv3 40 bits EXP-EDH-RSA-DES-CBC-SHA', 137],
+            ['SSLv3 40 bits EXP-DES-CBC-SHA', 197],
+            ['SSLv3 40 bits EXP-RC2-CBC-MD5', 199],
+            ['SSLv3 40 bits EXP-RC4-MD5', 219],
+            ['SSLv3 56 bits EDH-RSA-DES-CBC-SHA', 303],
+            ['SSLv3 128 bits DHE-RSA-SEED-SHA', 366],
+            ['SSLv3 128 bits ECDHE-RSA-RC4-SHA', 377],
+            ['SSLv3 56 bits DES-CBC-SHA', 381],
+            ['SSLv3 128 bits SEED-SHA', 391],
+            ['SSLv3 168 bits ECDHE-RSA-DES-CBC3-SHA', 520],
+            ['SSLv3 128 bits ECDHE-RSA-AES128-SHA', 545],
+            ['SSLv3 256 bits ECDHE-RSA-AES256-SHA', 550],
+            ['SSLv3 128 bits DHE-RSA-CAMELLIA128-SHA', 610],
+            ['SSLv3 256 bits DHE-RSA-CAMELLIA256-SHA', 610],
+            ['SSLv3 128 bits CAMELLIA128-SHA', 709],
+            ['SSLv3 256 bits CAMELLIA256-SHA', 714],
+            ['SSLv3 168 bits EDH-RSA-DES-CBC3-SHA', 974],
+            ['SSLv3 128 bits RC4-MD5', 978],
+            ['SSLv3 256 bits DHE-RSA-AES256-SHA', 987],
+            ['SSLv3 128 bits DHE-RSA-AES128-SHA', 1001],
+            ['SSLv3 128 bits RC4-SHA', 1336],
+            ['SSLv3 128 bits AES128-SHA', 1478],
+            ['SSLv3 256 bits AES256-SHA', 1483],
+            ['SSLv3 168 bits DES-CBC3-SHA', 1599]        
+        ]);
+
+        var options = {
+          title: 'SSLv3 statistics'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('sslv3-statistics'));
+        chart.draw(data, options);
+
+        // TLSv1.0 statistics
+        var data = google.visualization.arrayToDataTable([
+            ['Value', 'Occurence'],
+            ['TLSv1.0 128 bits ECDHE-ECDSA-RC4-SHA', 3],
+            ['TLSv1.0 0 bits NULL-MD5', 4],
+            ['TLSv1.0 0 bits NULL-SHA', 4],
+            ['TLSv1.0 40 bits EXP-ADH-DES-CBC-SHA-29', 5],
+            ['TLSv1.0 40 bits EXP-ADH-RC4-MD5-29', 5],
+            ['TLSv1.0 56 bits ADH-DES-CBC-SHA-29', 5],
+            ['TLSv1.0 128 bits ADH-CAMELLIA128-SHA-29', 7],
+            ['TLSv1.0 128 bits ADH-SEED-SHA-29', 7],
+            ['TLSv1.0 256 bits ADH-CAMELLIA256-SHA-29', 7],
+            ['TLSv1.0 256 bits ADH-AES256-SHA-29', 14],
+            ['TLSv1.0 128 bits ADH-AES128-SHA-29', 15],
+            ['TLSv1.0 128 bits ADH-RC4-MD5-29', 15],
+            ['TLSv1.0 168 bits ADH-DES-CBC3-SHA-29', 16],
+            ['TLSv1.0 128 bits AECDH-RC4-SHA-29', 124],
+            ['TLSv1.0 168 bits AECDH-DES-CBC3-SHA-29', 132],
+            ['TLSv1.0 128 bits AECDH-AES128-SHA-29', 133],
+            ['TLSv1.0 256 bits AECDH-AES256-SHA-29', 133],
+            ['TLSv1.0 168 bits ECDHE-ECDSA-DES-CBC3-SHA', 163],
+            ['TLSv1.0 40 bits EXP-EDH-RSA-DES-CBC-SHA', 166],
+            ['TLSv1.0 128 bits ECDHE-ECDSA-AES128-SHA', 166],
+            ['TLSv1.0 256 bits ECDHE-ECDSA-AES256-SHA', 166],
+            ['TLSv1.0 40 bits EXP-RC2-CBC-MD5', 246],
+            ['TLSv1.0 40 bits EXP-DES-CBC-SHA', 248],
+            ['TLSv1.0 40 bits EXP-RC4-MD5', 274],
+            ['TLSv1.0 56 bits EDH-RSA-DES-CBC-SHA', 379],
+            ['TLSv1.0 56 bits DES-CBC-SHA', 512],
+            ['TLSv1.0 128 bits SEED-SHA', 637],
+            ['TLSv1.0 128 bits DHE-RSA-SEED-SHA', 639],
+            ['TLSv1.0 128 bits ECDHE-RSA-RC4-SHA', 815],
+            ['TLSv1.0 128 bits DHE-RSA-CAMELLIA128-SHA', 1269],
+            ['TLSv1.0 256 bits DHE-RSA-CAMELLIA256-SHA', 1273],
+            ['TLSv1.0 128 bits CAMELLIA128-SHA', 1486],
+            ['TLSv1.0 256 bits CAMELLIA256-SHA', 1493],
+            ['TLSv1.0 128 bits RC4-MD5', 1661],
+            ['TLSv1.0 168 bits ECDHE-RSA-DES-CBC3-SHA', 1759],
+            ['TLSv1.0 168 bits EDH-RSA-DES-CBC3-SHA', 1817],
+            ['TLSv1.0 256 bits DHE-RSA-AES256-SHA', 2223],
+            ['TLSv1.0 128 bits DHE-RSA-AES128-SHA', 2283],
+            ['TLSv1.0 128 bits ECDHE-RSA-AES128-SHA', 2502],
+            ['TLSv1.0 256 bits ECDHE-RSA-AES256-SHA', 2515],
+            ['TLSv1.0 128 bits RC4-SHA', 2566],
+            ['TLSv1.0 168 bits DES-CBC3-SHA', 4020],
+            ['TLSv1.0 256 bits AES256-SHA', 4148],
+            ['TLSv1.0 128 bits AES128-SHA', 4204],
+        ]);
+
+        var options = {
+          title: 'TLSv1.0 Statistics'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('tlsv1.0-statistics'));
+        chart.draw(data, options);
+
+
+        // TLSv1.1 Statistics
+        var data = google.visualization.arrayToDataTable([
+            ['Value', 'Occurence'],
+            ['TLSv1.1 40 bits EXP-ADH-DES-CBC-SHA-29', 1],
+            ['TLSv1.1 40 bits EXP-ADH-RC4-MD5-29', 1],
+            ['TLSv1.1 56 bits ADH-DES-CBC-SHA-29', 1],
+            ['TLSv1.1 0 bits NULL-MD5', 1],
+            ['TLSv1.1 0 bits NULL-SHA', 1],
+            ['TLSv1.1 128 bits ECDHE-ECDSA-RC4-SHA', 3],
+            ['TLSv1.1 128 bits ADH-CAMELLIA128-SHA-29', 3],
+            ['TLSv1.1 128 bits ADH-SEED-SHA-29', 3],
+            ['TLSv1.1 256 bits ADH-CAMELLIA256-SHA-29', 3],
+            ['TLSv1.1 128 bits ADH-AES128-SHA-29', 4],
+            ['TLSv1.1 256 bits ADH-AES256-SHA-29', 4],
+            ['TLSv1.1 128 bits ADH-RC4-MD5-29', 5],
+            ['TLSv1.1 168 bits ADH-DES-CBC3-SHA-29', 5],
+            ['TLSv1.1 40 bits EXP-EDH-RSA-DES-CBC-SHA', 37],
+            ['TLSv1.1 40 bits EXP-RC2-CBC-MD5', 53],
+            ['TLSv1.1 40 bits EXP-DES-CBC-SHA', 58],
+            ['TLSv1.1 40 bits EXP-RC4-MD5', 59],
+            ['TLSv1.1 128 bits AECDH-RC4-SHA-29', 104],
+            ['TLSv1.1 256 bits AECDH-AES256-SHA-29', 105],
+            ['TLSv1.1 128 bits AECDH-AES128-SHA-29', 106],
+            ['TLSv1.1 168 bits AECDH-DES-CBC3-SHA-29', 106],
+            ['TLSv1.1 56 bits EDH-RSA-DES-CBC-SHA', 133],
+            ['TLSv1.1 168 bits ECDHE-ECDSA-DES-CBC3-SHA', 163],
+            ['TLSv1.1 128 bits ECDHE-ECDSA-AES128-SHA', 166],
+            ['TLSv1.1 256 bits ECDHE-ECDSA-AES256-SHA', 166],
+            ['TLSv1.1 56 bits DES-CBC-SHA', 168],
+            ['TLSv1.1 128 bits SEED-SHA', 566],
+            ['TLSv1.1 128 bits DHE-RSA-SEED-SHA', 568],
+            ['TLSv1.1 128 bits ECDHE-RSA-RC4-SHA', 719],
+            ['TLSv1.1 128 bits RC4-MD5', 826],
+            ['TLSv1.1 128 bits DHE-RSA-CAMELLIA128-SHA', 1093],
+            ['TLSv1.1 256 bits DHE-RSA-CAMELLIA256-SHA', 1096],
+            ['TLSv1.1 168 bits EDH-RSA-DES-CBC3-SHA', 1123],
+            ['TLSv1.1 128 bits CAMELLIA128-SHA', 1300],
+            ['TLSv1.1 256 bits CAMELLIA256-SHA', 1300],
+            ['TLSv1.1 128 bits RC4-SHA', 1471],
+            ['TLSv1.1 256 bits DHE-RSA-AES256-SHA', 1489],
+            ['TLSv1.1 128 bits DHE-RSA-AES128-SHA', 1548],
+            ['TLSv1.1 168 bits ECDHE-RSA-DES-CBC3-SHA', 1682],
+            ['TLSv1.1 128 bits ECDHE-RSA-AES128-SHA', 2333],
+            ['TLSv1.1 256 bits ECDHE-RSA-AES256-SHA', 2352],
+            ['TLSv1.1 168 bits DES-CBC3-SHA', 2687],
+            ['TLSv1.1 256 bits AES256-SHA', 2826],
+            ['TLSv1.1 128 bits AES128-SHA', 2887]
+        ]);
+
+        var options = {
+          title: 'TLSv1.1 Statistics'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('tlsv1.1-statistics'));
+        chart.draw(data, options);        
+
+        // TLSv1.2 Statistics
+        var data = google.visualization.arrayToDataTable([
+            ['Value', 'Occurence'],
+            ['TLSv1.2 128 bits ECDHE-ECDSA-RC4-SHA', 3],
+            ['TLSv1.2 128 bits ADH-AES128-SHA256-29', 3],
+            ['TLSv1.2 128 bits ADH-AES128-SHA-29', 3],
+            ['TLSv1.2 128 bits ADH-CAMELLIA128-SHA-29', 3],
+            ['TLSv1.2 128 bits ADH-SEED-SHA-29', 3],
+            ['TLSv1.2 256 bits ADH-AES256-SHA256-29', 3],
+            ['TLSv1.2 256 bits ADH-AES256-SHA-29', 3],
+            ['TLSv1.2 256 bits ADH-CAMELLIA256-SHA-29', 3],
+            ['TLSv1.2 128 bits ADH-RC4-MD5-29', 4],
+            ['TLSv1.2 168 bits ADH-DES-CBC3-SHA-29', 4],
+            ['TLSv1.2 128 bits ADH-AES128-GCM-SHA256-29', 6],
+            ['TLSv1.2 256 bits ADH-AES256-GCM-SHA384-29', 6],
+            ['TLSv1.2 40 bits EXP-EDH-RSA-DES-CBC-SHA', 36],
+            ['TLSv1.2 40 bits EXP-DES-CBC-SHA', 54],
+            ['TLSv1.2 40 bits EXP-RC2-CBC-MD5', 54],
+            ['TLSv1.2 40 bits EXP-RC4-MD5', 55],
+            ['TLSv1.2 128 bits AECDH-RC4-SHA-29', 101],
+            ['TLSv1.2 128 bits AECDH-AES128-SHA-29', 105],
+            ['TLSv1.2 168 bits AECDH-DES-CBC3-SHA-29', 106],
+            ['TLSv1.2 256 bits AECDH-AES256-SHA-29', 106],
+            ['TLSv1.2 56 bits EDH-RSA-DES-CBC-SHA', 135],
+            ['TLSv1.2 56 bits DES-CBC-SHA', 161],
+            ['TLSv1.2 128 bits ECDHE-ECDSA-AES128-SHA256', 163],
+            ['TLSv1.2 168 bits ECDHE-ECDSA-DES-CBC3-SHA', 163],
+            ['TLSv1.2 256 bits ECDHE-ECDSA-AES256-SHA384', 163],
+            ['TLSv1.2 128 bits ECDHE-ECDSA-AES128-GCM-SHA256', 166],
+            ['TLSv1.2 128 bits ECDHE-ECDSA-AES128-SHA', 166],
+            ['TLSv1.2 256 bits ECDHE-ECDSA-AES256-GCM-SHA384', 166],
+            ['TLSv1.2 256 bits ECDHE-ECDSA-AES256-SHA', 166],
+            ['TLSv1.2 128 bits SEED-SHA', 562],
+            ['TLSv1.2 128 bits DHE-RSA-SEED-SHA', 568],
+            ['TLSv1.2 128 bits ECDHE-RSA-RC4-SHA', 716],
+            ['TLSv1.2 128 bits RC4-MD5', 840],
+            ['TLSv1.2 256 bits DHE-RSA-CAMELLIA256-SHA', 1090],
+            ['TLSv1.2 168 bits EDH-RSA-DES-CBC3-SHA', 1091],
+            ['TLSv1.2 128 bits DHE-RSA-CAMELLIA128-SHA', 1093],
+            ['TLSv1.2 128 bits DHE-RSA-AES128-SHA256', 1259],
+            ['TLSv1.2 256 bits DHE-RSA-AES256-SHA256', 1261],
+            ['TLSv1.2 128 bits CAMELLIA128-SHA', 1296],
+            ['TLSv1.2 256 bits CAMELLIA256-SHA', 1301],
+            ['TLSv1.2 128 bits DHE-RSA-AES128-GCM-SHA256', 1369],
+            ['TLSv1.2 256 bits DHE-RSA-AES256-GCM-SHA384', 1376],
+            ['TLSv1.2 256 bits DHE-RSA-AES256-SHA', 1452],
+            ['TLSv1.2 128 bits DHE-RSA-AES128-SHA', 1509],
+            ['TLSv1.2 128 bits RC4-SHA', 1601],
+            ['TLSv1.2 168 bits ECDHE-RSA-DES-CBC3-SHA', 1690],
+            ['TLSv1.2 256 bits ECDHE-RSA-AES256-GCM-SHA384', 1997],
+            ['TLSv1.2 128 bits ECDHE-RSA-AES128-GCM-SHA256', 2019],
+            ['TLSv1.2 256 bits AES256-GCM-SHA384', 2086],
+            ['TLSv1.2 128 bits AES128-GCM-SHA256', 2140],
+            ['TLSv1.2 256 bits ECDHE-RSA-AES256-SHA384', 2170],
+            ['TLSv1.2 128 bits ECDHE-RSA-AES128-SHA256', 2225],
+            ['TLSv1.2 128 bits ECDHE-RSA-AES128-SHA', 2334],
+            ['TLSv1.2 256 bits ECDHE-RSA-AES256-SHA', 2351],
+            ['TLSv1.2 256 bits AES256-SHA256', 2737],
+            ['TLSv1.2 128 bits AES128-SHA256', 2739],
+            ['TLSv1.2 168 bits DES-CBC3-SHA', 2863],
+            ['TLSv1.2 256 bits AES256-SHA', 3018],
+            ['TLSv1.2 128 bits AES128-SHA', 3070]
+        ]);
+
+        var options = {
+          title: 'TLSv1.2 Statistics'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('tlsv1.2-statistics'));
+        chart.draw(data, options);
+
+
+        // Ciphers top 50
+        var data = google.visualization.arrayToDataTable([
+            ['Value', 'Occurence'],
+            ['TLSv1.0 256 bits DHE-RSA-CAMELLIA256-SHA', 1273],
+            ['TLSv1.2 128 bits CAMELLIA128-SHA', 1296],
+            ['TLSv1.1 128 bits CAMELLIA128-SHA', 1300],
+            ['TLSv1.1 256 bits CAMELLIA256-SHA', 1300],
+            ['TLSv1.2 256 bits CAMELLIA256-SHA', 1301],
+            ['SSLv3 128 bits RC4-SHA', 1336],
+            ['TLSv1.2 128 bits DHE-RSA-AES128-GCM-SHA256', 1369],
+            ['TLSv1.2 256 bits DHE-RSA-AES256-GCM-SHA384', 1376],
+            ['TLSv1.2 256 bits DHE-RSA-AES256-SHA', 1452],
+            ['TLSv1.1 128 bits RC4-SHA', 1471],
+            ['SSLv3 128 bits AES128-SHA', 1478],
+            ['SSLv3 256 bits AES256-SHA', 1483],
+            ['TLSv1.0 128 bits CAMELLIA128-SHA', 1486],
+            ['TLSv1.1 256 bits DHE-RSA-AES256-SHA', 1489],
+            ['TLSv1.0 256 bits CAMELLIA256-SHA', 1493],
+            ['TLSv1.2 128 bits DHE-RSA-AES128-SHA', 1509],
+            ['TLSv1.1 128 bits DHE-RSA-AES128-SHA', 1548],
+            ['SSLv3 168 bits DES-CBC3-SHA', 1599],
+            ['TLSv1.2 128 bits RC4-SHA', 1601],
+            ['TLSv1.0 128 bits RC4-MD5', 1661],
+            ['TLSv1.1 168 bits ECDHE-RSA-DES-CBC3-SHA', 1682],
+            ['TLSv1.2 168 bits ECDHE-RSA-DES-CBC3-SHA', 1690],
+            ['TLSv1.0 168 bits ECDHE-RSA-DES-CBC3-SHA', 1759],
+            ['TLSv1.0 168 bits EDH-RSA-DES-CBC3-SHA', 1817],
+            ['TLSv1.2 256 bits ECDHE-RSA-AES256-GCM-SHA384', 1997],
+            ['TLSv1.2 128 bits ECDHE-RSA-AES128-GCM-SHA256', 2019],
+            ['TLSv1.2 256 bits AES256-GCM-SHA384', 2086],
+            ['TLSv1.2 128 bits AES128-GCM-SHA256', 2140],
+            ['TLSv1.2 256 bits ECDHE-RSA-AES256-SHA384', 2170],
+            ['TLSv1.0 256 bits DHE-RSA-AES256-SHA', 2223],
+            ['TLSv1.2 128 bits ECDHE-RSA-AES128-SHA256', 2225],
+            ['TLSv1.0 128 bits DHE-RSA-AES128-SHA', 2283],
+            ['TLSv1.1 128 bits ECDHE-RSA-AES128-SHA', 2333],
+            ['TLSv1.2 128 bits ECDHE-RSA-AES128-SHA', 2334],
+            ['TLSv1.2 256 bits ECDHE-RSA-AES256-SHA', 2351],
+            ['TLSv1.1 256 bits ECDHE-RSA-AES256-SHA', 2352],
+            ['TLSv1.0 128 bits ECDHE-RSA-AES128-SHA', 2502],
+            ['TLSv1.0 256 bits ECDHE-RSA-AES256-SHA', 2515],
+            ['TLSv1.0 128 bits RC4-SHA', 2566],
+            ['TLSv1.1 168 bits DES-CBC3-SHA', 2687],
+            ['TLSv1.2 256 bits AES256-SHA256', 2737],
+            ['TLSv1.2 128 bits AES128-SHA256', 2739],
+            ['TLSv1.1 256 bits AES256-SHA', 2826],
+            ['TLSv1.2 168 bits DES-CBC3-SHA', 2863],
+            ['TLSv1.1 128 bits AES128-SHA', 2887],
+            ['TLSv1.2 256 bits AES256-SHA', 3018],
+            ['TLSv1.2 128 bits AES128-SHA', 3070],
+            ['TLSv1.0 168 bits DES-CBC3-SHA', 4020],
+            ['TLSv1.0 256 bits AES256-SHA', 4148],
+            ['TLSv1.0 128 bits AES128-SHA', 4204]
+        ]);
+
+        var options = {
+          title: 'Ciphers top 50'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('ciphers'));
+        chart.draw(data, options);
+
+        // Signature Algorithms
+        var data = google.visualization.arrayToDataTable([
+            ['Value', 'Occurence'],
+            ['sha1WithRSA', 1],
+            ['sha512WithRSAEncryption', 18],
+            ['md5WithRSAEncryption', 22],
+            ['sha384WithRSAEncryption', 28],
+            ['ecdsa-with-SHA256', 163],
+            ['sha256WithRSAEncryption', 2164],
+            ['sha1WithRSAEncryption', 2221],
+        ]);
+
+        var options = {
+          title: 'Signature Algorithms'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('signature-algorithms'));
+        chart.draw(data, options);
+
+        // Key strength
+        var data = google.visualization.arrayToDataTable([
+            ['Value', 'Occurence'],
+            ['RSA Key Strength:    512', 1],
+            ['RSA Key Strength:    3072', 3],
+            ['RSA Key Strength:    4096', 118],
+            ['RSA Key Strength:    1024', 208],
+            ['RSA Key Strength:    2048', 4121]
+        ]);
+
+        var options = {
+          title: 'Key Strength'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('key-strength'));
+        chart.draw(data, options);
+
+
+      }
+</script>
+
+
+<p>After analyzing the <a href="https://paulsec.github.io/blog/2014/05/13/http-security-headers-on-top-10k-alexa-websites/">HTTP Security Headers from the top 10k Alexa websites</a>, I decided looking at the SSL Ciphers used on those websites.</p>
+
+<p>These results are coming from a scan on port 443 for all those domains.
+Only <strong>4715</strong> servers replied.</p>
+
+<p>The OpenSSL version installed on my server did not support SSLv2 so SSLv2 ciphers have not been detected.</p>
+
+<p>Here are the results:</p>
+
+<div id="ciphers" style="width: 900px; height: 500px;"></div>
+
+
+
+
+<div id="protocol-versions" style="width: 900px; height: 500px;"></div>
+
+
+
+
+<div id="sslv3-statistics" style="width: 900px; height: 500px;"></div>
+
+
+
+
+<div id="tlsv1.0-statistics" style="width: 900px; height: 500px;"></div>
+
+
+
+
+<div id="tlsv1.1-statistics" style="width: 900px; height: 500px;"></div>
+
+
+
+
+<div id="tlsv1.2-statistics" style="width: 900px; height: 500px;"></div>
+
+
+
+
+<div id="signature-algorithms" style="width: 900px; height: 500px;"></div>
+
+
+
+
+<div id="key-strength" style="width: 900px; height: 500px;"></div>
+
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[Experiments with UPnP]]></title>
     <link href="http://paulsec.github.io/blog/2014/07/03/experiments-with-upnp/"/>
-    <updated>2014-07-03T22:06:06+02:00</updated>
+    <updated>2014-07-03T21:06:06+01:00</updated>
     <id>http://paulsec.github.io/blog/2014/07/03/experiments-with-upnp</id>
     <content type="html"><![CDATA[<p>This post deals with recent observations regarding UPnP (<em>Universal Plug and Play</em>) protocol &amp; Routers.
 In few words, thanks to this protocol, devices (such as file sharing services, games, ..) can be easily connected/deployed.</p>
@@ -333,7 +750,7 @@ It seems there&rsquo;s some fun stuffs about it.</p>
   <entry>
     <title type="html"><![CDATA[Kioptrix 3: Write-up]]></title>
     <link href="http://paulsec.github.io/blog/2014/06/12/kioptrix-3-write-up/"/>
-    <updated>2014-06-12T21:44:04+02:00</updated>
+    <updated>2014-06-12T20:44:04+01:00</updated>
     <id>http://paulsec.github.io/blog/2014/06/12/kioptrix-3-write-up</id>
     <content type="html"><![CDATA[<p>This has been some long time I haven&rsquo;t written another write-up.
 This one&rsquo;s for Kioptrix 3 that you can find <a href="">here</a>.</p>
@@ -607,7 +1024,7 @@ I managed to get a (limited) meterpreter session on the machine, and retrieved d
   <entry>
     <title type="html"><![CDATA[Diving into XSS Google's Game]]></title>
     <link href="http://paulsec.github.io/blog/2014/06/02/diving-into-xss-googles-game/"/>
-    <updated>2014-06-02T19:34:12+02:00</updated>
+    <updated>2014-06-02T18:34:12+01:00</updated>
     <id>http://paulsec.github.io/blog/2014/06/02/diving-into-xss-googles-game</id>
     <content type="html"><![CDATA[<p>Hi there, this post deals with the game released by Google few days ago about XSS vulnerabilities that you can find <a href="https://xss-game.appspot.com/">here</a>.</p>
 
@@ -812,7 +1229,7 @@ This game was really fun. Waiting for the next one.</p>
   <entry>
     <title type="html"><![CDATA[Bobby: Write-up]]></title>
     <link href="http://paulsec.github.io/blog/2014/05/15/bobby-write-up/"/>
-    <updated>2014-05-15T20:51:48+02:00</updated>
+    <updated>2014-05-15T19:51:48+01:00</updated>
     <id>http://paulsec.github.io/blog/2014/05/15/bobby-write-up</id>
     <content type="html"><![CDATA[<p>Hi there,</p>
 
@@ -1142,7 +1559,7 @@ Cheers and see you soon!</p>
   <entry>
     <title type="html"><![CDATA[HTTP Security Headers on top 10k Alexa websites]]></title>
     <link href="http://paulsec.github.io/blog/2014/05/13/http-security-headers-on-top-10k-alexa-websites/"/>
-    <updated>2014-05-13T18:32:58+02:00</updated>
+    <updated>2014-05-13T17:32:58+01:00</updated>
     <id>http://paulsec.github.io/blog/2014/05/13/http-security-headers-on-top-10k-alexa-websites</id>
     <content type="html"><![CDATA[<script type="text/javascript" src="https://www.google.com/jsapi"></script>
 
@@ -1330,7 +1747,7 @@ All <strong>202</strong> hosts had this value.</p>
   <entry>
     <title type="html"><![CDATA[SecOS-1: First VM out]]></title>
     <link href="http://paulsec.github.io/blog/2014/05/12/secos-1-first-vm-out/"/>
-    <updated>2014-05-12T17:54:04+02:00</updated>
+    <updated>2014-05-12T16:54:04+01:00</updated>
     <id>http://paulsec.github.io/blog/2014/05/12/secos-1-first-vm-out</id>
     <content type="html"><![CDATA[<p>Hey there,</p>
 
@@ -1350,7 +1767,7 @@ So, I&rsquo;ll create few more that will rely on each other so keep the flags be
   <entry>
     <title type="html"><![CDATA[Blind HQL Injection in REST API using H2 dbms]]></title>
     <link href="http://paulsec.github.io/blog/2014/05/05/blind-hql-injection-in-rest-api-using-h2-dbms/"/>
-    <updated>2014-05-05T22:39:22+02:00</updated>
+    <updated>2014-05-05T21:39:22+01:00</updated>
     <id>http://paulsec.github.io/blog/2014/05/05/blind-hql-injection-in-rest-api-using-h2-dbms</id>
     <content type="html"><![CDATA[<p>This post deals with some research I just did regarding (Blind) HQL injections with H2 as the DataBase Management System.</p>
 
@@ -1452,7 +1869,7 @@ For this example, <a href="http://www.h2database.com/html/functions.html">H2 Dat
   <entry>
     <title type="html"><![CDATA[BSides Slides - CSRFT]]></title>
     <link href="http://paulsec.github.io/blog/2014/04/29/bsides-slides-csrft/"/>
-    <updated>2014-04-29T20:09:17+02:00</updated>
+    <updated>2014-04-29T19:09:17+01:00</updated>
     <id>http://paulsec.github.io/blog/2014/04/29/bsides-slides-csrft</id>
     <content type="html"><![CDATA[<p>Hey,</p>
 
@@ -1473,7 +1890,7 @@ Some really great people were here, good atmosphere and people were really helpf
   <entry>
     <title type="html"><![CDATA[bWAPP: Write-up]]></title>
     <link href="http://paulsec.github.io/blog/2014/04/21/bwapp-write-up/"/>
-    <updated>2014-04-21T14:29:34+02:00</updated>
+    <updated>2014-04-21T13:29:34+01:00</updated>
     <id>http://paulsec.github.io/blog/2014/04/21/bwapp-write-up</id>
     <content type="html"><![CDATA[<p><strong>This post contains the steps to get a root shell with bWapp VM</strong></p>
 
@@ -1727,7 +2144,7 @@ Cheers,</p>
   <entry>
     <title type="html"><![CDATA[Scream: Write-up]]></title>
     <link href="http://paulsec.github.io/blog/2014/04/16/scream-write-up/"/>
-    <updated>2014-04-16T21:17:28+02:00</updated>
+    <updated>2014-04-16T20:17:28+01:00</updated>
     <id>http://paulsec.github.io/blog/2014/04/16/scream-write-up</id>
     <content type="html"><![CDATA[<p><strong>This post contains the steps to get a root shell with Scream VM</strong></p>
 
@@ -1827,7 +2244,7 @@ Hope you liked it and good evening !</p>
   <entry>
     <title type="html"><![CDATA[Kioptrix 2: Write-up]]></title>
     <link href="http://paulsec.github.io/blog/2014/04/15/kioptrix-2-write-up/"/>
-    <updated>2014-04-15T22:51:56+02:00</updated>
+    <updated>2014-04-15T21:51:56+01:00</updated>
     <id>http://paulsec.github.io/blog/2014/04/15/kioptrix-2-write-up</id>
     <content type="html"><![CDATA[<p><strong>This post contains the steps to get a root shell with Kioptrix level 2 VM</strong></p>
 
@@ -1954,7 +2371,7 @@ Download it, change the configuration, send it using Netcat / wget like this :</
   <entry>
     <title type="html"><![CDATA[Exploit KB Vulnerable Web App 1: Write-up]]></title>
     <link href="http://paulsec.github.io/blog/2014/04/15/exploit-kb-vulnerable-web-app-1-write-up/"/>
-    <updated>2014-04-15T20:29:34+02:00</updated>
+    <updated>2014-04-15T19:29:34+01:00</updated>
     <id>http://paulsec.github.io/blog/2014/04/15/exploit-kb-vulnerable-web-app-1-write-up</id>
     <content type="html"><![CDATA[<p><strong>This post contains the steps to get a root shell with Exploit KB Vulnerable Web App 1 VM</strong></p>
 
@@ -2063,7 +2480,7 @@ Then, we had <em>root</em> access.</p>
   <entry>
     <title type="html"><![CDATA[Kioptrix 1: Write-up]]></title>
     <link href="http://paulsec.github.io/blog/2014/04/14/kioptrix-1-write-up/"/>
-    <updated>2014-04-14T21:52:50+02:00</updated>
+    <updated>2014-04-14T20:52:50+01:00</updated>
     <id>http://paulsec.github.io/blog/2014/04/14/kioptrix-1-write-up</id>
     <content type="html"><![CDATA[<p><strong>This post contains the steps to get a root shell with Kioptrix level 1 VM</strong></p>
 
@@ -2143,7 +2560,7 @@ Then, you can do everything like get content of <code>/etc/shadow</code>.</p>
   <entry>
     <title type="html"><![CDATA[Updating OpenFuck Exploit]]></title>
     <link href="http://paulsec.github.io/blog/2014/04/14/updating-openfuck-exploit/"/>
-    <updated>2014-04-14T20:46:29+02:00</updated>
+    <updated>2014-04-14T19:46:29+01:00</updated>
     <id>http://paulsec.github.io/blog/2014/04/14/updating-openfuck-exploit</id>
     <content type="html"><![CDATA[<p>This blog post will be quite fast and will provide you the steps to update the <a href="http://www.exploit-db.com/exploits/764/">OpenFuck</a> exploit.</p>
 
@@ -2229,7 +2646,7 @@ Then, you can do everything like get content of <code>/etc/shadow</code>.</p>
   <entry>
     <title type="html"><![CDATA[VulnOS: Write-up]]></title>
     <link href="http://paulsec.github.io/blog/2014/04/08/vulnos-write-up/"/>
-    <updated>2014-04-08T21:47:04+02:00</updated>
+    <updated>2014-04-08T20:47:04+01:00</updated>
     <id>http://paulsec.github.io/blog/2014/04/08/vulnos-write-up</id>
     <content type="html"><![CDATA[<p><strong>This contains the solution of the VM: VulnOS.</strong></p>
 
@@ -2675,7 +3092,7 @@ It&rsquo;s time to get a reverse shell !</p>
   <entry>
     <title type="html"><![CDATA[Python + Transmission-daemon = Download easily your favorite TV Show]]></title>
     <link href="http://paulsec.github.io/blog/2014/03/28/python-plus-transmission-daemon-equals-download-easily-your-favorite-tv-show/"/>
-    <updated>2014-03-28T18:23:59+01:00</updated>
+    <updated>2014-03-28T17:23:59+00:00</updated>
     <id>http://paulsec.github.io/blog/2014/03/28/python-plus-transmission-daemon-equals-download-easily-your-favorite-tv-show</id>
     <content type="html"><![CDATA[<p>This post is about my last project : my <em>TV Show Manager</em>.</p>
 
@@ -2810,7 +3227,7 @@ If you want more details, I redacted a nice README for the project just <a href=
   <entry>
     <title type="html"><![CDATA[XSS Callback]]></title>
     <link href="http://paulsec.github.io/blog/2014/03/20/xss-callback/"/>
-    <updated>2014-03-20T17:50:34+01:00</updated>
+    <updated>2014-03-20T16:50:34+00:00</updated>
     <id>http://paulsec.github.io/blog/2014/03/20/xss-callback</id>
     <content type="html"><![CDATA[<p>This post deals with a project I developed : <a href="https://github.com/PaulSec/XSS-Callback/">XSS Callback</a>.</p>
 
@@ -2871,7 +3288,7 @@ You&rsquo;ll be able to launch the Node.js server with your own module using thi
   <entry>
     <title type="html"><![CDATA[Dealing with HTML Submit's conflict]]></title>
     <link href="http://paulsec.github.io/blog/2014/03/09/dealing-with-html-submits-conflict/"/>
-    <updated>2014-03-09T21:49:34+01:00</updated>
+    <updated>2014-03-09T20:49:34+00:00</updated>
     <id>http://paulsec.github.io/blog/2014/03/09/dealing-with-html-submits-conflict</id>
     <content type="html"><![CDATA[<p>This first post is related with one of my project : CSRFT.
 CSRFT is a Cross Site Request Forgery (CSRF) vulnerabilities Toolkit.</p>
@@ -2950,7 +3367,7 @@ Using this technique, I&rsquo;ve been able to &ldquo;overwrite&rdquo; those (con
   <entry>
     <title type="html"><![CDATA[Starting my own blog]]></title>
     <link href="http://paulsec.github.io/blog/2014/03/04/starting-my-own-blog/"/>
-    <updated>2014-03-04T20:21:39+01:00</updated>
+    <updated>2014-03-04T19:21:39+00:00</updated>
     <id>http://paulsec.github.io/blog/2014/03/04/starting-my-own-blog</id>
     <content type="html"><![CDATA[<p>Starting my own blog has been something I really wanted to do.
 I&rsquo;ll add post related to my different projects but also on Web security.</p>

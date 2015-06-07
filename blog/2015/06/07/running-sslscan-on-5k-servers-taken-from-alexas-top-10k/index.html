@@ -1,0 +1,556 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Running sslscan on 5k servers taken from Alexa's top 10k - PaulSec's blog</title>
+  <meta name="author" content="Paul A. (PaulSec)">
+
+  
+  <meta name="description" content="google.load("visualization", "1", {packages:["corechart"]}); google.setOnLoadCallback(drawChart); function drawChart() { // Protocol Versions var &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://paulsec.github.io/blog/2015/06/07/running-sslscan-on-5k-servers-taken-from-alexas-top-10k">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="PaulSec's blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href='http://fonts.googleapis.com/css?family=Quattrocento+Sans|Roboto:400,300' rel='stylesheet' type='text/css'>
+
+  
+
+</head>
+
+
+<body>
+	<div class="container">
+		<aside class="left">
+			<div class="inner-left">
+				<header>
+					
+  <img src="http://www.gravatar.com/avatar/0b0f4cb32c81edd3e8dca37bde08910c?s=200" alt="Gravatar of Paul A. (PaulSec) " title="Gravatar of Paul A. (PaulSec)" class="profilepic" />
+
+<hgroup>
+  <h1><a href="/">PaulSec's blog</a></h1>
+  
+    <h2 class="subtitle">Security, Tips & Lulz.</h2>
+   
+</hgroup>
+
+
+				</header>
+				<footer>
+					<p>
+	
+	
+</p>
+				</footer>
+			</div>
+		</aside>
+    	<section class="right">
+    		<div class="inner-right">
+    			<div id="posts">
+    			  	<article class="post">
+    
+  <header>
+    
+      <h1 class="entry-title">Running Sslscan on 5k Servers Taken From Alexa's Top 10k</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-06-07T19:01:31+01:00" pubdate data-updated="true">Jun 7<span>th</span>, 2015</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><script type="text/javascript" src="https://www.google.com/jsapi"></script>
+
+
+<script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        // Protocol Versions
+        var data = google.visualization.arrayToDataTable([
+            ['Value', 'Occurence'],
+            ['SSLv3', 16986],
+            ['TLSv1.1', 29325],
+            ['TLSv1.0', 40259],
+            ['TLSv1.2', 53933],
+        ]);
+
+        var options = {
+          title: 'Protocol Versions'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('protocol-versions'));
+        chart.draw(data, options);
+
+        // SSLv3 statistics
+        var data = google.visualization.arrayToDataTable([
+            ['Value', 'Occurence'],  
+            ['SSLv3 128 bits ADH-CAMELLIA128-SHA-29', 3],
+            ['SSLv3 128 bits ADH-SEED-SHA-29', 3],
+            ['SSLv3 256 bits ADH-CAMELLIA256-SHA-29', 3],
+            ['SSLv3 40 bits EXP-ADH-DES-CBC-SHA-29', 4],
+            ['SSLv3 40 bits EXP-ADH-RC4-MD5-29', 4],
+            ['SSLv3 56 bits ADH-DES-CBC-SHA-29', 4],
+            ['SSLv3 0 bits NULL-MD5', 4],
+            ['SSLv3 0 bits NULL-SHA', 4],
+            ['SSLv3 256 bits ADH-AES256-SHA-29', 6],
+            ['SSLv3 128 bits ADH-AES128-SHA-29', 7],
+            ['SSLv3 168 bits ADH-DES-CBC3-SHA-29', 7],
+            ['SSLv3 128 bits ADH-RC4-MD5-29', 8],
+            ['SSLv3 128 bits AECDH-RC4-SHA-29', 62],
+            ['SSLv3 128 bits AECDH-AES128-SHA-29', 64],
+            ['SSLv3 256 bits AECDH-AES256-SHA-29', 69],
+            ['SSLv3 168 bits AECDH-DES-CBC3-SHA-29', 70],
+            ['SSLv3 40 bits EXP-EDH-RSA-DES-CBC-SHA', 137],
+            ['SSLv3 40 bits EXP-DES-CBC-SHA', 197],
+            ['SSLv3 40 bits EXP-RC2-CBC-MD5', 199],
+            ['SSLv3 40 bits EXP-RC4-MD5', 219],
+            ['SSLv3 56 bits EDH-RSA-DES-CBC-SHA', 303],
+            ['SSLv3 128 bits DHE-RSA-SEED-SHA', 366],
+            ['SSLv3 128 bits ECDHE-RSA-RC4-SHA', 377],
+            ['SSLv3 56 bits DES-CBC-SHA', 381],
+            ['SSLv3 128 bits SEED-SHA', 391],
+            ['SSLv3 168 bits ECDHE-RSA-DES-CBC3-SHA', 520],
+            ['SSLv3 128 bits ECDHE-RSA-AES128-SHA', 545],
+            ['SSLv3 256 bits ECDHE-RSA-AES256-SHA', 550],
+            ['SSLv3 128 bits DHE-RSA-CAMELLIA128-SHA', 610],
+            ['SSLv3 256 bits DHE-RSA-CAMELLIA256-SHA', 610],
+            ['SSLv3 128 bits CAMELLIA128-SHA', 709],
+            ['SSLv3 256 bits CAMELLIA256-SHA', 714],
+            ['SSLv3 168 bits EDH-RSA-DES-CBC3-SHA', 974],
+            ['SSLv3 128 bits RC4-MD5', 978],
+            ['SSLv3 256 bits DHE-RSA-AES256-SHA', 987],
+            ['SSLv3 128 bits DHE-RSA-AES128-SHA', 1001],
+            ['SSLv3 128 bits RC4-SHA', 1336],
+            ['SSLv3 128 bits AES128-SHA', 1478],
+            ['SSLv3 256 bits AES256-SHA', 1483],
+            ['SSLv3 168 bits DES-CBC3-SHA', 1599]        
+        ]);
+
+        var options = {
+          title: 'SSLv3 statistics'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('sslv3-statistics'));
+        chart.draw(data, options);
+
+        // TLSv1.0 statistics
+        var data = google.visualization.arrayToDataTable([
+            ['Value', 'Occurence'],
+            ['TLSv1.0 128 bits ECDHE-ECDSA-RC4-SHA', 3],
+            ['TLSv1.0 0 bits NULL-MD5', 4],
+            ['TLSv1.0 0 bits NULL-SHA', 4],
+            ['TLSv1.0 40 bits EXP-ADH-DES-CBC-SHA-29', 5],
+            ['TLSv1.0 40 bits EXP-ADH-RC4-MD5-29', 5],
+            ['TLSv1.0 56 bits ADH-DES-CBC-SHA-29', 5],
+            ['TLSv1.0 128 bits ADH-CAMELLIA128-SHA-29', 7],
+            ['TLSv1.0 128 bits ADH-SEED-SHA-29', 7],
+            ['TLSv1.0 256 bits ADH-CAMELLIA256-SHA-29', 7],
+            ['TLSv1.0 256 bits ADH-AES256-SHA-29', 14],
+            ['TLSv1.0 128 bits ADH-AES128-SHA-29', 15],
+            ['TLSv1.0 128 bits ADH-RC4-MD5-29', 15],
+            ['TLSv1.0 168 bits ADH-DES-CBC3-SHA-29', 16],
+            ['TLSv1.0 128 bits AECDH-RC4-SHA-29', 124],
+            ['TLSv1.0 168 bits AECDH-DES-CBC3-SHA-29', 132],
+            ['TLSv1.0 128 bits AECDH-AES128-SHA-29', 133],
+            ['TLSv1.0 256 bits AECDH-AES256-SHA-29', 133],
+            ['TLSv1.0 168 bits ECDHE-ECDSA-DES-CBC3-SHA', 163],
+            ['TLSv1.0 40 bits EXP-EDH-RSA-DES-CBC-SHA', 166],
+            ['TLSv1.0 128 bits ECDHE-ECDSA-AES128-SHA', 166],
+            ['TLSv1.0 256 bits ECDHE-ECDSA-AES256-SHA', 166],
+            ['TLSv1.0 40 bits EXP-RC2-CBC-MD5', 246],
+            ['TLSv1.0 40 bits EXP-DES-CBC-SHA', 248],
+            ['TLSv1.0 40 bits EXP-RC4-MD5', 274],
+            ['TLSv1.0 56 bits EDH-RSA-DES-CBC-SHA', 379],
+            ['TLSv1.0 56 bits DES-CBC-SHA', 512],
+            ['TLSv1.0 128 bits SEED-SHA', 637],
+            ['TLSv1.0 128 bits DHE-RSA-SEED-SHA', 639],
+            ['TLSv1.0 128 bits ECDHE-RSA-RC4-SHA', 815],
+            ['TLSv1.0 128 bits DHE-RSA-CAMELLIA128-SHA', 1269],
+            ['TLSv1.0 256 bits DHE-RSA-CAMELLIA256-SHA', 1273],
+            ['TLSv1.0 128 bits CAMELLIA128-SHA', 1486],
+            ['TLSv1.0 256 bits CAMELLIA256-SHA', 1493],
+            ['TLSv1.0 128 bits RC4-MD5', 1661],
+            ['TLSv1.0 168 bits ECDHE-RSA-DES-CBC3-SHA', 1759],
+            ['TLSv1.0 168 bits EDH-RSA-DES-CBC3-SHA', 1817],
+            ['TLSv1.0 256 bits DHE-RSA-AES256-SHA', 2223],
+            ['TLSv1.0 128 bits DHE-RSA-AES128-SHA', 2283],
+            ['TLSv1.0 128 bits ECDHE-RSA-AES128-SHA', 2502],
+            ['TLSv1.0 256 bits ECDHE-RSA-AES256-SHA', 2515],
+            ['TLSv1.0 128 bits RC4-SHA', 2566],
+            ['TLSv1.0 168 bits DES-CBC3-SHA', 4020],
+            ['TLSv1.0 256 bits AES256-SHA', 4148],
+            ['TLSv1.0 128 bits AES128-SHA', 4204],
+        ]);
+
+        var options = {
+          title: 'TLSv1.0 Statistics'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('tlsv1.0-statistics'));
+        chart.draw(data, options);
+
+
+        // TLSv1.1 Statistics
+        var data = google.visualization.arrayToDataTable([
+            ['Value', 'Occurence'],
+            ['TLSv1.1 40 bits EXP-ADH-DES-CBC-SHA-29', 1],
+            ['TLSv1.1 40 bits EXP-ADH-RC4-MD5-29', 1],
+            ['TLSv1.1 56 bits ADH-DES-CBC-SHA-29', 1],
+            ['TLSv1.1 0 bits NULL-MD5', 1],
+            ['TLSv1.1 0 bits NULL-SHA', 1],
+            ['TLSv1.1 128 bits ECDHE-ECDSA-RC4-SHA', 3],
+            ['TLSv1.1 128 bits ADH-CAMELLIA128-SHA-29', 3],
+            ['TLSv1.1 128 bits ADH-SEED-SHA-29', 3],
+            ['TLSv1.1 256 bits ADH-CAMELLIA256-SHA-29', 3],
+            ['TLSv1.1 128 bits ADH-AES128-SHA-29', 4],
+            ['TLSv1.1 256 bits ADH-AES256-SHA-29', 4],
+            ['TLSv1.1 128 bits ADH-RC4-MD5-29', 5],
+            ['TLSv1.1 168 bits ADH-DES-CBC3-SHA-29', 5],
+            ['TLSv1.1 40 bits EXP-EDH-RSA-DES-CBC-SHA', 37],
+            ['TLSv1.1 40 bits EXP-RC2-CBC-MD5', 53],
+            ['TLSv1.1 40 bits EXP-DES-CBC-SHA', 58],
+            ['TLSv1.1 40 bits EXP-RC4-MD5', 59],
+            ['TLSv1.1 128 bits AECDH-RC4-SHA-29', 104],
+            ['TLSv1.1 256 bits AECDH-AES256-SHA-29', 105],
+            ['TLSv1.1 128 bits AECDH-AES128-SHA-29', 106],
+            ['TLSv1.1 168 bits AECDH-DES-CBC3-SHA-29', 106],
+            ['TLSv1.1 56 bits EDH-RSA-DES-CBC-SHA', 133],
+            ['TLSv1.1 168 bits ECDHE-ECDSA-DES-CBC3-SHA', 163],
+            ['TLSv1.1 128 bits ECDHE-ECDSA-AES128-SHA', 166],
+            ['TLSv1.1 256 bits ECDHE-ECDSA-AES256-SHA', 166],
+            ['TLSv1.1 56 bits DES-CBC-SHA', 168],
+            ['TLSv1.1 128 bits SEED-SHA', 566],
+            ['TLSv1.1 128 bits DHE-RSA-SEED-SHA', 568],
+            ['TLSv1.1 128 bits ECDHE-RSA-RC4-SHA', 719],
+            ['TLSv1.1 128 bits RC4-MD5', 826],
+            ['TLSv1.1 128 bits DHE-RSA-CAMELLIA128-SHA', 1093],
+            ['TLSv1.1 256 bits DHE-RSA-CAMELLIA256-SHA', 1096],
+            ['TLSv1.1 168 bits EDH-RSA-DES-CBC3-SHA', 1123],
+            ['TLSv1.1 128 bits CAMELLIA128-SHA', 1300],
+            ['TLSv1.1 256 bits CAMELLIA256-SHA', 1300],
+            ['TLSv1.1 128 bits RC4-SHA', 1471],
+            ['TLSv1.1 256 bits DHE-RSA-AES256-SHA', 1489],
+            ['TLSv1.1 128 bits DHE-RSA-AES128-SHA', 1548],
+            ['TLSv1.1 168 bits ECDHE-RSA-DES-CBC3-SHA', 1682],
+            ['TLSv1.1 128 bits ECDHE-RSA-AES128-SHA', 2333],
+            ['TLSv1.1 256 bits ECDHE-RSA-AES256-SHA', 2352],
+            ['TLSv1.1 168 bits DES-CBC3-SHA', 2687],
+            ['TLSv1.1 256 bits AES256-SHA', 2826],
+            ['TLSv1.1 128 bits AES128-SHA', 2887]
+        ]);
+
+        var options = {
+          title: 'TLSv1.1 Statistics'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('tlsv1.1-statistics'));
+        chart.draw(data, options);        
+
+        // TLSv1.2 Statistics
+        var data = google.visualization.arrayToDataTable([
+            ['Value', 'Occurence'],
+            ['TLSv1.2 128 bits ECDHE-ECDSA-RC4-SHA', 3],
+            ['TLSv1.2 128 bits ADH-AES128-SHA256-29', 3],
+            ['TLSv1.2 128 bits ADH-AES128-SHA-29', 3],
+            ['TLSv1.2 128 bits ADH-CAMELLIA128-SHA-29', 3],
+            ['TLSv1.2 128 bits ADH-SEED-SHA-29', 3],
+            ['TLSv1.2 256 bits ADH-AES256-SHA256-29', 3],
+            ['TLSv1.2 256 bits ADH-AES256-SHA-29', 3],
+            ['TLSv1.2 256 bits ADH-CAMELLIA256-SHA-29', 3],
+            ['TLSv1.2 128 bits ADH-RC4-MD5-29', 4],
+            ['TLSv1.2 168 bits ADH-DES-CBC3-SHA-29', 4],
+            ['TLSv1.2 128 bits ADH-AES128-GCM-SHA256-29', 6],
+            ['TLSv1.2 256 bits ADH-AES256-GCM-SHA384-29', 6],
+            ['TLSv1.2 40 bits EXP-EDH-RSA-DES-CBC-SHA', 36],
+            ['TLSv1.2 40 bits EXP-DES-CBC-SHA', 54],
+            ['TLSv1.2 40 bits EXP-RC2-CBC-MD5', 54],
+            ['TLSv1.2 40 bits EXP-RC4-MD5', 55],
+            ['TLSv1.2 128 bits AECDH-RC4-SHA-29', 101],
+            ['TLSv1.2 128 bits AECDH-AES128-SHA-29', 105],
+            ['TLSv1.2 168 bits AECDH-DES-CBC3-SHA-29', 106],
+            ['TLSv1.2 256 bits AECDH-AES256-SHA-29', 106],
+            ['TLSv1.2 56 bits EDH-RSA-DES-CBC-SHA', 135],
+            ['TLSv1.2 56 bits DES-CBC-SHA', 161],
+            ['TLSv1.2 128 bits ECDHE-ECDSA-AES128-SHA256', 163],
+            ['TLSv1.2 168 bits ECDHE-ECDSA-DES-CBC3-SHA', 163],
+            ['TLSv1.2 256 bits ECDHE-ECDSA-AES256-SHA384', 163],
+            ['TLSv1.2 128 bits ECDHE-ECDSA-AES128-GCM-SHA256', 166],
+            ['TLSv1.2 128 bits ECDHE-ECDSA-AES128-SHA', 166],
+            ['TLSv1.2 256 bits ECDHE-ECDSA-AES256-GCM-SHA384', 166],
+            ['TLSv1.2 256 bits ECDHE-ECDSA-AES256-SHA', 166],
+            ['TLSv1.2 128 bits SEED-SHA', 562],
+            ['TLSv1.2 128 bits DHE-RSA-SEED-SHA', 568],
+            ['TLSv1.2 128 bits ECDHE-RSA-RC4-SHA', 716],
+            ['TLSv1.2 128 bits RC4-MD5', 840],
+            ['TLSv1.2 256 bits DHE-RSA-CAMELLIA256-SHA', 1090],
+            ['TLSv1.2 168 bits EDH-RSA-DES-CBC3-SHA', 1091],
+            ['TLSv1.2 128 bits DHE-RSA-CAMELLIA128-SHA', 1093],
+            ['TLSv1.2 128 bits DHE-RSA-AES128-SHA256', 1259],
+            ['TLSv1.2 256 bits DHE-RSA-AES256-SHA256', 1261],
+            ['TLSv1.2 128 bits CAMELLIA128-SHA', 1296],
+            ['TLSv1.2 256 bits CAMELLIA256-SHA', 1301],
+            ['TLSv1.2 128 bits DHE-RSA-AES128-GCM-SHA256', 1369],
+            ['TLSv1.2 256 bits DHE-RSA-AES256-GCM-SHA384', 1376],
+            ['TLSv1.2 256 bits DHE-RSA-AES256-SHA', 1452],
+            ['TLSv1.2 128 bits DHE-RSA-AES128-SHA', 1509],
+            ['TLSv1.2 128 bits RC4-SHA', 1601],
+            ['TLSv1.2 168 bits ECDHE-RSA-DES-CBC3-SHA', 1690],
+            ['TLSv1.2 256 bits ECDHE-RSA-AES256-GCM-SHA384', 1997],
+            ['TLSv1.2 128 bits ECDHE-RSA-AES128-GCM-SHA256', 2019],
+            ['TLSv1.2 256 bits AES256-GCM-SHA384', 2086],
+            ['TLSv1.2 128 bits AES128-GCM-SHA256', 2140],
+            ['TLSv1.2 256 bits ECDHE-RSA-AES256-SHA384', 2170],
+            ['TLSv1.2 128 bits ECDHE-RSA-AES128-SHA256', 2225],
+            ['TLSv1.2 128 bits ECDHE-RSA-AES128-SHA', 2334],
+            ['TLSv1.2 256 bits ECDHE-RSA-AES256-SHA', 2351],
+            ['TLSv1.2 256 bits AES256-SHA256', 2737],
+            ['TLSv1.2 128 bits AES128-SHA256', 2739],
+            ['TLSv1.2 168 bits DES-CBC3-SHA', 2863],
+            ['TLSv1.2 256 bits AES256-SHA', 3018],
+            ['TLSv1.2 128 bits AES128-SHA', 3070]
+        ]);
+
+        var options = {
+          title: 'TLSv1.2 Statistics'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('tlsv1.2-statistics'));
+        chart.draw(data, options);
+
+
+        // Ciphers top 50
+        var data = google.visualization.arrayToDataTable([
+            ['Value', 'Occurence'],
+            ['TLSv1.0 256 bits DHE-RSA-CAMELLIA256-SHA', 1273],
+            ['TLSv1.2 128 bits CAMELLIA128-SHA', 1296],
+            ['TLSv1.1 128 bits CAMELLIA128-SHA', 1300],
+            ['TLSv1.1 256 bits CAMELLIA256-SHA', 1300],
+            ['TLSv1.2 256 bits CAMELLIA256-SHA', 1301],
+            ['SSLv3 128 bits RC4-SHA', 1336],
+            ['TLSv1.2 128 bits DHE-RSA-AES128-GCM-SHA256', 1369],
+            ['TLSv1.2 256 bits DHE-RSA-AES256-GCM-SHA384', 1376],
+            ['TLSv1.2 256 bits DHE-RSA-AES256-SHA', 1452],
+            ['TLSv1.1 128 bits RC4-SHA', 1471],
+            ['SSLv3 128 bits AES128-SHA', 1478],
+            ['SSLv3 256 bits AES256-SHA', 1483],
+            ['TLSv1.0 128 bits CAMELLIA128-SHA', 1486],
+            ['TLSv1.1 256 bits DHE-RSA-AES256-SHA', 1489],
+            ['TLSv1.0 256 bits CAMELLIA256-SHA', 1493],
+            ['TLSv1.2 128 bits DHE-RSA-AES128-SHA', 1509],
+            ['TLSv1.1 128 bits DHE-RSA-AES128-SHA', 1548],
+            ['SSLv3 168 bits DES-CBC3-SHA', 1599],
+            ['TLSv1.2 128 bits RC4-SHA', 1601],
+            ['TLSv1.0 128 bits RC4-MD5', 1661],
+            ['TLSv1.1 168 bits ECDHE-RSA-DES-CBC3-SHA', 1682],
+            ['TLSv1.2 168 bits ECDHE-RSA-DES-CBC3-SHA', 1690],
+            ['TLSv1.0 168 bits ECDHE-RSA-DES-CBC3-SHA', 1759],
+            ['TLSv1.0 168 bits EDH-RSA-DES-CBC3-SHA', 1817],
+            ['TLSv1.2 256 bits ECDHE-RSA-AES256-GCM-SHA384', 1997],
+            ['TLSv1.2 128 bits ECDHE-RSA-AES128-GCM-SHA256', 2019],
+            ['TLSv1.2 256 bits AES256-GCM-SHA384', 2086],
+            ['TLSv1.2 128 bits AES128-GCM-SHA256', 2140],
+            ['TLSv1.2 256 bits ECDHE-RSA-AES256-SHA384', 2170],
+            ['TLSv1.0 256 bits DHE-RSA-AES256-SHA', 2223],
+            ['TLSv1.2 128 bits ECDHE-RSA-AES128-SHA256', 2225],
+            ['TLSv1.0 128 bits DHE-RSA-AES128-SHA', 2283],
+            ['TLSv1.1 128 bits ECDHE-RSA-AES128-SHA', 2333],
+            ['TLSv1.2 128 bits ECDHE-RSA-AES128-SHA', 2334],
+            ['TLSv1.2 256 bits ECDHE-RSA-AES256-SHA', 2351],
+            ['TLSv1.1 256 bits ECDHE-RSA-AES256-SHA', 2352],
+            ['TLSv1.0 128 bits ECDHE-RSA-AES128-SHA', 2502],
+            ['TLSv1.0 256 bits ECDHE-RSA-AES256-SHA', 2515],
+            ['TLSv1.0 128 bits RC4-SHA', 2566],
+            ['TLSv1.1 168 bits DES-CBC3-SHA', 2687],
+            ['TLSv1.2 256 bits AES256-SHA256', 2737],
+            ['TLSv1.2 128 bits AES128-SHA256', 2739],
+            ['TLSv1.1 256 bits AES256-SHA', 2826],
+            ['TLSv1.2 168 bits DES-CBC3-SHA', 2863],
+            ['TLSv1.1 128 bits AES128-SHA', 2887],
+            ['TLSv1.2 256 bits AES256-SHA', 3018],
+            ['TLSv1.2 128 bits AES128-SHA', 3070],
+            ['TLSv1.0 168 bits DES-CBC3-SHA', 4020],
+            ['TLSv1.0 256 bits AES256-SHA', 4148],
+            ['TLSv1.0 128 bits AES128-SHA', 4204]
+        ]);
+
+        var options = {
+          title: 'Ciphers top 50'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('ciphers'));
+        chart.draw(data, options);
+
+        // Signature Algorithms
+        var data = google.visualization.arrayToDataTable([
+            ['Value', 'Occurence'],
+            ['sha1WithRSA', 1],
+            ['sha512WithRSAEncryption', 18],
+            ['md5WithRSAEncryption', 22],
+            ['sha384WithRSAEncryption', 28],
+            ['ecdsa-with-SHA256', 163],
+            ['sha256WithRSAEncryption', 2164],
+            ['sha1WithRSAEncryption', 2221],
+        ]);
+
+        var options = {
+          title: 'Signature Algorithms'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('signature-algorithms'));
+        chart.draw(data, options);
+
+        // Key strength
+        var data = google.visualization.arrayToDataTable([
+            ['Value', 'Occurence'],
+            ['RSA Key Strength:    512', 1],
+            ['RSA Key Strength:    3072', 3],
+            ['RSA Key Strength:    4096', 118],
+            ['RSA Key Strength:    1024', 208],
+            ['RSA Key Strength:    2048', 4121]
+        ]);
+
+        var options = {
+          title: 'Key Strength'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('key-strength'));
+        chart.draw(data, options);
+
+
+      }
+</script>
+
+
+<p>After analyzing the <a href="https://paulsec.github.io/blog/2014/05/13/http-security-headers-on-top-10k-alexa-websites/">HTTP Security Headers from the top 10k Alexa websites</a>, I decided looking at the SSL Ciphers used on those websites.</p>
+
+<p>These results are coming from a scan on port 443 for all those domains.
+Only <strong>4715</strong> servers replied.</p>
+
+<p>The OpenSSL version installed on my server did not support SSLv2 so SSLv2 ciphers have not been detected.</p>
+
+<p>Here are the results:</p>
+
+<div id="ciphers" style="width: 900px; height: 500px;"></div>
+
+
+
+
+<div id="protocol-versions" style="width: 900px; height: 500px;"></div>
+
+
+
+
+<div id="sslv3-statistics" style="width: 900px; height: 500px;"></div>
+
+
+
+
+<div id="tlsv1.0-statistics" style="width: 900px; height: 500px;"></div>
+
+
+
+
+<div id="tlsv1.1-statistics" style="width: 900px; height: 500px;"></div>
+
+
+
+
+<div id="tlsv1.2-statistics" style="width: 900px; height: 500px;"></div>
+
+
+
+
+<div id="signature-algorithms" style="width: 900px; height: 500px;"></div>
+
+
+
+
+<div id="key-strength" style="width: 900px; height: 500px;"></div>
+
+</div>
+
+
+</article>
+
+
+        <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://paulsec.github.io/blog/2015/06/07/running-sslscan-on-5k-servers-taken-from-alexas-top-10k/" data-via="" data-counturl="http://paulsec.github.io/blog/2015/06/07/running-sslscan-on-5k-servers-taken-from-alexas-top-10k/" >Tweet</a>
+  
+  
+  
+</div>
+
+
+
+
+
+    			</div>
+    			<footer id="footer">
+    				<p class="credit">
+  Copyright &copy; 2015 - Paul A. (PaulSec). Powered by <a href="http://octopress.org">Octopress</a>
+</p>
+
+
+    			</footer>
+    			
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+<link href='http://fonts.googleapis.com/css?family=Quattrocento+Sans|Roboto:400,300' rel='stylesheet' type='text/css'>
+
+
+
+
+
+    		</div>
+    	</section>
+  	</div>
+</body>
+</html>
