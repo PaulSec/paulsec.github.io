@@ -4,7 +4,7 @@
   <title><![CDATA[PaulSec's blog]]></title>
   <link href="http://paulsec.github.io/atom.xml" rel="self"/>
   <link href="http://paulsec.github.io/"/>
-  <updated>2015-06-07T20:16:55+01:00</updated>
+  <updated>2017-04-18T19:37:18+02:00</updated>
   <id>http://paulsec.github.io/</id>
   <author>
     <name><![CDATA[Paul A. (PaulSec)]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Running sslscan on 5k servers taken from Alexa's top 10k]]></title>
     <link href="http://paulsec.github.io/blog/2015/06/07/running-sslscan-on-5k-servers-taken-from-alexas-top-10k/"/>
-    <updated>2015-06-07T19:01:31+01:00</updated>
+    <updated>2015-06-07T20:01:31+02:00</updated>
     <id>http://paulsec.github.io/blog/2015/06/07/running-sslscan-on-5k-servers-taken-from-alexas-top-10k</id>
     <content type="html"><![CDATA[<script type="text/javascript" src="https://www.google.com/jsapi"></script>
 
@@ -433,7 +433,7 @@ Only <strong>4715</strong> servers replied.</p>
   <entry>
     <title type="html"><![CDATA[Experiments with UPnP]]></title>
     <link href="http://paulsec.github.io/blog/2014/07/03/experiments-with-upnp/"/>
-    <updated>2014-07-03T21:06:06+01:00</updated>
+    <updated>2014-07-03T22:06:06+02:00</updated>
     <id>http://paulsec.github.io/blog/2014/07/03/experiments-with-upnp</id>
     <content type="html"><![CDATA[<p>This post deals with recent observations regarding UPnP (<em>Universal Plug and Play</em>) protocol &amp; Routers.
 In few words, thanks to this protocol, devices (such as file sharing services, games, ..) can be easily connected/deployed.</p>
@@ -750,7 +750,7 @@ It seems there&rsquo;s some fun stuffs about it.</p>
   <entry>
     <title type="html"><![CDATA[Kioptrix 3: Write-up]]></title>
     <link href="http://paulsec.github.io/blog/2014/06/12/kioptrix-3-write-up/"/>
-    <updated>2014-06-12T20:44:04+01:00</updated>
+    <updated>2014-06-12T21:44:04+02:00</updated>
     <id>http://paulsec.github.io/blog/2014/06/12/kioptrix-3-write-up</id>
     <content type="html"><![CDATA[<p>This has been some long time I haven&rsquo;t written another write-up.
 This one&rsquo;s for Kioptrix 3 that you can find <a href="">here</a>.</p>
@@ -1024,7 +1024,7 @@ I managed to get a (limited) meterpreter session on the machine, and retrieved d
   <entry>
     <title type="html"><![CDATA[Diving into XSS Google's Game]]></title>
     <link href="http://paulsec.github.io/blog/2014/06/02/diving-into-xss-googles-game/"/>
-    <updated>2014-06-02T18:34:12+01:00</updated>
+    <updated>2014-06-02T19:34:12+02:00</updated>
     <id>http://paulsec.github.io/blog/2014/06/02/diving-into-xss-googles-game</id>
     <content type="html"><![CDATA[<p>Hi there, this post deals with the game released by Google few days ago about XSS vulnerabilities that you can find <a href="https://xss-game.appspot.com/">here</a>.</p>
 
@@ -1229,7 +1229,7 @@ This game was really fun. Waiting for the next one.</p>
   <entry>
     <title type="html"><![CDATA[Bobby: Write-up]]></title>
     <link href="http://paulsec.github.io/blog/2014/05/15/bobby-write-up/"/>
-    <updated>2014-05-15T19:51:48+01:00</updated>
+    <updated>2014-05-15T20:51:48+02:00</updated>
     <id>http://paulsec.github.io/blog/2014/05/15/bobby-write-up</id>
     <content type="html"><![CDATA[<p>Hi there,</p>
 
@@ -1559,7 +1559,7 @@ Cheers and see you soon!</p>
   <entry>
     <title type="html"><![CDATA[HTTP Security Headers on top 10k Alexa websites]]></title>
     <link href="http://paulsec.github.io/blog/2014/05/13/http-security-headers-on-top-10k-alexa-websites/"/>
-    <updated>2014-05-13T17:32:58+01:00</updated>
+    <updated>2014-05-13T18:32:58+02:00</updated>
     <id>http://paulsec.github.io/blog/2014/05/13/http-security-headers-on-top-10k-alexa-websites</id>
     <content type="html"><![CDATA[<script type="text/javascript" src="https://www.google.com/jsapi"></script>
 
@@ -1747,7 +1747,7 @@ All <strong>202</strong> hosts had this value.</p>
   <entry>
     <title type="html"><![CDATA[SecOS-1: First VM out]]></title>
     <link href="http://paulsec.github.io/blog/2014/05/12/secos-1-first-vm-out/"/>
-    <updated>2014-05-12T16:54:04+01:00</updated>
+    <updated>2014-05-12T17:54:04+02:00</updated>
     <id>http://paulsec.github.io/blog/2014/05/12/secos-1-first-vm-out</id>
     <content type="html"><![CDATA[<p>Hey there,</p>
 
@@ -1767,7 +1767,7 @@ So, I&rsquo;ll create few more that will rely on each other so keep the flags be
   <entry>
     <title type="html"><![CDATA[Blind HQL Injection in REST API using H2 dbms]]></title>
     <link href="http://paulsec.github.io/blog/2014/05/05/blind-hql-injection-in-rest-api-using-h2-dbms/"/>
-    <updated>2014-05-05T21:39:22+01:00</updated>
+    <updated>2014-05-05T22:39:22+02:00</updated>
     <id>http://paulsec.github.io/blog/2014/05/05/blind-hql-injection-in-rest-api-using-h2-dbms</id>
     <content type="html"><![CDATA[<p>This post deals with some research I just did regarding (Blind) HQL injections with H2 as the DataBase Management System.</p>
 
@@ -1869,7 +1869,7 @@ For this example, <a href="http://www.h2database.com/html/functions.html">H2 Dat
   <entry>
     <title type="html"><![CDATA[BSides Slides - CSRFT]]></title>
     <link href="http://paulsec.github.io/blog/2014/04/29/bsides-slides-csrft/"/>
-    <updated>2014-04-29T19:09:17+01:00</updated>
+    <updated>2014-04-29T20:09:17+02:00</updated>
     <id>http://paulsec.github.io/blog/2014/04/29/bsides-slides-csrft</id>
     <content type="html"><![CDATA[<p>Hey,</p>
 
@@ -1890,7 +1890,7 @@ Some really great people were here, good atmosphere and people were really helpf
   <entry>
     <title type="html"><![CDATA[bWAPP: Write-up]]></title>
     <link href="http://paulsec.github.io/blog/2014/04/21/bwapp-write-up/"/>
-    <updated>2014-04-21T13:29:34+01:00</updated>
+    <updated>2014-04-21T14:29:34+02:00</updated>
     <id>http://paulsec.github.io/blog/2014/04/21/bwapp-write-up</id>
     <content type="html"><![CDATA[<p><strong>This post contains the steps to get a root shell with bWapp VM</strong></p>
 
@@ -2144,7 +2144,7 @@ Cheers,</p>
   <entry>
     <title type="html"><![CDATA[Scream: Write-up]]></title>
     <link href="http://paulsec.github.io/blog/2014/04/16/scream-write-up/"/>
-    <updated>2014-04-16T20:17:28+01:00</updated>
+    <updated>2014-04-16T21:17:28+02:00</updated>
     <id>http://paulsec.github.io/blog/2014/04/16/scream-write-up</id>
     <content type="html"><![CDATA[<p><strong>This post contains the steps to get a root shell with Scream VM</strong></p>
 
@@ -2244,7 +2244,7 @@ Hope you liked it and good evening !</p>
   <entry>
     <title type="html"><![CDATA[Kioptrix 2: Write-up]]></title>
     <link href="http://paulsec.github.io/blog/2014/04/15/kioptrix-2-write-up/"/>
-    <updated>2014-04-15T21:51:56+01:00</updated>
+    <updated>2014-04-15T22:51:56+02:00</updated>
     <id>http://paulsec.github.io/blog/2014/04/15/kioptrix-2-write-up</id>
     <content type="html"><![CDATA[<p><strong>This post contains the steps to get a root shell with Kioptrix level 2 VM</strong></p>
 
@@ -2371,7 +2371,7 @@ Download it, change the configuration, send it using Netcat / wget like this :</
   <entry>
     <title type="html"><![CDATA[Exploit KB Vulnerable Web App 1: Write-up]]></title>
     <link href="http://paulsec.github.io/blog/2014/04/15/exploit-kb-vulnerable-web-app-1-write-up/"/>
-    <updated>2014-04-15T19:29:34+01:00</updated>
+    <updated>2014-04-15T20:29:34+02:00</updated>
     <id>http://paulsec.github.io/blog/2014/04/15/exploit-kb-vulnerable-web-app-1-write-up</id>
     <content type="html"><![CDATA[<p><strong>This post contains the steps to get a root shell with Exploit KB Vulnerable Web App 1 VM</strong></p>
 
@@ -2480,7 +2480,7 @@ Then, we had <em>root</em> access.</p>
   <entry>
     <title type="html"><![CDATA[Kioptrix 1: Write-up]]></title>
     <link href="http://paulsec.github.io/blog/2014/04/14/kioptrix-1-write-up/"/>
-    <updated>2014-04-14T20:52:50+01:00</updated>
+    <updated>2014-04-14T21:52:50+02:00</updated>
     <id>http://paulsec.github.io/blog/2014/04/14/kioptrix-1-write-up</id>
     <content type="html"><![CDATA[<p><strong>This post contains the steps to get a root shell with Kioptrix level 1 VM</strong></p>
 
@@ -2560,7 +2560,7 @@ Then, you can do everything like get content of <code>/etc/shadow</code>.</p>
   <entry>
     <title type="html"><![CDATA[Updating OpenFuck Exploit]]></title>
     <link href="http://paulsec.github.io/blog/2014/04/14/updating-openfuck-exploit/"/>
-    <updated>2014-04-14T19:46:29+01:00</updated>
+    <updated>2014-04-14T20:46:29+02:00</updated>
     <id>http://paulsec.github.io/blog/2014/04/14/updating-openfuck-exploit</id>
     <content type="html"><![CDATA[<p>This blog post will be quite fast and will provide you the steps to update the <a href="http://www.exploit-db.com/exploits/764/">OpenFuck</a> exploit.</p>
 
@@ -2646,7 +2646,7 @@ Then, you can do everything like get content of <code>/etc/shadow</code>.</p>
   <entry>
     <title type="html"><![CDATA[VulnOS: Write-up]]></title>
     <link href="http://paulsec.github.io/blog/2014/04/08/vulnos-write-up/"/>
-    <updated>2014-04-08T20:47:04+01:00</updated>
+    <updated>2014-04-08T21:47:04+02:00</updated>
     <id>http://paulsec.github.io/blog/2014/04/08/vulnos-write-up</id>
     <content type="html"><![CDATA[<p><strong>This contains the solution of the VM: VulnOS.</strong></p>
 
@@ -3092,7 +3092,7 @@ It&rsquo;s time to get a reverse shell !</p>
   <entry>
     <title type="html"><![CDATA[Python + Transmission-daemon = Download easily your favorite TV Show]]></title>
     <link href="http://paulsec.github.io/blog/2014/03/28/python-plus-transmission-daemon-equals-download-easily-your-favorite-tv-show/"/>
-    <updated>2014-03-28T17:23:59+00:00</updated>
+    <updated>2014-03-28T18:23:59+01:00</updated>
     <id>http://paulsec.github.io/blog/2014/03/28/python-plus-transmission-daemon-equals-download-easily-your-favorite-tv-show</id>
     <content type="html"><![CDATA[<p>This post is about my last project : my <em>TV Show Manager</em>.</p>
 
@@ -3227,7 +3227,7 @@ If you want more details, I redacted a nice README for the project just <a href=
   <entry>
     <title type="html"><![CDATA[XSS Callback]]></title>
     <link href="http://paulsec.github.io/blog/2014/03/20/xss-callback/"/>
-    <updated>2014-03-20T16:50:34+00:00</updated>
+    <updated>2014-03-20T17:50:34+01:00</updated>
     <id>http://paulsec.github.io/blog/2014/03/20/xss-callback</id>
     <content type="html"><![CDATA[<p>This post deals with a project I developed : <a href="https://github.com/PaulSec/XSS-Callback/">XSS Callback</a>.</p>
 
@@ -3288,7 +3288,7 @@ You&rsquo;ll be able to launch the Node.js server with your own module using thi
   <entry>
     <title type="html"><![CDATA[Dealing with HTML Submit's conflict]]></title>
     <link href="http://paulsec.github.io/blog/2014/03/09/dealing-with-html-submits-conflict/"/>
-    <updated>2014-03-09T20:49:34+00:00</updated>
+    <updated>2014-03-09T21:49:34+01:00</updated>
     <id>http://paulsec.github.io/blog/2014/03/09/dealing-with-html-submits-conflict</id>
     <content type="html"><![CDATA[<p>This first post is related with one of my project : CSRFT.
 CSRFT is a Cross Site Request Forgery (CSRF) vulnerabilities Toolkit.</p>
@@ -3367,7 +3367,7 @@ Using this technique, I&rsquo;ve been able to &ldquo;overwrite&rdquo; those (con
   <entry>
     <title type="html"><![CDATA[Starting my own blog]]></title>
     <link href="http://paulsec.github.io/blog/2014/03/04/starting-my-own-blog/"/>
-    <updated>2014-03-04T19:21:39+00:00</updated>
+    <updated>2014-03-04T20:21:39+01:00</updated>
     <id>http://paulsec.github.io/blog/2014/03/04/starting-my-own-blog</id>
     <content type="html"><![CDATA[<p>Starting my own blog has been something I really wanted to do.
 I&rsquo;ll add post related to my different projects but also on Web security.</p>

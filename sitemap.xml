@@ -2,104 +2,104 @@
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
         <loc>http://paulsec.github.io/blog/2014/03/04/starting-my-own-blog/</loc>
-        <lastmod>2014-03-09T21:54:26+00:00</lastmod>
+        <lastmod>2017-04-18T19:26:02+02:00</lastmod>
     </url>
     <url>
         <loc>http://paulsec.github.io/blog/2014/03/09/dealing-with-html-submits-conflict/</loc>
-        <lastmod>2014-03-20T22:47:50+00:00</lastmod>
+        <lastmod>2017-04-18T19:26:02+02:00</lastmod>
     </url>
     <url>
         <loc>http://paulsec.github.io/blog/2014/03/20/xss-callback/</loc>
-        <lastmod>2014-03-20T17:14:42+00:00</lastmod>
+        <lastmod>2017-04-18T19:26:02+02:00</lastmod>
     </url>
     <url>
         <loc>
             http://paulsec.github.io/blog/2014/03/28/python-plus-transmission-daemon-equals-download-easily-your-favorite-tv-show/
         </loc>
-        <lastmod>2014-04-21T10:00:06+01:00</lastmod>
+        <lastmod>2017-04-18T19:26:02+02:00</lastmod>
     </url>
     <url>
         <loc>http://paulsec.github.io/blog/2014/04/08/vulnos-write-up/</loc>
-        <lastmod>2014-04-10T21:40:00+01:00</lastmod>
+        <lastmod>2017-04-18T19:26:02+02:00</lastmod>
     </url>
     <url>
         <loc>http://paulsec.github.io/blog/2014/04/14/updating-openfuck-exploit/</loc>
-        <lastmod>2014-04-14T20:11:45+01:00</lastmod>
+        <lastmod>2017-04-18T19:26:02+02:00</lastmod>
     </url>
     <url>
         <loc>http://paulsec.github.io/blog/2014/04/14/kioptrix-1-write-up/</loc>
-        <lastmod>2014-04-15T19:32:25+01:00</lastmod>
+        <lastmod>2017-04-18T19:26:02+02:00</lastmod>
     </url>
     <url>
         <loc>
             http://paulsec.github.io/blog/2014/04/15/exploit-kb-vulnerable-web-app-1-write-up/
         </loc>
-        <lastmod>2014-04-15T20:00:13+01:00</lastmod>
+        <lastmod>2017-04-18T19:26:02+02:00</lastmod>
     </url>
     <url>
         <loc>http://paulsec.github.io/blog/2014/04/15/kioptrix-2-write-up/</loc>
-        <lastmod>2014-04-16T21:28:25+01:00</lastmod>
+        <lastmod>2017-04-18T19:26:02+02:00</lastmod>
     </url>
     <url>
         <loc>http://paulsec.github.io/blog/2014/04/16/scream-write-up/</loc>
-        <lastmod>2014-04-21T09:58:26+01:00</lastmod>
+        <lastmod>2017-04-18T19:26:02+02:00</lastmod>
     </url>
     <url>
         <loc>http://paulsec.github.io/blog/2014/04/21/bwapp-write-up/</loc>
-        <lastmod>2014-04-21T14:39:10+01:00</lastmod>
+        <lastmod>2017-04-18T19:26:02+02:00</lastmod>
     </url>
     <url>
         <loc>http://paulsec.github.io/blog/2014/04/29/bsides-slides-csrft/</loc>
-        <lastmod>2014-04-30T18:46:07+01:00</lastmod>
+        <lastmod>2017-04-18T19:26:02+02:00</lastmod>
     </url>
     <url>
         <loc>
             http://paulsec.github.io/blog/2014/05/05/blind-hql-injection-in-rest-api-using-h2-dbms/
         </loc>
-        <lastmod>2014-05-05T21:53:06+01:00</lastmod>
+        <lastmod>2017-04-18T19:26:02+02:00</lastmod>
     </url>
     <url>
         <loc>http://paulsec.github.io/blog/2014/05/12/secos-1-first-vm-out/</loc>
-        <lastmod>2014-05-12T21:03:33+01:00</lastmod>
+        <lastmod>2017-04-18T19:26:02+02:00</lastmod>
     </url>
     <url>
         <loc>
             http://paulsec.github.io/blog/2014/05/13/http-security-headers-on-top-10k-alexa-websites/
         </loc>
-        <lastmod>2014-05-14T19:25:43+01:00</lastmod>
+        <lastmod>2017-04-18T19:26:02+02:00</lastmod>
     </url>
     <url>
         <loc>http://paulsec.github.io/blog/2014/05/15/bobby-write-up/</loc>
-        <lastmod>2014-05-15T21:36:24+01:00</lastmod>
+        <lastmod>2017-04-18T19:26:02+02:00</lastmod>
     </url>
     <url>
         <loc>http://paulsec.github.io/blog/2014/06/02/diving-into-xss-googles-game/</loc>
-        <lastmod>2014-06-03T16:55:12+01:00</lastmod>
+        <lastmod>2017-04-18T19:26:02+02:00</lastmod>
     </url>
     <url>
         <loc>http://paulsec.github.io/blog/2014/06/12/kioptrix-3-write-up/</loc>
-        <lastmod>2014-06-12T21:04:28+01:00</lastmod>
+        <lastmod>2017-04-18T19:26:02+02:00</lastmod>
     </url>
     <url>
         <loc>http://paulsec.github.io/blog/2014/07/03/experiments-with-upnp/</loc>
-        <lastmod>2014-07-03T22:44:26+01:00</lastmod>
+        <lastmod>2017-04-18T19:26:02+02:00</lastmod>
     </url>
     <url>
         <loc>
             http://paulsec.github.io/blog/2015/06/07/running-sslscan-on-5k-servers-taken-from-alexas-top-10k/
         </loc>
-        <lastmod>2015-06-07T20:07:05+01:00</lastmod>
+        <lastmod>2017-04-18T19:26:02+02:00</lastmod>
     </url>
     <url>
         <loc>http://paulsec.github.io/blog/archives/</loc>
-        <lastmod>2015-06-07T20:07:05+01:00</lastmod>
+        <lastmod>2017-04-18T19:26:02+02:00</lastmod>
     </url>
     <url>
         <loc>http://paulsec.github.io/</loc>
-        <lastmod>2015-06-07T20:07:05+01:00</lastmod>
+        <lastmod>2017-04-18T19:26:02+02:00</lastmod>
     </url>
     <url>
         <loc>http://paulsec.github.io/robots.txt</loc>
-        <lastmod>2014-03-09T21:53:41+00:00</lastmod>
+        <lastmod>2017-04-18T19:26:02+02:00</lastmod>
     </url>
 </urlset>
