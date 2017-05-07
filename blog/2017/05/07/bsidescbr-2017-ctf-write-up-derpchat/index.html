@@ -121,7 +121,7 @@ So the scenario I now had in mind was:</p>
 </ul>
 
 
-<p>The exploit was basically this one, extremely simple, just triggering a simple for to exploit the XSS and sends me back the cookie to my Apache server.</p>
+<p>The exploit was basically this one &ndash; just triggering a simple form to exploit the XSS and send back the cookie to my Apache server.</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -143,7 +143,7 @@ So the scenario I now had in mind was:</p>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>After grabbing the admin&rsquo;s cookie, I just replaced it in my browser and managed to get access to the admin interface.</p>
+<p>After grabbing the admin&rsquo;s cookie, I just replaced it in my current browser&rsquo;s session and managed to get access to the admin interface.</p>
 
 <p>There, I finally got access to the administration interface (yay!) and the functionality was some kind of &lsquo;User Management&rsquo; utility.
 I got the point (based on the error messages) that there was a SQL injection and the DBMS was SQLite. Morever, during the recon, I managed to retrieve the name of a table: <code>Users</code> (important point).</p>
