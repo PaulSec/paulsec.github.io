@@ -4,7 +4,7 @@
   <title><![CDATA[PaulSec's blog]]></title>
   <link href="http://paulsec.github.io/atom.xml" rel="self"/>
   <link href="http://paulsec.github.io/"/>
-  <updated>2017-05-06T13:36:10+02:00</updated>
+  <updated>2017-05-07T12:35:55+02:00</updated>
   <id>http://paulsec.github.io/</id>
   <author>
     <name><![CDATA[Paul A. (PaulSec)]]></name>
@@ -12,6 +12,15 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[BSidesCBR 2017 CTF Write-Up: DerpChat]]></title>
+    <link href="http://paulsec.github.io/blog/2017/05/07/bsidescbr-2017-ctf-write-up-derpchat/"/>
+    <updated>2017-05-07T11:28:21+02:00</updated>
+    <id>http://paulsec.github.io/blog/2017/05/07/bsidescbr-2017-ctf-write-up-derpchat</id>
+    <content type="html"><![CDATA[<p>Bla</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[BSidesCBR 2017 CTF Write-Up: needleinahaystack]]></title>
@@ -3393,85 +3402,6 @@ You&rsquo;ll be able to launch the Node.js server with your own module using thi
 <p>Using the strenght of Node.js and the amount of modules, you can manage to create any attack you want to perform really easily.</p>
 
 <p>So.. hope you liked it and see you next time :&ndash;)</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Dealing with HTML Submit's conflict]]></title>
-    <link href="http://paulsec.github.io/blog/2014/03/09/dealing-with-html-submits-conflict/"/>
-    <updated>2014-03-09T21:49:34+01:00</updated>
-    <id>http://paulsec.github.io/blog/2014/03/09/dealing-with-html-submits-conflict</id>
-    <content type="html"><![CDATA[<p>This first post is related with one of my project : CSRFT.
-CSRFT is a Cross Site Request Forgery (CSRF) vulnerabilities Toolkit.</p>
-
-<p>My toolkit allows you to exploit either GET and POST HTTP Requests.
-During some testings, I had issues with some specific forms.</p>
-
-<p>Let&rsquo;s take an example of such form :</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">&quot;http://website.com/blog/&quot;</span> <span class="na">id=</span><span class="s">&quot;form&quot;</span> <span class="na">method=</span><span class="s">&quot;get&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'><span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;assistive-text&quot;</span> <span class="na">for=</span><span class="s">&quot;s&quot;</span><span class="nt">&gt;</span>Search<span class="nt">&lt;/label&gt;</span>
-</span><span class='line'><span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">&quot;field&quot;</span> <span class="na">id=</span><span class="s">&quot;s&quot;</span> <span class="na">name=</span><span class="s">&quot;s&quot;</span> <span class="na">placeholder=</span><span class="s">&quot;Search&quot;</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">value=</span><span class="s">&quot;Search Value&quot;</span><span class="nt">/&gt;</span>
-</span><span class='line'><span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">&quot;submit&quot;</span> <span class="na">id=</span><span class="s">&quot;searchsubmit&quot;</span> <span class="na">name=</span><span class="s">&quot;submit&quot;</span> <span class="na">type=</span><span class="s">&quot;submit&quot;</span> <span class="na">value=</span><span class="s">&quot;Search&quot;</span><span class="nt">/&gt;</span>
-</span><span class='line'><span class="nt">&lt;/form&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>The code injected on the page to submit the form was like that :</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#form&quot;</span><span class="p">).</span><span class="nx">submit</span><span class="p">();</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>However, the form was not submitted.</p>
-
-<h2>Why ?</h2>
-
-<p>After browsing the internet, I found that there was a conflict with the <strong>submit</strong> input.</p>
-
-<p>Let&rsquo;s try to debug wih <strong>FireBug</strong> :</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#form&quot;</span><span class="p">).</span><span class="nx">submit</span><span class="p">();</span>
-</span><span class='line'><span class="nx">TypeError</span><span class="o">:</span> <span class="nx">$</span><span class="p">(...).</span><span class="nx">submit</span> <span class="nx">is</span> <span class="nx">not</span> <span class="nx">a</span> <span class="kd">function</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>And then :</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#form&quot;</span><span class="p">).</span><span class="nx">submit</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">input</span> <span class="nx">id</span><span class="o">=</span><span class="s2">&quot;searchsubmit&quot;</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;submit&quot;</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&quot;submit&quot;</span> <span class="nx">value</span><span class="o">=</span><span class="s2">&quot;Search&quot;</span> <span class="nx">name</span><span class="o">=</span><span class="s2">&quot;submit&quot;</span><span class="o">&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>As I said earlier, this is because there&rsquo;s a conflict with the <strong>Submit</strong> input.
-When there&rsquo;s such input, it&rsquo;s then not possible to &ldquo;force&rdquo; the victim to send the payload.</p>
-
-<h2>How to force submitting it ?</h2>
-
-<p>To submit a form, you can use the <strong>native function</strong>.</p>
-
-<p>Basic example :</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">HTMLFormElement</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">submit</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;forum&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]);</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>With such example, the argument of the function is the selector of the form.
-Here, you submit the first form that you find in the DOM.
-Using this technique, I&rsquo;ve been able to &ldquo;overwrite&rdquo; those (conflicts) inputs and submit the form even if it contains some.</p>
-
-<p>Have fun !</p>
 ]]></content>
   </entry>
   
