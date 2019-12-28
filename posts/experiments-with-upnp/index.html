@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    
+    
+
+
+    <head>
+    <link href="https://gmpg.org/xfn/11" rel="profile">
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Cache-Control" content="public" />
+<!-- Enable responsiveness on mobile devices -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="generator" content="Hugo 0.62.0" />
+
+    
+    
+    
+
+<title>Experiments with UPnP • </title>
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Experiments with UPnP"/>
+<meta name="twitter:description" content="This post deals with recent observations regarding UPnP (Universal Plug and Play) protocol &amp; Routers. In few words, thanks to this protocol, devices (such as file sharing services, games, ..) can be easily connected/deployed.
+First, I started to do research on my box to find relevant UPnP functionalities by hand, found some but I had trouble to exploit them. Few days ago, David Middlehurst released a tool called &ldquo;UPnP Pentest Toolkit&rdquo;."/>
+
+<meta property="og:title" content="Experiments with UPnP" />
+<meta property="og:description" content="This post deals with recent observations regarding UPnP (Universal Plug and Play) protocol &amp; Routers. In few words, thanks to this protocol, devices (such as file sharing services, games, ..) can be easily connected/deployed.
+First, I started to do research on my box to find relevant UPnP functionalities by hand, found some but I had trouble to exploit them. Few days ago, David Middlehurst released a tool called &ldquo;UPnP Pentest Toolkit&rdquo;." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://paulsec.github.io/posts/experiments-with-upnp/" />
+<meta property="article:published_time" content="2014-07-03T00:00:00+00:00" />
+<meta property="article:modified_time" content="2014-07-03T00:00:00+00:00" /><meta property="og:site_name" content="PaulSec&#39;s Blog" />
+
+
+    
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/scss/hyde-hyde.92c66d107d7b219f0792cfd67223179af884b03f386ac46894f9f735932bbca3.css" integrity="sha256-ksZtEH17IZ8Hks/WciMXmviEsD84asRolPn3NZMrvKM=">
+
+
+<link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
+
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+    <link rel="shortcut icon" href="/favicon.png">
+    
+    
+
+</head>
+
+
+    <body class=" ">
+    
+<div class="sidebar">
+  <div class="container ">
+    <div class="sidebar-about">
+      <span class="site__title">
+        <a href="http://paulsec.github.io"></a>
+      </span>
+      
+        
+        
+        
+        <div class="author-image">
+          <img src="http://paulsec.github.ioimg/profile.png" alt="Author Image" class="img--circle img--headshot element--center">
+        </div>
+        
+      
+      
+      <p class="site__description">
+        
+      </p>
+    </div>
+    <div class="collapsible-menu">
+      <input type="checkbox" id="menuToggle">
+      <label for="menuToggle"></label>
+      <div class="menu-content">
+        <div>
+	<ul class="sidebar-nav">
+		 
+		
+	</ul>
+</div>
+
+        <section class="social">
+	
+	<a href="https://twitter.com/@PaulWebSec" rel="me"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	<a href="https://github.com/PaulSec" rel="me"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</section>
+
+      </div>
+    </div>
+    
+<div class="copyright">
+  &copy; 2019 Paul A.
+  
+    <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>
+  
+</div>
+
+
+<div class="builtwith">
+Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.com/htr3n/hyde-hyde">hyde-hyde</a>.
+</div>
+
+
+  </div>
+</div>
+
+        <div class="content container">
+            
+    
+<article>
+  <header>
+    <h1>Experiments with UPnP</h1>
+    
+    
+<div class="post__meta">
+    
+    
+      <i class="fas fa-calendar-alt"></i> Jul 3, 2014
+    
+    
+    
+      
+      
+          in
+          
+          
+              <a class="badge badge-category" href="/categories/research">RESEARCH</a>
+              •
+          
+              <a class="badge badge-category" href="/categories/upnp">UPNP</a>
+              •
+          
+              <a class="badge badge-category" href="/categories/vuln">VULN</a>
+              
+          
+      
+    
+    
+    
+    <br/>
+    <i class="fas fa-clock"></i> 4 min read
+</div>
+
+
+  </header>
+  
+  
+  <div class="post">
+    <p>This post deals with recent observations regarding UPnP (<em>Universal Plug and Play</em>) protocol &amp; Routers.
+In few words, thanks to this protocol, devices (such as file sharing services, games, ..) can be easily connected/deployed.</p>
+<p>First, I started to do research on my box to find relevant UPnP functionalities by hand, found some but I had trouble to exploit them.
+Few days ago, David Middlehurst released a tool called <a href="https://github.com/nccgroup/UPnP-Pentest-Toolkit">&ldquo;UPnP Pentest Toolkit&rdquo;</a>.</p>
+<p>Quick description of the tool that you can find on Github:</p>
+<p><em>This tool aims to bring together a range of UPnP assessment features, enabling quick assessment with minimal configuration and set-up. It has been developed to aid security consultants in exploring, spoofing and manipulating of UPnP devices and the underlying protocols at work. It is intended as a proof of concept to be used for research purposes in a trusted environment.</em></p>
+<p>I decided to try it, and I was able to browse all my devices having UPnpP functionalities.
+I'll not go through all the features of the tool but feel free to check it out. I'll mostly speak about my experiment using my router.</p>
+<p>The version of my router didn't &ldquo;allow&rdquo; me to NAT ports so I couldn't access my internal SSH Server, Web servers, VPN etc.
+Clearly, marketing bullshit.
+However, thanks to this tool, I managed to enumerate the different functions that I was allowed to perform. Here is the list:</p>
+<pre><code>Actions:
+    GetSpecificPortMappingEntry
+        &lt;-NewLeaseDuration
+            Data Type: ui4
+        &lt;-NewPortMappingDescription
+            Data Type: string
+        &lt;-NewEnabled
+            Data Type: boolean
+        &lt;-NewInternalClient
+            Data Type: string
+        &lt;-NewInternalPort
+            Data Type: ui2
+        -&gt;NewProtocol
+            Allowed Value 2: UDP
+            Allowed Value 1: TCP
+            Data Type: string
+        -&gt;NewExternalPort
+            Data Type: ui2
+        -&gt;NewRemoteHost
+            Data Type: string
+    GetGenericPortMappingEntry
+        &lt;-NewLeaseDuration
+            Data Type: ui4
+        &lt;-NewPortMappingDescription
+            Data Type: string
+        &lt;-NewEnabled
+            Data Type: boolean
+        &lt;-NewInternalClient
+            Data Type: string
+        &lt;-NewInternalPort
+            Data Type: ui2
+        &lt;-NewProtocol
+            Allowed Value 2: UDP
+            Allowed Value 1: TCP
+            Data Type: string
+        &lt;-NewExternalPort
+            Data Type: ui2
+        &lt;-NewRemoteHost
+            Data Type: string
+        -&gt;NewPortMappingIndex
+            Data Type: ui2
+    ForceTermination
+    RequestConnection
+    GetConnectionTypeInfo
+        &lt;-NewPossibleConnectionTypes
+            Allowed Value 3: IP_Bridged
+            Allowed Value 2: IP_Routed
+            Allowed Value 1: Unconfigured
+            Data Type: string
+        &lt;-NewConnectionType
+            Data Type: string
+    SetConnectionType
+        -&gt;NewConnectionType
+            Data Type: string
+    DeletePortMapping
+        -&gt;NewProtocol
+            Allowed Value 2: UDP
+            Allowed Value 1: TCP
+            Data Type: string
+        -&gt;NewExternalPort
+            Data Type: ui2
+        -&gt;NewRemoteHost
+            Data Type: string
+    GetExternalIPAddress
+        &lt;-NewExternalIPAddress
+            Data Type: string
+    AddPortMapping
+        -&gt;NewLeaseDuration
+            Data Type: ui4
+        -&gt;NewPortMappingDescription
+            Data Type: string
+        -&gt;NewEnabled
+            Data Type: boolean
+        -&gt;NewInternalClient
+            Data Type: string
+        -&gt;NewInternalPort
+            Data Type: ui2
+        -&gt;NewProtocol
+            Allowed Value 2: UDP
+            Allowed Value 1: TCP
+            Data Type: string
+        -&gt;NewExternalPort
+            Data Type: ui2
+        -&gt;NewRemoteHost
+            Data Type: string
+    GetCommonLinkProperties
+        &lt;-NewPhysicalLinkStatus
+            Allowed Value 4: Unavailable
+            Allowed Value 3: Initializing
+            Allowed Value 2: Down
+            Allowed Value 1: Up
+            Data Type: string
+        &lt;-NewLayer1DownstreamMaxBitRate
+            Data Type: ui4
+        &lt;-NewLayer1UpstreamMaxBitRate
+            Data Type: ui4
+        &lt;-NewWANAccessType
+            Allowed Value 4: Ethernet
+            Allowed Value 3: Cable
+            Allowed Value 2: POTS
+            Allowed Value 1: DSL
+            Data Type: string
+    GetDefaultConnectionService
+        &lt;-NewDefaultConnectionService
+            Data Type: string
+    SetDefaultConnectionService
+        -&gt;NewDefaultConnectionService
+            Data Type: string
+
+            (...)
+</code></pre><p>One of them was interesting. Saw which one? - the <strong>AddPortMapping</strong> functionality.
+Thanks to this, you can add a &ldquo;Port Mapping&rdquo; or directly create a NAT rule. Without authentication, just one HTTP Request.</p>
+<p>Format of UPnP communication is based on SOAP (<em>Simple Object Access Protocol</em>) and its structure is composed of an &ldquo;envelope&rdquo;, a XML-based structure.
+Here is the structure for the AddPortMapping request:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34;?&gt;</span>
+<span style="color:#f92672">&lt;s:Envelope</span> <span style="color:#a6e22e">xmlns:s=</span><span style="color:#e6db74">&#34;http://schemas.xmlsoap.org/soap/envelope/&#34;</span> <span style="color:#a6e22e">s:encodingStyle=</span><span style="color:#e6db74">&#34;http://schemas.xmlsoap.org/soap/encoding/&#34;</span><span style="color:#f92672">&gt;</span>
+    <span style="color:#f92672">&lt;s:Body</span><span style="color:#f92672">&gt;</span>
+        <span style="color:#f92672">&lt;u:AddPortMapping</span> <span style="color:#a6e22e">xmlns:u=</span><span style="color:#e6db74">&#34;urn:schemas-upnp-org:service:WANPPPConnection:1&#34;</span><span style="color:#f92672">&gt;</span>
+            <span style="color:#f92672">&lt;NewRemoteHost</span><span style="color:#f92672">&gt;</span><span style="color:#f92672">&lt;/NewRemoteHost&gt;</span>
+            <span style="color:#f92672">&lt;NewExternalPort</span><span style="color:#f92672">&gt;</span>9999<span style="color:#f92672">&lt;/NewExternalPort&gt;</span>
+            <span style="color:#f92672">&lt;NewProtocol</span><span style="color:#f92672">&gt;</span>TCP<span style="color:#f92672">&lt;/NewProtocol&gt;</span>
+            <span style="color:#f92672">&lt;NewInternalPort</span><span style="color:#f92672">&gt;</span>9999<span style="color:#f92672">&lt;/NewInternalPort&gt;</span>
+            <span style="color:#f92672">&lt;NewInternalClient</span><span style="color:#f92672">&gt;</span>192.168.1.91<span style="color:#f92672">&lt;/NewInternalClient&gt;</span>
+            <span style="color:#f92672">&lt;NewEnabled</span><span style="color:#f92672">&gt;</span>1<span style="color:#f92672">&lt;/NewEnabled&gt;</span>
+            <span style="color:#f92672">&lt;NewPortMappingDescription</span><span style="color:#f92672">&gt;</span>omgwtfbbq<span style="color:#f92672">&lt;/NewPortMappingDescription&gt;</span>
+            <span style="color:#f92672">&lt;NewLeaseDuration</span><span style="color:#f92672">&gt;</span>0<span style="color:#f92672">&lt;/NewLeaseDuration&gt;</span>
+        <span style="color:#f92672">&lt;/u:AddPortMapping&gt;</span>
+    <span style="color:#f92672">&lt;/s:Body&gt;</span>
+<span style="color:#f92672">&lt;/s:Envelope&gt;</span>
+</code></pre></div><p>You can find useful information on <a href="http://www.upnp-hacks.org/igd.html">UPnP hacks</a> - contains amazing resources on UPnP.</p>
+<p>Well, to send directly a SOAP from Linux, here is an &ldquo;easy-way&rdquo; if you want to do it by hand:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">curl -X POST --data @body_soap.txt http://192.168.1.254:46465/ctl/IPConn -H <span style="color:#e6db74">&#39;SOAPAction: &#34;urn:schemas-upnp-org:service:WANIPConnection:1#AddPortMapping&#34;&#39;</span> -H <span style="color:#e6db74">&#39;Host: 192.168.1.254:46465&#39;</span>
+</code></pre></div><p>And in <strong>body_soap.txt</strong> the XML structure with all the settings defined as we saw above.</p>
+<p>If the request succeeded, the response should looks like this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34;?&gt;</span>
+<span style="color:#f92672">&lt;s:Envelope</span> <span style="color:#a6e22e">xmlns:s=</span><span style="color:#e6db74">&#34;http://schemas.xmlsoap.org/soap/envelope/&#34;</span> <span style="color:#a6e22e">s:encodingStyle=</span><span style="color:#e6db74">&#34;http://schemas.xmlsoap.org/soap/encoding/&#34;</span><span style="color:#f92672">&gt;</span><span style="color:#f92672">&lt;s:Body</span><span style="color:#f92672">&gt;</span><span style="color:#f92672">&lt;u:AddPortMappingResponse</span> <span style="color:#a6e22e">xmlns:u=</span><span style="color:#e6db74">&#34;urn:schemas-upnp-org:service:WANIPConnection:1&#34;</span><span style="color:#f92672">/&gt;</span><span style="color:#f92672">&lt;/s:Body&gt;</span><span style="color:#f92672">&lt;/s:Envelope&gt;</span>
+</code></pre></div><p>So, in few words:</p>
+<ul>
+<li>Learning stuffs about UPnP was fun and I'm sure there's even more to do with it,</li>
+<li>UPT is a fun tool,</li>
+<li>I found nice tricks, and I can now NAT ports easily bypassing ISP's stupid rules.</li>
+</ul>
+<p>I think I'll write another post on WFA-Device which stands for <em>Wi-Fi Alliance Device</em> and their UPnP functionalities.
+It seems there's some fun stuffs about it.</p>
+
+  </div>
+  
+
+<div class="navigation navigation-single">
+    
+    <a href="/posts/kioptrix-3-write-up/" class="navigation-prev">
+      <i aria-hidden="true" class="fa fa-chevron-left"></i>
+      <span class="navigation-tittle">Kioptrix 3 Write-up</span>
+    </a>
+    
+    
+    <a href="/posts/running-sslscan-on-5k-servers-taken-from-alexas-top-10k/" class="navigation-next">
+      <span class="navigation-tittle">Running SSLScan on 5k servers taken from Alexa&#39;s top 10k</span>
+      <i aria-hidden="true" class="fa fa-chevron-right"></i>
+    </a>
+    
+</div>
+
+
+  
+
+  
+    
+
+
+</article>
+
+
+        </div>
+        
+    
+
+<script defer src="https://use.fontawesome.com/releases/v5.5.0/js/all.js" integrity="sha384-GqVMZRt5Gn7tB9D9q7ONtcp4gtHIUEW/yG7h98J7IpE3kpi+srfFyyB/04OV6pG0" crossorigin="anonymous"></script>
+
+
+    
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+        
+    
+    <script type="text/javascript">
+        
+        hljs.initHighlightingOnLoad();
+    </script>
+    
+
+
+
+
+    
+
+
+
+    </body>
+</html>
