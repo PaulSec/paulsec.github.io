@@ -1,4 +1,0 @@
-User-agent: *
-Disallow: 
-
-Sitemap: http://paulsec.github.io/sitemap.xml 
