@@ -6,10 +6,20 @@
     <description>Recent content on </description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 07 May 2017 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 28 Dec 2019 15:58:01 +0100</lastBuildDate>
     
 	<atom:link href="http://paulsec.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Corelan Bootcamp Review</title>
+      <link>http://paulsec.github.io/posts/corelan-bootcamp-review-2018/</link>
+      <pubDate>Sat, 28 Dec 2019 15:58:01 +0100</pubDate>
+      
+      <guid>http://paulsec.github.io/posts/corelan-bootcamp-review-2018/</guid>
+      <description>Time to relieve this blog and I think that a review of the Corelan Bootcamp training is the perfect occasion! I had in mind to try the OSCE certification and I felt I needed to go beyond just basic buffer overflows that you might come by with OSCP for example.
+I&#39;ve had the chance to attend this training at Hack in Paris in June 2018 and I will try to give as much insights as I can without telling too much (because of NDA).</description>
+    </item>
     
     <item>
       <title>BSidesCBR 2017 CTF Write-Up: Derpchat</title>
