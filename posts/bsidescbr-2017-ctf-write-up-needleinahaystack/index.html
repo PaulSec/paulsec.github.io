@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    
+    
+
+
+    <head>
+    <link href="https://gmpg.org/xfn/11" rel="profile">
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Cache-Control" content="public" />
+<!-- Enable responsiveness on mobile devices -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="generator" content="Hugo 0.62.0" />
+
+    
+    
+    
+
+<title>BSidesCBR 2017 CTF Write-Up: Needleinahaystack • </title>
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="BSidesCBR 2017 CTF Write-Up: Needleinahaystack"/>
+<meta name="twitter:description" content="Hello everyone!
+Such a long time since I didn’t post any article. Here is a quick write-up for the BSidesCBR Cryto challenge for “needleinahaystack”.
+Before diving in the challenge, huge props to all the organizers and OJ for making those challs available to everyone with Docker containers and stuff (more write-ups coming soon).
+If you guys want to give it a shot, here you go, all challs are available here. The challenge we will discuss in this post (needleinahaystack) is located here."/>
+
+<meta property="og:title" content="BSidesCBR 2017 CTF Write-Up: Needleinahaystack" />
+<meta property="og:description" content="Hello everyone!
+Such a long time since I didn’t post any article. Here is a quick write-up for the BSidesCBR Cryto challenge for “needleinahaystack”.
+Before diving in the challenge, huge props to all the organizers and OJ for making those challs available to everyone with Docker containers and stuff (more write-ups coming soon).
+If you guys want to give it a shot, here you go, all challs are available here. The challenge we will discuss in this post (needleinahaystack) is located here." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://paulsec.github.io/posts/bsidescbr-2017-ctf-write-up-needleinahaystack/" />
+<meta property="article:published_time" content="2017-05-06T00:00:00+00:00" />
+<meta property="article:modified_time" content="2017-05-06T00:00:00+00:00" /><meta property="og:site_name" content="PaulSec&#39;s Blog" />
+
+
+    
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/scss/hyde-hyde.92c66d107d7b219f0792cfd67223179af884b03f386ac46894f9f735932bbca3.css" integrity="sha256-ksZtEH17IZ8Hks/WciMXmviEsD84asRolPn3NZMrvKM=">
+
+
+<link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
+
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+    <link rel="shortcut icon" href="/favicon.png">
+    
+    
+
+</head>
+
+
+    <body class=" ">
+    
+<div class="sidebar">
+  <div class="container ">
+    <div class="sidebar-about">
+      <span class="site__title">
+        <a href="http://paulsec.github.io/"></a>
+      </span>
+      
+        
+        
+        
+        <div class="author-image">
+          <img src="http://paulsec.github.io/img/profile.png" alt="Author Image" class="img--circle img--headshot element--center">
+        </div>
+        
+      
+      
+      <p class="site__description">
+        
+      </p>
+    </div>
+    <div class="collapsible-menu">
+      <input type="checkbox" id="menuToggle">
+      <label for="menuToggle"></label>
+      <div class="menu-content">
+        <div>
+	<ul class="sidebar-nav">
+		 
+		
+	</ul>
+</div>
+
+        <section class="social">
+	
+	<a href="https://twitter.com/@PaulWebSec" rel="me"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	<a href="https://github.com/PaulSec" rel="me"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</section>
+
+      </div>
+    </div>
+    
+<div class="copyright">
+  &copy; 2019 Paul A.
+  
+    <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>
+  
+</div>
+
+
+<div class="builtwith">
+Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.com/htr3n/hyde-hyde">hyde-hyde</a>.
+</div>
+
+
+  </div>
+</div>
+
+        <div class="content container">
+            
+    
+<article>
+  <header>
+    <h1>BSidesCBR 2017 CTF Write-Up: Needleinahaystack</h1>
+    
+    
+<div class="post__meta">
+    
+    
+      <i class="fas fa-calendar-alt"></i> May 6, 2017
+    
+    
+    
+      
+      
+          in
+          
+          
+              <a class="badge badge-category" href="/categories/ctf">CTF</a>
+              •
+          
+              <a class="badge badge-category" href="/categories/write-up">WRITE-UP</a>
+              
+          
+      
+    
+    
+    
+    <br/>
+    <i class="fas fa-clock"></i> 3 min read
+</div>
+
+
+  </header>
+  
+  
+  <div class="post">
+    <p>Hello everyone!</p>
+<p>Such a long time since I didn’t post any article. Here is a quick write-up for the BSidesCBR Cryto challenge for “needleinahaystack”.</p>
+<p>Before diving in the challenge, huge props to all the organizers and OJ for making those challs available to everyone with Docker containers and stuff (more write-ups coming soon).</p>
+<p>If you guys want to give it a shot, here you go, all challs are available here. The challenge we will discuss in this post (needleinahaystack) is located here.</p>
+<p>The description was fairly short:</p>
+<pre><code>Single byte XOR's are easy to solve... 
+But can you find the needle in the haystack? One of these are the flag XOR'd with a single byte. 
+Look at the contents of single_byte_xor.
+</code></pre><p>So basically, you get one file, full of hex encoded strings and you need to retrieve the flag. Since we knew flags were something like “BSIDES_CTF{BLABLABLA}”, what I imagined was:</p>
+<p>Hex decoding the strings
+XOR’ing the first character with ‘B’ to get the XOR key. (Equation was: ‘B’ ^ key = first_char). Since we had the first character and we knew the flag was starting with ‘B’, it is trivial to get the key.
+Then iterate all over the string with the XOR key we retrieved
+Check if the the output string contains ‘BSIDES_CTF’ (aka. the flag)
+This Python code does not check if the string contains ‘BSIDES’ before outputing it on the screen, it just checks that the second character was an ’S’ to it brings couple of false positives, but still works.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">with</span> open(<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">/tmp/single_byte_xor.txt</span><span style="color:#e6db74">&#39;</span>) <span style="color:#66d9ef">as</span> f:
+    data <span style="color:#f92672">=</span> f<span style="color:#f92672">.</span>readlines()
+
+<span style="color:#66d9ef">for</span> line <span style="color:#f92672">in</span> data:
+    line <span style="color:#f92672">=</span> line<span style="color:#f92672">.</span>rstrip()
+    <span style="color:#66d9ef">if</span> len(line) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>:
+        tmp <span style="color:#f92672">=</span> line<span style="color:#f92672">.</span>decode(<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">hex</span><span style="color:#e6db74">&#39;</span>)
+        key <span style="color:#f92672">=</span> ord(tmp[<span style="color:#ae81ff">0</span>]) <span style="color:#f92672">^</span> ord(<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">B</span><span style="color:#e6db74">&#39;</span>)
+        <span style="color:#66d9ef">if</span> chr(ord(tmp[<span style="color:#ae81ff">1</span>]) <span style="color:#f92672">^</span> key) <span style="color:#f92672">==</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">S</span><span style="color:#e6db74">&#39;</span>:
+            <span style="color:#66d9ef">print</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">line: {}, key: {}</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">.</span>format(line, key)
+            <span style="color:#66d9ef">for</span> char <span style="color:#f92672">in</span> tmp:
+                <span style="color:#66d9ef">print</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">.</span>format(chr(ord(char) <span style="color:#f92672">^</span> key)),
+</code></pre></div><p>And the output is:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ python get_strings.py
+
+line: 1809ddd2e826fb2c96cb51aa71c94af8e425d55eb47327c6d9ea158b0206fc31bb99d482, key: <span style="color:#ae81ff">90</span>
+B S � � � | � v � �
+                    � + �  � �  �  � <span style="color:#f92672">)</span> <span style="color:#f92672">}</span> � � � O � X <span style="color:#ae81ff">\ </span>� k � � � �
+
+line: f8e9bce065cb70d51b505a4492433938fe11bb94d02efbdd417e1bbf312002fc8b43f732, key: <span style="color:#ae81ff">186</span>
+B S  Z � q � o � � � � <span style="color:#f92672">(</span> � � � D �  . j � A g � � �  � � � F <span style="color:#ae81ff">1</span> � M �
+
+line: eafbac7a084b2c7bbafb9a5d235cb66a63d395e5f53e1034465e3cc3b13f09a62cff263e, key: <span style="color:#ae81ff">168</span>
+B S  � � � � �  S <span style="color:#ae81ff">2</span> � � �  � � <span style="color:#f92672">{</span> <span style="color:#f92672">=</span> M <span style="color:#f92672">]</span> � � � � � � k  � �  � W � �
+
+line: ddccd6dbdaccc0dccbd9e4ecaef1f8f3fac0dde6a8fac0e7afedc0f6ecc0daabece6e29f, key: <span style="color:#ae81ff">159</span>
+B S I D E S _ C T F <span style="color:#f92672">{</span> s <span style="color:#ae81ff">1</span> n g l e _ B y <span style="color:#ae81ff">7</span> e _ x <span style="color:#ae81ff">0</span> r _ i s _ E <span style="color:#ae81ff">4</span> s y <span style="color:#f92672">}</span>
+
+line: c5d4ed7aba829f720d4dbec30f9fbc77fa18c444d45b1200b72c4343f5d47396c17ac574, key: <span style="color:#ae81ff">135</span>
+B S j � <span style="color:#f92672">=</span>   � � � <span style="color:#ae81ff">9</span> D �  ; � <span style="color:#f92672">}</span> � C � S � � � <span style="color:#ae81ff">0</span> � � � r S �  F � B �
+Et voilà! We got the flag : BSIDES_CTF<span style="color:#f92672">{</span>s1ngle_By7e_x0r_is_E4sy<span style="color:#f92672">}</span>.
+</code></pre></div><p>Feel free to check the other challenges if you have some time, the web ones are pretty funny.</p>
+
+  </div>
+  
+
+<div class="navigation navigation-single">
+    
+    <a href="/posts/running-sslscan-on-5k-servers-taken-from-alexas-top-10k/" class="navigation-prev">
+      <i aria-hidden="true" class="fa fa-chevron-left"></i>
+      <span class="navigation-tittle">Running SSLScan on 5k servers taken from Alexa&#39;s top 10k</span>
+    </a>
+    
+    
+    <a href="/posts/bsidescbr-2017-ctf-write-up-derpchat/" class="navigation-next">
+      <span class="navigation-tittle">BSidesCBR 2017 CTF Write-Up: Derpchat</span>
+      <i aria-hidden="true" class="fa fa-chevron-right"></i>
+    </a>
+    
+</div>
+
+
+  
+
+  
+    
+
+
+</article>
+
+
+        </div>
+        
+    
+
+<script defer src="https://use.fontawesome.com/releases/v5.5.0/js/all.js" integrity="sha384-GqVMZRt5Gn7tB9D9q7ONtcp4gtHIUEW/yG7h98J7IpE3kpi+srfFyyB/04OV6pG0" crossorigin="anonymous"></script>
+
+
+    
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+        
+    
+    <script type="text/javascript">
+        
+        hljs.initHighlightingOnLoad();
+    </script>
+    
+
+
+
+
+    
+
+
+
+    </body>
+</html>
