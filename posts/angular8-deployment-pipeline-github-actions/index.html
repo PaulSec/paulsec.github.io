@@ -188,7 +188,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     
     
     <br/>
-    <i class="fas fa-clock"></i> 5 min read
+    <i class="fas fa-clock"></i> 4 min read
 </div>
 
 
@@ -305,8 +305,7 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           username: ${{ secrets.SSH_USER }}
           privateKey: ${{ secrets.SSH_PRIVATE_KEY }}
-</code></pre></div><p>Thanks a lot for reading until here and thanks Cory for the article which helped me a lot!</p>
-<p>The last part (but not least) was to have my nginx running on the remote host and ready to serve my pages.
+</code></pre></div><p>The last part (but not least) was to have my nginx running on the remote host and ready to serve my pages.
 I truncated the file since it is serving couple of my websites in order to get you all the exact settings I needed to have.</p>
 <p>Basically, I just had to specify the root variable (equivalent with <code>/path/to/my/folder</code> in the code snippet) which has to be the remote folder specified in the <code>remote</code> variable (above in the Github action file).
 Other than that, you just need to have a specific route for <code>/</code> (which is defined in my <code>location</code> directive)</p>
@@ -336,8 +335,8 @@ http {
         }
     }
 }
-</code></pre><p>In order to check that everything worked, I just had to go to check if the webpage was live on <a href="https://beta.cfptime.org">https://beta.cfptime.org</a> and&hellip; that was the case, voilà!
-Alright, this is it! Thanks for reading and happy deployment :)</p>
+</code></pre><p>In order to check that everything worked, I just had to go to check if the webpage was live on <a href="https://beta.cfptime.org">https://beta.cfptime.org</a> and&hellip; that was the case, voilà!</p>
+<p>Thanks a lot for reading until here and thanks Cory for the article which helped me a lot (and happy deployment :))</p>
 
   </div>
   
