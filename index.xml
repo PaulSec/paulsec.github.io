@@ -6,10 +6,22 @@
     <description>Recent content on </description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 28 Dec 2019 15:58:01 +0100</lastBuildDate>
+    <lastBuildDate>Thu, 02 Jan 2020 22:09:28 +0100</lastBuildDate>
     
 	<atom:link href="http://paulsec.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Angular 8 Deployment within Github Actions Pipeline</title>
+      <link>http://paulsec.github.io/posts/angular8-deployment-pipeline-github-actions/</link>
+      <pubDate>Thu, 02 Jan 2020 22:09:28 +0100</pubDate>
+      
+      <guid>http://paulsec.github.io/posts/angular8-deployment-pipeline-github-actions/</guid>
+      <description>Hello everyone,
+Here is a small article in order to explain you how I&#39;ve deployed my Angular front-end to a server with Github actions.
+Context: You might know that I am the developer behind cfptime.org and I&#39;ve had the chance during the holidays to start re-developing the front-end using Angular. If you want to check what it looks like: https://beta.cfptime.org.
+I&#39;ve longer been a CircleCI user but it seems that the free plan is not enough in order to build my Angular project (and trust me, it&#39;s nothing ground-breaking, just couple of API calls and that&#39;s it).</description>
+    </item>
     
     <item>
       <title>Corelan Bootcamp Review</title>

@@ -23,7 +23,7 @@
 <meta property="og:description" content="PaulSec&#39;s Blog. Security &amp; lulz." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="http://paulsec.github.io/" />
-<meta property="og:updated_time" content="2019-12-28T15:58:01+01:00" /><meta property="og:site_name" content="PaulSec&#39;s Blog" />
+<meta property="og:updated_time" content="2020-01-02T22:09:28+01:00" /><meta property="og:site_name" content="PaulSec&#39;s Blog" />
 
 
     
@@ -144,7 +144,7 @@
     </div>
     
 <div class="copyright">
-  &copy; 2019 Paul A.
+  &copy; 2020 Paul A.
   
     <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>
   
@@ -164,6 +164,31 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
   <div class="post-list">
     
     
+      
+        
+      
+      <div class="post-list__item">
+        <span class="item__title--big">
+          <a href="/posts/blind-hql-injection-in-rest-api-using-h2-dbms/" >Blind HQL Injection in REST API using H2 DMBS</a>
+        </span>
+        <span class="item__date">
+          May 5, 2014
+        </span>
+        <span >
+        
+        This post deals with some research I just did regarding (Blind) HQL injections with H2 as the DataBase Management System.
+First, you should read this post which gives some really useful information regarding HQL injections in general: HQL for pentesters.
+During the assessment, I checked the API calls by using Burp as a proxy and one call was:
+http://application/API/Users/?req=id=1 The output was a JSON response, such as:
+[{user: &quot;admin&quot;, id: &quot;1&quot;, firstName:&quot;Admin&quot;}] If you changed the id with the numeric value 2, and so on.
+        
+        </span>
+        
+          ... <a class="read-more-symbol" href="/posts/blind-hql-injection-in-rest-api-using-h2-dbms/">➦</a>
+        
+        </div>
+        
+     
       
         
       
@@ -383,30 +408,6 @@ nmap -sV 192.168.56.1/24 Starting Nmap 6.
         </span>
         
           ... <a class="read-more-symbol" href="/posts/vulnos-write-up/">➦</a>
-        
-        </div>
-        
-     
-      
-        
-      
-      <div class="post-list__item">
-        <span class="item__title--big">
-          <a href="/posts/python-plus-transmission-daemon-equals-download-easily-your-favorite-tv-show/" >Python &#43; Transmission daemon = Download easily your favorite TV Show</a>
-        </span>
-        <span class="item__date">
-          Mar 28, 2014
-        </span>
-        <span >
-        
-        This post is about my last project : my TV Show Manager.
-I decided to start it because I wanted something really simple to download my favorite TV Shows. In this post, I'll explain step by step how to reproduce it at home.
-Basically, with this tutorial you'll set up your Raspberry box by :
- Installing / set-uping transmission-daemon Getting one of my latest project TVShowManager that uses my EZTV Python API.
-        
-        </span>
-        
-          ... <a class="read-more-symbol" href="/posts/python-plus-transmission-daemon-equals-download-easily-your-favorite-tv-show/">➦</a>
         
         </div>
         
