@@ -6,10 +6,22 @@
     <description>Recent content in Posts on </description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 02 Jan 2020 22:09:28 +0100</lastBuildDate>
+    <lastBuildDate>Tue, 14 Jan 2020 21:14:36 +0100</lastBuildDate>
     
 	<atom:link href="http://paulsec.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Throttling policies on specific Django Viewset</title>
+      <link>http://paulsec.github.io/posts/django-viewset-throttling/</link>
+      <pubDate>Tue, 14 Jan 2020 21:14:36 +0100</pubDate>
+      
+      <guid>http://paulsec.github.io/posts/django-viewset-throttling/</guid>
+      <description>Hi everyone!
+Here is a small article on some experiments I came across with the development of the new cfptime.org version. Goal: I needed to limit (anonymous) visitors on specific API endpoints (especially when creating/posting new Call For Papers to avoid flooding).
+It turns out someone had similar thoughts and his blog post was pretty interested and helped me a lot. You can find the blog post here: https://www.pedaldrivenprogramming.com/2017/05/throttling-django-rest-framwork-viewsets/.
+As the author states:</description>
+    </item>
     
     <item>
       <title>Angular 8 Deployment within Github Actions Pipeline</title>
