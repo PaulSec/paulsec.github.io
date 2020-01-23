@@ -23,7 +23,7 @@
 <meta property="og:description" content="PaulSec&#39;s Blog. Security &amp; lulz." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="http://paulsec.github.io/" />
-<meta property="og:updated_time" content="2020-01-14T21:14:36+01:00" /><meta property="og:site_name" content="PaulSec&#39;s Blog" />
+<meta property="og:updated_time" content="2020-01-23T14:02:07+01:00" /><meta property="og:site_name" content="PaulSec&#39;s Blog" />
 
 
     
@@ -164,6 +164,29 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
   <div class="post-list">
     
     
+      
+        
+      
+      <div class="post-list__item">
+        <span class="item__title--big">
+          <a href="/posts/deploy-django-github-actions/" >Deploy a Django application through Github Actions</a>
+        </span>
+        <span class="item__date">
+          Jan 23, 2020
+        </span>
+        <span >
+        
+        Hi everyone,
+Here is a small article on how I successfully deployed my Django application through Github actions. Basically, what I needed was pretty simple, as soon as I push a new commit (on master), I want to:
+ connect through SSH on my remote server restart my cfptime service (which will do all the magic)  My cfptime.org project is something like ~3 years old and at the beginning, I was deploying by hand and I created a bash script in order to ease this part and this is what it looked like:
+        
+        </span>
+        
+          ... <a class="read-more-symbol" href="/posts/deploy-django-github-actions/">➦</a>
+        
+        </div>
+        
+     
       
         
       
@@ -371,33 +394,6 @@ Level 1: Hello, world of XSS Well, this one was obvious:
         </span>
         
           ... <a class="read-more-symbol" href="/posts/diving-into-xss-googles-game/">➦</a>
-        
-        </div>
-        
-     
-      
-        
-      
-      <div class="post-list__item">
-        <span class="item__title--big">
-          <a href="/posts/bobby-write-up/" >Bobby Write-up</a>
-        </span>
-        <span class="item__date">
-          May 15, 2014
-        </span>
-        <span >
-        
-        Hi there,
-Quick blog post on the VM &ldquo;Bobby&rdquo; which is once of the nicest VM I did so far.
-Discovery The first step is always the same: discovering the machine on the network. To do so:
-$ nmap -sV 192.168.1.1/24 I managed to retrieve the IP address: 192.168.1.11.
-Let's start to fingerprint the different services to exploit it.
-Fingerprinting Then, I used Nmap to retrieve the services running:
-$ nmap -sV 192.
-        
-        </span>
-        
-          ... <a class="read-more-symbol" href="/posts/bobby-write-up/">➦</a>
         
         </div>
         

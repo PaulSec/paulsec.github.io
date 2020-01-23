@@ -6,10 +6,21 @@
     <description>Recent content in Posts on </description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 14 Jan 2020 21:14:36 +0100</lastBuildDate>
+    <lastBuildDate>Thu, 23 Jan 2020 14:02:07 +0100</lastBuildDate>
     
 	<atom:link href="http://paulsec.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Deploy a Django application through Github Actions</title>
+      <link>http://paulsec.github.io/posts/deploy-django-github-actions/</link>
+      <pubDate>Thu, 23 Jan 2020 14:02:07 +0100</pubDate>
+      
+      <guid>http://paulsec.github.io/posts/deploy-django-github-actions/</guid>
+      <description>Hi everyone,
+Here is a small article on how I successfully deployed my Django application through Github actions. Basically, what I needed was pretty simple, as soon as I push a new commit (on master), I want to:
+ connect through SSH on my remote server restart my cfptime service (which will do all the magic)  My cfptime.org project is something like ~3 years old and at the beginning, I was deploying by hand and I created a bash script in order to ease this part and this is what it looked like:</description>
+    </item>
     
     <item>
       <title>Throttling policies on specific Django Viewset</title>
