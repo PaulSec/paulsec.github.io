@@ -203,7 +203,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
 <p>Anyway, since I was getting blocked with CircleCI, I finally used Github Actions that I heard about couple of weeks/months back and I never had a chance to give it a shot so that was the perfect occasion!</p>
 <p>After a bit of Googling, I came across this (well-explained) and recent blog post: <a href="https://coryrylan.com/blog/building-angular-cli-projects-with-github-actions">https://coryrylan.com/blog/building-angular-cli-projects-with-github-actions</a>.</p>
 <p>For the sake of caching, I will copy/paste the final YAML file Cory wrote in his article (which is essentially the one I took most inspiration of):</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">name: Build
+<pre><code>name: Build
 on:
   push:
     branches:
@@ -214,7 +214,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [<span style="color:#ae81ff">12.</span>x]
+        node-version: [12.x]
 
     steps:
       - uses: actions/checkout@v1
@@ -223,9 +223,9 @@ jobs:
         uses: actions/cache@v1
         with:
           path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles(<span style="color:#e6db74">&#39;**/package-lock.json&#39;</span>) }}
-          restore-keys: <span style="color:#e6db74">|
-</span><span style="color:#e6db74">           </span><span style="color:#e6db74"> </span><span style="color:#e6db74">${{ runner.os }}-node-</span>
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
 
       - name: Node ${{ matrix.node-version }}
         uses: actions/setup-node@v1
@@ -233,25 +233,25 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - name: npm ci and npm run build
-        run: <span style="color:#e6db74">|
-</span><span style="color:#e6db74">         </span><span style="color:#e6db74"> </span><span style="color:#e6db74">npm ci</span>
+        run: |
+          npm ci
           npm run build:ci 
-</code></pre></div><p>What I needed more with this Github action script was:</p>
+</code></pre><p>What I needed more with this Github action script was:</p>
 <ul>
 <li>Build my Angular project in the dist/ folder</li>
 <li>Copy what I have in my dist/ foder and scp it to my remote host on a specific folder (similar to Continous Delivery)</li>
 </ul>
 <p>In order to do so, I installed Angular CLI in my project (responsible for the <code>ng build</code>)</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">- name: npm ci and npm run build
-run: <span style="color:#e6db74">|
-</span><span style="color:#e6db74">   </span><span style="color:#e6db74"> </span><span style="color:#e6db74">npm ci</span>
+<pre><code>- name: npm ci and npm run build
+run: |
+    npm ci
     (echo y; echo y; echo y; echo y;) | sudo npm install -g @angular/cli
     npm run build --prod
-</code></pre></div><p>The next step was to scp the resulting files in the <code>dist/</code> folder to my remote host.</p>
+</code></pre><p>The next step was to scp the resulting files in the <code>dist/</code> folder to my remote host.</p>
 <p>In order to avoid to display IP addresses, usernames, and/or other variables (such as private keys) to deploy on my server, you can set them as variables within your repo settings and the URL is essentialy: <a href="https://github.com/USERNAME/PROJECT/settings/secrets/">https://github.com/USERNAME/PROJECT/settings/secrets/</a>. Github Actions come with what we can call a marketplace and after a bit of Googling, I came across this plugin <a href="https://github.com/garygrossgarten/github-action-scp">https://github.com/garygrossgarten/github-action-scp</a> and its direct link on the marketplace here : <a href="https://github.com/marketplace/actions/deploy-via-scp">https://github.com/marketplace/actions/deploy-via-scp</a>.</p>
 <p><em>&lt;Security Opinion&gt; I'd treat those external plugins/add-ons with a lot of care because they deal with pretty sensitive data (in my case, SSH keys etc.) so review them as much as you can before using one of them inside your pipelines. &lt;/Security Opinion&gt;</em></p>
 <p>As soon as you have declared your (sensitive) variables, you're ready to go and here is my example:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">- name: Copy folder content recursively to remote
+<pre><code>- name: Copy folder content recursively to remote
 uses: garygrossgarten/github-action-scp@release
 with:
     local: dist/cfptime-frontend
@@ -260,8 +260,8 @@ with:
     port: ${{ secrets.SSH_PORT }}
     username: ${{ secrets.SSH_USER }}
     privateKey: ${{ secrets.SSH_PRIVATE_KEY }}
-</code></pre></div><p>My resulting file <code>build.yml</code> is as follow:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">name: Build
+</code></pre><p>My resulting file <code>build.yml</code> is as follow:</p>
+<pre><code>name: Build
 on:
   push:
     branches:
@@ -272,7 +272,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [<span style="color:#ae81ff">12.</span>x]
+        node-version: [12.x]
 
     steps:
       - uses: actions/checkout@v1
@@ -281,9 +281,9 @@ jobs:
         uses: actions/cache@v1
         with:
           path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles(<span style="color:#e6db74">&#39;**/package-lock.json&#39;</span>) }}
-          restore-keys: <span style="color:#e6db74">|
-</span><span style="color:#e6db74">           </span><span style="color:#e6db74"> </span><span style="color:#e6db74">${{ runner.os }}-node-</span>
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
 
       - name: Node ${{ matrix.node-version }}
         uses: actions/setup-node@v1
@@ -291,8 +291,8 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - name: npm ci and npm run build
-        run: <span style="color:#e6db74">|
-</span><span style="color:#e6db74">         </span><span style="color:#e6db74"> </span><span style="color:#e6db74">npm ci</span>
+        run: |
+          npm ci
           (echo y; echo y; echo y; echo y;) | sudo npm install -g @angular/cli
           npm run build --prod
 
@@ -305,7 +305,7 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           username: ${{ secrets.SSH_USER }}
           privateKey: ${{ secrets.SSH_PRIVATE_KEY }}
-</code></pre></div><p>The last part (but not least) was to have my nginx running on the remote host and ready to serve my pages.
+</code></pre><p>The last part (but not least) was to have my nginx running on the remote host and ready to serve my pages.
 I truncated the file since it is serving couple of my websites in order to get you all the exact settings I needed to have.</p>
 <p>Basically, I just had to specify the root variable (equivalent with <code>/path/to/my/folder</code> in the code snippet) which has to be the remote folder specified in the <code>remote</code> variable (above in the Github action file).
 Other than that, you just need to have a specific route for <code>/</code> (which is defined in my <code>location</code> directive)</p>
