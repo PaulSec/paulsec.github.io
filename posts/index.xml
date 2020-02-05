@@ -6,10 +6,22 @@
     <description>Recent content in Posts on </description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 23 Jan 2020 14:02:07 +0100</lastBuildDate>
+    <lastBuildDate>Wed, 05 Feb 2020 21:22:27 +0100</lastBuildDate>
     
 	<atom:link href="http://paulsec.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Kafka Experiments</title>
+      <link>http://paulsec.github.io/posts/kafka-experiments/</link>
+      <pubDate>Wed, 05 Feb 2020 21:22:27 +0100</pubDate>
+      
+      <guid>http://paulsec.github.io/posts/kafka-experiments/</guid>
+      <description>Hey everyone,
+Here is a small blog post regarding Kafka experiments and &amp;ldquo;foundations&amp;rdquo; I&#39;ve started working on. I will also take the opportunity to thank Maxence S. (https://twitter.com/maxenceschmitt) for his precious help on this topic.
+Instanciating the Jungle! ZooKeeper and Kafka First off, I instanciated a Kafka (and ZooKeeper) instance
+version: &#39;2&#39; services: zookeeper: image: wurstmeister/zookeeper:3.4.6 expose: - &amp;quot;2181&amp;quot; kafka: image: wurstmeister/kafka:2.11-2.0.0 depends_on: - zookeeper ports: - &amp;quot;9092:9092&amp;quot; environment: KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092 KAFKA_LISTENERS: PLAINTEXT://0.</description>
+    </item>
     
     <item>
       <title>Deploy a Django application through Github Actions</title>

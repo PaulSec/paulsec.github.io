@@ -23,7 +23,7 @@
 <meta property="og:description" content="PaulSec&#39;s Blog. Security &amp; lulz." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="http://paulsec.github.io/" />
-<meta property="og:updated_time" content="2020-01-23T14:02:07+01:00" /><meta property="og:site_name" content="PaulSec&#39;s Blog" />
+<meta property="og:updated_time" content="2020-02-05T21:22:27+01:00" /><meta property="og:site_name" content="PaulSec&#39;s Blog" />
 
 
     
@@ -164,6 +164,30 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
   <div class="post-list">
     
     
+      
+        
+      
+      <div class="post-list__item">
+        <span class="item__title--big">
+          <a href="/posts/kafka-experiments/" >Kafka Experiments</a>
+        </span>
+        <span class="item__date">
+          Feb 5, 2020
+        </span>
+        <span >
+        
+        Hey everyone,
+Here is a small blog post regarding Kafka experiments and &ldquo;foundations&rdquo; I've started working on. I will also take the opportunity to thank Maxence S. (https://twitter.com/maxenceschmitt) for his precious help on this topic.
+Instanciating the Jungle! ZooKeeper and Kafka First off, I instanciated a Kafka (and ZooKeeper) instance
+version: '2' services: zookeeper: image: wurstmeister/zookeeper:3.4.6 expose: - &quot;2181&quot; kafka: image: wurstmeister/kafka:2.11-2.0.0 depends_on: - zookeeper ports: - &quot;9092:9092&quot; environment: KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092 KAFKA_LISTENERS: PLAINTEXT://0.
+        
+        </span>
+        
+          ... <a class="read-more-symbol" href="/posts/kafka-experiments/">➦</a>
+        
+        </div>
+        
+     
       
         
       
@@ -370,30 +394,6 @@ $ nmap 192.168.56.101 -sV -A Starting Nmap 6.46 ( http://nmap.
         </span>
         
           ... <a class="read-more-symbol" href="/posts/kioptrix-3-write-up/">➦</a>
-        
-        </div>
-        
-     
-      
-        
-      
-      <div class="post-list__item">
-        <span class="item__title--big">
-          <a href="/posts/diving-into-xss-googles-game/" >Diving into XSS googles game</a>
-        </span>
-        <span class="item__date">
-          Jun 2, 2014
-        </span>
-        <span >
-        
-        Hi there, this post deals with the game released by Google few days ago about XSS vulnerabilities that you can find here.
-I'll enumerate some of the solution I found on the Internet which were (in my opnion) interesting/fun. This post contains the solutions for all levels. Big spoil.
-Level 1: Hello, world of XSS Well, this one was obvious:
-&lt;script&gt;alert(1);&lt;/script&gt; Level 2: Persistence is key For this one, you had different options:
-        
-        </span>
-        
-          ... <a class="read-more-symbol" href="/posts/diving-into-xss-googles-game/">➦</a>
         
         </div>
         
