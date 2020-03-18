@@ -4,16 +4,21 @@
   
   <url>
     <loc>http://paulsec.github.io/</loc>
-    <lastmod>2020-02-05T21:22:27+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://paulsec.github.io/posts/kafka-experiments/</loc>
-    <lastmod>2020-02-05T21:22:27+01:00</lastmod>
+    <lastmod>2020-03-18T16:52:42+01:00</lastmod>
   </url>
   
   <url>
     <loc>http://paulsec.github.io/posts/</loc>
+    <lastmod>2020-03-18T16:52:42+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://paulsec.github.io/posts/ionic-5-events/</loc>
+    <lastmod>2020-03-18T16:52:42+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://paulsec.github.io/posts/kafka-experiments/</loc>
     <lastmod>2020-02-05T21:22:27+01:00</lastmod>
   </url>
   

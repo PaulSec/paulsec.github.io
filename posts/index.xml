@@ -6,10 +6,23 @@
     <description>Recent content in Posts on </description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 05 Feb 2020 21:22:27 +0100</lastBuildDate>
+    <lastBuildDate>Wed, 18 Mar 2020 16:52:42 +0100</lastBuildDate>
     
 	<atom:link href="http://paulsec.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Working with Events on Ionic 5 </title>
+      <link>http://paulsec.github.io/posts/ionic-5-events/</link>
+      <pubDate>Wed, 18 Mar 2020 16:52:42 +0100</pubDate>
+      
+      <guid>http://paulsec.github.io/posts/ionic-5-events/</guid>
+      <description>Hi everyone,
+Here is a small blog post where I needed to work on an Ionic v5 project where (Angular) events were/are not working anymore.
+Context: Basically, I was working on the side-menu &amp;lsquo;starter&amp;rsquo; where I wanted the side-menu to automatically update with the user&#39;s username after logging in.
+Beforehand, in order to use the Events, it was as simple as:
+import { Events } from &#39;@ionic/angular&#39;; And finally work on your logic, but this got removed in Ionic 5.</description>
+    </item>
     
     <item>
       <title>Kafka Experiments</title>

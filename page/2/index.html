@@ -23,7 +23,7 @@
 <meta property="og:description" content="PaulSec&#39;s Blog. Security &amp; lulz." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="http://paulsec.github.io/" />
-<meta property="og:updated_time" content="2020-02-05T21:22:27+01:00" /><meta property="og:site_name" content="PaulSec&#39;s Blog" />
+<meta property="og:updated_time" content="2020-03-18T16:52:42+01:00" /><meta property="og:site_name" content="PaulSec&#39;s Blog" />
 
 
     
@@ -164,6 +164,31 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
   <div class="post-list">
     
     
+      
+        
+      
+      <div class="post-list__item">
+        <span class="item__title--big">
+          <a href="/posts/kioptrix-3-write-up/" >Kioptrix 3 Write-up</a>
+        </span>
+        <span class="item__date">
+          Jun 12, 2014
+        </span>
+        <span >
+        
+        This has been some long time I haven't written another write-up. This one's for Kioptrix 3 that you can find here.
+Host Discovery $ nmap -sP 192.168.56.1/24 and we got the IP address : 192.168.56.101.
+As it was explained, you need to add 192.168.56.101 kioptrix3.com in your /etc/hosts.
+Fingerprinting Then, let's find what kind of services are running on the host machine.
+$ nmap 192.168.56.101 -sV -A Starting Nmap 6.46 ( http://nmap.
+        
+        </span>
+        
+          ... <a class="read-more-symbol" href="/posts/kioptrix-3-write-up/">➦</a>
+        
+        </div>
+        
+     
       
         
       
@@ -385,31 +410,6 @@ nmap -sV 192.168.1.42 Fig. Nmap scan result
         </span>
         
           ... <a class="read-more-symbol" href="/posts/kioptrix-2-write-up/">➦</a>
-        
-        </div>
-        
-     
-      
-        
-      
-      <div class="post-list__item">
-        <span class="item__title--big">
-          <a href="/posts/kioptrix-1-write-up/" >Kioptrix 1 Write-up</a>
-        </span>
-        <span class="item__date">
-          Apr 14, 2014
-        </span>
-        <span >
-        
-        This post contains the steps to get a root shell with Kioptrix level 1 VM
-This VM can he found here. Have a look to find even more VMs
-Host discovery First, we need to discover where the machine is on our network. To do so, let's use Nmap:
-nmap -sP 192.168.1.1/24 Fingerprinting After getting the IP address, we need to do some fingerprinting.
-nmap -sV 192.168.1.2 Fig. Nmap scan result
-        
-        </span>
-        
-          ... <a class="read-more-symbol" href="/posts/kioptrix-1-write-up/">➦</a>
         
         </div>
         
