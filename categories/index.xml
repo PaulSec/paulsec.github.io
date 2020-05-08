@@ -6,10 +6,46 @@
     <description>Recent content in Categories on </description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 07 May 2017 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 08 May 2020 17:29:40 +0200</lastBuildDate>
     
 	<atom:link href="http://paulsec.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>android</title>
+      <link>http://paulsec.github.io/categories/android/</link>
+      <pubDate>Fri, 08 May 2020 17:29:40 +0200</pubDate>
+      
+      <guid>http://paulsec.github.io/categories/android/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>bugfix</title>
+      <link>http://paulsec.github.io/categories/bugfix/</link>
+      <pubDate>Fri, 08 May 2020 17:29:40 +0200</pubDate>
+      
+      <guid>http://paulsec.github.io/categories/bugfix/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ionic</title>
+      <link>http://paulsec.github.io/categories/ionic/</link>
+      <pubDate>Fri, 08 May 2020 17:29:40 +0200</pubDate>
+      
+      <guid>http://paulsec.github.io/categories/ionic/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>whid</title>
+      <link>http://paulsec.github.io/categories/whid/</link>
+      <pubDate>Fri, 08 May 2020 17:29:40 +0200</pubDate>
+      
+      <guid>http://paulsec.github.io/categories/whid/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>ctf</title>
