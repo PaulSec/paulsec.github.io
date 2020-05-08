@@ -226,7 +226,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
 <blockquote>
 <p>ESploit is serving a web application only through port 80 (I guess to have the smallest firmware possible). After a bit of investigation, I discovered that &ldquo;recent&rdquo; Android versions are blocking apps which are transmitting data over cleartext protocol, and HTTP in our case. As it is stated in the error message, you can &ldquo;tweak&rdquo; the Android application to allow this kind of behavior by changing the network security policy and I will guide through the process.</p>
 </blockquote>
-<h3 id="configuration-configxml">configuration: config.xml</h3>
+<h3 id="changes-in-configxml">Changes in config.xml</h3>
 <p>First, you will need to add some additionl settings within the <code>config.xml</code> file to reference a <code>network_security_config.xml</code> file that we will now specifiy.</p>
 <p>File that I added in my <code>config.xml</code> is as follow:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml">    <span style="color:#f92672">&lt;platform</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;android&#34;</span><span style="color:#f92672">&gt;</span>
@@ -238,9 +238,10 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
         <span style="color:#f92672">&lt;allow-intent</span> <span style="color:#a6e22e">href=</span><span style="color:#e6db74">&#34;market:*&#34;</span> <span style="color:#f92672">/&gt;</span>
         <span style="color:#f92672">&lt;icon</span> <span style="color:#a6e22e">density=</span><span style="color:#e6db74">&#34;ldpi&#34;</span> <span style="color:#a6e22e">src=</span><span style="color:#e6db74">&#34;resources/android/icon/drawable-ldpi-icon.png&#34;</span> <span style="color:#f92672">/&gt;</span>
         [... truncated ...]
-</code></pre></div><h3 id="configuration-network-security-configxml">configuration: network_security_config.xml</h3>
+</code></pre></div><h3 id="changes-in-network-security-configxml">Changes in network_security_config.xml</h3>
 <p>This file will give you the ability to tweak the default Android configuration and allow cleartext traffic over {domains, ip addresses, &hellip;}.</p>
-<p>The file we added for the WHID Mobile Injector looks as follow:</p>
+<p>File should be located at: <code>{PROJECT_PATH}/resources/android/xml/network_security_config.xml</code></p>
+<p>The content of the file file we added for the WHID Mobile Injector looks as follow:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
 <span style="color:#f92672">&lt;network-security-config</span><span style="color:#f92672">&gt;</span>
     <span style="color:#f92672">&lt;base-config</span> <span style="color:#a6e22e">cleartextTrafficPermitted=</span><span style="color:#e6db74">&#34;true&#34;</span><span style="color:#f92672">&gt;</span>
@@ -253,7 +254,8 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
         <span style="color:#f92672">&lt;domain</span> <span style="color:#a6e22e">includeSubdomains=</span><span style="color:#e6db74">&#34;true&#34;</span><span style="color:#f92672">&gt;</span>192.168.1.1<span style="color:#f92672">&lt;/domain&gt;</span>
     <span style="color:#f92672">&lt;/domain-config&gt;</span>
 <span style="color:#f92672">&lt;/network-security-config&gt;</span>
-</code></pre></div><p>Thanks to those settings, we just had to build a new app and users were able to use the app to interact with their WHID gadget :)</p>
+</code></pre></div><p>Just make sure you change the settions (in the <!-- raw HTML omitted --> tags) appropriately.</p>
+<p>Thanks to those settings, we just had to build a new app and users were able to use the app to interact with their WHID gadget :)</p>
 
   </div>
   
