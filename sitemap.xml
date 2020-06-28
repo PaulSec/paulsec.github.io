@@ -4,12 +4,42 @@
   
   <url>
     <loc>http://paulsec.github.io/</loc>
-    <lastmod>2020-05-08T17:29:40+02:00</lastmod>
+    <lastmod>2020-05-22T15:29:02+02:00</lastmod>
   </url>
   
   <url>
     <loc>http://paulsec.github.io/categories/android/</loc>
-    <lastmod>2020-05-08T17:29:40+02:00</lastmod>
+    <lastmod>2020-05-22T15:29:02+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://paulsec.github.io/posts/android-smali-primer/</loc>
+    <lastmod>2020-05-22T15:29:02+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://paulsec.github.io/categories/</loc>
+    <lastmod>2020-05-22T15:29:02+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://paulsec.github.io/posts/</loc>
+    <lastmod>2020-05-22T15:29:02+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://paulsec.github.io/categories/research/</loc>
+    <lastmod>2020-05-22T15:29:02+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://paulsec.github.io/categories/reverse/</loc>
+    <lastmod>2020-05-22T15:29:02+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://paulsec.github.io/categories/smali/</loc>
+    <lastmod>2020-05-22T15:29:02+02:00</lastmod>
   </url>
   
   <url>
@@ -18,17 +48,7 @@
   </url>
   
   <url>
-    <loc>http://paulsec.github.io/categories/</loc>
-    <lastmod>2020-05-08T17:29:40+02:00</lastmod>
-  </url>
-  
-  <url>
     <loc>http://paulsec.github.io/categories/ionic/</loc>
-    <lastmod>2020-05-08T17:29:40+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://paulsec.github.io/posts/</loc>
     <lastmod>2020-05-08T17:29:40+02:00</lastmod>
   </url>
   
@@ -100,11 +120,6 @@
   <url>
     <loc>http://paulsec.github.io/posts/bsidescbr-2017-ctf-write-up-needleinahaystack/</loc>
     <lastmod>2017-05-06T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://paulsec.github.io/categories/research/</loc>
-    <lastmod>2015-06-07T00:00:00+00:00</lastmod>
   </url>
   
   <url>

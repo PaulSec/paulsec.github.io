@@ -6,7 +6,7 @@
     <description>Recent content in Categories on </description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 08 May 2020 17:29:40 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 22 May 2020 15:29:02 +0200</lastBuildDate>
     
 	<atom:link href="http://paulsec.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,9 +14,36 @@
     <item>
       <title>android</title>
       <link>http://paulsec.github.io/categories/android/</link>
-      <pubDate>Fri, 08 May 2020 17:29:40 +0200</pubDate>
+      <pubDate>Fri, 22 May 2020 15:29:02 +0200</pubDate>
       
       <guid>http://paulsec.github.io/categories/android/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>research</title>
+      <link>http://paulsec.github.io/categories/research/</link>
+      <pubDate>Fri, 22 May 2020 15:29:02 +0200</pubDate>
+      
+      <guid>http://paulsec.github.io/categories/research/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>reverse</title>
+      <link>http://paulsec.github.io/categories/reverse/</link>
+      <pubDate>Fri, 22 May 2020 15:29:02 +0200</pubDate>
+      
+      <guid>http://paulsec.github.io/categories/reverse/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>smali</title>
+      <link>http://paulsec.github.io/categories/smali/</link>
+      <pubDate>Fri, 22 May 2020 15:29:02 +0200</pubDate>
+      
+      <guid>http://paulsec.github.io/categories/smali/</guid>
       <description></description>
     </item>
     
@@ -62,15 +89,6 @@
       <pubDate>Sun, 07 May 2017 00:00:00 +0000</pubDate>
       
       <guid>http://paulsec.github.io/categories/write-up/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>research</title>
-      <link>http://paulsec.github.io/categories/research/</link>
-      <pubDate>Sun, 07 Jun 2015 00:00:00 +0000</pubDate>
-      
-      <guid>http://paulsec.github.io/categories/research/</guid>
       <description></description>
     </item>
     

@@ -6,10 +6,21 @@
     <description>Recent content in Posts on </description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 08 May 2020 17:29:40 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 22 May 2020 15:29:02 +0200</lastBuildDate>
     
 	<atom:link href="http://paulsec.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Android Instrumentation with Smali: A survival guide</title>
+      <link>http://paulsec.github.io/posts/android-smali-primer/</link>
+      <pubDate>Fri, 22 May 2020 15:29:02 +0200</pubDate>
+      
+      <guid>http://paulsec.github.io/posts/android-smali-primer/</guid>
+      <description>Hi everyone!
+This article aims at providing you survival steps while tinkering around with Smali &amp;amp; Android applications. The name of the original application I did my search on will remain secret but I created a dummy application doing the same so that you can do it on your own. The link of the MainActivity.java and MainActivity.smali is here
+Create a dummy application with Android Studio and just import this. PLACEHOLDER_* strings will have to be replaced with proper ones if you want to try.</description>
+    </item>
     
     <item>
       <title>Tackling &#39;Cleartext Not Permitted&#39; error in Ionic v5</title>
