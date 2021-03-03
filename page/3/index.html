@@ -23,7 +23,7 @@
 <meta property="og:description" content="PaulSec&#39;s Blog. Security &amp; lulz." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="http://paulsec.github.io/" />
-<meta property="og:updated_time" content="2020-05-22T15:29:02+02:00" /><meta property="og:site_name" content="PaulSec&#39;s Blog" />
+<meta property="og:updated_time" content="2021-02-17T14:40:19+01:00" /><meta property="og:site_name" content="PaulSec&#39;s Blog" />
 
 
     
@@ -145,7 +145,7 @@
     </div>
     
 <div class="copyright">
-  &copy; 2020 Paul A.
+  &copy; 2021 Paul A.
   
     <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>
   
@@ -165,6 +165,32 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
   <div class="post-list">
     
     
+      
+        
+      
+      <div class="post-list__item">
+        <span class="item__title--big">
+          <a href="/posts/bwapp-write-up/" >BWApp Write-Up</a>
+        </span>
+        <span class="item__date">
+          Apr 21, 2014
+        </span>
+        <span >
+        
+        This post contains the steps to get a root shell with bWapp VM
+Host discovery As always, we need to discover where the machine is on our network. To do so, let's use Nmap:
+nmap -sP 192.168.1.1/24 Fingerprinting After getting the IP address (192.168.1.10), we need to do some fingerprinting.
+nmap -sV 192.168.1.10 Fig. Nmap scan result
+A lot of services were open, such as: VNC, FTP, etc.
+As I saw it in the scan report, I decided to scan the port 80 with Nikto.
+        
+        </span>
+        
+          ... <a class="read-more-symbol" href="/posts/bwapp-write-up/">➦</a>
+        
+        </div>
+        
+     
       
         
       
@@ -383,30 +409,6 @@ However, some issues are present using this technique, let's take an example :
         </span>
         
           ... <a class="read-more-symbol" href="/posts/xss-callback/">➦</a>
-        
-        </div>
-        
-     
-      
-        
-      
-      <div class="post-list__item">
-        <span class="item__title--big">
-          <a href="/posts/dealing-with-html-submits-conflict/" >Dealing with HTML submits conflicts</a>
-        </span>
-        <span class="item__date">
-          Mar 9, 2014
-        </span>
-        <span >
-        
-        This first post is related with one of my project : CSRFT. CSRFT is a Cross Site Request Forgery (CSRF) vulnerabilities Toolkit.
-My toolkit allows you to exploit either GET and POST HTTP Requests. During some testings, I had issues with some specific forms.
-Let's take an example of such form :
-&lt;form action=&#34;http://website.com/blog/&#34; id=&#34;form&#34; method=&#34;get&#34;&gt; &lt;label class=&#34;assistive-text&#34; for=&#34;s&#34;&gt;Search&lt;/label&gt; &lt;input class=&#34;field&#34; id=&#34;s&#34; name=&#34;s&#34; placeholder=&#34;Search&#34; type=&#34;text&#34; value=&#34;Search Value&#34;/&gt; &lt;input class=&#34;submit&#34; id=&#34;searchsubmit&#34; name=&#34;submit&#34; type=&#34;submit&#34; value=&#34;Search&#34;/&gt; &lt;/form&gt; The code injected on the page to submit the form was like that :
-        
-        </span>
-        
-          ... <a class="read-more-symbol" href="/posts/dealing-with-html-submits-conflict/">➦</a>
         
         </div>
         

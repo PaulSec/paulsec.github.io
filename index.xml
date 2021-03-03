@@ -6,10 +6,20 @@
     <description>Recent content on </description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 22 May 2020 15:29:02 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 17 Feb 2021 14:40:19 +0100</lastBuildDate>
     
 	<atom:link href="http://paulsec.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>&#34;DevOps&#34; ramblings and observations</title>
+      <link>http://paulsec.github.io/posts/devoops-ramblings/</link>
+      <pubDate>Wed, 17 Feb 2021 14:40:19 +0100</pubDate>
+      
+      <guid>http://paulsec.github.io/posts/devoops-ramblings/</guid>
+      <description>&amp;ldquo;DevOps&amp;rdquo; movement started &amp;ldquo;publicly&amp;rdquo; (first time we heard this term) circa 2007. Based on that, we (you?) might think that in 2021 that thing is outerly oudated but I totally disagree and I thought I would share some thoughts about DevOps in 2021, and what it means in real life.
+ I am quite uncomfortable using the word &amp;ldquo;DevOps&amp;rdquo;. I&#39;m serious. I guess it&#39;s because we&#39;re putting so many things behind it and I feel we might have lost track of the real sense behind that term - &amp;ldquo;DevOps&amp;rdquo;.</description>
+    </item>
     
     <item>
       <title>Android Instrumentation with Smali: A survival guide</title>

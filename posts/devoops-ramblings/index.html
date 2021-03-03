@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    
+    
+
+
+    <head>
+    <link href="https://gmpg.org/xfn/11" rel="profile">
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Cache-Control" content="public" />
+<!-- Enable responsiveness on mobile devices -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="generator" content="Hugo 0.62.0" />
+
+    
+    
+    
+
+<title>&#34;DevOps&#34; ramblings and observations • </title>
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="&#34;DevOps&#34; ramblings and observations"/>
+<meta name="twitter:description" content="&ldquo;DevOps&rdquo; movement started &ldquo;publicly&rdquo; (first time we heard this term) circa 2007. Based on that, we (you?) might think that in 2021 that thing is outerly oudated but I totally disagree and I thought I would share some thoughts about DevOps in 2021, and what it means in real life.
+ I am quite uncomfortable using the word &ldquo;DevOps&rdquo;. I&#39;m serious. I guess it&#39;s because we&#39;re putting so many things behind it and I feel we might have lost track of the real sense behind that term - &ldquo;DevOps&rdquo;."/>
+
+<meta property="og:title" content="&#34;DevOps&#34; ramblings and observations" />
+<meta property="og:description" content="&ldquo;DevOps&rdquo; movement started &ldquo;publicly&rdquo; (first time we heard this term) circa 2007. Based on that, we (you?) might think that in 2021 that thing is outerly oudated but I totally disagree and I thought I would share some thoughts about DevOps in 2021, and what it means in real life.
+ I am quite uncomfortable using the word &ldquo;DevOps&rdquo;. I&#39;m serious. I guess it&#39;s because we&#39;re putting so many things behind it and I feel we might have lost track of the real sense behind that term - &ldquo;DevOps&rdquo;." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://paulsec.github.io/posts/devoops-ramblings/" />
+<meta property="article:published_time" content="2021-02-17T14:40:19+01:00" />
+<meta property="article:modified_time" content="2021-02-17T14:40:19+01:00" /><meta property="og:site_name" content="PaulSec&#39;s Blog" />
+
+
+    
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/scss/hyde-hyde.92c66d107d7b219f0792cfd67223179af884b03f386ac46894f9f735932bbca3.css" integrity="sha256-ksZtEH17IZ8Hks/WciMXmviEsD84asRolPn3NZMrvKM=">
+
+
+<link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
+
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+    <link rel="shortcut icon" href="/favicon.png">
+    
+    
+
+</head>
+
+
+    <body class=" ">
+    
+<div class="sidebar">
+  <div class="container ">
+    <div class="sidebar-about">
+      <span class="site__title">
+        <a href="http://paulsec.github.io/"></a>
+      </span>
+      
+        
+        
+        
+        <div class="author-image">
+          <img src="http://paulsec.github.io/img/profile.png" alt="Author Image" class="img--circle img--headshot element--center">
+        </div>
+        
+      
+      
+      <p class="site__description">
+         PaulSec&#39;s Blog. Security &amp; lulz. 
+      </p>
+    </div>
+    <div class="collapsible-menu">
+      <input type="checkbox" id="menuToggle">
+      <label for="menuToggle"></label>
+      <div class="menu-content">
+        <div>
+	<ul class="sidebar-nav">
+		 
+		 
+			 
+				<li>
+					<a href="/">
+						<span>Home</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/posts/">
+						<span>Posts</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/about/">
+						<span>About</span>
+					</a>
+				</li>
+			 
+		
+	</ul>
+</div>
+
+        <section class="social">
+	
+	<a href="https://twitter.com/@PaulWebSec" rel="me"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	<a href="https://github.com/PaulSec" rel="me"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</section>
+
+      </div>
+    </div>
+    
+<div class="copyright">
+  &copy; 2021 Paul A.
+  
+    <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>
+  
+</div>
+
+
+<div class="builtwith">
+Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.com/htr3n/hyde-hyde">hyde-hyde</a>.
+</div>
+
+
+  </div>
+</div>
+
+        <div class="content container">
+            
+    
+<article>
+  <header>
+    <h1>&#34;DevOps&#34; ramblings and observations</h1>
+    
+    
+<div class="post__meta">
+    
+    
+      <i class="fas fa-calendar-alt"></i> Feb 17, 2021
+    
+    
+    
+    
+    
+    <br/>
+    <i class="fas fa-clock"></i> 14 min read
+</div>
+
+
+  </header>
+  
+  
+  <div class="post">
+    <blockquote>
+<p>&ldquo;DevOps&rdquo; movement started &ldquo;publicly&rdquo; (first time we heard this term) circa 2007. Based on that, we (you?) might think that in 2021 that thing is outerly oudated but I totally disagree and I thought I would share some thoughts about DevOps in 2021, and what it means in real life.</p>
+</blockquote>
+<p>I am quite uncomfortable using the word &ldquo;DevOps&rdquo;. I'm serious.
+I guess it's because we're putting so many things behind it and I feel we might have lost track of the real sense behind that term - &ldquo;DevOps&rdquo;.</p>
+<p>This blog post boils down after I was invited to speak to a french podcast about CI/CD on &ldquo;If This Then Dev&rdquo;: <a href="https://ifttd.io/42-integration-continuite-derive-paul-amar/">https://ifttd.io/42-integration-continuite-derive-paul-amar/</a> (notice the podcast number, did I give the &ldquo;<a href="https://en.wikipedia.org/wiki/42_(number)">Accurate Answer to Life</a>&quot;?)</p>
+<p>In this post, I will share you some observations but also conversations I've had with friends from different companies. Therefore, any resemblance to specific events or locales or persons is (<em>almost</em>) entirely coincidental.</p>
+<h2 id="context-is-key">Context is key</h2>
+<p>If there's one golden rule, I think that I would summary this article as <strong>Context is key</strong>. What I might have observed, succeeded in might not work for you, because of your context.
+Deal with this post as food for thought but not as rules that you have to apply.</p>
+<p>As an analogy, I remember those companies who wanted to replicate as identical the &ldquo;Spotify model&rdquo; for Agility. Guess what? Most of those companies have mimicked it without getting it to work. And ultimately failed.</p>
+<p>I recommed you this article: <a href="https://www.jeremiahlee.com/posts/failed-squad-goals/">Spotify’s Failed #SquadGoals</a>.</p>
+<p>Speaking about Agility, I think that, <strong>again</strong>, it pretty much depends on your team, company. Stating that you <em>have</em> to do Scrum because all other companies have implemented it and worked is a dead-end.
+For about two years, we've adopted the &ldquo;trial and error&rdquo; approach, iterating (through Scrum, &hellip;) until we found one (some kind of Kanban) that was fitting to the all team.
+Again, what fitted in our team will not specifically works for others, even in the same company.</p>
+<p>This leads to extremely hard <strong>trade-off</strong> (speaking of which, I think life is all about trade-offs in some way) to have:</p>
+<ul>
+<li>Should we do something utterly specific for us and don't care about the other teams? (this might lead to a total disconnection to others)</li>
+<li>Should we stick with some procedures which do not fit in the team and are impacting our production?</li>
+</ul>
+<p>My opinion here is to have a balance. Balance everything. Don't go too specific but do what's best for your team to move forward. Moreover, move accordingly with your company's pace.</p>
+<p>I will finish this section with a personal anecdote where I found out that going from a full technical role to a team lead position &ldquo;got me away&rdquo; from code. At first, I thought I was literally <em>useless</em> for the organisation, by not developing new capabilities by myself, using my own skills. I was right but also pretty wrong on other aspects. If you might follow a similar path (and eventually feel the same way), I encourage you to read this great article: <a href="http://www.paulgraham.com/makersschedule.html">Maker's Schedule, Manager's Schedule</a></p>
+<h2 id="a-team-composed-of-devs-and-ops">A team composed of Devs. And Ops.</h2>
+<p>Again, if we take the term <code>DevOps</code> literally, I (and again, it's personal) read it as:</p>
+<ul>
+<li><em>Dev</em> for Developers</li>
+<li>and <em>Ops</em> for operations</li>
+</ul>
+<p>Those two family skills are essential in today's IS/IT teams.</p>
+<p>This section is a tale about a <strong>fully-featured</strong> team. Again, I will take an analogy with soccer. In order to have a good soccer team, you need multidisciplinary people who are good in their functions - a goalkeeper, sweepers, strikers and who have <strong>complementary</strong> skills.</p>
+<p>The mistake, here, would be to <em>only</em> hire strikers and think that you have the best team.
+By doing so, you will be able to do rapid actions, move fast, create proof of concepts in no time, and that's right but is that the overall goal for your team and more globally for your company? This is pretty much up to your appreciation and your manager's.</p>
+<p>Back to the team organisation when we're speaking about &ldquo;DevOps&rdquo;, my opinion is that you need people with Ops skills, people with Dev skills and having the ability to make them work together on specific facets.</p>
+<p>Back in the time, developers were developing on their own machine, made sure it was working locally and sent (sometimes by e-mails or other channels) those packages to people, responsible to deploy them. I guess you see where this is going. Ultimately, this will fail.</p>
+<p>I understand that application deployments were a big thing couple of years back and needed niche skills but operations world evolved and we finally started getting &ldquo;developer-friendly&rdquo; tools to deploy apps such as Jenkins, Gitlab CI, &hellip; which are now part of the developer ecosystem and I can't stress that point enough.</p>
+<p>By not <em>intensive</em> (<em>shouldn't be they the same team afterall?</em>) collaboration between those &ldquo;two teams&rdquo;, you might end up in having silos within your organisation with non-sense remarks like:</p>
+<ul>
+<li>&ldquo;But it works on my machine! It should work in production!&rdquo;</li>
+<li>&ldquo;Did you add new libraries in your project? No? Yes? Okay, which ones?&rdquo;</li>
+</ul>
+<p>which leads me to this specific point:</p>
+<h3 id="you-build-it-you-run-it">You build it, you run it!</h3>
+<p>The motto is strong but utterly important. Again, this is a personal view about that matter  but I think that devs should deploy their own applications to production and be responsible for the run activities.</p>
+<p>By not doing so, developers will never get the sense of impact if an outage occurs on their application - <em>&ldquo;Alright, it crashed. So what?&quot;</em></p>
+<p>I am truly an over-optimistic person but I have seen <a href="https://en.wikipedia.org/wiki/Murphy%27s_law">Murphy's law</a> in action so many times now so I don't take any big risks by saying that what you will bring up today will (ultimately) go down tomorrow.</p>
+<p>Devs need to understand outcomes of their actions and if they are introducing instability (bugs, performance outages&hellip;) within the code base (which <em>will happen</em>) which results in impacts, they need to face it and I don't see this as a bad thing, it just brings more responsability in their actions and their thoughts process.</p>
+<blockquote>
+<p>My advice here is: (<em>if applicable</em>) make your devs deploy their applications. This will totally bring a new sense to their work.</p>
+</blockquote>
+<h2 id="automation">Automation</h2>
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">&quot;Never try to automate something if you don&#39;t even know how to do it by hand&quot; -- things an old automation engineer told me, which will stick with me always.</p>&mdash; K. Reid Wightman 🟡 (@ReverseICS) <a href="https://twitter.com/ReverseICS/status/1295424897708163079?ref_src=twsrc%5Etfw">August 17, 2020</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<p>Automation is key for today's Information System's development - we need solid foundations to move forward and on which we can build bigger systems on it. Automation is part of this answer, for its <em>determinism</em> and avoiding manual actions on server, which <strong>will</strong> eventually go wrong.</p>
+<p>Based on the pinned tweet, don't get me wrong! I am a true believer in automation, but I think it's also important to acknowledge <strong><strong>and</strong></strong> mitigate its daemons.
+After some time, some people lose sight of the (now hidden) complexity which often (if not dealt with) ends up in &ldquo;<strong>magic click thingy</strong>&rdquo; on Jenkins, Gitlab, Github Actions, &hellip; : &ldquo;<em>Click there</em>&rdquo; and it will deploy your application.</p>
+<p>If you let your CI/CD pipelines rot, untouched for months (if not years), it will ultimately finish like:</p>
+<ul>
+<li><em>&ldquo;How does it deploy your application?&rdquo; &ldquo;- No idea.&quot;</em></li>
+<li><em>&ldquo;What does it rely on?&rdquo; &ldquo;- No idea.&quot;</em></li>
+<li><em>&ldquo;Does it use an outdated library?&rdquo; &ldquo;- No idea.&quot;</em></li>
+</ul>
+<p><strong>Here the nightmare comes.</strong></p>
+<p>When we're speaking about &ldquo;automation&rdquo;, this leads to wide areas of improvement such as:</p>
+<ul>
+<li><strong>Data referential</strong>, where is stored the valuable information I need. Eg. where to store VLANs information? How is that accessible?</li>
+<li><strong>Standardization</strong>, to avoid specificites which, in the long term, cost a lot of money</li>
+<li><strong>Naming convention</strong>, to make sure that all your assets can be identified in a same and unique way</li>
+<li>.. and the list goes on</li>
+</ul>
+<p>As soon as you will scratch this, you will also need to take into consideration if your services are available through API and be wrapped in modules for complex workflows.
+This is why I can't stress enough the needs of having API (again, how to make them accessible within my organisation? What naming convention should I use?) to not be <em>gated</em> by other teams, meaning that you will be able to collaborate with other teams by consuming services directly. This is one simple sentence but speaks a thousand words by itself.</p>
+<p>Last point but not least, don't rely on a single technology for your organisation. That specific technology X or Y is behind a person, an organisation and you might need to understand the risks of using it widely within your organisation. Here is an example with Jeff Geerling, a former Red Hat employee who worked on Ansible.</p>
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Is the <a href="https://twitter.com/hashtag/Ansible?src=hash&amp;ref_src=twsrc%5Etfw">#Ansible</a> I knew and loved fading slowly into the void?<br><br>I had high hopes and optimism after the big collections push last year, but business interests are slowly kneecapping the OSS/community side, partly intentionally, and partly through disinterest.</p>&mdash; Jeff Geerling (@geerlingguy) <a href="https://twitter.com/geerlingguy/status/1362772233177948160?ref_src=twsrc%5Etfw">February 19, 2021</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<p>As of 2020/2021, <a href="https://docs.ansible.com/ansible/latest/index.html">Ansible</a> and <a href="https://www.terraform.io/">Terraform</a> are the go-to tools for Infrastructure as Code and some automation tasks. Bear in mind that the tech landscape around Automation is boiling and will change in the future. That's why, when bringing tech X within your org, always wonder how will you maintain it? Will you still have the required skills in 5 years time? 10 years time? Interesting question, right?</p>
+<h2 id="know-your-people">Know your people</h2>
+<p>A friend told me this story and this frightened me. They had a utterly important release coming end of December and the project manager didn't know anything about their DevOps, including their names but also where they were located.</p>
+<p>DevOps are not magic wands that you can use to unblock a critical project. We're talking here about people, human beings with some skills which are mandatory in today's world.</p>
+<p>If you plan to get successful results, invest in the people you are collaborating with. I mean, really.</p>
+<p>This bring me to:</p>
+<h3 id="agressive-roadmap-tight-schedule-but-most-of-all-amazing-friendship">Agressive Roadmap, tight schedule but most of all: amazing friendship</h3>
+<p>Context is moving and we need to adapt really fast for that. We often come up with roadmaps which evolves with time and sometimes it's a matter of hours. Some releases will eventually fail, stress will happen on the worst day. You might have budgetary constraints because of X or Y and need to maintain an extremely tight schedule.
+For those reasons (and there are plenty more), I think that building trust within your team is the most important thing.</p>
+<p>I realised that a team where friendship was one of the core value allowed us to move mountains.</p>
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">At the 2000 Sydney Olympics, the British rowing team unexpectedly won the Men’s Eight Rowing gold medal.<br><br>One simple question was instrumental in their success.<br><br>“Will it make the boat go faster?”<br><br>This question could also be vital for your early-stage team &amp; company.<br><br>1/15👇🏾 <a href="https://t.co/9Dw60Yn4mT">pic.twitter.com/9Dw60Yn4mT</a></p>&mdash; Shreyas Doshi (@shreyas) <a href="https://twitter.com/shreyas/status/1365732851732209668?ref_src=twsrc%5Etfw">February 27, 2021</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<p>Speaking of which, soft skills are equally important as technical ones. Everytime I was interviewing someone for a role in the team, I was asking myself my own: <em>“Will it make the boat go faster?”</em> aka &ldquo;Will that person fit in the team?&quot;.
+You might hire a tech guru witin the team but if that person is toxic, the whole team's effort will decrease. What about someone who's kind with his co-workers and picking him up to speed on technical subjects?</p>
+<p>Again, balance occurs in these situations, but honestly, don't underestimate the people toxicity and its negative impacts it can have on either a single person but also the entire team.</p>
+<p>I consider myself as a social person and I need those bounds with my colleagues. Without this, it's.. problematic.</p>
+<h2 id="security-by-default">Security by default</h2>
+<p>I couldn't make an article about &ldquo;DevOps&rdquo; without speaking about &ldquo;DevSecOps&rdquo;.
+When I was saying that operations world evolved and started having &ldquo;developers-friendly&rdquo; tools to deploy apps, I think that security has to evolve (as of 2021, I think that this is still the beginning) in the same way.</p>
+<p>I might be biased but I covered some of this topic in a DEFCON 28 AppSec Village, with a talk called <a href="https://drive.google.com/file/d/15P8eSarIohwCVW-tR3FN78KJPGbpAtR1/view">&ldquo;Our journey into turning offsec mindset to developers&rsquo; toolset&rdquo;</a> and I still mean every word of this presentation. I will get back to each lessons learnt from the talk:</p>
+<ol>
+<li>
+<p>Even though the security community &ldquo;boomed&rdquo; (and still), I think that security has to understand its internal users. Devs don't necessarily get security things. <strong>Same the other way around</strong>. As security professionals, do you understand the major issues your teams are facing? Have you tried helping them?</p>
+</li>
+<li>
+<p>“SSTI, XSS, XXE, SQLi, &hellip;” <strong>but also</strong> “CVE-2014-6271, CVE-2017-0147, &hellip;” <strong>but also</strong> “MS08-067,
+MS17-010, &hellip;” <strong>but also</strong> “Heartbleed, EternalBlue, BlueBorne, &hellip;”
+We (sec folks) are already losing track of all that. How can devs keep up with that? But more importantly, <strong>should devs keep up?</strong> Maybe not. And actually, they should not.</p>
+</li>
+</ol>
+<p>I recommend you <a href="https://www.sstic.org/2019/presentation/keynote_2019/">Alex Ionescu's keynote at SSTIC in 2019</a>.</p>
+<ol start="3">
+<li><strong>Security vocabulary is one thing</strong>. <strong>Remediation</strong> is another one. Bringing assistance and not expecting security background is key.</li>
+</ol>
+<p>Again, by bringing actionable processes will help people understand where you want to lead them.</p>
+<ol start="4">
+<li><strong>Contextualisation is (<em>also</em>) key.</strong></li>
+</ol>
+<p>Should we consider the same criticity for a hit on either:</p>
+<ul>
+<li>An internet exposed host</li>
+<li>An air-gapped host</li>
+</ul>
+<p>Considering “Yes” to that question might send too many red flags to devs.
+Trade-offs are now part of the game.</p>
+<ol start="5">
+<li><strong>Collaboration will empower your organisation</strong></li>
+</ol>
+<p>Find the best tools to do that (might be tailored-made)
+Make sure the learning curve/ramp up is not too steep.
+Do your devs use YAML and like it? Go for it.
+Do they stick with XML and like it? Go for it.
+Drive your decision with discernment and clear-thinking.
+Change posture from “<em>No, you can’t</em>” to “<em>Yes, let’s see how to make it</em>”</p>
+<p>On a side-note, check the movie <a href="https://fr.wikipedia.org/wiki/Yes_Man">Yes Man</a>.
+If you find those items interesting, (shameless promotion), feel free to check out our <a href="https://www.youtube.com/watch?v=PXPU-UtyMG0&amp;ab_channel=AppSecVillage">DEFCON talk</a>.</p>
+<h2 id="reactive-vs-proactive">Reactive vs Proactive</h2>
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Prevention is better than Cure. But which one makes a better story? <a href="https://t.co/9ANuNfjyKO">pic.twitter.com/9ANuNfjyKO</a></p>&mdash; Work Chronicles | Comics about Work (@_workchronicles) <a href="https://twitter.com/_workchronicles/status/1314436905501511681?ref_src=twsrc%5Etfw">October 9, 2020</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<p>Reacting to incidents was the current way to fix them and this evolved within the last couple of months/years. In order to improve today's needs such as Quality of Service (QoS) and the overall stability of the solutions nowadays, moving from the reactive world (I have an incident and I need to fix it) to a more proactive one is a necessity.
+Most websites/platforms from big players are up most of the time, even with extensive peak of activity. Eg. Amazon for the Black Friday. This was not the case couple of years back and this is driving the overall industry by making platforms available all the time the new norm.</p>
+<p>We need to understand that <strong>avoiding</strong> &ldquo;disasters&rdquo; is the way to go instead of just stopping them. By just stopping the side-effects, we're not dealing with the root cause, where the real challenges are. Make sure to have a Problem Management process in place within your organisation and be ready to tackle the real issues. Don't hesitate to deep dive in those productions issues to bring to light the real problems and avoid bias.</p>
+<p>I also recommend you some posts on <a href="https://fs.blog/mental-models/">Mental models</a> and biases it might bring up while solving problems.</p>
+<h2 id="observability">Observability</h2>
+<p>In order to move from a reactive space to a proactive one (notice that I didn't use the expression &ldquo;move away&rdquo; because I think that both are needed), we need to use appropriate tooling but also new set of skills (there are even <em>virtual</em> school which are totally free: <a href="https://linkedin.github.io/school-of-sre/)">https://linkedin.github.io/school-of-sre/)</a>.</p>
+<p>This is why we see flourish new job titles such as <a href="https://sre.google/">SRE</a> (<em>Site Reliability Engineering</em>) but also new tech for real-time monitoring coupled with alerting, such as <a href="https://prometheus.io/">Prometheus</a> and <a href="https://grafana.com/">Grafana</a> but also other tech like <a href="https://ebpf.io/fr-fr/">eBPF</a> which are getting me soooo excited!</p>
+<p>In case you want to get to know more about eBPF, I recommend you the excellent <a href="https://www.youtube.com/watch?v=wyfhjr_ufag&amp;ab_channel=eBPFSummit">keynote from Brendan Gregg</a> who worked tirelessly on this topic.</p>
+<p>Again, what we are seeing here is that this space is boiling right now and we see that operability tech landscape is slowly getting to developer's hands. For example, we now have proper Prometheus bindings directly from Springboot and this is just the beginning.
+This will also bring way more interaction between traditional support teams with project teams.</p>
+<h2 id="ending">Ending</h2>
+<p>I hope you had as much fun reading this post as I had for writing it. It's quite different from the other posts I've written on here but I think it was necessary and I am happy I wrote about all those topics I am passionate about.</p>
+<p>If you have suggestions or want to chat about that, feel free to ping me on Twitter so that we can have a chat.</p>
+<p>Anyhow, have a good day and stay safe you all!</p>
+
+  </div>
+  
+
+<div class="navigation navigation-single">
+    
+    <a href="/posts/android-smali-primer/" class="navigation-prev">
+      <i aria-hidden="true" class="fa fa-chevron-left"></i>
+      <span class="navigation-tittle">Android Instrumentation with Smali: A survival guide</span>
+    </a>
+    
+    
+</div>
+
+
+  
+
+  
+    
+
+
+</article>
+
+
+        </div>
+        
+    
+
+<script defer src="https://use.fontawesome.com/releases/v5.11.2/js/all.js" integrity="sha384-b3ua1l97aVGAPEIe48b4TC60WUQbQaGi2jqAWM90y0OZXZeyaTCWtBTKtjW2GXG1" crossorigin="anonymous"></script>
+
+
+    
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+        
+    
+    <script type="text/javascript">
+        
+        hljs.initHighlightingOnLoad();
+    </script>
+    
+
+
+
+
+    
+
+
+
+    </body>
+</html>
