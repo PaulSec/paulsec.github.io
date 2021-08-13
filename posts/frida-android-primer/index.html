@@ -284,7 +284,7 @@ Now, let's see how to use Frida to replace that return value with <code>3</code>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">Java</span>.<span style="color:#a6e22e">perform</span>(<span style="color:#66d9ef">function</span> () {
     <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Inside java perform function&#34;</span>);
     <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">my_class</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">Java</span>.<span style="color:#a6e22e">use</span>(<span style="color:#e6db74">&#34;path.to.my.class&#34;</span>);
-    <span style="color:#a6e22e">my_class</span>.<span style="color:#a6e22e">getProfileId</span>().<span style="color:#a6e22e">implementation</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>() {
+    <span style="color:#a6e22e">my_class</span>.<span style="color:#a6e22e">getProfileId</span>.<span style="color:#a6e22e">implementation</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>() {
         <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Inside path.to.my.class.class.getProfileId()&#34;</span>);
         <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">3</span>;
     };
