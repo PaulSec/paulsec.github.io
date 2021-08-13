@@ -6,7 +6,7 @@
     <description>Recent content in Categories on </description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 22 May 2020 15:29:02 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 13 Aug 2021 17:25:35 +0200</lastBuildDate>
     
 	<atom:link href="http://paulsec.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,9 +14,36 @@
     <item>
       <title>android</title>
       <link>http://paulsec.github.io/categories/android/</link>
-      <pubDate>Fri, 22 May 2020 15:29:02 +0200</pubDate>
+      <pubDate>Fri, 13 Aug 2021 17:25:35 +0200</pubDate>
       
       <guid>http://paulsec.github.io/categories/android/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>frida</title>
+      <link>http://paulsec.github.io/categories/frida/</link>
+      <pubDate>Fri, 13 Aug 2021 17:25:35 +0200</pubDate>
+      
+      <guid>http://paulsec.github.io/categories/frida/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>instrumentation</title>
+      <link>http://paulsec.github.io/categories/instrumentation/</link>
+      <pubDate>Fri, 13 Aug 2021 17:25:35 +0200</pubDate>
+      
+      <guid>http://paulsec.github.io/categories/instrumentation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>objection</title>
+      <link>http://paulsec.github.io/categories/objection/</link>
+      <pubDate>Fri, 13 Aug 2021 17:25:35 +0200</pubDate>
+      
+      <guid>http://paulsec.github.io/categories/objection/</guid>
       <description></description>
     </item>
     

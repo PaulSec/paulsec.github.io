@@ -4,7 +4,42 @@
   
   <url>
     <loc>http://paulsec.github.io/</loc>
-    <lastmod>2021-02-17T14:40:19+01:00</lastmod>
+    <lastmod>2021-08-13T17:25:35+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://paulsec.github.io/posts/frida-android-primer/</loc>
+    <lastmod>2021-08-13T17:25:35+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://paulsec.github.io/categories/android/</loc>
+    <lastmod>2021-08-13T17:25:35+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://paulsec.github.io/categories/</loc>
+    <lastmod>2021-08-13T17:25:35+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://paulsec.github.io/categories/frida/</loc>
+    <lastmod>2021-08-13T17:25:35+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://paulsec.github.io/categories/instrumentation/</loc>
+    <lastmod>2021-08-13T17:25:35+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://paulsec.github.io/categories/objection/</loc>
+    <lastmod>2021-08-13T17:25:35+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://paulsec.github.io/posts/</loc>
+    <lastmod>2021-08-13T17:25:35+02:00</lastmod>
   </url>
   
   <url>
@@ -13,22 +48,7 @@
   </url>
   
   <url>
-    <loc>http://paulsec.github.io/posts/</loc>
-    <lastmod>2021-02-17T14:40:19+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://paulsec.github.io/categories/android/</loc>
-    <lastmod>2020-05-22T15:29:02+02:00</lastmod>
-  </url>
-  
-  <url>
     <loc>http://paulsec.github.io/posts/android-smali-primer/</loc>
-    <lastmod>2020-05-22T15:29:02+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://paulsec.github.io/categories/</loc>
     <lastmod>2020-05-22T15:29:02+02:00</lastmod>
   </url>
   
