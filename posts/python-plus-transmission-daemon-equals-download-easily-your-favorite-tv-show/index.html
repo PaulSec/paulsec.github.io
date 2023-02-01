@@ -6,12 +6,14 @@
 
     <head>
     <link href="https://gmpg.org/xfn/11" rel="profile">
+    
+    <link rel="canonical" href="http://paulsec.github.io/posts/python-plus-transmission-daemon-equals-download-easily-your-favorite-tv-show/">
+    
     <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta http-equiv="Cache-Control" content="public" />
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.62.0" />
+<meta name="generator" content="Hugo 0.107.0">
 
     
     
@@ -23,19 +25,20 @@
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Python &#43; Transmission daemon = Download easily your favorite TV Show"/>
 <meta name="twitter:description" content="This post is about my last project : my TV Show Manager.
-I decided to start it because I wanted something really simple to download my favorite TV Shows. In this post, I&#39;ll explain step by step how to reproduce it at home.
-Basically, with this tutorial you&#39;ll set up your Raspberry box by :
- Installing / set-uping transmission-daemon Getting one of my latest project TVShowManager that uses my EZTV Python API."/>
+I decided to start it because I wanted something really simple to download my favorite TV Shows. In this post, I&rsquo;ll explain step by step how to reproduce it at home.
+Basically, with this tutorial you&rsquo;ll set up your Raspberry box by :
+Installing / set-uping transmission-daemon Getting one of my latest project TVShowManager that uses my EZTV Python API."/>
 
 <meta property="og:title" content="Python &#43; Transmission daemon = Download easily your favorite TV Show" />
 <meta property="og:description" content="This post is about my last project : my TV Show Manager.
-I decided to start it because I wanted something really simple to download my favorite TV Shows. In this post, I&#39;ll explain step by step how to reproduce it at home.
-Basically, with this tutorial you&#39;ll set up your Raspberry box by :
- Installing / set-uping transmission-daemon Getting one of my latest project TVShowManager that uses my EZTV Python API." />
+I decided to start it because I wanted something really simple to download my favorite TV Shows. In this post, I&rsquo;ll explain step by step how to reproduce it at home.
+Basically, with this tutorial you&rsquo;ll set up your Raspberry box by :
+Installing / set-uping transmission-daemon Getting one of my latest project TVShowManager that uses my EZTV Python API." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://paulsec.github.io/posts/python-plus-transmission-daemon-equals-download-easily-your-favorite-tv-show/" />
+<meta property="og:url" content="http://paulsec.github.io/posts/python-plus-transmission-daemon-equals-download-easily-your-favorite-tv-show/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2014-03-28T00:00:00+00:00" />
 <meta property="article:modified_time" content="2014-03-28T00:00:00+00:00" /><meta property="og:site_name" content="PaulSec&#39;s Blog" />
+
 
 
     
@@ -45,7 +48,7 @@ Basically, with this tutorial you&#39;ll set up your Raspberry box by :
 
 
 
-<link rel="stylesheet" href="/scss/hyde-hyde.92c66d107d7b219f0792cfd67223179af884b03f386ac46894f9f735932bbca3.css" integrity="sha256-ksZtEH17IZ8Hks/WciMXmviEsD84asRolPn3NZMrvKM=">
+<link rel="stylesheet" href="/scss/hyde-hyde.3081c4981fb69a2783dd36ecfdd0e6ba7a158d4cbfdd290ebce8f78ba0469fc6.css" integrity="sha256-MIHEmB&#43;2mieD3Tbs/dDmunoVjUy/3SkOvOj3i6BGn8Y=">
 
 
 <link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
@@ -72,7 +75,11 @@ Basically, with this tutorial you&#39;ll set up your Raspberry box by :
   <div class="container ">
     <div class="sidebar-about">
       <span class="site__title">
-        <a href="http://paulsec.github.io/"></a>
+        <a href="http://paulsec.github.io/">
+        
+          
+        
+        </a>
       </span>
       
         
@@ -129,7 +136,12 @@ Basically, with this tutorial you&#39;ll set up your Raspberry box by :
 	
 	
 	
+	
 	<a href="https://github.com/PaulSec" rel="me"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
 	
 	
 	
@@ -151,7 +163,7 @@ Basically, with this tutorial you&#39;ll set up your Raspberry box by :
     </div>
     
 <div class="copyright">
-  &copy; 2021 Paul A.
+  &copy; 2023 Paul A.
   
     <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>
   
@@ -210,38 +222,38 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
   <div class="post">
     <p>This post is about my last project : my <em>TV Show Manager</em>.</p>
 <p>I decided to start it because I wanted something <strong>really</strong> simple to download my favorite TV Shows.
-In this post, I'll explain step by step how to reproduce it at home.</p>
-<p>Basically, with this tutorial you'll set up your <strong>Raspberry</strong> box by :</p>
+In this post, I&rsquo;ll explain step by step how to reproduce it at home.</p>
+<p>Basically, with this tutorial you&rsquo;ll set up your <strong>Raspberry</strong> box by :</p>
 <ul>
 <li>Installing / set-uping transmission-daemon</li>
 <li>Getting one of my latest project <a href="https://github.com/PaulSec/TVShowsManager">TVShowManager</a> that uses my <a href="https://github.com/PaulSec/eztv_api">EZTV Python API</a>.</li>
 </ul>
 <blockquote>
-<p>Well.. let's start ?</p>
+<p>Well.. let&rsquo;s start ?</p>
 </blockquote>
-<p>I'm a <strong>Raspberry Pi</strong> enthusiast, so this project runs at home on a basic installation of <em>Raspbmc</em>.</p>
+<p>I&rsquo;m a <strong>Raspberry Pi</strong> enthusiast, so this project runs at home on a basic installation of <em>Raspbmc</em>.</p>
 <p>First, you need to install <strong>transmission-remote</strong> :</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo apt-get install transmission-daemon
-</code></pre></div><p>The basic installation will launch a basic HTTP server.
-Let's imagine the IP of your Raspberry server is : <strong>192.168.0.12</strong>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt-get install transmission-daemon
+</span></span></code></pre></div><p>The basic installation will launch a basic HTTP server.
+Let&rsquo;s imagine the IP of your Raspberry server is : <strong>192.168.0.12</strong>.</p>
 <p>The HTTP Server is accessible on the port 9091, like : http://192.168.0.12:9091/transmission/web/</p>
 <p>To access this URL, there will be a .htaccess asking some credentials to access the page.</p>
 <p>To display/update them, just access the settings.json configuration file :</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo vim /etc/transmission-daemon/settings.json
-</code></pre></div><p>And check for the variables <strong>rpc-username</strong> and <strong>rpc-password</strong>.
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo vim /etc/transmission-daemon/settings.json
+</span></span></code></pre></div><p>And check for the variables <strong>rpc-username</strong> and <strong>rpc-password</strong>.
 Moreover, if you want to send commands over the network, check the <strong>rpc-whitelist</strong> variable and add your private network range if you want to access it over the LAN, like:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#e6db74">&#34;rpc-whitelist&#34;</span><span style="color:#960050;background-color:#1e0010">:</span> <span style="color:#e6db74">&#34;127.0.0.1, 192.168.1.*&#34;</span>
-</code></pre></div><p>Then, restart your transmission-daemon:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">killall -HUP transmission-da
-</code></pre></div><blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#e6db74">&#34;rpc-whitelist&#34;</span><span style="color:#960050;background-color:#1e0010">:</span> <span style="color:#e6db74">&#34;127.0.0.1, 192.168.1.*&#34;</span>
+</span></span></code></pre></div><p>Then, restart your transmission-daemon:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>killall -HUP transmission-da
+</span></span></code></pre></div><blockquote>
 <p>After setting up Transmission-remote, what do we have to do ?</p>
 </blockquote>
 <p>Well, you need to get TVShowManager, one of my project : <a href="git@github.com:PaulSec/TVShowsManager.git">TVShowManager</a>.</p>
 <p>Start by cloning the projet by using <strong>git</strong> :</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git clone git@github.com:PaulSec/TVShowsManager.git
-</code></pre></div><p>Then, just go in the folder and see the files which are present :</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cd TVShowsManager <span style="color:#f92672">&amp;&amp;</span> ls
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git clone git@github.com:PaulSec/TVShowsManager.git
+</span></span></code></pre></div><p>Then, just go in the folder and see the files which are present :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd TVShowsManager <span style="color:#f92672">&amp;&amp;</span> ls
+</span></span></code></pre></div><ul>
 <li><strong>eztv_api</strong> : (Unofficial) Python API for the website EZTV.it.</li>
 <li><strong>TVShowsManager.py</strong> : the launcher for this project</li>
 <li><strong>config.ini</strong> : the most important because it contains all the configuration !</li>
@@ -249,8 +261,8 @@ Moreover, if you want to send commands over the network, check the <strong>rpc-w
 <blockquote>
 <p>Setting up TVShowsManager</p>
 </blockquote>
-<p>To use it, you have to create a configuration file called <strong>config.ini</strong>, let's take an example :</p>
-<pre><code>[config]
+<p>To use it, you have to create a configuration file called <strong>config.ini</strong>, let&rsquo;s take an example :</p>
+<pre tabindex="0"><code>[config]
 username = myUsernameTr
 password = myPassword!!!
 ip = 192.168.0.12
@@ -268,14 +280,14 @@ You define different fields such as :</p>
 <li><em>timer</em>: How many minutes you want to wait between 2 re-try.</li>
 </ul>
 <p>Then, the other sections are for your different tv show.
-Based on this example, you're watching <em>Vikings</em> and stopped at the episode 7, season 1.</p>
+Based on this example, you&rsquo;re watching <em>Vikings</em> and stopped at the episode 7, season 1.</p>
 <p>You can get those files on your Raspberry and the ip address will then be : <strong>127.0.0.1</strong> if transmission-daemon is running on it as well.</p>
 <blockquote>
 <p>Launch the app !</p>
 </blockquote>
 <p>To launch the app, after creating your own <strong>config.ini</strong> file, just type this command :</p>
 <p><code>python TVShowsManager.py</code></p>
-<p>And that's it !
+<p>And that&rsquo;s it !
 If you want more details, I redacted a nice README for the project just <a href="https://github.com/PaulSec/TVShowsManager">here</a></p>
 
   </div>
@@ -310,16 +322,7 @@ If you want more details, I redacted a nice README for the project just <a href=
         
     
 
-<script defer src="https://use.fontawesome.com/releases/v5.11.2/js/all.js" integrity="sha384-b3ua1l97aVGAPEIe48b4TC60WUQbQaGi2jqAWM90y0OZXZeyaTCWtBTKtjW2GXG1" crossorigin="anonymous"></script>
-
-
-    
-    
-    <script type="text/javascript">
-        
-        hljs.initHighlightingOnLoad();
-    </script>
-    
+<script defer src="https://use.fontawesome.com/releases/v5.12.1/js/all.js" integrity="sha384-ZbbbT1gw3joYkKRqh0kWyRp32UAvdqkpbLedQJSlnI8iLQcFVxaGyrOgOJiDQTTR" crossorigin="anonymous"></script>
 
 
 

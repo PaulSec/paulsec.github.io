@@ -6,12 +6,14 @@
 
     <head>
     <link href="https://gmpg.org/xfn/11" rel="profile">
+    
+    <link rel="canonical" href="http://paulsec.github.io/posts/kafka-experiments/">
+    
     <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta http-equiv="Cache-Control" content="public" />
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.62.0" />
+<meta name="generator" content="Hugo 0.107.0">
 
     
     
@@ -23,19 +25,20 @@
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Kafka Experiments"/>
 <meta name="twitter:description" content="Hey everyone,
-Here is a small blog post regarding Kafka experiments and &ldquo;foundations&rdquo; I&#39;ve started working on. I will also take the opportunity to thank Maxence S. (https://twitter.com/maxenceschmitt) for his precious help on this topic.
+Here is a small blog post regarding Kafka experiments and &ldquo;foundations&rdquo; I&rsquo;ve started working on. I will also take the opportunity to thank Maxence S. (https://twitter.com/maxenceschmitt) for his precious help on this topic.
 Instanciating the Jungle! ZooKeeper and Kafka First off, I instanciated a Kafka (and ZooKeeper) instance
-version: &#39;2&#39; services: zookeeper: image: wurstmeister/zookeeper:3.4.6 expose: - &quot;2181&quot; kafka: image: wurstmeister/kafka:2.11-2.0.0 depends_on: - zookeeper ports: - &quot;9092:9092&quot; environment: KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092 KAFKA_LISTENERS: PLAINTEXT://0."/>
+version: &#39;2&#39; services: zookeeper: image: wurstmeister/zookeeper:3.4.6 expose: - &#34;2181&#34; kafka: image: wurstmeister/kafka:2.11-2.0.0 depends_on: - zookeeper ports: - &#34;9092:9092&#34; environment: KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092 KAFKA_LISTENERS: PLAINTEXT://0."/>
 
 <meta property="og:title" content="Kafka Experiments" />
 <meta property="og:description" content="Hey everyone,
-Here is a small blog post regarding Kafka experiments and &ldquo;foundations&rdquo; I&#39;ve started working on. I will also take the opportunity to thank Maxence S. (https://twitter.com/maxenceschmitt) for his precious help on this topic.
+Here is a small blog post regarding Kafka experiments and &ldquo;foundations&rdquo; I&rsquo;ve started working on. I will also take the opportunity to thank Maxence S. (https://twitter.com/maxenceschmitt) for his precious help on this topic.
 Instanciating the Jungle! ZooKeeper and Kafka First off, I instanciated a Kafka (and ZooKeeper) instance
-version: &#39;2&#39; services: zookeeper: image: wurstmeister/zookeeper:3.4.6 expose: - &quot;2181&quot; kafka: image: wurstmeister/kafka:2.11-2.0.0 depends_on: - zookeeper ports: - &quot;9092:9092&quot; environment: KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092 KAFKA_LISTENERS: PLAINTEXT://0." />
+version: &#39;2&#39; services: zookeeper: image: wurstmeister/zookeeper:3.4.6 expose: - &#34;2181&#34; kafka: image: wurstmeister/kafka:2.11-2.0.0 depends_on: - zookeeper ports: - &#34;9092:9092&#34; environment: KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092 KAFKA_LISTENERS: PLAINTEXT://0." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://paulsec.github.io/posts/kafka-experiments/" />
+<meta property="og:url" content="http://paulsec.github.io/posts/kafka-experiments/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2020-02-05T21:22:27+01:00" />
 <meta property="article:modified_time" content="2020-02-05T21:22:27+01:00" /><meta property="og:site_name" content="PaulSec&#39;s Blog" />
+
 
 
     
@@ -45,7 +48,7 @@ version: &#39;2&#39; services: zookeeper: image: wurstmeister/zookeeper:3.4.6 ex
 
 
 
-<link rel="stylesheet" href="/scss/hyde-hyde.92c66d107d7b219f0792cfd67223179af884b03f386ac46894f9f735932bbca3.css" integrity="sha256-ksZtEH17IZ8Hks/WciMXmviEsD84asRolPn3NZMrvKM=">
+<link rel="stylesheet" href="/scss/hyde-hyde.3081c4981fb69a2783dd36ecfdd0e6ba7a158d4cbfdd290ebce8f78ba0469fc6.css" integrity="sha256-MIHEmB&#43;2mieD3Tbs/dDmunoVjUy/3SkOvOj3i6BGn8Y=">
 
 
 <link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
@@ -72,7 +75,11 @@ version: &#39;2&#39; services: zookeeper: image: wurstmeister/zookeeper:3.4.6 ex
   <div class="container ">
     <div class="sidebar-about">
       <span class="site__title">
-        <a href="http://paulsec.github.io/"></a>
+        <a href="http://paulsec.github.io/">
+        
+          
+        
+        </a>
       </span>
       
         
@@ -129,7 +136,12 @@ version: &#39;2&#39; services: zookeeper: image: wurstmeister/zookeeper:3.4.6 ex
 	
 	
 	
+	
 	<a href="https://github.com/PaulSec" rel="me"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
 	
 	
 	
@@ -151,7 +163,7 @@ version: &#39;2&#39; services: zookeeper: image: wurstmeister/zookeeper:3.4.6 ex
     </div>
     
 <div class="copyright">
-  &copy; 2021 Paul A.
+  &copy; 2023 Paul A.
   
     <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>
   
@@ -193,43 +205,43 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
   
   <div class="post">
     <p>Hey everyone,</p>
-<p>Here is a small blog post regarding Kafka experiments and &ldquo;foundations&rdquo; I've started working on. I will also take the opportunity to thank Maxence S. (<a href="https://twitter.com/maxenceschmitt">https://twitter.com/maxenceschmitt</a>) for his precious help on this topic.</p>
+<p>Here is a small blog post regarding Kafka experiments and &ldquo;foundations&rdquo; I&rsquo;ve started working on. I will also take the opportunity to thank Maxence S. (<a href="https://twitter.com/maxenceschmitt">https://twitter.com/maxenceschmitt</a>) for his precious help on this topic.</p>
 <h3 id="instanciating-the-jungle">Instanciating the Jungle!</h3>
 <h4 id="zookeeper-and-kafka">ZooKeeper and Kafka</h4>
 <p>First off, I instanciated a Kafka (and ZooKeeper) instance</p>
-<pre><code>version: '2'
+<pre tabindex="0"><code>version: &#39;2&#39;
 
 services:
   zookeeper:
     image: wurstmeister/zookeeper:3.4.6
     expose:
-    - &quot;2181&quot;
+    - &#34;2181&#34;
 
   kafka:
     image: wurstmeister/kafka:2.11-2.0.0
     depends_on:
     - zookeeper
     ports:
-    - &quot;9092:9092&quot;
+    - &#34;9092:9092&#34;
     environment:
       KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092
       KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:9092
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
 </code></pre><p>Then, I basically only had to call some <code>docker-compose</code>-fu and.. the job was pretty much done.</p>
-<pre><code>✗ docker-compose up kafka zookeeper
+<pre tabindex="0"><code>✗ docker-compose up kafka zookeeper
 Starting zookeeper_1 ... done
 Starting kafka_1     ... done
 Attaching to zookeeper_1, kafka_1
 zookeeper_1  | JMX enabled by default
 kafka_1      | Excluding KAFKA_HOME from broker config
-kafka_1      | [Configuring] 'port' in '/opt/kafka/config/server.properties'
+kafka_1      | [Configuring] &#39;port&#39; in &#39;/opt/kafka/config/server.properties&#39;
 zookeeper_1  | Using config: /opt/zookeeper-3.4.6/bin/../conf/zoo.cfg
-kafka_1      | [Configuring] 'advertised.listeners' in '/opt/kafka/config/server.properties'
-kafka_1      | [Configuring] 'broker.id' in '/opt/kafka/config/server.properties'
+kafka_1      | [Configuring] &#39;advertised.listeners&#39; in &#39;/opt/kafka/config/server.properties&#39;
+kafka_1      | [Configuring] &#39;broker.id&#39; in &#39;/opt/kafka/config/server.properties&#39;
 kafka_1      | Excluding KAFKA_VERSION from broker config
-kafka_1      | [Configuring] 'listeners' in '/opt/kafka/config/server.properties'
-kafka_1      | [Configuring] 'zookeeper.connect' in '/opt/kafka/config/server.properties'
-kafka_1      | [Configuring] 'log.dirs' in '/opt/kafka/config/server.properties'
+kafka_1      | [Configuring] &#39;listeners&#39; in &#39;/opt/kafka/config/server.properties&#39;
+kafka_1      | [Configuring] &#39;zookeeper.connect&#39; in &#39;/opt/kafka/config/server.properties&#39;
+kafka_1      | [Configuring] &#39;log.dirs&#39; in &#39;/opt/kafka/config/server.properties&#39;
 zookeeper_1  | 2020-02-05 19:48:38,585 [myid:] - INFO  [main:QuorumPeerConfig@103] - Reading configuration from: /opt/zookeeper-3.4.6/bin/../conf/zoo.cfg
 zookeeper_1  | 2020-02-05 19:48:38,597 [myid:] - INFO  [main:DatadirCleanupManager@78] - autopurge.snapRetainCount set to 3
 zookeeper_1  | 2020-02-05 19:48:38,598 [myid:] - INFO  [main:DatadirCleanupManager@79] - autopurge.purgeInterval set to 1
@@ -241,14 +253,14 @@ zookeeper_1  | 2020-02-05 19:48:38,661 [myid:] - INFO  [PurgeTask:DatadirCleanup
 [... truncated ...]
 </code></pre><h4 id="producing-the-message">Producing the message&hellip;</h4>
 <p>The next part was simple, I just wanted to <code>programmatically</code> create messages and I decided to choose Python to give it a shot. I used the <code>kafka-python</code> library and was pretty straight forward.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> kafka <span style="color:#f92672">import</span> KafkaProducer
-
-producer <span style="color:#f92672">=</span> KafkaProducer(bootstrap_servers<span style="color:#f92672">=</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">0.0.0.0:9092</span><span style="color:#e6db74">&#39;</span>)
-producer<span style="color:#f92672">.</span>send(<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">test</span><span style="color:#e6db74">&#39;</span>, <span style="color:#e6db74">b</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">Hello, World!</span><span style="color:#e6db74">&#39;</span>)
-producer<span style="color:#f92672">.</span>send(<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">test</span><span style="color:#e6db74">&#39;</span>, key<span style="color:#f92672">=</span><span style="color:#e6db74">b</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">message-two</span><span style="color:#e6db74">&#39;</span>, value<span style="color:#f92672">=</span><span style="color:#e6db74">b</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">This is Kafka-Python</span><span style="color:#e6db74">&#39;</span>)
-producer<span style="color:#f92672">.</span>flush()
-<span style="color:#66d9ef">print</span>(<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">We are done sending messages.</span><span style="color:#e6db74">&#39;</span>)
-</code></pre></div><p>This will basically send two messages on a specifc topic called <code>test</code> which are:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> kafka <span style="color:#f92672">import</span> KafkaProducer
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>producer <span style="color:#f92672">=</span> KafkaProducer(bootstrap_servers<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;0.0.0.0:9092&#39;</span>)
+</span></span><span style="display:flex;"><span>producer<span style="color:#f92672">.</span>send(<span style="color:#e6db74">&#39;test&#39;</span>, <span style="color:#e6db74">b</span><span style="color:#e6db74">&#39;Hello, World!&#39;</span>)
+</span></span><span style="display:flex;"><span>producer<span style="color:#f92672">.</span>send(<span style="color:#e6db74">&#39;test&#39;</span>, key<span style="color:#f92672">=</span><span style="color:#e6db74">b</span><span style="color:#e6db74">&#39;message-two&#39;</span>, value<span style="color:#f92672">=</span><span style="color:#e6db74">b</span><span style="color:#e6db74">&#39;This is Kafka-Python&#39;</span>)
+</span></span><span style="display:flex;"><span>producer<span style="color:#f92672">.</span>flush()
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#39;We are done sending messages.&#39;</span>)
+</span></span></code></pre></div><p>This will basically send two messages on a specifc topic called <code>test</code> which are:</p>
 <ul>
 <li>&ldquo;Hello, World!&rdquo;</li>
 <li>and &ldquo;This is Kafka-Python&rdquo;</li>
@@ -257,47 +269,47 @@ producer<span style="color:#f92672">.</span>flush()
 <h4 id="and-consuming-it">&hellip;and consuming it!</h4>
 <p>In order to consume them, the principle was pretty much similar, using the same Python library as the producer example.</p>
 <p>The code snippet is as follow:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> kafka <span style="color:#f92672">import</span> KafkaConsumer
-consumer <span style="color:#f92672">=</span> KafkaConsumer(<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">test</span><span style="color:#e6db74">&#39;</span>, auto_offset_reset<span style="color:#f92672">=</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">earliest</span><span style="color:#e6db74">&#39;</span>, enable_auto_commit<span style="color:#f92672">=</span>True, group_id<span style="color:#f92672">=</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">booya</span><span style="color:#e6db74">&#39;</span>, bootstrap_servers<span style="color:#f92672">=</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">0.0.0.0:9092</span><span style="color:#e6db74">&#39;</span>)
-<span style="color:#66d9ef">for</span> message <span style="color:#f92672">in</span> consumer:
-    <span style="color:#66d9ef">print</span> (message)
-</code></pre></div><p>It will basically wait for messages to be send on the <code>test</code> topic.
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> kafka <span style="color:#f92672">import</span> KafkaConsumer
+</span></span><span style="display:flex;"><span>consumer <span style="color:#f92672">=</span> KafkaConsumer(<span style="color:#e6db74">&#39;test&#39;</span>, auto_offset_reset<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;earliest&#39;</span>, enable_auto_commit<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>, group_id<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;booya&#39;</span>, bootstrap_servers<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;0.0.0.0:9092&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> message <span style="color:#f92672">in</span> consumer:
+</span></span><span style="display:flex;"><span>    print (message)
+</span></span></code></pre></div><p>It will basically wait for messages to be send on the <code>test</code> topic.
 The other arguments are:</p>
 <ul>
-<li><code>auto_offset_reset='earliest'</code>, starts from the earliest message that it didn't consume (yet!)</li>
+<li><code>auto_offset_reset='earliest'</code>, starts from the earliest message that it didn&rsquo;t consume (yet!)</li>
 <li><code>enable_auto_commit=True</code>, committing the processing of message(s) automatically.</li>
 <li><code>group_id='consumer'</code>, the <code>group</code> name you want to give (eg. <code>parser</code>, <code>consumer</code>, <code>extractor</code>, &hellip;)</li>
 <li><code>bootstrap_servers='0.0.0.0:9092'</code> &lt; basically the Kafka server it wants to communicate with.</li>
 </ul>
 <h4 id="dockerizing-consumers-and-producers">Dockerizing consumers and producers</h4>
 <p>This was one of the easiest part and done with a simple <code>Dockerfile</code> as follow:</p>
-<pre><code>FROM python:3.7
+<pre tabindex="0"><code>FROM python:3.7
 COPY . /app
 WORKDIR /app
 RUN pip install -r requirements.txt
-CMD [&quot;python&quot;, &quot;producer.py&quot;]
+CMD [&#34;python&#34;, &#34;producer.py&#34;]
 </code></pre><p>The only tweak I had to do for the <code>consumer</code> one was to add another parameter to <code>python</code> like this, in order to view logs through <code>docker-compose</code> command:</p>
-<pre><code>FROM python:3.7
+<pre tabindex="0"><code>FROM python:3.7
 COPY . /app
 WORKDIR /app
 RUN pip install -r requirements.txt
-CMD [&quot;python&quot;, &quot;-u&quot;, &quot;consumer.py&quot;]
+CMD [&#34;python&#34;, &#34;-u&#34;, &#34;consumer.py&#34;]
 </code></pre><h4 id="combining-them-all">Combining them all!</h4>
 <p>My final <code>docker-compose.yml</code> looked like this:</p>
-<pre><code>version: '2'
+<pre tabindex="0"><code>version: &#39;2&#39;
 
 services:
   zookeeper:
     image: wurstmeister/zookeeper:3.4.6
     expose:
-    - &quot;2181&quot;
+    - &#34;2181&#34;
 
   kafka:
     image: wurstmeister/kafka:2.11-2.0.0
     depends_on:
     - zookeeper
     ports:
-    - &quot;9092:9092&quot;
+    - &#34;9092:9092&#34;
     environment:
       KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092
       KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:9092
@@ -311,8 +323,8 @@ services:
 </code></pre><p>Just to make sure I was able to access Kafka, I had to specify the <code>network_mode: host</code> so that containers could access it.</p>
 <h4 id="-and-testing-it">&hellip; And testing it!</h4>
 <p>We already started <code>kafka</code> and <code>zookeeper</code> containers.
-Let's now start our <code>comsumer</code> one like this:</p>
-<pre><code>docker-compose up --build consumer
+Let&rsquo;s now start our <code>comsumer</code> one like this:</p>
+<pre tabindex="0"><code>docker-compose up --build consumer
 Building consumer
 Step 1/5 : FROM python:3.7
  ---&gt; 894300ec3929
@@ -321,7 +333,7 @@ Step 2/5 : COPY . /app
 Step 3/5 : WORKDIR /app
  ---&gt; Running in c81e60950ca5
 [... truncated ...]
-Step 5/5 : CMD [&quot;python&quot;, &quot;-u&quot;, &quot;consumer.py&quot;]
+Step 5/5 : CMD [&#34;python&#34;, &#34;-u&#34;, &#34;consumer.py&#34;]
  ---&gt; Running in 6933bac99474
 Removing intermediate container 6933bac99474
  ---&gt; 69a663dc20fd
@@ -331,7 +343,7 @@ Recreating consumer_1 ... done
 Attaching to consumer_1
 </code></pre><p>Our container will loop infinitely until it receives messages to display (aka. process) them.</p>
 <p>We can now start the <code>producer</code> one:</p>
-<pre><code>✗ docker-compose up --build producer
+<pre tabindex="0"><code>✗ docker-compose up --build producer
 Building producer
 Step 1/5 : FROM python:3.7
  ---&gt; 894300ec3929
@@ -346,16 +358,16 @@ Attaching to producer_1
 producer_1   | We are done sending messages.
 producer_1 exited with code 0
 </code></pre><p>And&hellip; if you go back in your <code>consumer</code> window, magic should have happened (!):</p>
-<pre><code>Attaching to consumer_1
+<pre tabindex="0"><code>Attaching to consumer_1
 consumer_1   | &lt;kafka.consumer.group.KafkaConsumer object at 0x7fb2f88a70d0&gt;
-consumer_1   | ConsumerRecord(topic='test', partition=0, offset=36, timestamp=1580931711739, timestamp_type=0, key=None, value=b'Hello, World!', headers=[], checksum=None, serialized_key_size=-1, serialized_value_size=13, serialized_header_size=-1)
-consumer_1   | ConsumerRecord(topic='test', partition=0, offset=37, timestamp=1580931711739, timestamp_type=0, key=b'message-two', value=b'This is Kafka-Python', headers=[], checksum=None, serialized_key_size=11, serialized_value_size=20, serialized_header_size=-1)
+consumer_1   | ConsumerRecord(topic=&#39;test&#39;, partition=0, offset=36, timestamp=1580931711739, timestamp_type=0, key=None, value=b&#39;Hello, World!&#39;, headers=[], checksum=None, serialized_key_size=-1, serialized_value_size=13, serialized_header_size=-1)
+consumer_1   | ConsumerRecord(topic=&#39;test&#39;, partition=0, offset=37, timestamp=1580931711739, timestamp_type=0, key=b&#39;message-two&#39;, value=b&#39;This is Kafka-Python&#39;, headers=[], checksum=None, serialized_key_size=11, serialized_value_size=20, serialized_header_size=-1)
 </code></pre><h3 id="conclusion">Conclusion</h3>
 <p>This was a pretty simple introduction to Kafka and start doing some processing with it.
 Again, thanks again Maxence for your precious advices!
 I added couple of external links for documentation and obviously the source code if you want to start experimenting.</p>
 <h3 id="external-link">External Link</h3>
-<p>If you'd like to play out, I created a repository with all those files so that will he handier instead of copying/pasting the code.</p>
+<p>If you&rsquo;d like to play out, I created a repository with all those files so that will he handier instead of copying/pasting the code.</p>
 <p>Code is availe at <a href="https://github.com/PaulSec/kafka-boilerplate-docker">https://github.com/PaulSec/kafka-boilerplate-docker</a></p>
 <p>Kafka-python library documentation is available here: <a href="https://kafka-python.readthedocs.io/en/master/usage.html">https://kafka-python.readthedocs.io/en/master/usage.html</a></p>
 <p>Deploying Kafka broker with Docker was also a precious resource : <a href="https://www.kaaproject.org/kafka-docker">https://www.kaaproject.org/kafka-docker</a></p>
@@ -392,16 +404,7 @@ I added couple of external links for documentation and obviously the source code
         
     
 
-<script defer src="https://use.fontawesome.com/releases/v5.11.2/js/all.js" integrity="sha384-b3ua1l97aVGAPEIe48b4TC60WUQbQaGi2jqAWM90y0OZXZeyaTCWtBTKtjW2GXG1" crossorigin="anonymous"></script>
-
-
-    
-    
-    <script type="text/javascript">
-        
-        hljs.initHighlightingOnLoad();
-    </script>
-    
+<script defer src="https://use.fontawesome.com/releases/v5.12.1/js/all.js" integrity="sha384-ZbbbT1gw3joYkKRqh0kWyRp32UAvdqkpbLedQJSlnI8iLQcFVxaGyrOgOJiDQTTR" crossorigin="anonymous"></script>
 
 
 

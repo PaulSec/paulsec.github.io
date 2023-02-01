@@ -6,12 +6,14 @@
 
     <head>
     <link href="https://gmpg.org/xfn/11" rel="profile">
+    
+    <link rel="canonical" href="http://paulsec.github.io/posts/ionic-5-events/">
+    
     <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta http-equiv="Cache-Control" content="public" />
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.62.0" />
+<meta name="generator" content="Hugo 0.107.0">
 
     
     
@@ -24,20 +26,21 @@
 <meta name="twitter:title" content="Working with Events on Ionic 5 "/>
 <meta name="twitter:description" content="Hi everyone,
 Here is a small blog post where I needed to work on an Ionic v5 project where (Angular) events were/are not working anymore.
-Context: Basically, I was working on the side-menu &lsquo;starter&rsquo; where I wanted the side-menu to automatically update with the user&#39;s username after logging in.
+Context: Basically, I was working on the side-menu &lsquo;starter&rsquo; where I wanted the side-menu to automatically update with the user&rsquo;s username after logging in.
 Beforehand, in order to use the Events, it was as simple as:
 import { Events } from &#39;@ionic/angular&#39;; And finally work on your logic, but this got removed in Ionic 5."/>
 
 <meta property="og:title" content="Working with Events on Ionic 5 " />
 <meta property="og:description" content="Hi everyone,
 Here is a small blog post where I needed to work on an Ionic v5 project where (Angular) events were/are not working anymore.
-Context: Basically, I was working on the side-menu &lsquo;starter&rsquo; where I wanted the side-menu to automatically update with the user&#39;s username after logging in.
+Context: Basically, I was working on the side-menu &lsquo;starter&rsquo; where I wanted the side-menu to automatically update with the user&rsquo;s username after logging in.
 Beforehand, in order to use the Events, it was as simple as:
 import { Events } from &#39;@ionic/angular&#39;; And finally work on your logic, but this got removed in Ionic 5." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://paulsec.github.io/posts/ionic-5-events/" />
+<meta property="og:url" content="http://paulsec.github.io/posts/ionic-5-events/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2020-03-18T16:52:42+01:00" />
 <meta property="article:modified_time" content="2020-03-18T16:52:42+01:00" /><meta property="og:site_name" content="PaulSec&#39;s Blog" />
+
 
 
     
@@ -47,7 +50,7 @@ import { Events } from &#39;@ionic/angular&#39;; And finally work on your logic,
 
 
 
-<link rel="stylesheet" href="/scss/hyde-hyde.92c66d107d7b219f0792cfd67223179af884b03f386ac46894f9f735932bbca3.css" integrity="sha256-ksZtEH17IZ8Hks/WciMXmviEsD84asRolPn3NZMrvKM=">
+<link rel="stylesheet" href="/scss/hyde-hyde.3081c4981fb69a2783dd36ecfdd0e6ba7a158d4cbfdd290ebce8f78ba0469fc6.css" integrity="sha256-MIHEmB&#43;2mieD3Tbs/dDmunoVjUy/3SkOvOj3i6BGn8Y=">
 
 
 <link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
@@ -74,7 +77,11 @@ import { Events } from &#39;@ionic/angular&#39;; And finally work on your logic,
   <div class="container ">
     <div class="sidebar-about">
       <span class="site__title">
-        <a href="http://paulsec.github.io/"></a>
+        <a href="http://paulsec.github.io/">
+        
+          
+        
+        </a>
       </span>
       
         
@@ -131,7 +138,12 @@ import { Events } from &#39;@ionic/angular&#39;; And finally work on your logic,
 	
 	
 	
+	
 	<a href="https://github.com/PaulSec" rel="me"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
 	
 	
 	
@@ -153,7 +165,7 @@ import { Events } from &#39;@ionic/angular&#39;; And finally work on your logic,
     </div>
     
 <div class="copyright">
-  &copy; 2021 Paul A.
+  &copy; 2023 Paul A.
   
     <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>
   
@@ -196,17 +208,17 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
   <div class="post">
     <p>Hi everyone,</p>
 <p>Here is a small blog post where I needed to work on an Ionic v5 project where (Angular) events were/are not working anymore.</p>
-<p>Context: <em>Basically, I was working on the side-menu &lsquo;starter&rsquo; where I wanted the side-menu to automatically update with the user's username after logging in.</em></p>
+<p>Context: <em>Basically, I was working on the side-menu &lsquo;starter&rsquo; where I wanted the side-menu to automatically update with the user&rsquo;s username after logging in.</em></p>
 <p>Beforehand, in order to use the <code>Events</code>, it was as simple as:</p>
-<pre><code>import { Events } from '@ionic/angular';
+<pre tabindex="0"><code>import { Events } from &#39;@ionic/angular&#39;;
 </code></pre><p>And finally work on your logic, but this got removed in Ionic 5.
 You can see the changelog here: <a href="https://github.com/ionic-team/ionic/blob/45d03baf981d0e10eb1fe689908532adef2ba31d/BREAKING.md#events-1">https://github.com/ionic-team/ionic/blob/45d03baf981d0e10eb1fe689908532adef2ba31d/BREAKING.md#events-1</a></p>
 <p>In order to have similar result, create a new service, in our case <code>EventsService</code> (using <code>ionic generate service</code>) like this:</p>
-<pre><code>import {Injectable} from '@angular/core';
-import {Subject} from 'rxjs';
+<pre tabindex="0"><code>import {Injectable} from &#39;@angular/core&#39;;
+import {Subject} from &#39;rxjs&#39;;
 
 @Injectable({
-    providedIn: 'root'
+    providedIn: &#39;root&#39;
 })
 export class EventsService {
     private fooSubject = new Subject&lt;any&gt;();
@@ -219,49 +231,49 @@ export class EventsService {
         return this.fooSubject;
     }
 }
-</code></pre><p>In my case, I needed to publish the user's id just after logging in to the side-menu component. After checking that the user was properly logged in, I was able to publish the data.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">EventsService</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./events.service&#39;</span>;
-
-<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">LoginPage</span> <span style="color:#66d9ef">implements</span> <span style="color:#a6e22e">OnInit</span> {
-
-  <span style="color:#a6e22e">constructor</span>(
-    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">events</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">EventsService</span>,
-  ) { }
-
-  <span style="color:#a6e22e">login</span>(<span style="color:#a6e22e">username</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">string</span>, <span style="color:#a6e22e">password</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">string</span>) {
-    [...] <span style="color:#75715e">// login mechanism
-</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">events</span>.<span style="color:#a6e22e">publishSomeData</span>({
-      <span style="color:#a6e22e">userId</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">userIdToLogin</span>
-    })
-  }
-</code></pre></div><p>On the other side (in my other component), basically when the app gets instanciated, I will have an observable on the <code>events</code>.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">EventsService</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./events.service&#39;</span>;
-
-[...]
-
-<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AppComponent</span> <span style="color:#66d9ef">implements</span> <span style="color:#a6e22e">OnInit</span> {
-
-  <span style="color:#a6e22e">constructor</span>(
-    [...]
-    <span style="color:#66d9ef">private</span> <span style="color:#a6e22e">events</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">EventsService</span>
-  ) {
-    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">initializeApp</span>();
-  }
-
-  <span style="color:#a6e22e">initializeApp</span>() {
-    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">platform</span>.<span style="color:#a6e22e">ready</span>().<span style="color:#a6e22e">then</span>(() =&gt; {
-      <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">statusBar</span>.<span style="color:#a6e22e">styleDefault</span>();
-      <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">splashScreen</span>.<span style="color:#a6e22e">hide</span>();
-    });
-
-    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">events</span>.<span style="color:#a6e22e">getObservable</span>().<span style="color:#a6e22e">subscribe</span>((<span style="color:#a6e22e">data</span>) =&gt; {
-      <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Data received:&#34;</span>, <span style="color:#a6e22e">data</span>);
-      <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">reviewerService</span>.<span style="color:#a6e22e">getReviewer</span>(<span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">userId</span>).<span style="color:#a6e22e">snapshotChanges</span>().<span style="color:#a6e22e">subscribe</span>(<span style="color:#a6e22e">res</span> =&gt; {
-        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">userProfile</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">payload</span>.<span style="color:#a6e22e">toJSON</span>();
-      });
-    })
-  }
-</code></pre></div><p>And&hellip; you're good to go!</p>
+</code></pre><p>In my case, I needed to publish the user&rsquo;s id just after logging in to the side-menu component. After checking that the user was properly logged in, I was able to publish the data.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">EventsService</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./events.service&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">LoginPage</span> <span style="color:#66d9ef">implements</span> <span style="color:#a6e22e">OnInit</span> {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">constructor</span>(
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">events</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">EventsService</span>,
+</span></span><span style="display:flex;"><span>  ) { }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">login</span>(<span style="color:#a6e22e">username</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">string</span>, <span style="color:#a6e22e">password</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">string</span>) {
+</span></span><span style="display:flex;"><span>    [...] <span style="color:#75715e">// login mechanism
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">events</span>.<span style="color:#a6e22e">publishSomeData</span>({
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">userId</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">userIdToLogin</span>
+</span></span><span style="display:flex;"><span>    })
+</span></span><span style="display:flex;"><span>  }
+</span></span></code></pre></div><p>On the other side (in my other component), basically when the app gets instanciated, I will have an observable on the <code>events</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">EventsService</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./events.service&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[...]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AppComponent</span> <span style="color:#66d9ef">implements</span> <span style="color:#a6e22e">OnInit</span> {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">constructor</span>(
+</span></span><span style="display:flex;"><span>    [...]
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#a6e22e">events</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">EventsService</span>
+</span></span><span style="display:flex;"><span>  ) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">initializeApp</span>();
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">initializeApp</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">platform</span>.<span style="color:#a6e22e">ready</span>().<span style="color:#a6e22e">then</span>(() =&gt; {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">statusBar</span>.<span style="color:#a6e22e">styleDefault</span>();
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">splashScreen</span>.<span style="color:#a6e22e">hide</span>();
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">events</span>.<span style="color:#a6e22e">getObservable</span>().<span style="color:#a6e22e">subscribe</span>((<span style="color:#a6e22e">data</span>) =&gt; {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Data received:&#34;</span>, <span style="color:#a6e22e">data</span>);
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">reviewerService</span>.<span style="color:#a6e22e">getReviewer</span>(<span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">userId</span>).<span style="color:#a6e22e">snapshotChanges</span>().<span style="color:#a6e22e">subscribe</span>(<span style="color:#a6e22e">res</span> =&gt; {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">userProfile</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">payload</span>.<span style="color:#a6e22e">toJSON</span>();
+</span></span><span style="display:flex;"><span>      });
+</span></span><span style="display:flex;"><span>    })
+</span></span><span style="display:flex;"><span>  }
+</span></span></code></pre></div><p>And&hellip; you&rsquo;re good to go!</p>
 
   </div>
   
@@ -295,16 +307,7 @@ export class EventsService {
         
     
 
-<script defer src="https://use.fontawesome.com/releases/v5.11.2/js/all.js" integrity="sha384-b3ua1l97aVGAPEIe48b4TC60WUQbQaGi2jqAWM90y0OZXZeyaTCWtBTKtjW2GXG1" crossorigin="anonymous"></script>
-
-
-    
-    
-    <script type="text/javascript">
-        
-        hljs.initHighlightingOnLoad();
-    </script>
-    
+<script defer src="https://use.fontawesome.com/releases/v5.12.1/js/all.js" integrity="sha384-ZbbbT1gw3joYkKRqh0kWyRp32UAvdqkpbLedQJSlnI8iLQcFVxaGyrOgOJiDQTTR" crossorigin="anonymous"></script>
 
 
 

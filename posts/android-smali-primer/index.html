@@ -6,12 +6,14 @@
 
     <head>
     <link href="https://gmpg.org/xfn/11" rel="profile">
+    
+    <link rel="canonical" href="http://paulsec.github.io/posts/android-smali-primer/">
+    
     <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta http-equiv="Cache-Control" content="public" />
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.62.0" />
+<meta name="generator" content="Hugo 0.107.0">
 
     
     
@@ -31,9 +33,10 @@ Create a dummy application with Android Studio and just import this. PLACEHOLDER
 This article aims at providing you survival steps while tinkering around with Smali &amp; Android applications. The name of the original application I did my search on will remain secret but I created a dummy application doing the same so that you can do it on your own. The link of the MainActivity.java and MainActivity.smali is here
 Create a dummy application with Android Studio and just import this. PLACEHOLDER_* strings will have to be replaced with proper ones if you want to try." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://paulsec.github.io/posts/android-smali-primer/" />
+<meta property="og:url" content="http://paulsec.github.io/posts/android-smali-primer/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2020-05-22T15:29:02+02:00" />
 <meta property="article:modified_time" content="2020-05-22T15:29:02+02:00" /><meta property="og:site_name" content="PaulSec&#39;s Blog" />
+
 
 
     
@@ -43,7 +46,7 @@ Create a dummy application with Android Studio and just import this. PLACEHOLDER
 
 
 
-<link rel="stylesheet" href="/scss/hyde-hyde.92c66d107d7b219f0792cfd67223179af884b03f386ac46894f9f735932bbca3.css" integrity="sha256-ksZtEH17IZ8Hks/WciMXmviEsD84asRolPn3NZMrvKM=">
+<link rel="stylesheet" href="/scss/hyde-hyde.3081c4981fb69a2783dd36ecfdd0e6ba7a158d4cbfdd290ebce8f78ba0469fc6.css" integrity="sha256-MIHEmB&#43;2mieD3Tbs/dDmunoVjUy/3SkOvOj3i6BGn8Y=">
 
 
 <link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
@@ -70,7 +73,11 @@ Create a dummy application with Android Studio and just import this. PLACEHOLDER
   <div class="container ">
     <div class="sidebar-about">
       <span class="site__title">
-        <a href="http://paulsec.github.io/"></a>
+        <a href="http://paulsec.github.io/">
+        
+          
+        
+        </a>
       </span>
       
         
@@ -127,7 +134,12 @@ Create a dummy application with Android Studio and just import this. PLACEHOLDER
 	
 	
 	
+	
 	<a href="https://github.com/PaulSec" rel="me"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
 	
 	
 	
@@ -149,7 +161,7 @@ Create a dummy application with Android Studio and just import this. PLACEHOLDER
     </div>
     
 <div class="copyright">
-  &copy; 2021 Paul A.
+  &copy; 2023 Paul A.
   
     <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>
   
@@ -214,9 +226,9 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
 The name of the original application I did my search on will remain secret but I created a dummy application doing the same so that you can do it on your own.
 The link of the <a href="https://gist.github.com/PaulSec/6beab513af069646a5355f66f2bb2329">MainActivity.java</a> and <a href="https://gist.github.com/PaulSec/6beab513af069646a5355f66f2bb2329">MainActivity.smali</a> is <a href="https://gist.github.com/PaulSec/6beab513af069646a5355f66f2bb2329">here</a></p>
 <p>Create a dummy application with Android Studio and just import this. <code>PLACEHOLDER_*</code> strings will have to be replaced with proper ones if you want to try.</p>
-<p>But before we start diving, what's <code>Smali</code> ?</p>
+<p>But before we start diving, what&rsquo;s <code>Smali</code> ?</p>
 <blockquote>
-<p>smali/baksmali is an assembler/disassembler for the dex format used by dalvik, Android's Java VM implementation.</p>
+<p>smali/baksmali is an assembler/disassembler for the dex format used by dalvik, Android&rsquo;s Java VM implementation.</p>
 </blockquote>
 <h4 id="context">Context</h4>
 <blockquote>
@@ -226,7 +238,7 @@ The link of the <a href="https://gist.github.com/PaulSec/6beab513af069646a5355f6
 <h4 id="constraints">Constraints</h4>
 <p>Hehe, in order to get this journey a bit spicier, here are some of my constraints (which led me to Smali instrumentation):</p>
 <ul>
-<li>The application is running on my phone (a One Plus 3 not rooted). &lt; I couldn't root it or I would lose all the data</li>
+<li>The application is running on my phone (a One Plus 3 not rooted). &lt; I couldn&rsquo;t root it or I would lose all the data</li>
 <li>The application is not transmitting the password in any way so that I could intercept it (with Burp for example)</li>
 </ul>
 <h4 id="tools-needed">Tools needed</h4>
@@ -240,12 +252,12 @@ The link of the <a href="https://gist.github.com/PaulSec/6beab513af069646a5355f6
 </ul>
 <h4 id="retrieving-the-file">Retrieving the file</h4>
 <p>I was able to use <code>adb backup</code> to backup this specific application on my laptop since the application had backup enabled within the APK, so at least&hellip; :)</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">adb -s xxyyzzxx backup my.little.application
-</code></pre></div><p>After running this first command, you get a <code>backup.ab</code> file which is essentialy a tar archive that you can untar this way:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f92672">(</span> printf <span style="color:#e6db74">&#34;\x1f\x8b\x08\x00\x00\x00\x00\x00&#34;</span> ; tail -c +25 <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>backup.ab <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span> <span style="color:#f92672">)</span> |  tar xfvz -
-</code></pre></div><p>I was able to locate the <code>.db</code> file containing my password, but it was encrypted (and encoded in base64). I couldn't do anything with it.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>adb -s xxyyzzxx backup my.little.application
+</span></span></code></pre></div><p>After running this first command, you get a <code>backup.ab</code> file which is essentialy a tar archive that you can untar this way:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">(</span> printf <span style="color:#e6db74">&#34;\x1f\x8b\x08\x00\x00\x00\x00\x00&#34;</span> ; tail -c +25 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>backup.ab <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span> <span style="color:#f92672">)</span> |  tar xfvz -
+</span></span></code></pre></div><p>I was able to locate the <code>.db</code> file containing my password, but it was encrypted (and encoded in base64). I couldn&rsquo;t do anything with it.</p>
 <h4 id="the-easy-part">The easy part</h4>
 <p>Since the password was loaded by the application (loaded from the DB and decrypted), an &ldquo;easy&rdquo; solution to retrieve the password would have been to modify the different layouts and look for fields with <code>&quot;android:inputType=&quot;textPassword&quot;</code></p>
 <p>The workflow to do this would be :</p>
@@ -266,49 +278,49 @@ The link of the <a href="https://gist.github.com/PaulSec/6beab513af069646a5355f6
 <h4 id="going-through-the-rabbit-hole">Going through the rabbit-hole</h4>
 <p>To continue, I decided to locate the encryption mechanism and after decompiling the application with <a href="https://github.com/skylot/jadx/releases">Jadx</a> and saving the sources on disk, I was able to locate the encryption class.</p>
 <p>One of my grep-fu to do is&hellip; is as simple as that:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">grep -r -i <span style="color:#e6db74">&#39;cipher&#39;</span>
-</code></pre></div><p>This works almost everything time for me.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>grep -r -i <span style="color:#e6db74">&#39;cipher&#39;</span>
+</span></span></code></pre></div><p>This works almost everything time for me.</p>
 <h4 id="decrypting-part">Decrypting part</h4>
 <p>I got couple of hits and got this specific one which looked quite promising, a simple method taking a byte array and returning a new byte array for the decrypted string.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">byte</span><span style="color:#f92672">[</span><span style="color:#f92672">]</span> <span style="color:#a6e22e">b</span><span style="color:#f92672">(</span><span style="color:#66d9ef">byte</span><span style="color:#f92672">[</span><span style="color:#f92672">]</span> bArr<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-    String str<span style="color:#f92672">;</span>
-    String str2<span style="color:#f92672">;</span>
-    Logger logger<span style="color:#f92672">;</span>
-    <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
-        Cipher instance <span style="color:#f92672">=</span> Cipher<span style="color:#f92672">.</span><span style="color:#a6e22e">getInstance</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;AES/CBC/PKCS5Padding&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;BC&#34;</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
-        instance<span style="color:#f92672">.</span><span style="color:#a6e22e">init</span><span style="color:#f92672">(</span>2<span style="color:#f92672">,</span> <span style="color:#66d9ef">new</span> SecretKeySpec<span style="color:#f92672">(</span><span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">f11885c</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;AES&#34;</span><span style="color:#f92672">)</span><span style="color:#f92672">,</span> <span style="color:#66d9ef">new</span> IvParameterSpec<span style="color:#f92672">(</span><span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">f11884b</span><span style="color:#f92672">)</span><span style="color:#f92672">,</span> <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">f11883a</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
-        <span style="color:#66d9ef">return</span> instance<span style="color:#f92672">.</span><span style="color:#a6e22e">doFinal</span><span style="color:#f92672">(</span>bArr<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
-    <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>NoSuchAlgorithmException e2<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-        logger <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">f11886d</span><span style="color:#f92672">;</span>
-        str <span style="color:#f92672">=</span> e2<span style="color:#f92672">.</span><span style="color:#a6e22e">getLocalizedMessage</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
-        str2 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;invalid algorithm: &#34;</span><span style="color:#f92672">;</span>
-        logger<span style="color:#f92672">.</span><span style="color:#a6e22e">warn</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;DECIPHER&#34;</span><span style="color:#f92672">,</span> <span style="color:#f92672">(</span>Object<span style="color:#f92672">)</span> str2<span style="color:#f92672">,</span> <span style="color:#f92672">(</span>Object<span style="color:#f92672">)</span> str<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
-        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">byte</span><span style="color:#f92672">[</span>0<span style="color:#f92672">]</span><span style="color:#f92672">;</span>
-    <span style="color:#f92672">}</span>
-    <span style="color:#75715e">// truncated
-</span><span style="color:#75715e"></span><span style="color:#f92672">}</span>
-</code></pre></div><p>I decided to create a simple Android Studio project, compile similar code in a basic Android Activity and see how it worked under the hood.
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">byte</span><span style="color:#f92672">[]</span> <span style="color:#a6e22e">b</span><span style="color:#f92672">(</span><span style="color:#66d9ef">byte</span><span style="color:#f92672">[]</span> bArr<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    String str<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>    String str2<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>    Logger logger<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        Cipher instance <span style="color:#f92672">=</span> Cipher<span style="color:#f92672">.</span><span style="color:#a6e22e">getInstance</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;AES/CBC/PKCS5Padding&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;BC&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        instance<span style="color:#f92672">.</span><span style="color:#a6e22e">init</span><span style="color:#f92672">(</span><span style="color:#ae81ff">2</span><span style="color:#f92672">,</span> <span style="color:#66d9ef">new</span> SecretKeySpec<span style="color:#f92672">(</span><span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">f11885c</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;AES&#34;</span><span style="color:#f92672">),</span> <span style="color:#66d9ef">new</span> IvParameterSpec<span style="color:#f92672">(</span><span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">f11884b</span><span style="color:#f92672">),</span> <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">f11883a</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> instance<span style="color:#f92672">.</span><span style="color:#a6e22e">doFinal</span><span style="color:#f92672">(</span>bArr<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>NoSuchAlgorithmException e2<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        logger <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">f11886d</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>        str <span style="color:#f92672">=</span> e2<span style="color:#f92672">.</span><span style="color:#a6e22e">getLocalizedMessage</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>        str2 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;invalid algorithm: &#34;</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>        logger<span style="color:#f92672">.</span><span style="color:#a6e22e">warn</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;DECIPHER&#34;</span><span style="color:#f92672">,</span> <span style="color:#f92672">(</span>Object<span style="color:#f92672">)</span> str2<span style="color:#f92672">,</span> <span style="color:#f92672">(</span>Object<span style="color:#f92672">)</span> str<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">byte</span><span style="color:#f92672">[</span><span style="color:#ae81ff">0</span><span style="color:#f92672">];</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// truncated
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><p>I decided to create a simple Android Studio project, compile similar code in a basic Android Activity and see how it worked under the hood.
 By doing so, I had a lot of flexibility to start writing Java code and see the corresponding Smali code, which can be a bit overwhelming, at least at the beginning.</p>
 <h5 id="logging-it-all-out">Logging it all out</h5>
 <p>My first thought was: &ldquo;I am in the good method, I should logcat all those parameters and see what are they&rdquo;.
-After a bit of Googling, I found <a href="https://github.com/intrepidusgroup/IGLogger">IGLogger</a> which can be used to perform instrumentation on a Android application but unfortunately, I didn't make it work.
+After a bit of Googling, I found <a href="https://github.com/intrepidusgroup/IGLogger">IGLogger</a> which can be used to perform instrumentation on a Android application but unfortunately, I didn&rsquo;t make it work.
 I also realized that the last time I played with Smali was couple of years back so I decided to brush up those skills and do it by myself.</p>
 <p>My goal was as easy as : Perform a <code>Log.i(&quot;My Activity&quot;, &quot;XXX = &quot; + new String(XXX));</code> for all the parameters that I needed, which were: <code>encrypted</code> (<code>bArr</code>), <code>key</code> and <code>iv</code>.
 <code>Log</code> is part of <code>android.util.Log</code> and does not require additional libraries to be injected in the APK. The less requirements, the better. Remember, I just wanted to print dummy variables to get my password back!</p>
 <h5 id="automation-ftw">Automation ftw!</h5>
 <p>Changing the Smali code, building the app, resigning the application and pushing in on a device was a bit tyding so I decided to script all of it, making changes easier.
 After any change I was doing, I just add to execute <code>./run.sh</code> and I could start interacting with the app.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#!/bin/bash
-</span><span style="color:#75715e"></span>cd ../../
-apktool b apktool_XXXXX
-cd apktool_XXXXX/dist
-jarsigner -keystore XXXXX.keystore -storepass XXXXXXXXXX XXXXX.apk XXXXX
-adb push XXXXX.apk /sdcard/
-adb shell
-</code></pre></div><h5 id="navigating-through-smali">Navigating through Smali</h5>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/bash
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>cd ../../
+</span></span><span style="display:flex;"><span>apktool b apktool_XXXXX
+</span></span><span style="display:flex;"><span>cd apktool_XXXXX/dist
+</span></span><span style="display:flex;"><span>jarsigner -keystore XXXXX.keystore -storepass XXXXXXXXXX XXXXX.apk XXXXX
+</span></span><span style="display:flex;"><span>adb push XXXXX.apk /sdcard/
+</span></span><span style="display:flex;"><span>adb shell
+</span></span></code></pre></div><h5 id="navigating-through-smali">Navigating through Smali</h5>
 <p>This might look painful when you start &ldquo;playing&rdquo; with Smali the first time but the langage is not that bad. Just make sure to be well rested and have a pen and paper to write down your notes.
 Inserting bad Smali code will often result in crashing the app when it starts and this might result in a lot of errors like this:</p>
-<pre><code>AndroidRuntime: java.lang.VerifyError: Verifier rejected class com.foobar.barfoo.authdd.d.a.a.a: byte[] com.foobar.barfoo.authdd.d.a.a.a.a(byte[]): [0xFFFFFFFF] register index out of range (8 &gt;= 8) (declaration of 'com.foobar.barfoo.authdd.d.a.a.a' appears in /data/app/com.foobar.barfoo-1/base.apk)
+<pre tabindex="0"><code>AndroidRuntime: java.lang.VerifyError: Verifier rejected class com.foobar.barfoo.authdd.d.a.a.a: byte[] com.foobar.barfoo.authdd.d.a.a.a.a(byte[]): [0xFFFFFFFF] register index out of range (8 &gt;= 8) (declaration of &#39;com.foobar.barfoo.authdd.d.a.a.a&#39; appears in /data/app/com.foobar.barfoo-1/base.apk)
 AndroidRuntime: 	at java.lang.reflect.Constructor.newInstance0(Native Method)
 AndroidRuntime: 	at java.lang.reflect.Constructor.newInstance(Constructor.java:430)
 AndroidRuntime: 	at com.foobar.barfoo.authdd.d.a.a.a(Unknown Source)
@@ -342,17 +354,17 @@ ActivityManager: Activity pause timeout for ActivityRecord{2301260 u0 com.foobar
 ActivityManager:   Force finishing activity com.foobar.barfoo/.app.SplashActivity
 ActivityManager: Killing 5682:com.foobar.barfoo/u0a101 (adj 900): crash
 </code></pre><p>Why did I get those kind of errors? Well, I basically started using registers which were not declared. And it crashed. The whole application. Multiple times.</p>
-<p>To give you some ideas, one Java line for printing a Log resulted in about ~11 lines of Smali code and let's dive in this to give you some heads-up.
-Let's take this specific like :</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Log<span style="color:#f92672">.</span><span style="color:#a6e22e">i</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;My Activity&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;KEY = &#34;</span> <span style="color:#f92672">+</span> <span style="color:#66d9ef">new</span> String<span style="color:#f92672">(</span>key<span style="color:#f92672">)</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
-</code></pre></div><p>And this results in Smali code with:</p>
-<pre><code>const-string v1, &quot;My Activity&quot;
+<p>To give you some ideas, one Java line for printing a Log resulted in about ~11 lines of Smali code and let&rsquo;s dive in this to give you some heads-up.
+Let&rsquo;s take this specific like :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Log<span style="color:#f92672">.</span><span style="color:#a6e22e">i</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;My Activity&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;KEY = &#34;</span> <span style="color:#f92672">+</span> <span style="color:#66d9ef">new</span> String<span style="color:#f92672">(</span>key<span style="color:#f92672">));</span>
+</span></span></code></pre></div><p>And this results in Smali code with:</p>
+<pre tabindex="0"><code>const-string v1, &#34;My Activity&#34;
 
 new-instance v5, Ljava/lang/StringBuilder;
 
 invoke-direct {v5}, Ljava/lang/StringBuilder;-&gt;&lt;init&gt;()V
 
-const-string v6, &quot;KEY= &quot;
+const-string v6, &#34;KEY= &#34;
 
 invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;-&gt;append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -367,13 +379,13 @@ invoke-virtual {v5}, Ljava/lang/StringBuilder;-&gt;toString()Ljava/lang/String;
 move-result-object v5
 
 invoke-static {v1, v5}, Landroid/util/Log;-&gt;i(Ljava/lang/String;Ljava/lang/String;)I
-</code></pre><p>This last Smali line is basically the call to <code>android.util.Log</code> method with the String we've built within the last 10 lines. Clever, right?
+</code></pre><p>This last Smali line is basically the call to <code>android.util.Log</code> method with the String we&rsquo;ve built within the last 10 lines. Clever, right?
 Smali works with registers by passing data from one register to the other.</p>
-<p>Let's continue on this last line: <code>invoke-static</code> will allow you to invoke/call any methods/functions but before, you need to define what will be the parameters. In our case, <code>v1</code> and <code>v5</code> are the necessary parameters to call <code>Log</code>. This is correct because we also have two parameters in the Java code.
+<p>Let&rsquo;s continue on this last line: <code>invoke-static</code> will allow you to invoke/call any methods/functions but before, you need to define what will be the parameters. In our case, <code>v1</code> and <code>v5</code> are the necessary parameters to call <code>Log</code>. This is correct because we also have two parameters in the Java code.
 For example, v1 refers to &ldquo;My Activity&rdquo; which has been declared on the first line as a <code>const-string</code> type (read a constant string - that will never change)</p>
-<p>The other parameter is the <code>&quot;KEY = &quot; + ...</code> which is the string we've built previously. First, we instantiate a StringBuilder with the empty string and then we start appending data to it (<code>KEY = </code>) and then the string that we've wanted.</p>
+<p>The other parameter is the <code>&quot;KEY = &quot; + ...</code> which is the string we&rsquo;ve built previously. First, we instantiate a StringBuilder with the empty string and then we start appending data to it (<code>KEY = </code>) and then the string that we&rsquo;ve wanted.</p>
 <p>Here is a small picture to show what are those lines about in corresponding files:</p>
-<p><img src="https://i.imgur.com/KCQ4NCS.png" alt="Smali & Java correspondance"></p>
+<p><img src="https://i.imgur.com/KCQ4NCS.png" alt="Smali &amp; Java correspondance"></p>
 <p>I did the exact same thing for all the parameters that I needed to dump, <strong>by making sure that I would not erase the information in a specific registry that would be needed for post-processing purposes.</strong>
 It turns out that by doing this specific mechanism, it worked - I was able to retrieve the password!</p>
 <p>By doing this technique, I realised that all strings in the application were all encrypted with one specific key but not my password, which was with another one.
@@ -418,16 +430,7 @@ Anyhow, this took me couple of hours but I learnt some cool things along the way
         
     
 
-<script defer src="https://use.fontawesome.com/releases/v5.11.2/js/all.js" integrity="sha384-b3ua1l97aVGAPEIe48b4TC60WUQbQaGi2jqAWM90y0OZXZeyaTCWtBTKtjW2GXG1" crossorigin="anonymous"></script>
-
-
-    
-    
-    <script type="text/javascript">
-        
-        hljs.initHighlightingOnLoad();
-    </script>
-    
+<script defer src="https://use.fontawesome.com/releases/v5.12.1/js/all.js" integrity="sha384-ZbbbT1gw3joYkKRqh0kWyRp32UAvdqkpbLedQJSlnI8iLQcFVxaGyrOgOJiDQTTR" crossorigin="anonymous"></script>
 
 
 

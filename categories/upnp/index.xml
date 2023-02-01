@@ -6,11 +6,7 @@
     <description>Recent content in upnp on </description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 03 Jul 2014 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="http://paulsec.github.io/categories/upnp/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Thu, 03 Jul 2014 00:00:00 +0000</lastBuildDate><atom:link href="http://paulsec.github.io/categories/upnp/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Experiments with UPnP</title>
       <link>http://paulsec.github.io/posts/experiments-with-upnp/</link>

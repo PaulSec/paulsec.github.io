@@ -6,12 +6,14 @@
 
     <head>
     <link href="https://gmpg.org/xfn/11" rel="profile">
+    
+    <link rel="canonical" href="http://paulsec.github.io/posts/frida-android-primer/">
+    
     <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta http-equiv="Cache-Control" content="public" />
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.62.0" />
+<meta name="generator" content="Hugo 0.107.0">
 
     
     
@@ -23,19 +25,20 @@
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="A quick primer on Frida and Android Instrumentation"/>
 <meta name="twitter:description" content="Hi everyone!
-Here is a pretty quick blog post on some Frida/Objection things I&#39;ve been tinkering with.
- I had this Android application which had premium features and wanted to understand how that mechanism worked and if it was robust enough. Let&#39;s see what was the journey on how I&#39;ve bypassed it using Frida.
- After disassembling the application with Jadx, I was able to perform a simple grep -r -i &#39;premium&#39; ."/>
+Here is a pretty quick blog post on some Frida/Objection things I&rsquo;ve been tinkering with.
+I had this Android application which had premium features and wanted to understand how that mechanism worked and if it was robust enough. Let&rsquo;s see what was the journey on how I&rsquo;ve bypassed it using Frida.
+After disassembling the application with Jadx, I was able to perform a simple grep -r -i &#39;premium&#39; ."/>
 
 <meta property="og:title" content="A quick primer on Frida and Android Instrumentation" />
 <meta property="og:description" content="Hi everyone!
-Here is a pretty quick blog post on some Frida/Objection things I&#39;ve been tinkering with.
- I had this Android application which had premium features and wanted to understand how that mechanism worked and if it was robust enough. Let&#39;s see what was the journey on how I&#39;ve bypassed it using Frida.
- After disassembling the application with Jadx, I was able to perform a simple grep -r -i &#39;premium&#39; ." />
+Here is a pretty quick blog post on some Frida/Objection things I&rsquo;ve been tinkering with.
+I had this Android application which had premium features and wanted to understand how that mechanism worked and if it was robust enough. Let&rsquo;s see what was the journey on how I&rsquo;ve bypassed it using Frida.
+After disassembling the application with Jadx, I was able to perform a simple grep -r -i &#39;premium&#39; ." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://paulsec.github.io/posts/frida-android-primer/" />
+<meta property="og:url" content="http://paulsec.github.io/posts/frida-android-primer/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-08-13T17:25:35+02:00" />
 <meta property="article:modified_time" content="2021-08-13T17:25:35+02:00" /><meta property="og:site_name" content="PaulSec&#39;s Blog" />
+
 
 
     
@@ -45,7 +48,7 @@ Here is a pretty quick blog post on some Frida/Objection things I&#39;ve been ti
 
 
 
-<link rel="stylesheet" href="/scss/hyde-hyde.92c66d107d7b219f0792cfd67223179af884b03f386ac46894f9f735932bbca3.css" integrity="sha256-ksZtEH17IZ8Hks/WciMXmviEsD84asRolPn3NZMrvKM=">
+<link rel="stylesheet" href="/scss/hyde-hyde.3081c4981fb69a2783dd36ecfdd0e6ba7a158d4cbfdd290ebce8f78ba0469fc6.css" integrity="sha256-MIHEmB&#43;2mieD3Tbs/dDmunoVjUy/3SkOvOj3i6BGn8Y=">
 
 
 <link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
@@ -72,7 +75,11 @@ Here is a pretty quick blog post on some Frida/Objection things I&#39;ve been ti
   <div class="container ">
     <div class="sidebar-about">
       <span class="site__title">
-        <a href="http://paulsec.github.io/"></a>
+        <a href="http://paulsec.github.io/">
+        
+          
+        
+        </a>
       </span>
       
         
@@ -129,7 +136,12 @@ Here is a pretty quick blog post on some Frida/Objection things I&#39;ve been ti
 	
 	
 	
+	
 	<a href="https://github.com/PaulSec" rel="me"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
 	
 	
 	
@@ -151,7 +163,7 @@ Here is a pretty quick blog post on some Frida/Objection things I&#39;ve been ti
     </div>
     
 <div class="copyright">
-  &copy; 2021 Paul A.
+  &copy; 2023 Paul A.
   
     <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>
   
@@ -212,21 +224,21 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
   
   <div class="post">
     <p>Hi everyone!</p>
-<p>Here is a pretty quick blog post on some <a href="https://github.com/frida/frida">Frida</a>/<a href="https://github.com/sensepost/objection">Objection</a> things I've been tinkering with.</p>
+<p>Here is a pretty quick blog post on some <a href="https://github.com/frida/frida">Frida</a>/<a href="https://github.com/sensepost/objection">Objection</a> things I&rsquo;ve been tinkering with.</p>
 <blockquote>
-<p>I had this Android application which had premium features and wanted to understand how that mechanism worked and if it was robust enough. Let's see what was the journey on how I've bypassed it using Frida.</p>
+<p>I had this Android application which had premium features and wanted to understand how that mechanism worked and if it was robust enough. Let&rsquo;s see what was the journey on how I&rsquo;ve bypassed it using Frida.</p>
 </blockquote>
 <p>After disassembling the application with <a href="https://github.com/skylot/jadx">Jadx</a>, I was able to perform a simple <code>grep -r -i 'premium' .</code> into the sources and leading me to where the <code>Premium</code> checks were done.</p>
 <p>Within the code, I could see things like:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#f92672">[</span><span style="color:#f92672">.</span><span style="color:#f92672">.</span><span style="color:#f92672">.</span> redacted <span style="color:#f92672">.</span><span style="color:#f92672">.</span><span style="color:#f92672">.</span><span style="color:#f92672">]</span>
-profile<span style="color:#f92672">.</span><span style="color:#a6e22e">getProfileId</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span> <span style="color:#f92672">&gt;</span> 1 <span style="color:#f92672">?</span> <span style="color:#e6db74">&#34;You are premium!&#34;</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;You are simple user!&#34;</span>
-<span style="color:#f92672">[</span><span style="color:#f92672">.</span><span style="color:#f92672">.</span><span style="color:#f92672">.</span> redacted <span style="color:#f92672">.</span><span style="color:#f92672">.</span><span style="color:#f92672">.</span><span style="color:#f92672">]</span>
-</code></pre></div><p>Meaning that any profileId greater than 1 would be considered as premium. Am I able to change that? Is that calculated?
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">[...</span> redacted <span style="color:#f92672">...]</span>
+</span></span><span style="display:flex;"><span>profile<span style="color:#f92672">.</span><span style="color:#a6e22e">getProfileId</span><span style="color:#f92672">()</span> <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">?</span> <span style="color:#e6db74">&#34;You are premium!&#34;</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;You are simple user!&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[...</span> redacted <span style="color:#f92672">...]</span>
+</span></span></code></pre></div><p>Meaning that any profileId greater than 1 would be considered as premium. Am I able to change that? Is that calculated?
 I started checking the profile object and especially the <code>getProfileId()</code> method which was as easy as:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">getProfileId</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">getProfileId</span><span style="color:#f92672">;</span>
-<span style="color:#f92672">}</span>
-</code></pre></div><p>I think that it was a perfect example to try out Frida and see if I could perform any kind of Android instrumentation in order to hook the <code>getProfileId</code> method and make it return anything &gt; 1, like 3.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">getProfileId</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">getProfileId</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><p>I think that it was a perfect example to try out Frida and see if I could perform any kind of Android instrumentation in order to hook the <code>getProfileId</code> method and make it return anything &gt; 1, like 3.</p>
 <h3 id="objection">Objection</h3>
 <blockquote>
 <p>This Objection step was definitely not necessary but Objection is such a great framework and I wanted to re-use it.</p>
@@ -234,98 +246,98 @@ I started checking the profile object and especially the <code>getProfileId()</c
 <p>First, I started using <a href="https://github.com/sensepost/objection">Objection</a> which is essentialy a runtime mobile exploration toolkit, with Frida under the hood, and this, without needing any jailbreak.
 However, in my case, I had a spare phone with root access allowing me to interact freely with the device.</p>
 <p>First thing first, you need to patch the APK with Objection, like this:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ objection patchapk --source my.really.nice.apk
-</code></pre></div><p>Then, you can install it on the phone, using:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ adb install my.really.nice.apk
-</code></pre></div><h3 id="frida">Frida</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ objection patchapk --source my.really.nice.apk
+</span></span></code></pre></div><p>Then, you can install it on the phone, using:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ adb install my.really.nice.apk
+</span></span></code></pre></div><h3 id="frida">Frida</h3>
 <p>Then, install Frida on the phone.
 Retrieve the latest version from the Releases page: <a href="https://github.com/frida/frida/releases">https://github.com/frida/frida/releases</a></p>
 <p>In my case, it was the <code>15.0.13-android-arm64</code> version. Push it on the Android phone.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ adb push frida-server-15.0.13-android-arm64 /data/local/tmp/
-</code></pre></div><p>And follow the rest of the instructions here: <a href="https://frida.re/docs/android/">https://frida.re/docs/android/</a>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ adb push frida-server-15.0.13-android-arm64 /data/local/tmp/
+</span></span></code></pre></div><p>And follow the rest of the instructions here: <a href="https://frida.re/docs/android/">https://frida.re/docs/android/</a>.</p>
 <h3 id="exploring-the-app">Exploring the app</h3>
 <p>After installing the app and having Frida up and running, I wanted to analyse return value from the <code>getProfileId()</code> method.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ objection --gadget <span style="color:#e6db74">&#34;MyCrazyApp&#34;</span> explore
-Using USB device <span style="color:#e6db74">`</span>w00tw00t<span style="color:#e6db74">`</span>
-Agent injected and responds ok!
-
-     _   _         _   _
- ___| |_|_|___ ___| |_|_|___ ___
-| . | . | | -_|  _|  _| | . |   |
-|___|___| |___|___|_| |_|___|_|_|
-      |___|<span style="color:#f92672">(</span>object<span style="color:#f92672">)</span>inject<span style="color:#f92672">(</span>ion<span style="color:#f92672">)</span> v1.11.0
-
-     Runtime Mobile Exploration
-        by: @leonjza from @sensepost
-
-<span style="color:#f92672">[</span>tab<span style="color:#f92672">]</span> <span style="color:#66d9ef">for</span> command suggestions
-...my.app on <span style="color:#f92672">(</span>google: 7.1.1<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>usb<span style="color:#f92672">]</span> <span style="color:#75715e"># android hooking watch class_method path.to.my.class.getProfileId --dump-return</span>
-<span style="color:#f92672">(</span>agent<span style="color:#f92672">)</span> Attempting to watch class path.to.my.class.getProfileId method getProfileId.
-<span style="color:#f92672">(</span>agent<span style="color:#f92672">)</span> Hooking path.to.my.class.getProfileId<span style="color:#f92672">(</span><span style="color:#f92672">)</span>
-<span style="color:#f92672">(</span>agent<span style="color:#f92672">)</span> Registering job 923234. Type: watch-method <span style="color:#66d9ef">for</span>: path.to.my.class.getProfileId
-...my.app on <span style="color:#f92672">(</span>google: 7.1.1<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>usb<span style="color:#f92672">]</span> <span style="color:#75715e"># (agent) [923234] Called path.to.my.class.getProfileId()</span>
-<span style="color:#f92672">(</span>agent<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>923234<span style="color:#f92672">]</span> Return Value: <span style="color:#ae81ff">1</span>
-<span style="color:#f92672">(</span>agent<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>923234<span style="color:#f92672">]</span> Called path.to.my.class.getProfileId<span style="color:#f92672">(</span><span style="color:#f92672">)</span>
-<span style="color:#f92672">(</span>agent<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>923234<span style="color:#f92672">]</span> Return Value: <span style="color:#ae81ff">1</span>
-<span style="color:#f92672">(</span>agent<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>923234<span style="color:#f92672">]</span> Called path.to.my.class.getProfileId<span style="color:#f92672">(</span><span style="color:#f92672">)</span>
-<span style="color:#f92672">(</span>agent<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>923234<span style="color:#f92672">]</span> Return Value: <span style="color:#ae81ff">1</span>
-</code></pre></div><p>As you can see, we were able to retrieve the return value which was equal to <code>1</code>, refering to a default user.
-Now, let's see how to use Frida to replace that return value with <code>3</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ objection --gadget <span style="color:#e6db74">&#34;MyCrazyApp&#34;</span> explore
+</span></span><span style="display:flex;"><span>Using USB device <span style="color:#e6db74">`</span>w00tw00t<span style="color:#e6db74">`</span>
+</span></span><span style="display:flex;"><span>Agent injected and responds ok!
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>     _   _         _   _
+</span></span><span style="display:flex;"><span> ___| |_|_|___ ___| |_|_|___ ___
+</span></span><span style="display:flex;"><span>| . | . | | -_|  _|  _| | . |   |
+</span></span><span style="display:flex;"><span>|___|___| |___|___|_| |_|___|_|_|
+</span></span><span style="display:flex;"><span>      |___|<span style="color:#f92672">(</span>object<span style="color:#f92672">)</span>inject<span style="color:#f92672">(</span>ion<span style="color:#f92672">)</span> v1.11.0
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>     Runtime Mobile Exploration
+</span></span><span style="display:flex;"><span>        by: @leonjza from @sensepost
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>tab<span style="color:#f92672">]</span> <span style="color:#66d9ef">for</span> command suggestions
+</span></span><span style="display:flex;"><span>...my.app on <span style="color:#f92672">(</span>google: 7.1.1<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>usb<span style="color:#f92672">]</span> <span style="color:#75715e"># android hooking watch class_method path.to.my.class.getProfileId --dump-return</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>agent<span style="color:#f92672">)</span> Attempting to watch class path.to.my.class.getProfileId method getProfileId.
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>agent<span style="color:#f92672">)</span> Hooking path.to.my.class.getProfileId<span style="color:#f92672">()</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>agent<span style="color:#f92672">)</span> Registering job 923234. Type: watch-method <span style="color:#66d9ef">for</span>: path.to.my.class.getProfileId
+</span></span><span style="display:flex;"><span>...my.app on <span style="color:#f92672">(</span>google: 7.1.1<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>usb<span style="color:#f92672">]</span> <span style="color:#75715e"># (agent) [923234] Called path.to.my.class.getProfileId()</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>agent<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>923234<span style="color:#f92672">]</span> Return Value: <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>agent<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>923234<span style="color:#f92672">]</span> Called path.to.my.class.getProfileId<span style="color:#f92672">()</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>agent<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>923234<span style="color:#f92672">]</span> Return Value: <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>agent<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>923234<span style="color:#f92672">]</span> Called path.to.my.class.getProfileId<span style="color:#f92672">()</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>agent<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>923234<span style="color:#f92672">]</span> Return Value: <span style="color:#ae81ff">1</span>
+</span></span></code></pre></div><p>As you can see, we were able to retrieve the return value which was equal to <code>1</code>, refering to a default user.
+Now, let&rsquo;s see how to use Frida to replace that return value with <code>3</code>.</p>
 <h3 id="frida-kung-fu">Frida (Kung)-fu</h3>
 <p>Objection was running, attached to an already-spawned application. When starting Frida, I just needed to attach to the Application PID that you can retrieve very easily:</p>
-<pre><code>$ frida-ps -U | grep -i MyCrazyApp
+<pre tabindex="0"><code>$ frida-ps -U | grep -i MyCrazyApp
 1337
 </code></pre><p>Since I never used Frida before, let me show you how I went and why it failed. Here is my first JavaScript code:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">Java</span>.<span style="color:#a6e22e">perform</span>(<span style="color:#66d9ef">function</span> () {
-    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Inside java perform function&#34;</span>);
-    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">my_class</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">Java</span>.<span style="color:#a6e22e">use</span>(<span style="color:#e6db74">&#34;path.to.my.class&#34;</span>);
-    <span style="color:#a6e22e">my_class</span>.<span style="color:#a6e22e">getProfileId</span>.<span style="color:#a6e22e">implementation</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>() {
-        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Inside path.to.my.class.class.getProfileId()&#34;</span>);
-        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">3</span>;
-    };
-});
-</code></pre></div><p>However, when I launched this, Frida screamed:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ frida -U -l hookProfileId.js -p <span style="color:#ae81ff">1337</span>
-     ____
-    / _  |   Frida 15.0.13 - A world-class dynamic instrumentation toolkit
-   | <span style="color:#f92672">(</span>_| |
-    &gt; _  |   Commands:
-   /_/ |_|       help      -&gt; Displays the help system
-   . . . .       object?   -&gt; Display information about <span style="color:#e6db74">&#39;object&#39;</span>
-   . . . .       exit/quit -&gt; Exit
-   . . . .
-   . . . .   More info at https://frida.re/docs/home/
-Attaching...
-Inside java perform <span style="color:#66d9ef">function</span>
-Error: getProfileId: cannot call instance method without an instance
-    at value <span style="color:#f92672">(</span>frida/node_modules/frida-java-bridge/lib/class-factory.js:961<span style="color:#f92672">)</span>
-    at e <span style="color:#f92672">(</span>frida/node_modules/frida-java-bridge/lib/class-factory.js:547<span style="color:#f92672">)</span>
-    at &lt;anonymous&gt; <span style="color:#f92672">(</span>/hookProfileId.js:4<span style="color:#f92672">)</span>
-    at &lt;anonymous&gt; <span style="color:#f92672">(</span>frida/node_modules/frida-java-bridge/lib/vm.js:16<span style="color:#f92672">)</span>
-    at _performPendingVmOps <span style="color:#f92672">(</span>frida/node_modules/frida-java-bridge/index.js:238<span style="color:#f92672">)</span>
-    at &lt;anonymous&gt; <span style="color:#f92672">(</span>frida/node_modules/frida-java-bridge/index.js:213<span style="color:#f92672">)</span>
-    at &lt;anonymous&gt; <span style="color:#f92672">(</span>frida/node_modules/frida-java-bridge/lib/vm.js:16<span style="color:#f92672">)</span>
-    at _performPendingVmOpsWhenReady <span style="color:#f92672">(</span>frida/node_modules/frida-java-bridge/index.js:232<span style="color:#f92672">)</span>
-    at perform <span style="color:#f92672">(</span>frida/node_modules/frida-java-bridge/index.js:192<span style="color:#f92672">)</span>
-    at &lt;eval&gt; <span style="color:#f92672">(</span>/hookProfileId.js:8<span style="color:#f92672">)</span>
-</code></pre></div><p>&hellip;And Frida was right! I was actually trying to call an instance method, but without any instance.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">Java</span>.<span style="color:#a6e22e">perform</span>(<span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Inside java perform function&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">my_class</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">Java</span>.<span style="color:#a6e22e">use</span>(<span style="color:#e6db74">&#34;path.to.my.class&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">my_class</span>.<span style="color:#a6e22e">getProfileId</span>.<span style="color:#a6e22e">implementation</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Inside path.to.my.class.class.getProfileId()&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">3</span>;
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>});
+</span></span></code></pre></div><p>However, when I launched this, Frida screamed:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ frida -U -l hookProfileId.js -p <span style="color:#ae81ff">1337</span>
+</span></span><span style="display:flex;"><span>     ____
+</span></span><span style="display:flex;"><span>    / _  |   Frida 15.0.13 - A world-class dynamic instrumentation toolkit
+</span></span><span style="display:flex;"><span>   | <span style="color:#f92672">(</span>_| |
+</span></span><span style="display:flex;"><span>    &gt; _  |   Commands:
+</span></span><span style="display:flex;"><span>   /_/ |_|       help      -&gt; Displays the help system
+</span></span><span style="display:flex;"><span>   . . . .       object?   -&gt; Display information about <span style="color:#e6db74">&#39;object&#39;</span>
+</span></span><span style="display:flex;"><span>   . . . .       exit/quit -&gt; Exit
+</span></span><span style="display:flex;"><span>   . . . .
+</span></span><span style="display:flex;"><span>   . . . .   More info at https://frida.re/docs/home/
+</span></span><span style="display:flex;"><span>Attaching...
+</span></span><span style="display:flex;"><span>Inside java perform <span style="color:#66d9ef">function</span>
+</span></span><span style="display:flex;"><span>Error: getProfileId: cannot call instance method without an instance
+</span></span><span style="display:flex;"><span>    at value <span style="color:#f92672">(</span>frida/node_modules/frida-java-bridge/lib/class-factory.js:961<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    at e <span style="color:#f92672">(</span>frida/node_modules/frida-java-bridge/lib/class-factory.js:547<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    at &lt;anonymous&gt; <span style="color:#f92672">(</span>/hookProfileId.js:4<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    at &lt;anonymous&gt; <span style="color:#f92672">(</span>frida/node_modules/frida-java-bridge/lib/vm.js:16<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    at _performPendingVmOps <span style="color:#f92672">(</span>frida/node_modules/frida-java-bridge/index.js:238<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    at &lt;anonymous&gt; <span style="color:#f92672">(</span>frida/node_modules/frida-java-bridge/index.js:213<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    at &lt;anonymous&gt; <span style="color:#f92672">(</span>frida/node_modules/frida-java-bridge/lib/vm.js:16<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    at _performPendingVmOpsWhenReady <span style="color:#f92672">(</span>frida/node_modules/frida-java-bridge/index.js:232<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    at perform <span style="color:#f92672">(</span>frida/node_modules/frida-java-bridge/index.js:192<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    at &lt;eval&gt; <span style="color:#f92672">(</span>/hookProfileId.js:8<span style="color:#f92672">)</span>
+</span></span></code></pre></div><p>&hellip;And Frida was right! I was actually trying to call an instance method, but without any instance.</p>
 <p>Here is the final code I used which waiting for an instance and attached to it to hook and override the return value, as expected:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">
-<span style="color:#a6e22e">Java</span>.<span style="color:#a6e22e">perform</span>(<span style="color:#66d9ef">function</span> () {
-    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Inside java perform function&#34;</span>);
-    <span style="color:#a6e22e">Java</span>.<span style="color:#a6e22e">choose</span>(<span style="color:#e6db74">&#34;path.to.my.class&#34;</span>, {
-        <span style="color:#a6e22e">onMatch</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">instance</span>) {
-            <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Found instance: &#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">instance</span>);
-            <span style="color:#a6e22e">instance</span>.<span style="color:#a6e22e">getProfileId</span>.<span style="color:#a6e22e">overload</span>().<span style="color:#a6e22e">implementation</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>() {
-                <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Inside path.to.my.class.getProfileId()&#34;</span>);
-                <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">3</span>;
-            }
-        },
-        <span style="color:#a6e22e">onComplete</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span>() {}
-    })
-});
-</code></pre></div><p>And guess what? This resulted in my other Terminal with Objection open with this output:</p>
-<pre><code>[...redacted...]
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Java</span>.<span style="color:#a6e22e">perform</span>(<span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Inside java perform function&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">Java</span>.<span style="color:#a6e22e">choose</span>(<span style="color:#e6db74">&#34;path.to.my.class&#34;</span>, {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">onMatch</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">instance</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Found instance: &#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">instance</span>);
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">instance</span>.<span style="color:#a6e22e">getProfileId</span>.<span style="color:#a6e22e">overload</span>().<span style="color:#a6e22e">implementation</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>() {
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Inside path.to.my.class.getProfileId()&#34;</span>);
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">3</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">onComplete</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span>() {}
+</span></span><span style="display:flex;"><span>    })
+</span></span><span style="display:flex;"><span>});
+</span></span></code></pre></div><p>And guess what? This resulted in my other Terminal with Objection open with this output:</p>
+<pre tabindex="0"><code>[...redacted...]
 (agent) [923234] Called path.to.my.class.getProfileId()
 (agent) [923234] Return Value: 3
 (agent) [923234] Called path.to.my.class.getProfileId()
@@ -382,6 +394,11 @@ Error: getProfileId: cannot call instance method without an instance
     </a>
     
     
+    <a href="/posts/i-quitted-infosec/" class="navigation-next">
+      <span class="navigation-tittle">I quitted Infosec and I couldn&#39;t be happier.</span>
+      <i aria-hidden="true" class="fa fa-chevron-right"></i>
+    </a>
+    
 </div>
 
 
@@ -398,16 +415,7 @@ Error: getProfileId: cannot call instance method without an instance
         
     
 
-<script defer src="https://use.fontawesome.com/releases/v5.11.2/js/all.js" integrity="sha384-b3ua1l97aVGAPEIe48b4TC60WUQbQaGi2jqAWM90y0OZXZeyaTCWtBTKtjW2GXG1" crossorigin="anonymous"></script>
-
-
-    
-    
-    <script type="text/javascript">
-        
-        hljs.initHighlightingOnLoad();
-    </script>
-    
+<script defer src="https://use.fontawesome.com/releases/v5.12.1/js/all.js" integrity="sha384-ZbbbT1gw3joYkKRqh0kWyRp32UAvdqkpbLedQJSlnI8iLQcFVxaGyrOgOJiDQTTR" crossorigin="anonymous"></script>
 
 
 

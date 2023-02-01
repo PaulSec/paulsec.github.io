@@ -6,12 +6,14 @@
 
     <head>
     <link href="https://gmpg.org/xfn/11" rel="profile">
+    
+    <link rel="canonical" href="http://paulsec.github.io/posts/fastapi_plus_zeit_serverless_fu/">
+    
     <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta http-equiv="Cache-Control" content="public" />
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.62.0" />
+<meta name="generator" content="Hugo 0.107.0">
 
     
     
@@ -33,9 +35,10 @@ I will talk about some experiments I did with FastAPI and deploying on Zeit.co.
 Context: For one side-project, I needed a simple way to retrieve the information from a specific Android application (eg. io.shodan.app) on the Google Store and a download link from APKPure (if any).
 I thought that this would have been a great playground to get my hands on FastAPI, a very promising framework that I never had time to play with." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://paulsec.github.io/posts/fastapi_plus_zeit_serverless_fu/" />
+<meta property="og:url" content="http://paulsec.github.io/posts/fastapi_plus_zeit_serverless_fu/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2020-03-30T20:12:25+02:00" />
 <meta property="article:modified_time" content="2020-03-30T20:12:25+02:00" /><meta property="og:site_name" content="PaulSec&#39;s Blog" />
+
 
 
     
@@ -45,7 +48,7 @@ I thought that this would have been a great playground to get my hands on FastAP
 
 
 
-<link rel="stylesheet" href="/scss/hyde-hyde.92c66d107d7b219f0792cfd67223179af884b03f386ac46894f9f735932bbca3.css" integrity="sha256-ksZtEH17IZ8Hks/WciMXmviEsD84asRolPn3NZMrvKM=">
+<link rel="stylesheet" href="/scss/hyde-hyde.3081c4981fb69a2783dd36ecfdd0e6ba7a158d4cbfdd290ebce8f78ba0469fc6.css" integrity="sha256-MIHEmB&#43;2mieD3Tbs/dDmunoVjUy/3SkOvOj3i6BGn8Y=">
 
 
 <link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
@@ -72,7 +75,11 @@ I thought that this would have been a great playground to get my hands on FastAP
   <div class="container ">
     <div class="sidebar-about">
       <span class="site__title">
-        <a href="http://paulsec.github.io/"></a>
+        <a href="http://paulsec.github.io/">
+        
+          
+        
+        </a>
       </span>
       
         
@@ -129,7 +136,12 @@ I thought that this would have been a great playground to get my hands on FastAP
 	
 	
 	
+	
 	<a href="https://github.com/PaulSec" rel="me"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
 	
 	
 	
@@ -151,7 +163,7 @@ I thought that this would have been a great playground to get my hands on FastAP
     </div>
     
 <div class="copyright">
-  &copy; 2021 Paul A.
+  &copy; 2023 Paul A.
   
     <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>
   
@@ -196,111 +208,111 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
 <p>I will talk about some experiments I did with <a href="https://android-version-checker.now.sh">FastAPI</a> and deploying on <a href="https://zeit.co/">Zeit.co</a>.</p>
 <p><em>Context: For one side-project, I needed a simple way to retrieve the information from a specific Android application (eg. <code>io.shodan.app</code>) on the Google Store and a download link from APKPure (if any).</em></p>
 <p>I thought that this would have been a great playground to get my hands on FastAPI, a very promising framework that I never had time to play with.</p>
-<p>Alright, so let's go straight in the code!</p>
+<p>Alright, so let&rsquo;s go straight in the code!</p>
 <p>In order to serve my FastAPI application, we are going to use <a href="https://www.uvicorn.org/">uvicorn</a>.</p>
 <p>Based on the FastAPI introduction, you basically just need to install the <code>fastapi</code> and <code>uvicorn</code> dependencies:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">pip install fastapi uvicorn
-</code></pre></div><p>The (bootstraping) Python code is as&hellip; simple as that:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> fastapi <span style="color:#f92672">import</span> FastAPI
-
-app <span style="color:#f92672">=</span> FastAPI()
-
-
-<span style="color:#a6e22e">@app.get</span>(<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">/</span><span style="color:#e6db74">&#34;</span>)
-async <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">root</span>():
-    <span style="color:#66d9ef">return</span> {<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">message</span><span style="color:#e6db74">&#34;</span>: <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Hello World</span><span style="color:#e6db74">&#34;</span>}
-</code></pre></div><p>In order to try your app, one simple command will do the work:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ uvicorn main:app --reload
-</code></pre></div><p>The last parameter <code>--reload</code> will automatically reload the app as soon as you will perform some changes on the source code. Pretty handy especially when you're prototyping.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pip install fastapi uvicorn
+</span></span></code></pre></div><p>The (bootstraping) Python code is as&hellip; simple as that:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> fastapi <span style="color:#f92672">import</span> FastAPI
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>app <span style="color:#f92672">=</span> FastAPI()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@app.get</span>(<span style="color:#e6db74">&#34;/&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">root</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> {<span style="color:#e6db74">&#34;message&#34;</span>: <span style="color:#e6db74">&#34;Hello World&#34;</span>}
+</span></span></code></pre></div><p>In order to try your app, one simple command will do the work:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ uvicorn main:app --reload
+</span></span></code></pre></div><p>The last parameter <code>--reload</code> will automatically reload the app as soon as you will perform some changes on the source code. Pretty handy especially when you&rsquo;re prototyping.</p>
 <p>Couple of minutes later, I had proof of concept ready to get deployed on zeit.co.</p>
 <p>The final source code is :</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> fastapi <span style="color:#f92672">import</span> FastAPI, HTTPException
-<span style="color:#f92672">import</span> play_scraper
-<span style="color:#f92672">import</span> datetime
-<span style="color:#f92672">from</span> bs4 <span style="color:#f92672">import</span> BeautifulSoup
-<span style="color:#f92672">import</span> requests
-<span style="color:#f92672">import</span> optparse
-<span style="color:#f92672">import</span> sys
-
-app <span style="color:#f92672">=</span> FastAPI()
-
-<span style="color:#a6e22e">@app.get</span>(<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">/app/{app_id}</span><span style="color:#e6db74">&#34;</span>)
-<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">retrieve_info</span>(app_id: str):
-    <span style="color:#66d9ef">return</span> {
-        <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">google_play</span><span style="color:#e6db74">&#34;</span> : google_play(app_id),
-        <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">apkpure</span><span style="color:#e6db74">&#34;</span>: apkpure_get_last_version(app_id),
-        <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">app_id</span><span style="color:#e6db74">&#34;</span>: app_id,
-        <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">timestamp</span><span style="color:#e6db74">&#34;</span>: datetime<span style="color:#f92672">.</span>datetime<span style="color:#f92672">.</span>now(),
-    }
-    <span style="color:#75715e"># return HTTPException(404, {&#34;message&#34;: &#34;app_id {} not found&#34;.format(app_id)})</span>
-
-<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">google_play</span>(app_id: str):
-    <span style="color:#66d9ef">try</span>:
-        <span style="color:#66d9ef">return</span> play_scraper<span style="color:#f92672">.</span>details(app_id)
-    <span style="color:#66d9ef">except</span>:
-        <span style="color:#66d9ef">return</span> { <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">message</span><span style="color:#e6db74">&#34;</span>: <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Can</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">t find information on Playstore for {}</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">.</span>format(app_id) }
-
-<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">apkpure_get_last_version</span>(app_id: str):
-    versions <span style="color:#f92672">=</span> apkpure_get_versions(app_id)
-    <span style="color:#66d9ef">if</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">message</span><span style="color:#e6db74">&#39;</span> <span style="color:#f92672">in</span> versions:
-        <span style="color:#66d9ef">return</span> versions
-    
-    latest_version <span style="color:#f92672">=</span> versions[<span style="color:#ae81ff">0</span>]
-    <span style="color:#66d9ef">for</span> version <span style="color:#f92672">in</span> versions[<span style="color:#ae81ff">1</span>:]:
-        <span style="color:#66d9ef">if</span> version[<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">update_date</span><span style="color:#e6db74">&#39;</span>] <span style="color:#f92672">&gt;</span> latest_version[<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">update_date</span><span style="color:#e6db74">&#39;</span>]:
-            latest_version <span style="color:#f92672">=</span> version
-    <span style="color:#66d9ef">return</span> latest_version
-
-<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">apkpure_get_versions</span>(app_id: str):
-    url <span style="color:#f92672">=</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">https://apkpure.com/en/{}/versions</span><span style="color:#e6db74">&#39;</span><span style="color:#f92672">.</span>format(app_id)
-    req <span style="color:#f92672">=</span> requests<span style="color:#f92672">.</span>get(url)
-    soup <span style="color:#f92672">=</span> BeautifulSoup(req<span style="color:#f92672">.</span>content, <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">html.parser</span><span style="color:#e6db74">&#39;</span>)
-    <span style="color:#66d9ef">try</span>:
-        result <span style="color:#f92672">=</span> []
-        container <span style="color:#f92672">=</span> soup<span style="color:#f92672">.</span>findAll(<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">ul</span><span style="color:#e6db74">&#39;</span>, attrs<span style="color:#f92672">=</span>{<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">class</span><span style="color:#e6db74">&#39;</span>: <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">ver-wrap</span><span style="color:#e6db74">&#39;</span>})[<span style="color:#ae81ff">0</span>]
-        app_versions <span style="color:#f92672">=</span> container<span style="color:#f92672">.</span>findAll(<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">li</span><span style="color:#e6db74">&#39;</span>)
-        <span style="color:#66d9ef">for</span> app <span style="color:#f92672">in</span> app_versions:
-            <span style="color:#66d9ef">try</span>:
-                tmp_download <span style="color:#f92672">=</span> app<span style="color:#f92672">.</span>find(<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">a</span><span style="color:#e6db74">&#39;</span>, attrs<span style="color:#f92672">=</span>{<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">class</span><span style="color:#e6db74">&#39;</span>: <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">down</span><span style="color:#e6db74">&#39;</span>})[<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">href</span><span style="color:#e6db74">&#39;</span>]<span style="color:#f92672">.</span>split(<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">?</span><span style="color:#e6db74">&#39;</span>)[<span style="color:#ae81ff">0</span>]
-                download_link <span style="color:#f92672">=</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">https://apkpure.com{}</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">.</span>format(tmp_download)
-            <span style="color:#66d9ef">except</span>:
-                download_link <span style="color:#f92672">=</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">We didn</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">t manage to get it.</span><span style="color:#e6db74">&#34;</span>
-            version <span style="color:#f92672">=</span> app<span style="color:#f92672">.</span>find(<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">span</span><span style="color:#e6db74">&#39;</span>, attrs<span style="color:#f92672">=</span>{<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">class</span><span style="color:#e6db74">&#39;</span>: <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">ver-item-n</span><span style="color:#e6db74">&#39;</span>})<span style="color:#f92672">.</span>text
-            size <span style="color:#f92672">=</span> app<span style="color:#f92672">.</span>find(<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">span</span><span style="color:#e6db74">&#39;</span>, attrs<span style="color:#f92672">=</span>{<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">class</span><span style="color:#e6db74">&#39;</span>: <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">ver-item-s</span><span style="color:#e6db74">&#39;</span>})<span style="color:#f92672">.</span>text
-            developer <span style="color:#f92672">=</span> app<span style="color:#f92672">.</span>find(<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">p</span><span style="color:#e6db74">&#39;</span>)<span style="color:#f92672">.</span>text
-            update_date <span style="color:#f92672">=</span> app<span style="color:#f92672">.</span>find(<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">p</span><span style="color:#e6db74">&#39;</span>, attrs<span style="color:#f92672">=</span>{<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">class</span><span style="color:#e6db74">&#39;</span>: <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">update-on</span><span style="color:#e6db74">&#39;</span>})<span style="color:#f92672">.</span>text
-            result<span style="color:#f92672">.</span>append({
-                <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">version</span><span style="color:#e6db74">&#39;</span>: version,
-                <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">size</span><span style="color:#e6db74">&#39;</span>: size,
-                <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">developer</span><span style="color:#e6db74">&#39;</span>: developer,
-                <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">update_date</span><span style="color:#e6db74">&#39;</span>: update_date,
-                <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">download_link</span><span style="color:#e6db74">&#39;</span>: download_link
-            })
-        <span style="color:#66d9ef">return</span> result
-    <span style="color:#66d9ef">except</span> <span style="color:#a6e22e">Exception</span> <span style="color:#66d9ef">as</span> err:
-        <span style="color:#66d9ef">return</span> { <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">message</span><span style="color:#e6db74">&#34;</span>: <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Can</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">t find the latest version on APKPure for {}</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">.</span>format(app_id) }
-</code></pre></div><p>Make sure to create a <code>requirements.txt</code> file in the root directory. I added those dependencies :</p>
-<pre><code>play-scraper
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> fastapi <span style="color:#f92672">import</span> FastAPI, HTTPException
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> play_scraper
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> datetime
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> bs4 <span style="color:#f92672">import</span> BeautifulSoup
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> requests
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> optparse
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> sys
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>app <span style="color:#f92672">=</span> FastAPI()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@app.get</span>(<span style="color:#e6db74">&#34;/app/</span><span style="color:#e6db74">{app_id}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">retrieve_info</span>(app_id: str):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;google_play&#34;</span> : google_play(app_id),
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;apkpure&#34;</span>: apkpure_get_last_version(app_id),
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;app_id&#34;</span>: app_id,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;timestamp&#34;</span>: datetime<span style="color:#f92672">.</span>datetime<span style="color:#f92672">.</span>now(),
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># return HTTPException(404, {&#34;message&#34;: &#34;app_id {} not found&#34;.format(app_id)})</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">google_play</span>(app_id: str):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> play_scraper<span style="color:#f92672">.</span>details(app_id)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">except</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> { <span style="color:#e6db74">&#34;message&#34;</span>: <span style="color:#e6db74">&#34;Can&#39;t find information on Playstore for </span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">.</span>format(app_id) }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">apkpure_get_last_version</span>(app_id: str):
+</span></span><span style="display:flex;"><span>    versions <span style="color:#f92672">=</span> apkpure_get_versions(app_id)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#e6db74">&#39;message&#39;</span> <span style="color:#f92672">in</span> versions:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> versions
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    latest_version <span style="color:#f92672">=</span> versions[<span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> version <span style="color:#f92672">in</span> versions[<span style="color:#ae81ff">1</span>:]:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> version[<span style="color:#e6db74">&#39;update_date&#39;</span>] <span style="color:#f92672">&gt;</span> latest_version[<span style="color:#e6db74">&#39;update_date&#39;</span>]:
+</span></span><span style="display:flex;"><span>            latest_version <span style="color:#f92672">=</span> version
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> latest_version
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">apkpure_get_versions</span>(app_id: str):
+</span></span><span style="display:flex;"><span>    url <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;https://apkpure.com/en/</span><span style="color:#e6db74">{}</span><span style="color:#e6db74">/versions&#39;</span><span style="color:#f92672">.</span>format(app_id)
+</span></span><span style="display:flex;"><span>    req <span style="color:#f92672">=</span> requests<span style="color:#f92672">.</span>get(url)
+</span></span><span style="display:flex;"><span>    soup <span style="color:#f92672">=</span> BeautifulSoup(req<span style="color:#f92672">.</span>content, <span style="color:#e6db74">&#39;html.parser&#39;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span>:
+</span></span><span style="display:flex;"><span>        result <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>        container <span style="color:#f92672">=</span> soup<span style="color:#f92672">.</span>findAll(<span style="color:#e6db74">&#39;ul&#39;</span>, attrs<span style="color:#f92672">=</span>{<span style="color:#e6db74">&#39;class&#39;</span>: <span style="color:#e6db74">&#39;ver-wrap&#39;</span>})[<span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>        app_versions <span style="color:#f92672">=</span> container<span style="color:#f92672">.</span>findAll(<span style="color:#e6db74">&#39;li&#39;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> app <span style="color:#f92672">in</span> app_versions:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">try</span>:
+</span></span><span style="display:flex;"><span>                tmp_download <span style="color:#f92672">=</span> app<span style="color:#f92672">.</span>find(<span style="color:#e6db74">&#39;a&#39;</span>, attrs<span style="color:#f92672">=</span>{<span style="color:#e6db74">&#39;class&#39;</span>: <span style="color:#e6db74">&#39;down&#39;</span>})[<span style="color:#e6db74">&#39;href&#39;</span>]<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39;?&#39;</span>)[<span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>                download_link <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;https://apkpure.com</span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">.</span>format(tmp_download)
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">except</span>:
+</span></span><span style="display:flex;"><span>                download_link <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;We didn&#39;t manage to get it.&#34;</span>
+</span></span><span style="display:flex;"><span>            version <span style="color:#f92672">=</span> app<span style="color:#f92672">.</span>find(<span style="color:#e6db74">&#39;span&#39;</span>, attrs<span style="color:#f92672">=</span>{<span style="color:#e6db74">&#39;class&#39;</span>: <span style="color:#e6db74">&#39;ver-item-n&#39;</span>})<span style="color:#f92672">.</span>text
+</span></span><span style="display:flex;"><span>            size <span style="color:#f92672">=</span> app<span style="color:#f92672">.</span>find(<span style="color:#e6db74">&#39;span&#39;</span>, attrs<span style="color:#f92672">=</span>{<span style="color:#e6db74">&#39;class&#39;</span>: <span style="color:#e6db74">&#39;ver-item-s&#39;</span>})<span style="color:#f92672">.</span>text
+</span></span><span style="display:flex;"><span>            developer <span style="color:#f92672">=</span> app<span style="color:#f92672">.</span>find(<span style="color:#e6db74">&#39;p&#39;</span>)<span style="color:#f92672">.</span>text
+</span></span><span style="display:flex;"><span>            update_date <span style="color:#f92672">=</span> app<span style="color:#f92672">.</span>find(<span style="color:#e6db74">&#39;p&#39;</span>, attrs<span style="color:#f92672">=</span>{<span style="color:#e6db74">&#39;class&#39;</span>: <span style="color:#e6db74">&#39;update-on&#39;</span>})<span style="color:#f92672">.</span>text
+</span></span><span style="display:flex;"><span>            result<span style="color:#f92672">.</span>append({
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#39;version&#39;</span>: version,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#39;size&#39;</span>: size,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#39;developer&#39;</span>: developer,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#39;update_date&#39;</span>: update_date,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#39;download_link&#39;</span>: download_link
+</span></span><span style="display:flex;"><span>            })
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> result
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">except</span> <span style="color:#a6e22e">Exception</span> <span style="color:#66d9ef">as</span> err:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> { <span style="color:#e6db74">&#34;message&#34;</span>: <span style="color:#e6db74">&#34;Can&#39;t find the latest version on APKPure for </span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">.</span>format(app_id) }
+</span></span></code></pre></div><p>Make sure to create a <code>requirements.txt</code> file in the root directory. I added those dependencies :</p>
+<pre tabindex="0"><code>play-scraper
 fastapi
 uvicorn
 bs4
 </code></pre><p>And finally, but most importantly part for the deployment phase, I created a <code>now.json</code> file in the root folder.</p>
 <p>The content of the file is as follow:</p>
-<pre><code>{
-    &quot;version&quot;: 2,
-    &quot;public&quot;: false,
-    &quot;builds&quot;: [{ &quot;src&quot;: &quot;main.py&quot;, &quot;use&quot;: &quot;@now/python&quot; }],
-    &quot;routes&quot;: [
-        { &quot;src&quot;: &quot;/&quot;, &quot;dest&quot;: &quot;main.py&quot; },
-        { &quot;src&quot;: &quot;/app/(.*)&quot;, &quot;dest&quot;: &quot;main.py&quot; }
+<pre tabindex="0"><code>{
+    &#34;version&#34;: 2,
+    &#34;public&#34;: false,
+    &#34;builds&#34;: [{ &#34;src&#34;: &#34;main.py&#34;, &#34;use&#34;: &#34;@now/python&#34; }],
+    &#34;routes&#34;: [
+        { &#34;src&#34;: &#34;/&#34;, &#34;dest&#34;: &#34;main.py&#34; },
+        { &#34;src&#34;: &#34;/app/(.*)&#34;, &#34;dest&#34;: &#34;main.py&#34; }
     ]
 }
 </code></pre><p>Finally, you are ready to deploy and launch the final command!</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ now .
-</code></pre></div><p>And.. the app is deployed. You can give it a shot at: <a href="https://android-version-checker.now.sh/app/io.shodan.app">https://android-version-checker.now.sh/app/io.shodan.app</a></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ now .
+</span></span></code></pre></div><p>And.. the app is deployed. You can give it a shot at: <a href="https://android-version-checker.now.sh/app/io.shodan.app">https://android-version-checker.now.sh/app/io.shodan.app</a></p>
 <p>And if you prefer to check it out with cURL:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ curl https://android-version-checker.now.sh/app/io.shodan.app --silent | jq .
-</code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ curl https://android-version-checker.now.sh/app/io.shodan.app --silent | jq .
+</span></span></code></pre></div>
   </div>
   
 
@@ -333,16 +345,7 @@ bs4
         
     
 
-<script defer src="https://use.fontawesome.com/releases/v5.11.2/js/all.js" integrity="sha384-b3ua1l97aVGAPEIe48b4TC60WUQbQaGi2jqAWM90y0OZXZeyaTCWtBTKtjW2GXG1" crossorigin="anonymous"></script>
-
-
-    
-    
-    <script type="text/javascript">
-        
-        hljs.initHighlightingOnLoad();
-    </script>
-    
+<script defer src="https://use.fontawesome.com/releases/v5.12.1/js/all.js" integrity="sha384-ZbbbT1gw3joYkKRqh0kWyRp32UAvdqkpbLedQJSlnI8iLQcFVxaGyrOgOJiDQTTR" crossorigin="anonymous"></script>
 
 
 

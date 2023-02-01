@@ -6,12 +6,14 @@
 
     <head>
     <link href="https://gmpg.org/xfn/11" rel="profile">
+    
+    <link rel="canonical" href="http://paulsec.github.io/posts/dealing-with-html-submits-conflict/">
+    
     <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta http-equiv="Cache-Control" content="public" />
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.62.0" />
+<meta name="generator" content="Hugo 0.107.0">
 
     
     
@@ -24,18 +26,19 @@
 <meta name="twitter:title" content="Dealing with HTML submits conflicts"/>
 <meta name="twitter:description" content="This first post is related with one of my project : CSRFT. CSRFT is a Cross Site Request Forgery (CSRF) vulnerabilities Toolkit.
 My toolkit allows you to exploit either GET and POST HTTP Requests. During some testings, I had issues with some specific forms.
-Let&#39;s take an example of such form :
+Let&rsquo;s take an example of such form :
 &lt;form action=&#34;http://website.com/blog/&#34; id=&#34;form&#34; method=&#34;get&#34;&gt; &lt;label class=&#34;assistive-text&#34; for=&#34;s&#34;&gt;Search&lt;/label&gt; &lt;input class=&#34;field&#34; id=&#34;s&#34; name=&#34;s&#34; placeholder=&#34;Search&#34; type=&#34;text&#34; value=&#34;Search Value&#34;/&gt; &lt;input class=&#34;submit&#34; id=&#34;searchsubmit&#34; name=&#34;submit&#34; type=&#34;submit&#34; value=&#34;Search&#34;/&gt; &lt;/form&gt; The code injected on the page to submit the form was like that :"/>
 
 <meta property="og:title" content="Dealing with HTML submits conflicts" />
 <meta property="og:description" content="This first post is related with one of my project : CSRFT. CSRFT is a Cross Site Request Forgery (CSRF) vulnerabilities Toolkit.
 My toolkit allows you to exploit either GET and POST HTTP Requests. During some testings, I had issues with some specific forms.
-Let&#39;s take an example of such form :
+Let&rsquo;s take an example of such form :
 &lt;form action=&#34;http://website.com/blog/&#34; id=&#34;form&#34; method=&#34;get&#34;&gt; &lt;label class=&#34;assistive-text&#34; for=&#34;s&#34;&gt;Search&lt;/label&gt; &lt;input class=&#34;field&#34; id=&#34;s&#34; name=&#34;s&#34; placeholder=&#34;Search&#34; type=&#34;text&#34; value=&#34;Search Value&#34;/&gt; &lt;input class=&#34;submit&#34; id=&#34;searchsubmit&#34; name=&#34;submit&#34; type=&#34;submit&#34; value=&#34;Search&#34;/&gt; &lt;/form&gt; The code injected on the page to submit the form was like that :" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://paulsec.github.io/posts/dealing-with-html-submits-conflict/" />
+<meta property="og:url" content="http://paulsec.github.io/posts/dealing-with-html-submits-conflict/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2014-03-09T00:00:00+00:00" />
 <meta property="article:modified_time" content="2014-03-09T00:00:00+00:00" /><meta property="og:site_name" content="PaulSec&#39;s Blog" />
+
 
 
     
@@ -45,7 +48,7 @@ Let&#39;s take an example of such form :
 
 
 
-<link rel="stylesheet" href="/scss/hyde-hyde.92c66d107d7b219f0792cfd67223179af884b03f386ac46894f9f735932bbca3.css" integrity="sha256-ksZtEH17IZ8Hks/WciMXmviEsD84asRolPn3NZMrvKM=">
+<link rel="stylesheet" href="/scss/hyde-hyde.3081c4981fb69a2783dd36ecfdd0e6ba7a158d4cbfdd290ebce8f78ba0469fc6.css" integrity="sha256-MIHEmB&#43;2mieD3Tbs/dDmunoVjUy/3SkOvOj3i6BGn8Y=">
 
 
 <link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
@@ -72,7 +75,11 @@ Let&#39;s take an example of such form :
   <div class="container ">
     <div class="sidebar-about">
       <span class="site__title">
-        <a href="http://paulsec.github.io/"></a>
+        <a href="http://paulsec.github.io/">
+        
+          
+        
+        </a>
       </span>
       
         
@@ -129,7 +136,12 @@ Let&#39;s take an example of such form :
 	
 	
 	
+	
 	<a href="https://github.com/PaulSec" rel="me"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
 	
 	
 	
@@ -151,7 +163,7 @@ Let&#39;s take an example of such form :
     </div>
     
 <div class="copyright">
-  &copy; 2021 Paul A.
+  &copy; 2023 Paul A.
   
     <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>
   
@@ -209,32 +221,32 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
 CSRFT is a Cross Site Request Forgery (CSRF) vulnerabilities Toolkit.</p>
 <p>My toolkit allows you to exploit either GET and POST HTTP Requests.
 During some testings, I had issues with some specific forms.</p>
-<p>Let's take an example of such form :</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">form</span> <span style="color:#a6e22e">action</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;http://website.com/blog/&#34;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;form&#34;</span> <span style="color:#a6e22e">method</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;get&#34;</span>&gt;
-&lt;<span style="color:#f92672">label</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;assistive-text&#34;</span> <span style="color:#a6e22e">for</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;s&#34;</span>&gt;Search&lt;/<span style="color:#f92672">label</span>&gt;
-&lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;field&#34;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;s&#34;</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;s&#34;</span> <span style="color:#a6e22e">placeholder</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Search&#34;</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text&#34;</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Search Value&#34;</span>/&gt;
-&lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;submit&#34;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;searchsubmit&#34;</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;submit&#34;</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;submit&#34;</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Search&#34;</span>/&gt;
-&lt;/<span style="color:#f92672">form</span>&gt;
-</code></pre></div><p>The code injected on the page to submit the form was like that :</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">$</span>(<span style="color:#e6db74">&#34;#form&#34;</span>).<span style="color:#a6e22e">submit</span>();
-</code></pre></div><p>However, the form was not submitted.</p>
+<p>Let&rsquo;s take an example of such form :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">form</span> <span style="color:#a6e22e">action</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;http://website.com/blog/&#34;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;form&#34;</span> <span style="color:#a6e22e">method</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;get&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">label</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;assistive-text&#34;</span> <span style="color:#a6e22e">for</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;s&#34;</span>&gt;Search&lt;/<span style="color:#f92672">label</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;field&#34;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;s&#34;</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;s&#34;</span> <span style="color:#a6e22e">placeholder</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Search&#34;</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text&#34;</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Search Value&#34;</span>/&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;submit&#34;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;searchsubmit&#34;</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;submit&#34;</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;submit&#34;</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Search&#34;</span>/&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">form</span>&gt;
+</span></span></code></pre></div><p>The code injected on the page to submit the form was like that :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">$</span>(<span style="color:#e6db74">&#34;#form&#34;</span>).<span style="color:#a6e22e">submit</span>();
+</span></span></code></pre></div><p>However, the form was not submitted.</p>
 <h2 id="why-">Why ?</h2>
 <p>After browsing the internet, I found that there was a conflict with the <strong>submit</strong> input.</p>
-<p>Let's try to debug wih <strong>FireBug</strong> :</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">$</span>(<span style="color:#e6db74">&#34;#form&#34;</span>).<span style="color:#a6e22e">submit</span>();
-<span style="color:#a6e22e">TypeError</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">$</span>(...).<span style="color:#a6e22e">submit</span> <span style="color:#a6e22e">is</span> <span style="color:#a6e22e">not</span> <span style="color:#a6e22e">a</span> <span style="color:#66d9ef">function</span>
-</code></pre></div><p>And then :</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">$</span>(<span style="color:#e6db74">&#34;#form&#34;</span>).<span style="color:#a6e22e">submit</span>
-<span style="color:#f92672">&lt;</span><span style="color:#a6e22e">input</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;searchsubmit&#34;</span> <span style="color:#66d9ef">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;submit&#34;</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;submit&#34;</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Search&#34;</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;submit&#34;</span><span style="color:#f92672">&gt;</span>
-</code></pre></div><p>As I said earlier, this is because there's a conflict with the <strong>Submit</strong> input.
-When there's such input, it's then not possible to &ldquo;force&rdquo; the victim to send the payload.</p>
+<p>Let&rsquo;s try to debug wih <strong>FireBug</strong> :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">$</span>(<span style="color:#e6db74">&#34;#form&#34;</span>).<span style="color:#a6e22e">submit</span>();
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">TypeError</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">$</span>(...).<span style="color:#a6e22e">submit</span> <span style="color:#a6e22e">is</span> <span style="color:#a6e22e">not</span> <span style="color:#a6e22e">a</span> <span style="color:#66d9ef">function</span>
+</span></span></code></pre></div><p>And then :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">$</span>(<span style="color:#e6db74">&#34;#form&#34;</span>).<span style="color:#a6e22e">submit</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">input</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;searchsubmit&#34;</span> <span style="color:#66d9ef">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;submit&#34;</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;submit&#34;</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Search&#34;</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;submit&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span></code></pre></div><p>As I said earlier, this is because there&rsquo;s a conflict with the <strong>Submit</strong> input.
+When there&rsquo;s such input, it&rsquo;s then not possible to &ldquo;force&rdquo; the victim to send the payload.</p>
 <h2 id="how-to-force-submitting-it-">How to force submitting it ?</h2>
 <p>To submit a form, you can use the <strong>native function</strong>.</p>
 <p>Basic example :</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">HTMLFormElement</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">submit</span>.<span style="color:#a6e22e">call</span>(<span style="color:#a6e22e">$</span>(<span style="color:#e6db74">&#34;forum&#34;</span>)[<span style="color:#ae81ff">0</span>]);
-</code></pre></div><p>With such example, the argument of the function is the selector of the form.
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">HTMLFormElement</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">submit</span>.<span style="color:#a6e22e">call</span>(<span style="color:#a6e22e">$</span>(<span style="color:#e6db74">&#34;forum&#34;</span>)[<span style="color:#ae81ff">0</span>]);
+</span></span></code></pre></div><p>With such example, the argument of the function is the selector of the form.
 Here, you submit the first form that you find in the DOM.
-Using this technique, I've been able to &ldquo;overwrite&rdquo; those (conflicts) inputs and submit the form even if it contains some.</p>
+Using this technique, I&rsquo;ve been able to &ldquo;overwrite&rdquo; those (conflicts) inputs and submit the form even if it contains some.</p>
 <p>Have fun !</p>
 
   </div>
@@ -269,16 +281,7 @@ Using this technique, I've been able to &ldquo;overwrite&rdquo; those (conflicts
         
     
 
-<script defer src="https://use.fontawesome.com/releases/v5.11.2/js/all.js" integrity="sha384-b3ua1l97aVGAPEIe48b4TC60WUQbQaGi2jqAWM90y0OZXZeyaTCWtBTKtjW2GXG1" crossorigin="anonymous"></script>
-
-
-    
-    
-    <script type="text/javascript">
-        
-        hljs.initHighlightingOnLoad();
-    </script>
-    
+<script defer src="https://use.fontawesome.com/releases/v5.12.1/js/all.js" integrity="sha384-ZbbbT1gw3joYkKRqh0kWyRp32UAvdqkpbLedQJSlnI8iLQcFVxaGyrOgOJiDQTTR" crossorigin="anonymous"></script>
 
 
 

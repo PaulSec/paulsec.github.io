@@ -6,11 +6,7 @@
     <description>Recent content in smali on </description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 22 May 2020 15:29:02 +0200</lastBuildDate>
-    
-	<atom:link href="http://paulsec.github.io/categories/smali/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Fri, 22 May 2020 15:29:02 +0200</lastBuildDate><atom:link href="http://paulsec.github.io/categories/smali/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Android Instrumentation with Smali: A survival guide</title>
       <link>http://paulsec.github.io/posts/android-smali-primer/</link>

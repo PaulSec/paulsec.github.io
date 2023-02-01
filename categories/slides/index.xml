@@ -6,11 +6,7 @@
     <description>Recent content in slides on </description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 29 Apr 2014 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="http://paulsec.github.io/categories/slides/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Tue, 29 Apr 2014 00:00:00 +0000</lastBuildDate><atom:link href="http://paulsec.github.io/categories/slides/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>BSides Slides - CSRFT</title>
       <link>http://paulsec.github.io/posts/bsides-slides-csrft/</link>
@@ -18,10 +14,10 @@
       
       <guid>http://paulsec.github.io/posts/bsides-slides-csrft/</guid>
       <description>Hey,
-Just a quick post to give you the link to my slides for BSides London today: Here Don&#39;t hesitate if you have any feedback, or any good feature.
+Just a quick post to give you the link to my slides for BSides London today: Here Don&amp;rsquo;t hesitate if you have any feedback, or any good feature.
 You can reach me either on Github and Twitter
 Just few words about the conference which was absolutely amazing. Some really great people were here, good atmosphere and people were really helpful.
-For sure, I&#39;ll attend it next year.
+For sure, I&amp;rsquo;ll attend it next year.
 Cheers,</description>
     </item>
     

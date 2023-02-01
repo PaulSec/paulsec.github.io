@@ -6,12 +6,14 @@
 
     <head>
     <link href="https://gmpg.org/xfn/11" rel="profile">
+    
+    <link rel="canonical" href="http://paulsec.github.io/posts/experiments-with-upnp/">
+    
     <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta http-equiv="Cache-Control" content="public" />
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.62.0" />
+<meta name="generator" content="Hugo 0.107.0">
 
     
     
@@ -29,9 +31,10 @@ First, I started to do research on my box to find relevant UPnP functionalities 
 <meta property="og:description" content="This post deals with recent observations regarding UPnP (Universal Plug and Play) protocol &amp; Routers. In few words, thanks to this protocol, devices (such as file sharing services, games, ..) can be easily connected/deployed.
 First, I started to do research on my box to find relevant UPnP functionalities by hand, found some but I had trouble to exploit them. Few days ago, David Middlehurst released a tool called &ldquo;UPnP Pentest Toolkit&rdquo;." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://paulsec.github.io/posts/experiments-with-upnp/" />
+<meta property="og:url" content="http://paulsec.github.io/posts/experiments-with-upnp/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2014-07-03T00:00:00+00:00" />
 <meta property="article:modified_time" content="2014-07-03T00:00:00+00:00" /><meta property="og:site_name" content="PaulSec&#39;s Blog" />
+
 
 
     
@@ -41,7 +44,7 @@ First, I started to do research on my box to find relevant UPnP functionalities 
 
 
 
-<link rel="stylesheet" href="/scss/hyde-hyde.92c66d107d7b219f0792cfd67223179af884b03f386ac46894f9f735932bbca3.css" integrity="sha256-ksZtEH17IZ8Hks/WciMXmviEsD84asRolPn3NZMrvKM=">
+<link rel="stylesheet" href="/scss/hyde-hyde.3081c4981fb69a2783dd36ecfdd0e6ba7a158d4cbfdd290ebce8f78ba0469fc6.css" integrity="sha256-MIHEmB&#43;2mieD3Tbs/dDmunoVjUy/3SkOvOj3i6BGn8Y=">
 
 
 <link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
@@ -68,7 +71,11 @@ First, I started to do research on my box to find relevant UPnP functionalities 
   <div class="container ">
     <div class="sidebar-about">
       <span class="site__title">
-        <a href="http://paulsec.github.io/"></a>
+        <a href="http://paulsec.github.io/">
+        
+          
+        
+        </a>
       </span>
       
         
@@ -125,7 +132,12 @@ First, I started to do research on my box to find relevant UPnP functionalities 
 	
 	
 	
+	
 	<a href="https://github.com/PaulSec" rel="me"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
 	
 	
 	
@@ -147,7 +159,7 @@ First, I started to do research on my box to find relevant UPnP functionalities 
     </div>
     
 <div class="copyright">
-  &copy; 2021 Paul A.
+  &copy; 2023 Paul A.
   
     <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>
   
@@ -211,11 +223,11 @@ Few days ago, David Middlehurst released a tool called <a href="https://github.c
 <p>Quick description of the tool that you can find on Github:</p>
 <p><em>This tool aims to bring together a range of UPnP assessment features, enabling quick assessment with minimal configuration and set-up. It has been developed to aid security consultants in exploring, spoofing and manipulating of UPnP devices and the underlying protocols at work. It is intended as a proof of concept to be used for research purposes in a trusted environment.</em></p>
 <p>I decided to try it, and I was able to browse all my devices having UPnpP functionalities.
-I'll not go through all the features of the tool but feel free to check it out. I'll mostly speak about my experiment using my router.</p>
-<p>The version of my router didn't &ldquo;allow&rdquo; me to NAT ports so I couldn't access my internal SSH Server, Web servers, VPN etc.
+I&rsquo;ll not go through all the features of the tool but feel free to check it out. I&rsquo;ll mostly speak about my experiment using my router.</p>
+<p>The version of my router didn&rsquo;t &ldquo;allow&rdquo; me to NAT ports so I couldn&rsquo;t access my internal SSH Server, Web servers, VPN etc.
 Clearly, marketing bullshit.
 However, thanks to this tool, I managed to enumerate the different functions that I was allowed to perform. Here is the list:</p>
-<pre><code>Actions:
+<pre tabindex="0"><code>Actions:
     GetSpecificPortMappingEntry
         &lt;-NewLeaseDuration
             Data Type: ui4
@@ -329,36 +341,36 @@ However, thanks to this tool, I managed to enumerate the different functions tha
 Thanks to this, you can add a &ldquo;Port Mapping&rdquo; or directly create a NAT rule. Without authentication, just one HTTP Request.</p>
 <p>Format of UPnP communication is based on SOAP (<em>Simple Object Access Protocol</em>) and its structure is composed of an &ldquo;envelope&rdquo;, a XML-based structure.
 Here is the structure for the AddPortMapping request:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34;?&gt;</span>
-<span style="color:#f92672">&lt;s:Envelope</span> <span style="color:#a6e22e">xmlns:s=</span><span style="color:#e6db74">&#34;http://schemas.xmlsoap.org/soap/envelope/&#34;</span> <span style="color:#a6e22e">s:encodingStyle=</span><span style="color:#e6db74">&#34;http://schemas.xmlsoap.org/soap/encoding/&#34;</span><span style="color:#f92672">&gt;</span>
-    <span style="color:#f92672">&lt;s:Body</span><span style="color:#f92672">&gt;</span>
-        <span style="color:#f92672">&lt;u:AddPortMapping</span> <span style="color:#a6e22e">xmlns:u=</span><span style="color:#e6db74">&#34;urn:schemas-upnp-org:service:WANPPPConnection:1&#34;</span><span style="color:#f92672">&gt;</span>
-            <span style="color:#f92672">&lt;NewRemoteHost</span><span style="color:#f92672">&gt;</span><span style="color:#f92672">&lt;/NewRemoteHost&gt;</span>
-            <span style="color:#f92672">&lt;NewExternalPort</span><span style="color:#f92672">&gt;</span>9999<span style="color:#f92672">&lt;/NewExternalPort&gt;</span>
-            <span style="color:#f92672">&lt;NewProtocol</span><span style="color:#f92672">&gt;</span>TCP<span style="color:#f92672">&lt;/NewProtocol&gt;</span>
-            <span style="color:#f92672">&lt;NewInternalPort</span><span style="color:#f92672">&gt;</span>9999<span style="color:#f92672">&lt;/NewInternalPort&gt;</span>
-            <span style="color:#f92672">&lt;NewInternalClient</span><span style="color:#f92672">&gt;</span>192.168.1.91<span style="color:#f92672">&lt;/NewInternalClient&gt;</span>
-            <span style="color:#f92672">&lt;NewEnabled</span><span style="color:#f92672">&gt;</span>1<span style="color:#f92672">&lt;/NewEnabled&gt;</span>
-            <span style="color:#f92672">&lt;NewPortMappingDescription</span><span style="color:#f92672">&gt;</span>omgwtfbbq<span style="color:#f92672">&lt;/NewPortMappingDescription&gt;</span>
-            <span style="color:#f92672">&lt;NewLeaseDuration</span><span style="color:#f92672">&gt;</span>0<span style="color:#f92672">&lt;/NewLeaseDuration&gt;</span>
-        <span style="color:#f92672">&lt;/u:AddPortMapping&gt;</span>
-    <span style="color:#f92672">&lt;/s:Body&gt;</span>
-<span style="color:#f92672">&lt;/s:Envelope&gt;</span>
-</code></pre></div><p>You can find useful information on <a href="http://www.upnp-hacks.org/igd.html">UPnP hacks</a> - contains amazing resources on UPnP.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34;?&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;s:Envelope</span> <span style="color:#a6e22e">xmlns:s=</span><span style="color:#e6db74">&#34;http://schemas.xmlsoap.org/soap/envelope/&#34;</span> <span style="color:#a6e22e">s:encodingStyle=</span><span style="color:#e6db74">&#34;http://schemas.xmlsoap.org/soap/encoding/&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;s:Body&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;u:AddPortMapping</span> <span style="color:#a6e22e">xmlns:u=</span><span style="color:#e6db74">&#34;urn:schemas-upnp-org:service:WANPPPConnection:1&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&lt;NewRemoteHost&gt;&lt;/NewRemoteHost&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&lt;NewExternalPort&gt;</span>9999<span style="color:#f92672">&lt;/NewExternalPort&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&lt;NewProtocol&gt;</span>TCP<span style="color:#f92672">&lt;/NewProtocol&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&lt;NewInternalPort&gt;</span>9999<span style="color:#f92672">&lt;/NewInternalPort&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&lt;NewInternalClient&gt;</span>192.168.1.91<span style="color:#f92672">&lt;/NewInternalClient&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&lt;NewEnabled&gt;</span>1<span style="color:#f92672">&lt;/NewEnabled&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&lt;NewPortMappingDescription&gt;</span>omgwtfbbq<span style="color:#f92672">&lt;/NewPortMappingDescription&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&lt;NewLeaseDuration&gt;</span>0<span style="color:#f92672">&lt;/NewLeaseDuration&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;/u:AddPortMapping&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;/s:Body&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/s:Envelope&gt;</span>
+</span></span></code></pre></div><p>You can find useful information on <a href="http://www.upnp-hacks.org/igd.html">UPnP hacks</a> - contains amazing resources on UPnP.</p>
 <p>Well, to send directly a SOAP from Linux, here is an &ldquo;easy-way&rdquo; if you want to do it by hand:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">curl -X POST --data @body_soap.txt http://192.168.1.254:46465/ctl/IPConn -H <span style="color:#e6db74">&#39;SOAPAction: &#34;urn:schemas-upnp-org:service:WANIPConnection:1#AddPortMapping&#34;&#39;</span> -H <span style="color:#e6db74">&#39;Host: 192.168.1.254:46465&#39;</span>
-</code></pre></div><p>And in <strong>body_soap.txt</strong> the XML structure with all the settings defined as we saw above.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -X POST --data @body_soap.txt http://192.168.1.254:46465/ctl/IPConn -H <span style="color:#e6db74">&#39;SOAPAction: &#34;urn:schemas-upnp-org:service:WANIPConnection:1#AddPortMapping&#34;&#39;</span> -H <span style="color:#e6db74">&#39;Host: 192.168.1.254:46465&#39;</span>
+</span></span></code></pre></div><p>And in <strong>body_soap.txt</strong> the XML structure with all the settings defined as we saw above.</p>
 <p>If the request succeeded, the response should looks like this:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34;?&gt;</span>
-<span style="color:#f92672">&lt;s:Envelope</span> <span style="color:#a6e22e">xmlns:s=</span><span style="color:#e6db74">&#34;http://schemas.xmlsoap.org/soap/envelope/&#34;</span> <span style="color:#a6e22e">s:encodingStyle=</span><span style="color:#e6db74">&#34;http://schemas.xmlsoap.org/soap/encoding/&#34;</span><span style="color:#f92672">&gt;</span><span style="color:#f92672">&lt;s:Body</span><span style="color:#f92672">&gt;</span><span style="color:#f92672">&lt;u:AddPortMappingResponse</span> <span style="color:#a6e22e">xmlns:u=</span><span style="color:#e6db74">&#34;urn:schemas-upnp-org:service:WANIPConnection:1&#34;</span><span style="color:#f92672">/&gt;</span><span style="color:#f92672">&lt;/s:Body&gt;</span><span style="color:#f92672">&lt;/s:Envelope&gt;</span>
-</code></pre></div><p>So, in few words:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34;?&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;s:Envelope</span> <span style="color:#a6e22e">xmlns:s=</span><span style="color:#e6db74">&#34;http://schemas.xmlsoap.org/soap/envelope/&#34;</span> <span style="color:#a6e22e">s:encodingStyle=</span><span style="color:#e6db74">&#34;http://schemas.xmlsoap.org/soap/encoding/&#34;</span><span style="color:#f92672">&gt;&lt;s:Body&gt;&lt;u:AddPortMappingResponse</span> <span style="color:#a6e22e">xmlns:u=</span><span style="color:#e6db74">&#34;urn:schemas-upnp-org:service:WANIPConnection:1&#34;</span><span style="color:#f92672">/&gt;&lt;/s:Body&gt;&lt;/s:Envelope&gt;</span>
+</span></span></code></pre></div><p>So, in few words:</p>
 <ul>
-<li>Learning stuffs about UPnP was fun and I'm sure there's even more to do with it,</li>
+<li>Learning stuffs about UPnP was fun and I&rsquo;m sure there&rsquo;s even more to do with it,</li>
 <li>UPT is a fun tool,</li>
-<li>I found nice tricks, and I can now NAT ports easily bypassing ISP's stupid rules.</li>
+<li>I found nice tricks, and I can now NAT ports easily bypassing ISP&rsquo;s stupid rules.</li>
 </ul>
-<p>I think I'll write another post on WFA-Device which stands for <em>Wi-Fi Alliance Device</em> and their UPnP functionalities.
-It seems there's some fun stuffs about it.</p>
+<p>I think I&rsquo;ll write another post on WFA-Device which stands for <em>Wi-Fi Alliance Device</em> and their UPnP functionalities.
+It seems there&rsquo;s some fun stuffs about it.</p>
 
   </div>
   
@@ -392,16 +404,7 @@ It seems there's some fun stuffs about it.</p>
         
     
 
-<script defer src="https://use.fontawesome.com/releases/v5.11.2/js/all.js" integrity="sha384-b3ua1l97aVGAPEIe48b4TC60WUQbQaGi2jqAWM90y0OZXZeyaTCWtBTKtjW2GXG1" crossorigin="anonymous"></script>
-
-
-    
-    
-    <script type="text/javascript">
-        
-        hljs.initHighlightingOnLoad();
-    </script>
-    
+<script defer src="https://use.fontawesome.com/releases/v5.12.1/js/all.js" integrity="sha384-ZbbbT1gw3joYkKRqh0kWyRp32UAvdqkpbLedQJSlnI8iLQcFVxaGyrOgOJiDQTTR" crossorigin="anonymous"></script>
 
 
 

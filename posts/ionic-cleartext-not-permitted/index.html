@@ -6,12 +6,14 @@
 
     <head>
     <link href="https://gmpg.org/xfn/11" rel="profile">
+    
+    <link rel="canonical" href="http://paulsec.github.io/posts/ionic-cleartext-not-permitted/">
+    
     <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta http-equiv="Cache-Control" content="public" />
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.62.0" />
+<meta name="generator" content="Hugo 0.107.0">
 
     
     
@@ -23,17 +25,18 @@
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Tackling &#39;Cleartext Not Permitted&#39; error in Ionic v5"/>
 <meta name="twitter:description" content="While developing/maintaining the WHID Mobile Injector app, it turns out that I received messages and issues on Github telling me that users were:
- Able to access the ESPloit interface through the browser but not through the app and the toggle in the side-menu was staying RED (meaning it is unable to connect to the ESPloit interface).  Weird.
+Able to access the ESPloit interface through the browser but not through the app and the toggle in the side-menu was staying RED (meaning it is unable to connect to the ESPloit interface). Weird.
 After some investigations, I was able to reproduce the issue on some phones at home, and while looking at logcat, I saw some strange lines like this:"/>
 
 <meta property="og:title" content="Tackling &#39;Cleartext Not Permitted&#39; error in Ionic v5" />
 <meta property="og:description" content="While developing/maintaining the WHID Mobile Injector app, it turns out that I received messages and issues on Github telling me that users were:
- Able to access the ESPloit interface through the browser but not through the app and the toggle in the side-menu was staying RED (meaning it is unable to connect to the ESPloit interface).  Weird.
+Able to access the ESPloit interface through the browser but not through the app and the toggle in the side-menu was staying RED (meaning it is unable to connect to the ESPloit interface). Weird.
 After some investigations, I was able to reproduce the issue on some phones at home, and while looking at logcat, I saw some strange lines like this:" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://paulsec.github.io/posts/ionic-cleartext-not-permitted/" />
+<meta property="og:url" content="http://paulsec.github.io/posts/ionic-cleartext-not-permitted/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2020-05-08T17:29:40+02:00" />
 <meta property="article:modified_time" content="2020-05-08T17:29:40+02:00" /><meta property="og:site_name" content="PaulSec&#39;s Blog" />
+
 
 
     
@@ -43,7 +46,7 @@ After some investigations, I was able to reproduce the issue on some phones at h
 
 
 
-<link rel="stylesheet" href="/scss/hyde-hyde.92c66d107d7b219f0792cfd67223179af884b03f386ac46894f9f735932bbca3.css" integrity="sha256-ksZtEH17IZ8Hks/WciMXmviEsD84asRolPn3NZMrvKM=">
+<link rel="stylesheet" href="/scss/hyde-hyde.3081c4981fb69a2783dd36ecfdd0e6ba7a158d4cbfdd290ebce8f78ba0469fc6.css" integrity="sha256-MIHEmB&#43;2mieD3Tbs/dDmunoVjUy/3SkOvOj3i6BGn8Y=">
 
 
 <link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
@@ -70,7 +73,11 @@ After some investigations, I was able to reproduce the issue on some phones at h
   <div class="container ">
     <div class="sidebar-about">
       <span class="site__title">
-        <a href="http://paulsec.github.io/"></a>
+        <a href="http://paulsec.github.io/">
+        
+          
+        
+        </a>
       </span>
       
         
@@ -127,7 +134,12 @@ After some investigations, I was able to reproduce the issue on some phones at h
 	
 	
 	
+	
 	<a href="https://github.com/PaulSec" rel="me"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
 	
 	
 	
@@ -149,7 +161,7 @@ After some investigations, I was able to reproduce the issue on some phones at h
     </div>
     
 <div class="copyright">
-  &copy; 2021 Paul A.
+  &copy; 2023 Paul A.
   
     <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>
   
@@ -224,32 +236,32 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
 <h3 id="changes-in-configxml">Changes in config.xml</h3>
 <p>First, you will need to add some additionl settings within the <code>config.xml</code> file to reference a <code>network_security_config.xml</code> file that we will now specifiy.</p>
 <p>File that I added in my <code>config.xml</code> is as follow:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml">    <span style="color:#f92672">&lt;platform</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;android&#34;</span><span style="color:#f92672">&gt;</span>
-        <span style="color:#f92672">&lt;edit-config</span> <span style="color:#a6e22e">file=</span><span style="color:#e6db74">&#34;app/src/main/AndroidManifest.xml&#34;</span> <span style="color:#a6e22e">mode=</span><span style="color:#e6db74">&#34;merge&#34;</span> <span style="color:#a6e22e">target=</span><span style="color:#e6db74">&#34;/manifest/application&#34;</span> <span style="color:#a6e22e">xmlns:android=</span><span style="color:#e6db74">&#34;http://schemas.android.com/apk/res/android&#34;</span><span style="color:#f92672">&gt;</span>
-            <span style="color:#f92672">&lt;application</span> <span style="color:#a6e22e">android:usesCleartextTraffic=</span><span style="color:#e6db74">&#34;true&#34;</span> <span style="color:#f92672">/&gt;</span>
-            <span style="color:#f92672">&lt;application</span> <span style="color:#a6e22e">android:networkSecurityConfig=</span><span style="color:#e6db74">&#34;@xml/network_security_config&#34;</span> <span style="color:#f92672">/&gt;</span>
-        <span style="color:#f92672">&lt;/edit-config&gt;</span>
-        <span style="color:#f92672">&lt;resource-file</span> <span style="color:#a6e22e">src=</span><span style="color:#e6db74">&#34;resources/android/xml/network_security_config.xml&#34;</span> <span style="color:#a6e22e">target=</span><span style="color:#e6db74">&#34;app/src/main/res/xml/network_security_config.xml&#34;</span> <span style="color:#f92672">/&gt;</span>
-        <span style="color:#f92672">&lt;allow-intent</span> <span style="color:#a6e22e">href=</span><span style="color:#e6db74">&#34;market:*&#34;</span> <span style="color:#f92672">/&gt;</span>
-        <span style="color:#f92672">&lt;icon</span> <span style="color:#a6e22e">density=</span><span style="color:#e6db74">&#34;ldpi&#34;</span> <span style="color:#a6e22e">src=</span><span style="color:#e6db74">&#34;resources/android/icon/drawable-ldpi-icon.png&#34;</span> <span style="color:#f92672">/&gt;</span>
-        [... truncated ...]
-</code></pre></div><h3 id="changes-in-network-security-configxml">Changes in network_security_config.xml</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span>    <span style="color:#f92672">&lt;platform</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;android&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;edit-config</span> <span style="color:#a6e22e">file=</span><span style="color:#e6db74">&#34;app/src/main/AndroidManifest.xml&#34;</span> <span style="color:#a6e22e">mode=</span><span style="color:#e6db74">&#34;merge&#34;</span> <span style="color:#a6e22e">target=</span><span style="color:#e6db74">&#34;/manifest/application&#34;</span> <span style="color:#a6e22e">xmlns:android=</span><span style="color:#e6db74">&#34;http://schemas.android.com/apk/res/android&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&lt;application</span> <span style="color:#a6e22e">android:usesCleartextTraffic=</span><span style="color:#e6db74">&#34;true&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&lt;application</span> <span style="color:#a6e22e">android:networkSecurityConfig=</span><span style="color:#e6db74">&#34;@xml/network_security_config&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;/edit-config&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;resource-file</span> <span style="color:#a6e22e">src=</span><span style="color:#e6db74">&#34;resources/android/xml/network_security_config.xml&#34;</span> <span style="color:#a6e22e">target=</span><span style="color:#e6db74">&#34;app/src/main/res/xml/network_security_config.xml&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;allow-intent</span> <span style="color:#a6e22e">href=</span><span style="color:#e6db74">&#34;market:*&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;icon</span> <span style="color:#a6e22e">density=</span><span style="color:#e6db74">&#34;ldpi&#34;</span> <span style="color:#a6e22e">src=</span><span style="color:#e6db74">&#34;resources/android/icon/drawable-ldpi-icon.png&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>        [... truncated ...]
+</span></span></code></pre></div><h3 id="changes-in-network_security_configxml">Changes in network_security_config.xml</h3>
 <p>This file will give you the ability to tweak the default Android configuration and allow cleartext traffic over {domains, ip addresses, &hellip;}.</p>
 <p>File should be located at: <code>{PROJECT_PATH}/resources/android/xml/network_security_config.xml</code></p>
 <p>The content of the file file we added for the WHID Mobile Injector looks as follow:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
-<span style="color:#f92672">&lt;network-security-config</span><span style="color:#f92672">&gt;</span>
-    <span style="color:#f92672">&lt;base-config</span> <span style="color:#a6e22e">cleartextTrafficPermitted=</span><span style="color:#e6db74">&#34;true&#34;</span><span style="color:#f92672">&gt;</span>
-        <span style="color:#f92672">&lt;trust-anchors</span><span style="color:#f92672">&gt;</span>
-            <span style="color:#f92672">&lt;certificates</span> <span style="color:#a6e22e">src=</span><span style="color:#e6db74">&#34;system&#34;</span> <span style="color:#f92672">/&gt;</span>
-        <span style="color:#f92672">&lt;/trust-anchors&gt;</span>
-    <span style="color:#f92672">&lt;/base-config&gt;</span>
-    <span style="color:#f92672">&lt;domain-config</span> <span style="color:#a6e22e">cleartextTrafficPermitted=</span><span style="color:#e6db74">&#34;true&#34;</span><span style="color:#f92672">&gt;</span>
-        <span style="color:#f92672">&lt;domain</span> <span style="color:#a6e22e">includeSubdomains=</span><span style="color:#e6db74">&#34;true&#34;</span><span style="color:#f92672">&gt;</span>localhost<span style="color:#f92672">&lt;/domain&gt;</span>
-        <span style="color:#f92672">&lt;domain</span> <span style="color:#a6e22e">includeSubdomains=</span><span style="color:#e6db74">&#34;true&#34;</span><span style="color:#f92672">&gt;</span>192.168.1.1<span style="color:#f92672">&lt;/domain&gt;</span>
-    <span style="color:#f92672">&lt;/domain-config&gt;</span>
-<span style="color:#f92672">&lt;/network-security-config&gt;</span>
-</code></pre></div><p>Just make sure you change the settions (in the <!-- raw HTML omitted --> tags) appropriately.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;network-security-config&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;base-config</span> <span style="color:#a6e22e">cleartextTrafficPermitted=</span><span style="color:#e6db74">&#34;true&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;trust-anchors&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&lt;certificates</span> <span style="color:#a6e22e">src=</span><span style="color:#e6db74">&#34;system&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;/trust-anchors&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;/base-config&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;domain-config</span> <span style="color:#a6e22e">cleartextTrafficPermitted=</span><span style="color:#e6db74">&#34;true&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;domain</span> <span style="color:#a6e22e">includeSubdomains=</span><span style="color:#e6db74">&#34;true&#34;</span><span style="color:#f92672">&gt;</span>localhost<span style="color:#f92672">&lt;/domain&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;domain</span> <span style="color:#a6e22e">includeSubdomains=</span><span style="color:#e6db74">&#34;true&#34;</span><span style="color:#f92672">&gt;</span>192.168.1.1<span style="color:#f92672">&lt;/domain&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;/domain-config&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/network-security-config&gt;</span>
+</span></span></code></pre></div><p>Just make sure you change the settions (in the <!-- raw HTML omitted --> tags) appropriately.</p>
 <p>Thanks to those settings, we just had to build a new app and users were able to use the app to interact with their WHID gadget :)</p>
 
   </div>
@@ -284,16 +296,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
         
     
 
-<script defer src="https://use.fontawesome.com/releases/v5.11.2/js/all.js" integrity="sha384-b3ua1l97aVGAPEIe48b4TC60WUQbQaGi2jqAWM90y0OZXZeyaTCWtBTKtjW2GXG1" crossorigin="anonymous"></script>
-
-
-    
-    
-    <script type="text/javascript">
-        
-        hljs.initHighlightingOnLoad();
-    </script>
-    
+<script defer src="https://use.fontawesome.com/releases/v5.12.1/js/all.js" integrity="sha384-ZbbbT1gw3joYkKRqh0kWyRp32UAvdqkpbLedQJSlnI8iLQcFVxaGyrOgOJiDQTTR" crossorigin="anonymous"></script>
 
 
 

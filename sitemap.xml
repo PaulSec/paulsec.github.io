@@ -1,339 +1,208 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  
   <url>
     <loc>http://paulsec.github.io/</loc>
-    <lastmod>2021-08-13T17:25:35+02:00</lastmod>
-  </url>
-  
-  <url>
+    <lastmod>2023-01-31T20:00:24+01:00</lastmod>
+  </url><url>
+    <loc>http://paulsec.github.io/posts/i-quitted-infosec/</loc>
+    <lastmod>2023-01-31T20:00:24+01:00</lastmod>
+  </url><url>
+    <loc>http://paulsec.github.io/posts/</loc>
+    <lastmod>2023-01-31T20:00:24+01:00</lastmod>
+  </url><url>
     <loc>http://paulsec.github.io/posts/frida-android-primer/</loc>
     <lastmod>2021-08-13T17:25:35+02:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://paulsec.github.io/categories/android/</loc>
     <lastmod>2021-08-13T17:25:35+02:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://paulsec.github.io/categories/</loc>
     <lastmod>2021-08-13T17:25:35+02:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://paulsec.github.io/categories/frida/</loc>
     <lastmod>2021-08-13T17:25:35+02:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://paulsec.github.io/categories/instrumentation/</loc>
     <lastmod>2021-08-13T17:25:35+02:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://paulsec.github.io/categories/objection/</loc>
     <lastmod>2021-08-13T17:25:35+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://paulsec.github.io/posts/</loc>
-    <lastmod>2021-08-13T17:25:35+02:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://paulsec.github.io/posts/devoops-ramblings/</loc>
     <lastmod>2021-02-17T14:40:19+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://paulsec.github.io/posts/android-smali-primer/</loc>
     <lastmod>2020-05-22T15:29:02+02:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://paulsec.github.io/categories/research/</loc>
     <lastmod>2020-05-22T15:29:02+02:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://paulsec.github.io/categories/reverse/</loc>
     <lastmod>2020-05-22T15:29:02+02:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://paulsec.github.io/categories/smali/</loc>
     <lastmod>2020-05-22T15:29:02+02:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://paulsec.github.io/categories/bugfix/</loc>
     <lastmod>2020-05-08T17:29:40+02:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://paulsec.github.io/categories/ionic/</loc>
     <lastmod>2020-05-08T17:29:40+02:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://paulsec.github.io/posts/ionic-cleartext-not-permitted/</loc>
     <lastmod>2020-05-08T17:29:40+02:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://paulsec.github.io/categories/whid/</loc>
     <lastmod>2020-05-08T17:29:40+02:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://paulsec.github.io/posts/fastapi_plus_zeit_serverless_fu/</loc>
     <lastmod>2020-03-30T20:12:25+02:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://paulsec.github.io/posts/ionic-5-events/</loc>
     <lastmod>2020-03-18T16:52:42+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://paulsec.github.io/posts/kafka-experiments/</loc>
     <lastmod>2020-02-05T21:22:27+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://paulsec.github.io/posts/deploy-django-github-actions/</loc>
     <lastmod>2020-01-23T14:02:07+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://paulsec.github.io/posts/django-viewset-throttling/</loc>
     <lastmod>2020-01-14T21:14:36+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://paulsec.github.io/posts/angular8-deployment-pipeline-github-actions/</loc>
     <lastmod>2020-01-02T22:09:28+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://paulsec.github.io/about/</loc>
     <lastmod>2019-12-28T17:51:15+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://paulsec.github.io/posts/corelan-bootcamp-review-2018/</loc>
     <lastmod>2019-12-28T15:58:01+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://paulsec.github.io/posts/bsidescbr-2017-ctf-write-up-derpchat/</loc>
     <lastmod>2017-05-07T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://paulsec.github.io/categories/ctf/</loc>
     <lastmod>2017-05-07T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://paulsec.github.io/categories/write-up/</loc>
     <lastmod>2017-05-07T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://paulsec.github.io/posts/bsidescbr-2017-ctf-write-up-needleinahaystack/</loc>
     <lastmod>2017-05-06T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://paulsec.github.io/posts/running-sslscan-on-5k-servers-taken-from-alexas-top-10k/</loc>
     <lastmod>2015-06-07T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://paulsec.github.io/categories/sslscan/</loc>
     <lastmod>2015-06-07T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://paulsec.github.io/posts/experiments-with-upnp/</loc>
     <lastmod>2014-07-03T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://paulsec.github.io/categories/upnp/</loc>
     <lastmod>2014-07-03T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://paulsec.github.io/categories/vuln/</loc>
     <lastmod>2014-07-03T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://paulsec.github.io/posts/kioptrix-3-write-up/</loc>
     <lastmod>2014-06-12T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://paulsec.github.io/categories/vulnhub/</loc>
     <lastmod>2014-06-12T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://paulsec.github.io/posts/diving-into-xss-googles-game/</loc>
     <lastmod>2014-06-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://paulsec.github.io/categories/web/</loc>
     <lastmod>2014-06-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://paulsec.github.io/categories/xss/</loc>
     <lastmod>2014-06-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://paulsec.github.io/posts/bobby-write-up/</loc>
     <lastmod>2014-05-15T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://paulsec.github.io/posts/http-security-headers-on-top-10k-alexa-websites/</loc>
     <lastmod>2014-05-13T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://paulsec.github.io/posts/blind-hql-injection-in-rest-api-using-h2-dbms/</loc>
     <lastmod>2014-05-05T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://paulsec.github.io/categories/hql/</loc>
     <lastmod>2014-05-05T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://paulsec.github.io/posts/bsides-slides-csrft/</loc>
     <lastmod>2014-04-29T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://paulsec.github.io/categories/conference/</loc>
     <lastmod>2014-04-29T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://paulsec.github.io/categories/slides/</loc>
     <lastmod>2014-04-29T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://paulsec.github.io/categories/talk/</loc>
     <lastmod>2014-04-29T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://paulsec.github.io/posts/bwapp-write-up/</loc>
     <lastmod>2014-04-21T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://paulsec.github.io/posts/scream-write-up/</loc>
     <lastmod>2014-04-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://paulsec.github.io/posts/exploit-kb-vulnerable-web-app-1-write-up/</loc>
     <lastmod>2014-04-15T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://paulsec.github.io/posts/kioptrix-2-write-up/</loc>
     <lastmod>2014-04-15T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://paulsec.github.io/categories/exploit/</loc>
     <lastmod>2014-04-14T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://paulsec.github.io/posts/kioptrix-1-write-up/</loc>
     <lastmod>2014-04-14T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://paulsec.github.io/posts/secos-1-first-vm-out/</loc>
     <lastmod>2014-04-14T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://paulsec.github.io/posts/updating-openfuck-exploit/</loc>
     <lastmod>2014-04-14T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://paulsec.github.io/posts/vulnos-write-up/</loc>
     <lastmod>2014-04-08T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://paulsec.github.io/categories/programming/</loc>
     <lastmod>2014-03-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://paulsec.github.io/categories/python/</loc>
     <lastmod>2014-03-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://paulsec.github.io/posts/python-plus-transmission-daemon-equals-download-easily-your-favorite-tv-show/</loc>
     <lastmod>2014-03-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://paulsec.github.io/categories/javascript/</loc>
     <lastmod>2014-03-20T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://paulsec.github.io/posts/xss-callback/</loc>
     <lastmod>2014-03-20T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://paulsec.github.io/posts/dealing-with-html-submits-conflict/</loc>
     <lastmod>2014-03-09T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://paulsec.github.io/categories/html/</loc>
     <lastmod>2014-03-09T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://paulsec.github.io/categories/blog/</loc>
     <lastmod>2014-03-04T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://paulsec.github.io/categories/personal/</loc>
     <lastmod>2014-03-04T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://paulsec.github.io/posts/starting-my-own-blog/</loc>
     <lastmod>2014-03-04T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://paulsec.github.io/tags/</loc>
   </url>
-  
 </urlset>

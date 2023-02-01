@@ -6,12 +6,14 @@
 
     <head>
     <link href="https://gmpg.org/xfn/11" rel="profile">
+    
+    <link rel="canonical" href="http://paulsec.github.io/posts/django-viewset-throttling/">
+    
     <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta http-equiv="Cache-Control" content="public" />
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.62.0" />
+<meta name="generator" content="Hugo 0.107.0">
 
     
     
@@ -33,9 +35,10 @@ Here is a small article on some experiments I came across with the development o
 It turns out someone had similar thoughts and his blog post was pretty interested and helped me a lot. You can find the blog post here: https://www.pedaldrivenprogramming.com/2017/05/throttling-django-rest-framwork-viewsets/.
 As the author states:" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://paulsec.github.io/posts/django-viewset-throttling/" />
+<meta property="og:url" content="http://paulsec.github.io/posts/django-viewset-throttling/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2020-01-14T21:14:36+01:00" />
 <meta property="article:modified_time" content="2020-01-14T21:14:36+01:00" /><meta property="og:site_name" content="PaulSec&#39;s Blog" />
+
 
 
     
@@ -45,7 +48,7 @@ As the author states:" />
 
 
 
-<link rel="stylesheet" href="/scss/hyde-hyde.92c66d107d7b219f0792cfd67223179af884b03f386ac46894f9f735932bbca3.css" integrity="sha256-ksZtEH17IZ8Hks/WciMXmviEsD84asRolPn3NZMrvKM=">
+<link rel="stylesheet" href="/scss/hyde-hyde.3081c4981fb69a2783dd36ecfdd0e6ba7a158d4cbfdd290ebce8f78ba0469fc6.css" integrity="sha256-MIHEmB&#43;2mieD3Tbs/dDmunoVjUy/3SkOvOj3i6BGn8Y=">
 
 
 <link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
@@ -72,7 +75,11 @@ As the author states:" />
   <div class="container ">
     <div class="sidebar-about">
       <span class="site__title">
-        <a href="http://paulsec.github.io/"></a>
+        <a href="http://paulsec.github.io/">
+        
+          
+        
+        </a>
       </span>
       
         
@@ -129,7 +136,12 @@ As the author states:" />
 	
 	
 	
+	
 	<a href="https://github.com/PaulSec" rel="me"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
 	
 	
 	
@@ -151,7 +163,7 @@ As the author states:" />
     </div>
     
 <div class="copyright">
-  &copy; 2021 Paul A.
+  &copy; 2023 Paul A.
   
     <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>
   
@@ -202,50 +214,50 @@ Goal: I needed to limit (anonymous) visitors on specific API endpoints (especial
 </blockquote>
 <p>First, define your different throttles policies:</p>
 <p><strong>settings.py</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">REST_FRAMEWORK <span style="color:#f92672">=</span> {
-    <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">DEFAULT_PERMISSION_CLASSES</span><span style="color:#e6db74">&#39;</span>: (<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">rest_framework.permissions.AllowAny</span><span style="color:#e6db74">&#39;</span>,),
-    <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">DEFAULT_THROTTLE_CLASSES</span><span style="color:#e6db74">&#39;</span>: [
-        <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">rest_framework.throttling.AnonRateThrottle</span><span style="color:#e6db74">&#39;</span>,
-        <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">rest_framework.throttling.ScopedRateThrottle</span><span style="color:#e6db74">&#39;</span>
-    ],
-    <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">DEFAULT_THROTTLE_RATES</span><span style="color:#e6db74">&#39;</span>: {
-        <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">anon</span><span style="color:#e6db74">&#39;</span>: <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">100/min</span><span style="color:#e6db74">&#39;</span>,
-        <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">user</span><span style="color:#e6db74">&#39;</span>: <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">1000/day</span><span style="color:#e6db74">&#39;</span>,
-        <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">cfps.create</span><span style="color:#e6db74">&#39;</span>: <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">2/day</span><span style="color:#e6db74">&#39;</span>
-    }
-}
-</code></pre></div><p>Then, override the <code>get_throttles()</code> method and add your <code>cfps.create</code> policy when the action <code>create</code> is called!
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>REST_FRAMEWORK <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;DEFAULT_PERMISSION_CLASSES&#39;</span>: (<span style="color:#e6db74">&#39;rest_framework.permissions.AllowAny&#39;</span>,),
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;DEFAULT_THROTTLE_CLASSES&#39;</span>: [
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;rest_framework.throttling.AnonRateThrottle&#39;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;rest_framework.throttling.ScopedRateThrottle&#39;</span>
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;DEFAULT_THROTTLE_RATES&#39;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;anon&#39;</span>: <span style="color:#e6db74">&#39;100/min&#39;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;user&#39;</span>: <span style="color:#e6db74">&#39;1000/day&#39;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;cfps.create&#39;</span>: <span style="color:#e6db74">&#39;2/day&#39;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Then, override the <code>get_throttles()</code> method and add your <code>cfps.create</code> policy when the action <code>create</code> is called!
 This will allow my users to use the CFP Time API to fetch {CFP, Conference} Details but will limit them in order to avoid flooding. w00t w00t!</p>
 <p><strong>views.py</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CFPViewSet</span>(viewsets<span style="color:#f92672">.</span>ModelViewSet):
-
-    today <span style="color:#f92672">=</span> datetime<span style="color:#f92672">.</span>datetime<span style="color:#f92672">.</span>today()
-    queryset <span style="color:#f92672">=</span> Conference<span style="color:#f92672">.</span>objects<span style="color:#f92672">.</span>filter(reviewed<span style="color:#f92672">=</span>True, cfp_deadline__gte<span style="color:#f92672">=</span>today)<span style="color:#f92672">.</span>order_by(<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">cfp_deadline</span><span style="color:#e6db74">&#39;</span>)<span style="color:#f92672">.</span>values()
-    serializer_class <span style="color:#f92672">=</span> ConferenceSerializer
-    http_method_names <span style="color:#f92672">=</span> [<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">get</span><span style="color:#e6db74">&#39;</span>, <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">post</span><span style="color:#e6db74">&#39;</span>]
-
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_throttles</span>(self):
-        <span style="color:#66d9ef">if</span> self<span style="color:#f92672">.</span>action <span style="color:#f92672">==</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">create</span><span style="color:#e6db74">&#39;</span>:
-            self<span style="color:#f92672">.</span>throttle_scope <span style="color:#f92672">=</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">cfps.create</span><span style="color:#e6db74">&#39;</span>
-        <span style="color:#66d9ef">return</span> super()<span style="color:#f92672">.</span>get_throttles()
-
-    <span style="color:#a6e22e">@csrf_exempt</span>
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">create</span>(self, request):
-        <span style="color:#66d9ef">return</span> super()<span style="color:#f92672">.</span>create(request)
-</code></pre></div><p>And after the second attempt&hellip;</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">curl -X POST <span style="color:#e6db74">&#34;http://127.0.0.1:8000/api/cfps/&#34;</span> <span style="color:#f92672">[</span>... truncated ...<span style="color:#f92672">]</span> -D -
-HTTP/1.1 <span style="color:#ae81ff">429</span> Too Many Requests
-Date: Tue, <span style="color:#ae81ff">14</span> Jan <span style="color:#ae81ff">2020</span> 20:23:57 GMT
-Server: WSGIServer/0.2 CPython/3.7.5
-Content-Type: application/json
-Retry-After: <span style="color:#ae81ff">86369</span>
-Vary: Accept, Cookie, Origin
-Allow: GET, POST
-X-Frame-Options: SAMEORIGIN
-Content-Length: <span style="color:#ae81ff">72</span>
-
-<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;detail&#34;</span>:<span style="color:#e6db74">&#34;Request was throttled. Expected available in 86369 seconds.&#34;</span><span style="color:#f92672">}</span>
-</code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CFPViewSet</span>(viewsets<span style="color:#f92672">.</span>ModelViewSet):
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    today <span style="color:#f92672">=</span> datetime<span style="color:#f92672">.</span>datetime<span style="color:#f92672">.</span>today()
+</span></span><span style="display:flex;"><span>    queryset <span style="color:#f92672">=</span> Conference<span style="color:#f92672">.</span>objects<span style="color:#f92672">.</span>filter(reviewed<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>, cfp_deadline__gte<span style="color:#f92672">=</span>today)<span style="color:#f92672">.</span>order_by(<span style="color:#e6db74">&#39;cfp_deadline&#39;</span>)<span style="color:#f92672">.</span>values()
+</span></span><span style="display:flex;"><span>    serializer_class <span style="color:#f92672">=</span> ConferenceSerializer
+</span></span><span style="display:flex;"><span>    http_method_names <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;get&#39;</span>, <span style="color:#e6db74">&#39;post&#39;</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_throttles</span>(self):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> self<span style="color:#f92672">.</span>action <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;create&#39;</span>:
+</span></span><span style="display:flex;"><span>            self<span style="color:#f92672">.</span>throttle_scope <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;cfps.create&#39;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> super()<span style="color:#f92672">.</span>get_throttles()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@csrf_exempt</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">create</span>(self, request):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> super()<span style="color:#f92672">.</span>create(request)
+</span></span></code></pre></div><p>And after the second attempt&hellip;</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -X POST <span style="color:#e6db74">&#34;http://127.0.0.1:8000/api/cfps/&#34;</span> <span style="color:#f92672">[</span>... truncated ...<span style="color:#f92672">]</span> -D -
+</span></span><span style="display:flex;"><span>HTTP/1.1 <span style="color:#ae81ff">429</span> Too Many Requests
+</span></span><span style="display:flex;"><span>Date: Tue, <span style="color:#ae81ff">14</span> Jan <span style="color:#ae81ff">2020</span> 20:23:57 GMT
+</span></span><span style="display:flex;"><span>Server: WSGIServer/0.2 CPython/3.7.5
+</span></span><span style="display:flex;"><span>Content-Type: application/json
+</span></span><span style="display:flex;"><span>Retry-After: <span style="color:#ae81ff">86369</span>
+</span></span><span style="display:flex;"><span>Vary: Accept, Cookie, Origin
+</span></span><span style="display:flex;"><span>Allow: GET, POST
+</span></span><span style="display:flex;"><span>X-Frame-Options: SAMEORIGIN
+</span></span><span style="display:flex;"><span>Content-Length: <span style="color:#ae81ff">72</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span><span style="color:#e6db74">&#34;detail&#34;</span>:<span style="color:#e6db74">&#34;Request was throttled. Expected available in 86369 seconds.&#34;</span><span style="color:#f92672">}</span>
+</span></span></code></pre></div>
   </div>
   
 
@@ -278,16 +290,7 @@ Content-Length: <span style="color:#ae81ff">72</span>
         
     
 
-<script defer src="https://use.fontawesome.com/releases/v5.11.2/js/all.js" integrity="sha384-b3ua1l97aVGAPEIe48b4TC60WUQbQaGi2jqAWM90y0OZXZeyaTCWtBTKtjW2GXG1" crossorigin="anonymous"></script>
-
-
-    
-    
-    <script type="text/javascript">
-        
-        hljs.initHighlightingOnLoad();
-    </script>
-    
+<script defer src="https://use.fontawesome.com/releases/v5.12.1/js/all.js" integrity="sha384-ZbbbT1gw3joYkKRqh0kWyRp32UAvdqkpbLedQJSlnI8iLQcFVxaGyrOgOJiDQTTR" crossorigin="anonymous"></script>
 
 
 

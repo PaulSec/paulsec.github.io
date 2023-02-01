@@ -6,11 +6,7 @@
     <description>Recent content in sslscan on </description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 07 Jun 2015 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="http://paulsec.github.io/categories/sslscan/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sun, 07 Jun 2015 00:00:00 +0000</lastBuildDate><atom:link href="http://paulsec.github.io/categories/sslscan/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Running SSLScan on 5k servers taken from Alexa&#39;s top 10k</title>
       <link>http://paulsec.github.io/posts/running-sslscan-on-5k-servers-taken-from-alexas-top-10k/</link>

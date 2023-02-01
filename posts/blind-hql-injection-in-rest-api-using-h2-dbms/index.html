@@ -6,12 +6,14 @@
 
     <head>
     <link href="https://gmpg.org/xfn/11" rel="profile">
+    
+    <link rel="canonical" href="http://paulsec.github.io/posts/blind-hql-injection-in-rest-api-using-h2-dbms/">
+    
     <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta http-equiv="Cache-Control" content="public" />
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.62.0" />
+<meta name="generator" content="Hugo 0.107.0">
 
     
     
@@ -26,18 +28,19 @@
 First, you should read this post which gives some really useful information regarding HQL injections in general: HQL for pentesters.
 During the assessment, I checked the API calls by using Burp as a proxy and one call was:
 http://application/API/Users/?req=id=1 The output was a JSON response, such as:
-[{user: &quot;admin&quot;, id: &quot;1&quot;, firstName:&quot;Admin&quot;}] If you changed the id with the numeric value 2, and so on."/>
+[{user: &#34;admin&#34;, id: &#34;1&#34;, firstName:&#34;Admin&#34;}] If you changed the id with the numeric value 2, and so on."/>
 
 <meta property="og:title" content="Blind HQL Injection in REST API using H2 DMBS" />
 <meta property="og:description" content="This post deals with some research I just did regarding (Blind) HQL injections with H2 as the DataBase Management System.
 First, you should read this post which gives some really useful information regarding HQL injections in general: HQL for pentesters.
 During the assessment, I checked the API calls by using Burp as a proxy and one call was:
 http://application/API/Users/?req=id=1 The output was a JSON response, such as:
-[{user: &quot;admin&quot;, id: &quot;1&quot;, firstName:&quot;Admin&quot;}] If you changed the id with the numeric value 2, and so on." />
+[{user: &#34;admin&#34;, id: &#34;1&#34;, firstName:&#34;Admin&#34;}] If you changed the id with the numeric value 2, and so on." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://paulsec.github.io/posts/blind-hql-injection-in-rest-api-using-h2-dbms/" />
+<meta property="og:url" content="http://paulsec.github.io/posts/blind-hql-injection-in-rest-api-using-h2-dbms/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2014-05-05T00:00:00+00:00" />
 <meta property="article:modified_time" content="2014-05-05T00:00:00+00:00" /><meta property="og:site_name" content="PaulSec&#39;s Blog" />
+
 
 
     
@@ -47,7 +50,7 @@ http://application/API/Users/?req=id=1 The output was a JSON response, such as:
 
 
 
-<link rel="stylesheet" href="/scss/hyde-hyde.92c66d107d7b219f0792cfd67223179af884b03f386ac46894f9f735932bbca3.css" integrity="sha256-ksZtEH17IZ8Hks/WciMXmviEsD84asRolPn3NZMrvKM=">
+<link rel="stylesheet" href="/scss/hyde-hyde.3081c4981fb69a2783dd36ecfdd0e6ba7a158d4cbfdd290ebce8f78ba0469fc6.css" integrity="sha256-MIHEmB&#43;2mieD3Tbs/dDmunoVjUy/3SkOvOj3i6BGn8Y=">
 
 
 <link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
@@ -74,7 +77,11 @@ http://application/API/Users/?req=id=1 The output was a JSON response, such as:
   <div class="container ">
     <div class="sidebar-about">
       <span class="site__title">
-        <a href="http://paulsec.github.io/"></a>
+        <a href="http://paulsec.github.io/">
+        
+          
+        
+        </a>
       </span>
       
         
@@ -131,7 +138,12 @@ http://application/API/Users/?req=id=1 The output was a JSON response, such as:
 	
 	
 	
+	
 	<a href="https://github.com/PaulSec" rel="me"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
 	
 	
 	
@@ -153,7 +165,7 @@ http://application/API/Users/?req=id=1 The output was a JSON response, such as:
     </div>
     
 <div class="copyright">
-  &copy; 2021 Paul A.
+  &copy; 2023 Paul A.
   
     <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>
   
@@ -213,28 +225,28 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     <p>This post deals with some research I just did regarding (Blind) HQL injections with H2 as the DataBase Management System.</p>
 <p>First, you should read this post which gives some really useful information regarding HQL injections in general: <a href="http://blog.h3xstream.com/2014/02/hql-for-pentesters.html">HQL for pentesters</a>.</p>
 <p>During the assessment, I checked the API calls by using Burp as a proxy and one call was:</p>
-<pre><code>http://application/API/Users/?req=id=1
+<pre tabindex="0"><code>http://application/API/Users/?req=id=1
 </code></pre><p>The output was a JSON response, such as:</p>
-<pre><code>[{user: &quot;admin&quot;, id: &quot;1&quot;, firstName:&quot;Admin&quot;}]
+<pre tabindex="0"><code>[{user: &#34;admin&#34;, id: &#34;1&#34;, firstName:&#34;Admin&#34;}]
 </code></pre><p>If you changed the id with the numeric value <strong>2</strong>, and so on.. it was working.</p>
 <p>On the back-end system, the request should have been something like :</p>
-<pre><code>select * from users where id = '&lt;id&gt;'
+<pre tabindex="0"><code>select * from users where id = &#39;&lt;id&gt;&#39;
 </code></pre><p>By inserting a single-quote character, I raised an exception and I got the SQL statement.
 Nice, because it was the same one as below.</p>
 <p>Some special characters/words were banned such as &lsquo;=&rsquo;, etc. But there was still the operator &lsquo;LIKE&rsquo; remaining.
 Then, I started to insert conditions to see how the system was reacting such as:</p>
-<pre><code>http://application/API/Users/?req=id=1' AND '1' LIKE '1
+<pre tabindex="0"><code>http://application/API/Users/?req=id=1&#39; AND &#39;1&#39; LIKE &#39;1
 </code></pre><p>The output was the same:</p>
-<pre><code>[{user: &quot;admin&quot;, id: &quot;1&quot;, firstName:&quot;Admin&quot;}]
+<pre tabindex="0"><code>[{user: &#34;admin&#34;, id: &#34;1&#34;, firstName:&#34;Admin&#34;}]
 </code></pre><p>However, when the condition was false, such as:</p>
-<pre><code>http://application/API/Users/?req=id=1' AND '1' LIKE '2
+<pre tabindex="0"><code>http://application/API/Users/?req=id=1&#39; AND &#39;1&#39; LIKE &#39;2
 </code></pre><p>The JSON response was empty.</p>
-<pre><code>[]
+<pre tabindex="0"><code>[]
 </code></pre><p>So, if the condition is false the output is empty.</p>
 <p>(Blind) HQL injections are similar to (Blind) SQL injections but due to HQL syntax, this is really limited.
 Moreover, exploitation techniques depends on the dbms system behind.
-For this example, <a href="http://www.h2database.com/html/functions.html">H2 Database website</a> is the reference where you can find out what you're allowed to do.</p>
-<p>Basically, what you'll be able to do is:</p>
+For this example, <a href="http://www.h2database.com/html/functions.html">H2 Database website</a> is the reference where you can find out what you&rsquo;re allowed to do.</p>
+<p>Basically, what you&rsquo;ll be able to do is:</p>
 <ul>
 <li>Enumerate tables, columns by bruteforcing it</li>
 <li>And use built-in functions</li>
@@ -246,12 +258,12 @@ For this example, <a href="http://www.h2database.com/html/functions.html">H2 Dat
 <li><strong>FILE_READ(FILE, NULL)</strong>: read FILE on the filesystem. (hint: /etc/passwd)</li>
 </ul>
 <p>Quick example, I managed to retrieve the current <code>user()</code> this way:</p>
-<p><em>First</em>, let's get the length of the user:</p>
-<pre><code>http://application/API/Users/?req=id=1' AND length(user()) LIKE '2
+<p><em>First</em>, let&rsquo;s get the length of the user:</p>
+<pre tabindex="0"><code>http://application/API/Users/?req=id=1&#39; AND length(user()) LIKE &#39;2
 </code></pre><p><em>Then</em>, we can use <code>substring()</code> to iterate on each characters using <code>LIKE</code> operator.</p>
-<pre><code>http://application/API/Users/?req=id=1' AND substring(user(), 1,1) LIKE 'S
+<pre tabindex="0"><code>http://application/API/Users/?req=id=1&#39; AND substring(user(), 1,1) LIKE &#39;S
 </code></pre><p>As you know, process to extract those information is quite long. I will update my <a href="https://github.com/PaulSec/HQLmap">HQLmap Project</a> to automate the process in the next few days. (So far, it supports HQL Injections)</p>
-<p>I hope it might have helped you during your assessment and feel free to contact me if you have other techniques for h2 database, I'll update this blog post.</p>
+<p>I hope it might have helped you during your assessment and feel free to contact me if you have other techniques for h2 database, I&rsquo;ll update this blog post.</p>
 <p>Cheers,</p>
 
   </div>
@@ -286,16 +298,7 @@ For this example, <a href="http://www.h2database.com/html/functions.html">H2 Dat
         
     
 
-<script defer src="https://use.fontawesome.com/releases/v5.11.2/js/all.js" integrity="sha384-b3ua1l97aVGAPEIe48b4TC60WUQbQaGi2jqAWM90y0OZXZeyaTCWtBTKtjW2GXG1" crossorigin="anonymous"></script>
-
-
-    
-    
-    <script type="text/javascript">
-        
-        hljs.initHighlightingOnLoad();
-    </script>
-    
+<script defer src="https://use.fontawesome.com/releases/v5.12.1/js/all.js" integrity="sha384-ZbbbT1gw3joYkKRqh0kWyRp32UAvdqkpbLedQJSlnI8iLQcFVxaGyrOgOJiDQTTR" crossorigin="anonymous"></script>
 
 
 

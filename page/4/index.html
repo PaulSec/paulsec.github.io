@@ -3,12 +3,14 @@
     
   <head>
     <link href="https://gmpg.org/xfn/11" rel="profile">
+    
+    <link rel="canonical" href="http://paulsec.github.io/">
+    
     <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta http-equiv="Cache-Control" content="public" />
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.62.0" />
+<meta name="generator" content="Hugo 0.107.0">
 
     
 
@@ -22,8 +24,8 @@
 <meta property="og:title" content="" />
 <meta property="og:description" content="PaulSec&#39;s Blog. Security &amp; lulz." />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="http://paulsec.github.io/" />
-<meta property="og:updated_time" content="2021-08-13T17:25:35+02:00" /><meta property="og:site_name" content="PaulSec&#39;s Blog" />
+<meta property="og:url" content="http://paulsec.github.io/" /><meta property="og:site_name" content="PaulSec&#39;s Blog" />
+
 
 
     
@@ -33,7 +35,7 @@
 
 
 
-<link rel="stylesheet" href="/scss/hyde-hyde.92c66d107d7b219f0792cfd67223179af884b03f386ac46894f9f735932bbca3.css" integrity="sha256-ksZtEH17IZ8Hks/WciMXmviEsD84asRolPn3NZMrvKM=">
+<link rel="stylesheet" href="/scss/hyde-hyde.3081c4981fb69a2783dd36ecfdd0e6ba7a158d4cbfdd290ebce8f78ba0469fc6.css" integrity="sha256-MIHEmB&#43;2mieD3Tbs/dDmunoVjUy/3SkOvOj3i6BGn8Y=">
 
 
 <link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
@@ -61,7 +63,11 @@
   <div class="container ">
     <div class="sidebar-about">
       <span class="site__title">
-        <a href="http://paulsec.github.io/"></a>
+        <a href="http://paulsec.github.io/">
+        
+          
+        
+        </a>
       </span>
       
         
@@ -118,7 +124,12 @@
 	
 	
 	
+	
 	<a href="https://github.com/PaulSec" rel="me"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
 	
 	
 	
@@ -140,7 +151,7 @@
     </div>
     
 <div class="copyright">
-  &copy; 2021 Paul A.
+  &copy; 2023 Paul A.
   
     <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>
   
@@ -165,6 +176,30 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
       
       <div class="post-list__item">
         <span class="item__title--big">
+          <a href="/posts/python-plus-transmission-daemon-equals-download-easily-your-favorite-tv-show/" >Python &#43; Transmission daemon = Download easily your favorite TV Show</a>
+        </span>
+        <span class="item__date">
+          Mar 28, 2014
+        </span>
+        <span >
+        
+        This post is about my last project : my TV Show Manager.
+I decided to start it because I wanted something really simple to download my favorite TV Shows. In this post, I&rsquo;ll explain step by step how to reproduce it at home.
+Basically, with this tutorial you&rsquo;ll set up your Raspberry box by :
+Installing / set-uping transmission-daemon Getting one of my latest project TVShowManager that uses my EZTV Python API.
+        
+        </span>
+        
+          ... <a class="read-more-symbol" href="/posts/python-plus-transmission-daemon-equals-download-easily-your-favorite-tv-show/">➦</a>
+        
+        </div>
+        
+     
+      
+        
+      
+      <div class="post-list__item">
+        <span class="item__title--big">
           <a href="/posts/xss-callback/" >XSS Callback</a>
         </span>
         <span class="item__date">
@@ -174,9 +209,9 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
         
         This post deals with a project I developed : XSS Callback.
 This is not going to be (at least, I hope) a boring post about XSS exploitation. No.
-Well, one scenario of using XSS would be to steal victim's cookie and access the page through his session. This technique is called Session Hijacking. Ok fair enough.
-However, some issues are present using this technique, let's take an example :
- You target a website Unfortunately, it's too late (or too early depending on your situation) and you go to sleep.
+Well, one scenario of using XSS would be to steal victim&rsquo;s cookie and access the page through his session. This technique is called Session Hijacking. Ok fair enough.
+However, some issues are present using this technique, let&rsquo;s take an example :
+You target a website Unfortunately, it&rsquo;s too late (or too early depending on your situation) and you go to sleep.
         
         </span>
         
@@ -199,7 +234,7 @@ However, some issues are present using this technique, let's take an example :
         
         This first post is related with one of my project : CSRFT. CSRFT is a Cross Site Request Forgery (CSRF) vulnerabilities Toolkit.
 My toolkit allows you to exploit either GET and POST HTTP Requests. During some testings, I had issues with some specific forms.
-Let's take an example of such form :
+Let&rsquo;s take an example of such form :
 &lt;form action=&#34;http://website.com/blog/&#34; id=&#34;form&#34; method=&#34;get&#34;&gt; &lt;label class=&#34;assistive-text&#34; for=&#34;s&#34;&gt;Search&lt;/label&gt; &lt;input class=&#34;field&#34; id=&#34;s&#34; name=&#34;s&#34; placeholder=&#34;Search&#34; type=&#34;text&#34; value=&#34;Search Value&#34;/&gt; &lt;input class=&#34;submit&#34; id=&#34;searchsubmit&#34; name=&#34;submit&#34; type=&#34;submit&#34; value=&#34;Search&#34;/&gt; &lt;/form&gt; The code injected on the page to submit the form was like that :
         
         </span>
@@ -221,9 +256,9 @@ Let's take an example of such form :
         </span>
         <span >
         
-        Starting my own blog has been something I really wanted to do. I'll add post related to my different projects but also on Web security.
+        Starting my own blog has been something I really wanted to do. I&rsquo;ll add post related to my different projects but also on Web security.
 Here are my different motivations :
-1. Provide a portfolio of my different projects. 2. Explain some problems I had and provide the solution 3. Talk about some geek stuffs. Let's see :) Hope you'll have fun to read me. Cheers and see you soon.
+1. Provide a portfolio of my different projects. 2. Explain some problems I had and provide the solution 3. Talk about some geek stuffs. Let&rsquo;s see :) Hope you&rsquo;ll have fun to read me. Cheers and see you soon.
         
         </span>
         
@@ -302,7 +337,7 @@ Here are my different motivations :
         </div>
         
   
-  <script defer src="https://use.fontawesome.com/releases/v5.11.2/js/all.js" integrity="sha384-b3ua1l97aVGAPEIe48b4TC60WUQbQaGi2jqAWM90y0OZXZeyaTCWtBTKtjW2GXG1" crossorigin="anonymous"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.12.1/js/all.js" integrity="sha384-ZbbbT1gw3joYkKRqh0kWyRp32UAvdqkpbLedQJSlnI8iLQcFVxaGyrOgOJiDQTTR" crossorigin="anonymous"></script>
 
 
     </body>

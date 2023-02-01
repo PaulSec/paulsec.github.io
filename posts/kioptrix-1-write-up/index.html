@@ -6,12 +6,14 @@
 
     <head>
     <link href="https://gmpg.org/xfn/11" rel="profile">
+    
+    <link rel="canonical" href="http://paulsec.github.io/posts/kioptrix-1-write-up/">
+    
     <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta http-equiv="Cache-Control" content="public" />
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.62.0" />
+<meta name="generator" content="Hugo 0.107.0">
 
     
     
@@ -24,20 +26,21 @@
 <meta name="twitter:title" content="Kioptrix 1 Write-up"/>
 <meta name="twitter:description" content="This post contains the steps to get a root shell with Kioptrix level 1 VM
 This VM can he found here. Have a look to find even more VMs
-Host discovery First, we need to discover where the machine is on our network. To do so, let&#39;s use Nmap:
+Host discovery First, we need to discover where the machine is on our network. To do so, let&rsquo;s use Nmap:
 nmap -sP 192.168.1.1/24 Fingerprinting After getting the IP address, we need to do some fingerprinting.
 nmap -sV 192.168.1.2 Fig. Nmap scan result"/>
 
 <meta property="og:title" content="Kioptrix 1 Write-up" />
 <meta property="og:description" content="This post contains the steps to get a root shell with Kioptrix level 1 VM
 This VM can he found here. Have a look to find even more VMs
-Host discovery First, we need to discover where the machine is on our network. To do so, let&#39;s use Nmap:
+Host discovery First, we need to discover where the machine is on our network. To do so, let&rsquo;s use Nmap:
 nmap -sP 192.168.1.1/24 Fingerprinting After getting the IP address, we need to do some fingerprinting.
 nmap -sV 192.168.1.2 Fig. Nmap scan result" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://paulsec.github.io/posts/kioptrix-1-write-up/" />
+<meta property="og:url" content="http://paulsec.github.io/posts/kioptrix-1-write-up/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2014-04-14T00:00:00+00:00" />
 <meta property="article:modified_time" content="2014-04-14T00:00:00+00:00" /><meta property="og:site_name" content="PaulSec&#39;s Blog" />
+
 
 
     
@@ -47,7 +50,7 @@ nmap -sV 192.168.1.2 Fig. Nmap scan result" />
 
 
 
-<link rel="stylesheet" href="/scss/hyde-hyde.92c66d107d7b219f0792cfd67223179af884b03f386ac46894f9f735932bbca3.css" integrity="sha256-ksZtEH17IZ8Hks/WciMXmviEsD84asRolPn3NZMrvKM=">
+<link rel="stylesheet" href="/scss/hyde-hyde.3081c4981fb69a2783dd36ecfdd0e6ba7a158d4cbfdd290ebce8f78ba0469fc6.css" integrity="sha256-MIHEmB&#43;2mieD3Tbs/dDmunoVjUy/3SkOvOj3i6BGn8Y=">
 
 
 <link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
@@ -74,7 +77,11 @@ nmap -sV 192.168.1.2 Fig. Nmap scan result" />
   <div class="container ">
     <div class="sidebar-about">
       <span class="site__title">
-        <a href="http://paulsec.github.io/"></a>
+        <a href="http://paulsec.github.io/">
+        
+          
+        
+        </a>
       </span>
       
         
@@ -131,7 +138,12 @@ nmap -sV 192.168.1.2 Fig. Nmap scan result" />
 	
 	
 	
+	
 	<a href="https://github.com/PaulSec" rel="me"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
 	
 	
 	
@@ -153,7 +165,7 @@ nmap -sV 192.168.1.2 Fig. Nmap scan result" />
     </div>
     
 <div class="copyright">
-  &copy; 2021 Paul A.
+  &copy; 2023 Paul A.
   
     <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>
   
@@ -209,13 +221,13 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
   <div class="post">
     <p><strong>This post contains the steps to get a root shell with Kioptrix level 1 VM</strong></p>
 <p>This VM can he found <a href="http://vulnhub.com/entry/kioptrix_level-1-1,22/">here</a>. Have a look to find even more VMs</p>
-<h4 id="--host-discovery--"><strong>Host discovery</strong></h4>
+<h4 id="__host-discovery__"><strong>Host discovery</strong></h4>
 <p>First, we need to discover where the machine is on our network.
-To do so, let's use Nmap:</p>
-<pre><code>nmap -sP 192.168.1.1/24 
-</code></pre><h4 id="--fingerprinting--"><strong>Fingerprinting</strong></h4>
+To do so, let&rsquo;s use Nmap:</p>
+<pre tabindex="0"><code>nmap -sP 192.168.1.1/24 
+</code></pre><h4 id="__fingerprinting__"><strong>Fingerprinting</strong></h4>
 <p>After getting the IP address, we need to do some fingerprinting.</p>
-<pre><code>nmap -sV 192.168.1.2
+<pre tabindex="0"><code>nmap -sV 192.168.1.2
 </code></pre><!-- raw HTML omitted -->
 <p><em>Fig. Nmap scan result</em></p>
 <p>As I saw it in the scan report, I decided to scan on the port 80 and 443 with <strong>DirBuster</strong> and <strong>Nikto</strong>.</p>
@@ -226,10 +238,10 @@ To do so, let's use Nmap:</p>
 <p><em>Fig. Nikto report on ports 80 (HTTP) and 443 (HTTPS)</em></p>
 <p>There was no vulnerable web application or any interesting file.
 However, the Apache version is vulnerable..</p>
-<h4 id="--exploitation-with-apache-openssl-exploit--"><strong>Exploitation with Apache OpenSSL Exploit</strong></h4>
+<h4 id="__exploitation-with-apache-openssl-exploit__"><strong>Exploitation with Apache OpenSSL Exploit</strong></h4>
 <p>Thanks to Nmap result, I saw that the Apache version was vulnerable: <strong>Apache 1.3.20</strong>.
 Then, I decided to look on the internet and I found this expoit: <a href="http://www.exploit-db.com/exploits/764/">Apache OpenSSL - Remote Exploit (Multiple Targets) (OpenFuckV2.c)</a></p>
-<p>I had issues with this exploit because it's quite an old one and the instructions were outdated.
+<p>I had issues with this exploit because it&rsquo;s quite an old one and the instructions were outdated.
 You can follow the instructions <a href="http://paulsec.github.io/blog/2014/04/14/updating-openfuck-exploit/">here</a> to update the exploit and run it on your computer. (Tested on <a href="http://www.kali.org/">Kali Linux</a>).</p>
 <p>We had information on the box and I did a <code>grep</code> to see what OS were vulnerable to Apache 1.3.20 :</p>
 <!-- raw HTML omitted -->
@@ -237,13 +249,13 @@ You can follow the instructions <a href="http://paulsec.github.io/blog/2014/04/1
 <p>Then, I tried the exploit :</p>
 <!-- raw HTML omitted -->
 <p><em>Fig. Using OpenFuck Exploit after multiple attempts</em></p>
-<h4 id="--interesting-files--"><strong>Interesting files</strong></h4>
+<h4 id="__interesting-files__"><strong>Interesting files</strong></h4>
 <p>We got the root shell and that was the goal of this VM.
 Then, you can do everything like get content of <code>/etc/shadow</code>.</p>
 <!-- raw HTML omitted -->
 <p><em>Fig. Shadow file on the vulnerable server</em></p>
 <p>Hope you liked it ! Cheers.</p>
-<p>ps: I'll add exploitation using Samba in the next few days. Keep tuned !</p>
+<p>ps: I&rsquo;ll add exploitation using Samba in the next few days. Keep tuned !</p>
 
   </div>
   
@@ -277,16 +289,7 @@ Then, you can do everything like get content of <code>/etc/shadow</code>.</p>
         
     
 
-<script defer src="https://use.fontawesome.com/releases/v5.11.2/js/all.js" integrity="sha384-b3ua1l97aVGAPEIe48b4TC60WUQbQaGi2jqAWM90y0OZXZeyaTCWtBTKtjW2GXG1" crossorigin="anonymous"></script>
-
-
-    
-    
-    <script type="text/javascript">
-        
-        hljs.initHighlightingOnLoad();
-    </script>
-    
+<script defer src="https://use.fontawesome.com/releases/v5.12.1/js/all.js" integrity="sha384-ZbbbT1gw3joYkKRqh0kWyRp32UAvdqkpbLedQJSlnI8iLQcFVxaGyrOgOJiDQTTR" crossorigin="anonymous"></script>
 
 
 

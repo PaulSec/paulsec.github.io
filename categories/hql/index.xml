@@ -6,11 +6,7 @@
     <description>Recent content in hql on </description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 05 May 2014 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="http://paulsec.github.io/categories/hql/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Mon, 05 May 2014 00:00:00 +0000</lastBuildDate><atom:link href="http://paulsec.github.io/categories/hql/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Blind HQL Injection in REST API using H2 DMBS</title>
       <link>http://paulsec.github.io/posts/blind-hql-injection-in-rest-api-using-h2-dbms/</link>
@@ -21,7 +17,7 @@
 First, you should read this post which gives some really useful information regarding HQL injections in general: HQL for pentesters.
 During the assessment, I checked the API calls by using Burp as a proxy and one call was:
 http://application/API/Users/?req=id=1 The output was a JSON response, such as:
-[{user: &amp;quot;admin&amp;quot;, id: &amp;quot;1&amp;quot;, firstName:&amp;quot;Admin&amp;quot;}] If you changed the id with the numeric value 2, and so on.</description>
+[{user: &amp;#34;admin&amp;#34;, id: &amp;#34;1&amp;#34;, firstName:&amp;#34;Admin&amp;#34;}] If you changed the id with the numeric value 2, and so on.</description>
     </item>
     
   </channel>

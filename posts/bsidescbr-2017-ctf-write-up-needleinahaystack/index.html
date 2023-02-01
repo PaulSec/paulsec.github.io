@@ -6,12 +6,14 @@
 
     <head>
     <link href="https://gmpg.org/xfn/11" rel="profile">
+    
+    <link rel="canonical" href="http://paulsec.github.io/posts/bsidescbr-2017-ctf-write-up-needleinahaystack/">
+    
     <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta http-equiv="Cache-Control" content="public" />
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.62.0" />
+<meta name="generator" content="Hugo 0.107.0">
 
     
     
@@ -33,9 +35,10 @@ Such a long time since I didn’t post any article. Here is a quick write-up for
 Before diving in the challenge, huge props to all the organizers and OJ for making those challs available to everyone with Docker containers and stuff (more write-ups coming soon).
 If you guys want to give it a shot, here you go, all challs are available here. The challenge we will discuss in this post (needleinahaystack) is located here." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://paulsec.github.io/posts/bsidescbr-2017-ctf-write-up-needleinahaystack/" />
+<meta property="og:url" content="http://paulsec.github.io/posts/bsidescbr-2017-ctf-write-up-needleinahaystack/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2017-05-06T00:00:00+00:00" />
 <meta property="article:modified_time" content="2017-05-06T00:00:00+00:00" /><meta property="og:site_name" content="PaulSec&#39;s Blog" />
+
 
 
     
@@ -45,7 +48,7 @@ If you guys want to give it a shot, here you go, all challs are available here. 
 
 
 
-<link rel="stylesheet" href="/scss/hyde-hyde.92c66d107d7b219f0792cfd67223179af884b03f386ac46894f9f735932bbca3.css" integrity="sha256-ksZtEH17IZ8Hks/WciMXmviEsD84asRolPn3NZMrvKM=">
+<link rel="stylesheet" href="/scss/hyde-hyde.3081c4981fb69a2783dd36ecfdd0e6ba7a158d4cbfdd290ebce8f78ba0469fc6.css" integrity="sha256-MIHEmB&#43;2mieD3Tbs/dDmunoVjUy/3SkOvOj3i6BGn8Y=">
 
 
 <link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
@@ -72,7 +75,11 @@ If you guys want to give it a shot, here you go, all challs are available here. 
   <div class="container ">
     <div class="sidebar-about">
       <span class="site__title">
-        <a href="http://paulsec.github.io/"></a>
+        <a href="http://paulsec.github.io/">
+        
+          
+        
+        </a>
       </span>
       
         
@@ -129,7 +136,12 @@ If you guys want to give it a shot, here you go, all challs are available here. 
 	
 	
 	
+	
 	<a href="https://github.com/PaulSec" rel="me"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
 	
 	
 	
@@ -151,7 +163,7 @@ If you guys want to give it a shot, here you go, all challs are available here. 
     </div>
     
 <div class="copyright">
-  &copy; 2021 Paul A.
+  &copy; 2023 Paul A.
   
     <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>
   
@@ -210,8 +222,8 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
 <p>Before diving in the challenge, huge props to all the organizers and OJ for making those challs available to everyone with Docker containers and stuff (more write-ups coming soon).</p>
 <p>If you guys want to give it a shot, here you go, all challs are available here. The challenge we will discuss in this post (needleinahaystack) is located here.</p>
 <p>The description was fairly short:</p>
-<pre><code>Single byte XOR's are easy to solve... 
-But can you find the needle in the haystack? One of these are the flag XOR'd with a single byte. 
+<pre tabindex="0"><code>Single byte XOR&#39;s are easy to solve... 
+But can you find the needle in the haystack? One of these are the flag XOR&#39;d with a single byte. 
 Look at the contents of single_byte_xor.
 </code></pre><p>So basically, you get one file, full of hex encoded strings and you need to retrieve the flag. Since we knew flags were something like “BSIDES_CTF{BLABLABLA}”, what I imagined was:</p>
 <p>Hex decoding the strings
@@ -219,37 +231,37 @@ XOR’ing the first character with ‘B’ to get the XOR key. (Equation was: �
 Then iterate all over the string with the XOR key we retrieved
 Check if the the output string contains ‘BSIDES_CTF’ (aka. the flag)
 This Python code does not check if the string contains ‘BSIDES’ before outputing it on the screen, it just checks that the second character was an ’S’ to it brings couple of false positives, but still works.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">with</span> open(<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">/tmp/single_byte_xor.txt</span><span style="color:#e6db74">&#39;</span>) <span style="color:#66d9ef">as</span> f:
-    data <span style="color:#f92672">=</span> f<span style="color:#f92672">.</span>readlines()
-
-<span style="color:#66d9ef">for</span> line <span style="color:#f92672">in</span> data:
-    line <span style="color:#f92672">=</span> line<span style="color:#f92672">.</span>rstrip()
-    <span style="color:#66d9ef">if</span> len(line) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>:
-        tmp <span style="color:#f92672">=</span> line<span style="color:#f92672">.</span>decode(<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">hex</span><span style="color:#e6db74">&#39;</span>)
-        key <span style="color:#f92672">=</span> ord(tmp[<span style="color:#ae81ff">0</span>]) <span style="color:#f92672">^</span> ord(<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">B</span><span style="color:#e6db74">&#39;</span>)
-        <span style="color:#66d9ef">if</span> chr(ord(tmp[<span style="color:#ae81ff">1</span>]) <span style="color:#f92672">^</span> key) <span style="color:#f92672">==</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">S</span><span style="color:#e6db74">&#39;</span>:
-            <span style="color:#66d9ef">print</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">line: {}, key: {}</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">.</span>format(line, key)
-            <span style="color:#66d9ef">for</span> char <span style="color:#f92672">in</span> tmp:
-                <span style="color:#66d9ef">print</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">.</span>format(chr(ord(char) <span style="color:#f92672">^</span> key)),
-</code></pre></div><p>And the output is:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ python get_strings.py
-
-line: 1809ddd2e826fb2c96cb51aa71c94af8e425d55eb47327c6d9ea158b0206fc31bb99d482, key: <span style="color:#ae81ff">90</span>
-B S � � � | � v � �
-                    � + �  � �  �  � <span style="color:#f92672">)</span> <span style="color:#f92672">}</span> � � � O � X <span style="color:#ae81ff">\ </span>� k � � � �
-
-line: f8e9bce065cb70d51b505a4492433938fe11bb94d02efbdd417e1bbf312002fc8b43f732, key: <span style="color:#ae81ff">186</span>
-B S  Z � q � o � � � � <span style="color:#f92672">(</span> � � � D �  . j � A g � � �  � � � F <span style="color:#ae81ff">1</span> � M �
-
-line: eafbac7a084b2c7bbafb9a5d235cb66a63d395e5f53e1034465e3cc3b13f09a62cff263e, key: <span style="color:#ae81ff">168</span>
-B S  � � � � �  S <span style="color:#ae81ff">2</span> � � �  � � <span style="color:#f92672">{</span> <span style="color:#f92672">=</span> M <span style="color:#f92672">]</span> � � � � � � k  � �  � W � �
-
-line: ddccd6dbdaccc0dccbd9e4ecaef1f8f3fac0dde6a8fac0e7afedc0f6ecc0daabece6e29f, key: <span style="color:#ae81ff">159</span>
-B S I D E S _ C T F <span style="color:#f92672">{</span> s <span style="color:#ae81ff">1</span> n g l e _ B y <span style="color:#ae81ff">7</span> e _ x <span style="color:#ae81ff">0</span> r _ i s _ E <span style="color:#ae81ff">4</span> s y <span style="color:#f92672">}</span>
-
-line: c5d4ed7aba829f720d4dbec30f9fbc77fa18c444d45b1200b72c4343f5d47396c17ac574, key: <span style="color:#ae81ff">135</span>
-B S j � <span style="color:#f92672">=</span>   � � � <span style="color:#ae81ff">9</span> D �  ; � <span style="color:#f92672">}</span> � C � S � � � <span style="color:#ae81ff">0</span> � � � r S �  F � B �
-</code></pre></div><p>Et voilà! We got the flag : <code>BSIDES_CTF{s1ngle_By7e_x0r_is_E4sy}.</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">with</span> open(<span style="color:#e6db74">&#39;/tmp/single_byte_xor.txt&#39;</span>) <span style="color:#66d9ef">as</span> f:
+</span></span><span style="display:flex;"><span>    data <span style="color:#f92672">=</span> f<span style="color:#f92672">.</span>readlines()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> line <span style="color:#f92672">in</span> data:
+</span></span><span style="display:flex;"><span>    line <span style="color:#f92672">=</span> line<span style="color:#f92672">.</span>rstrip()
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> len(line) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>:
+</span></span><span style="display:flex;"><span>        tmp <span style="color:#f92672">=</span> line<span style="color:#f92672">.</span>decode(<span style="color:#e6db74">&#39;hex&#39;</span>)
+</span></span><span style="display:flex;"><span>        key <span style="color:#f92672">=</span> ord(tmp[<span style="color:#ae81ff">0</span>]) <span style="color:#f92672">^</span> ord(<span style="color:#e6db74">&#39;B&#39;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> chr(ord(tmp[<span style="color:#ae81ff">1</span>]) <span style="color:#f92672">^</span> key) <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;S&#39;</span>:
+</span></span><span style="display:flex;"><span>            print <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n\n</span><span style="color:#e6db74">line: </span><span style="color:#e6db74">{}</span><span style="color:#e6db74">, key: </span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">.</span>format(line, key)
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span> char <span style="color:#f92672">in</span> tmp:
+</span></span><span style="display:flex;"><span>                print <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">.</span>format(chr(ord(char) <span style="color:#f92672">^</span> key)),
+</span></span></code></pre></div><p>And the output is:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ python get_strings.py
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>line: 1809ddd2e826fb2c96cb51aa71c94af8e425d55eb47327c6d9ea158b0206fc31bb99d482, key: <span style="color:#ae81ff">90</span>
+</span></span><span style="display:flex;"><span>B S � � � | � v � �
+</span></span><span style="display:flex;"><span>                    � + �  � �  �  � <span style="color:#f92672">)</span> <span style="color:#f92672">}</span> � � � O � X <span style="color:#ae81ff">\ </span>� k � � � �
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>line: f8e9bce065cb70d51b505a4492433938fe11bb94d02efbdd417e1bbf312002fc8b43f732, key: <span style="color:#ae81ff">186</span>
+</span></span><span style="display:flex;"><span>B S  Z � q � o � � � � <span style="color:#f92672">(</span> � � � D �  . j � A g � � �  � � � F <span style="color:#ae81ff">1</span> � M �
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>line: eafbac7a084b2c7bbafb9a5d235cb66a63d395e5f53e1034465e3cc3b13f09a62cff263e, key: <span style="color:#ae81ff">168</span>
+</span></span><span style="display:flex;"><span>B S  � � � � �  S <span style="color:#ae81ff">2</span> � � �  � � <span style="color:#f92672">{</span> <span style="color:#f92672">=</span> M <span style="color:#f92672">]</span> � � � � � � k  � �  � W � �
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>line: ddccd6dbdaccc0dccbd9e4ecaef1f8f3fac0dde6a8fac0e7afedc0f6ecc0daabece6e29f, key: <span style="color:#ae81ff">159</span>
+</span></span><span style="display:flex;"><span>B S I D E S _ C T F <span style="color:#f92672">{</span> s <span style="color:#ae81ff">1</span> n g l e _ B y <span style="color:#ae81ff">7</span> e _ x <span style="color:#ae81ff">0</span> r _ i s _ E <span style="color:#ae81ff">4</span> s y <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>line: c5d4ed7aba829f720d4dbec30f9fbc77fa18c444d45b1200b72c4343f5d47396c17ac574, key: <span style="color:#ae81ff">135</span>
+</span></span><span style="display:flex;"><span>B S j � <span style="color:#f92672">=</span>   � � � <span style="color:#ae81ff">9</span> D �  ; � <span style="color:#f92672">}</span> � C � S � � � <span style="color:#ae81ff">0</span> � � � r S �  F � B �
+</span></span></code></pre></div><p>Et voilà! We got the flag : <code>BSIDES_CTF{s1ngle_By7e_x0r_is_E4sy}.</code></p>
 <p>Feel free to check the other challenges if you have some time, the web ones are pretty funny.</p>
 
   </div>
@@ -284,16 +296,7 @@ B S j � <span style="color:#f92672">=</span>   � � � <span style="color:
         
     
 
-<script defer src="https://use.fontawesome.com/releases/v5.11.2/js/all.js" integrity="sha384-b3ua1l97aVGAPEIe48b4TC60WUQbQaGi2jqAWM90y0OZXZeyaTCWtBTKtjW2GXG1" crossorigin="anonymous"></script>
-
-
-    
-    
-    <script type="text/javascript">
-        
-        hljs.initHighlightingOnLoad();
-    </script>
-    
+<script defer src="https://use.fontawesome.com/releases/v5.12.1/js/all.js" integrity="sha384-ZbbbT1gw3joYkKRqh0kWyRp32UAvdqkpbLedQJSlnI8iLQcFVxaGyrOgOJiDQTTR" crossorigin="anonymous"></script>
 
 
 

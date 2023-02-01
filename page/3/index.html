@@ -3,12 +3,14 @@
     
   <head>
     <link href="https://gmpg.org/xfn/11" rel="profile">
+    
+    <link rel="canonical" href="http://paulsec.github.io/">
+    
     <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta http-equiv="Cache-Control" content="public" />
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.62.0" />
+<meta name="generator" content="Hugo 0.107.0">
 
     
 
@@ -22,8 +24,8 @@
 <meta property="og:title" content="" />
 <meta property="og:description" content="PaulSec&#39;s Blog. Security &amp; lulz." />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="http://paulsec.github.io/" />
-<meta property="og:updated_time" content="2021-08-13T17:25:35+02:00" /><meta property="og:site_name" content="PaulSec&#39;s Blog" />
+<meta property="og:url" content="http://paulsec.github.io/" /><meta property="og:site_name" content="PaulSec&#39;s Blog" />
+
 
 
     
@@ -33,7 +35,7 @@
 
 
 
-<link rel="stylesheet" href="/scss/hyde-hyde.92c66d107d7b219f0792cfd67223179af884b03f386ac46894f9f735932bbca3.css" integrity="sha256-ksZtEH17IZ8Hks/WciMXmviEsD84asRolPn3NZMrvKM=">
+<link rel="stylesheet" href="/scss/hyde-hyde.3081c4981fb69a2783dd36ecfdd0e6ba7a158d4cbfdd290ebce8f78ba0469fc6.css" integrity="sha256-MIHEmB&#43;2mieD3Tbs/dDmunoVjUy/3SkOvOj3i6BGn8Y=">
 
 
 <link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
@@ -61,7 +63,11 @@
   <div class="container ">
     <div class="sidebar-about">
       <span class="site__title">
-        <a href="http://paulsec.github.io/"></a>
+        <a href="http://paulsec.github.io/">
+        
+          
+        
+        </a>
       </span>
       
         
@@ -118,7 +124,12 @@
 	
 	
 	
+	
 	<a href="https://github.com/PaulSec" rel="me"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
 	
 	
 	
@@ -140,7 +151,7 @@
     </div>
     
 <div class="copyright">
-  &copy; 2021 Paul A.
+  &copy; 2023 Paul A.
   
     <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>
   
@@ -165,6 +176,31 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
       
       <div class="post-list__item">
         <span class="item__title--big">
+          <a href="/posts/blind-hql-injection-in-rest-api-using-h2-dbms/" >Blind HQL Injection in REST API using H2 DMBS</a>
+        </span>
+        <span class="item__date">
+          May 5, 2014
+        </span>
+        <span >
+        
+        This post deals with some research I just did regarding (Blind) HQL injections with H2 as the DataBase Management System.
+First, you should read this post which gives some really useful information regarding HQL injections in general: HQL for pentesters.
+During the assessment, I checked the API calls by using Burp as a proxy and one call was:
+http://application/API/Users/?req=id=1 The output was a JSON response, such as:
+[{user: &#34;admin&#34;, id: &#34;1&#34;, firstName:&#34;Admin&#34;}] If you changed the id with the numeric value 2, and so on.
+        
+        </span>
+        
+          ... <a class="read-more-symbol" href="/posts/blind-hql-injection-in-rest-api-using-h2-dbms/">➦</a>
+        
+        </div>
+        
+     
+      
+        
+      
+      <div class="post-list__item">
+        <span class="item__title--big">
           <a href="/posts/bsides-slides-csrft/" >BSides Slides - CSRFT</a>
         </span>
         <span class="item__date">
@@ -173,10 +209,10 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
         <span >
         
         Hey,
-Just a quick post to give you the link to my slides for BSides London today: Here Don't hesitate if you have any feedback, or any good feature.
+Just a quick post to give you the link to my slides for BSides London today: Here Don&rsquo;t hesitate if you have any feedback, or any good feature.
 You can reach me either on Github and Twitter
 Just few words about the conference which was absolutely amazing. Some really great people were here, good atmosphere and people were really helpful.
-For sure, I'll attend it next year.
+For sure, I&rsquo;ll attend it next year.
 Cheers,
         
         </span>
@@ -197,7 +233,7 @@ Cheers,
         <span >
         
         This post contains the steps to get a root shell with bWapp VM
-Host discovery As always, we need to discover where the machine is on our network. To do so, let's use Nmap:
+Host discovery As always, we need to discover where the machine is on our network. To do so, let&rsquo;s use Nmap:
 nmap -sP 192.168.1.1/24 Fingerprinting After getting the IP address (192.168.1.10), we need to do some fingerprinting.
 nmap -sV 192.168.1.10 Fig. Nmap scan result
 A lot of services were open, such as: VNC, FTP, etc.
@@ -223,9 +259,9 @@ As I saw it in the scan report, I decided to scan the port 80 with Nikto.
         <span >
         
         This post contains the steps to get a root shell with Scream VM
-This VM can he found here. Have a look to find even more VMs. But before starting the report, I'd like to congratulate g0tmi1k for his awesome tool : VulnInjector.
-Ok, let's do this write-up !
-Host discovery As always, we need to discover where the machine is on our network. To do so, let's use Nmap:
+This VM can he found here. Have a look to find even more VMs. But before starting the report, I&rsquo;d like to congratulate g0tmi1k for his awesome tool : VulnInjector.
+Ok, let&rsquo;s do this write-up !
+Host discovery As always, we need to discover where the machine is on our network. To do so, let&rsquo;s use Nmap:
         
         </span>
         
@@ -248,7 +284,7 @@ Host discovery As always, we need to discover where the machine is on our networ
         
         This post contains the steps to get a root shell with Exploit KB Vulnerable Web App 1 VM
 This VM can he found here. Have a look to find even more VMs
-Host discovery First, we need to discover where the machine is on our network. To do so, let's use Nmap:
+Host discovery First, we need to discover where the machine is on our network. To do so, let&rsquo;s use Nmap:
 nmap -sP 192.168.1.1/24 Fingerprinting After getting the IP address, we need to do some fingerprinting.
 nmap -sV 192.168.1.23 Fig.
         
@@ -273,7 +309,7 @@ nmap -sV 192.168.1.23 Fig.
         
         This post contains the steps to get a root shell with Kioptrix level 2 VM
 This VM can he found here. Have a look to find even more VMs
-Host discovery First, we need to discover where the machine is on our network. To do so, let's use Nmap:
+Host discovery First, we need to discover where the machine is on our network. To do so, let&rsquo;s use Nmap:
 nmap -sP 192.168.1.1/24 Fingerprinting After getting the IP address, we need to do some fingerprinting.
 nmap -sV 192.168.1.42 Fig. Nmap scan result
         
@@ -298,7 +334,7 @@ nmap -sV 192.168.1.42 Fig. Nmap scan result
         
         This post contains the steps to get a root shell with Kioptrix level 1 VM
 This VM can he found here. Have a look to find even more VMs
-Host discovery First, we need to discover where the machine is on our network. To do so, let's use Nmap:
+Host discovery First, we need to discover where the machine is on our network. To do so, let&rsquo;s use Nmap:
 nmap -sP 192.168.1.1/24 Fingerprinting After getting the IP address, we need to do some fingerprinting.
 nmap -sV 192.168.1.2 Fig. Nmap scan result
         
@@ -324,7 +360,7 @@ nmap -sV 192.168.1.2 Fig. Nmap scan result
         Hey there,
 Quick blog post for the first VM I created to experiment some of your pentesting skills.
 The idea grew up when I developed some security tools (especially the one (CSRFT) I presented at BSides London few weeks ago) to create a legal environment where you could try it out.
-I really liked creating this Boot2root VM. So, I'll create few more that will rely on each other so keep the flags because you'll need it for the next ones.
+I really liked creating this Boot2root VM. So, I&rsquo;ll create few more that will rely on each other so keep the flags because you&rsquo;ll need it for the next ones.
         
         </span>
         
@@ -347,9 +383,9 @@ I really liked creating this Boot2root VM. So, I'll create few more that will re
         
         This blog post will be quite fast and will provide you the steps to update the OpenFuck exploit.
 This exploit is pretty old but you might need it if you have fun with some vulnerable VMs. Not giving any hint. :-)
-Thanks to this blog, I've been able to update the exploit.
+Thanks to this blog, I&rsquo;ve been able to update the exploit.
 Here are the steps to make this work :
- 1) Add those headers :  #include &lt;openssl/rc4.h&gt;#include &lt;openssl/md5.
+1) Add those headers : #include &lt;openssl/rc4.h&gt; #include &lt;openssl/md5.h&gt; 2) Update the URL of the C file.
         
         </span>
         
@@ -371,38 +407,14 @@ Here are the steps to make this work :
         <span >
         
         This contains the solution of the VM: VulnOS.
-This is my first write-up for a VM and I'm doing it for VulnOS which is hosted on VulnHub (Great resource if you want to improve your pentesting skills).
-In this &lsquo;tutorial&rsquo;, I'm gonna give you the steps I reproduced to get a shell on the machine.
-Discovery First, start by scanning the network to discover where's the host.
+This is my first write-up for a VM and I&rsquo;m doing it for VulnOS which is hosted on VulnHub (Great resource if you want to improve your pentesting skills).
+In this &rsquo;tutorial&rsquo;, I&rsquo;m gonna give you the steps I reproduced to get a shell on the machine.
+Discovery First, start by scanning the network to discover where&rsquo;s the host.
 nmap -sV 192.168.56.1/24 Starting Nmap 6.
         
         </span>
         
           ... <a class="read-more-symbol" href="/posts/vulnos-write-up/">➦</a>
-        
-        </div>
-        
-     
-      
-        
-      
-      <div class="post-list__item">
-        <span class="item__title--big">
-          <a href="/posts/python-plus-transmission-daemon-equals-download-easily-your-favorite-tv-show/" >Python &#43; Transmission daemon = Download easily your favorite TV Show</a>
-        </span>
-        <span class="item__date">
-          Mar 28, 2014
-        </span>
-        <span >
-        
-        This post is about my last project : my TV Show Manager.
-I decided to start it because I wanted something really simple to download my favorite TV Shows. In this post, I'll explain step by step how to reproduce it at home.
-Basically, with this tutorial you'll set up your Raspberry box by :
- Installing / set-uping transmission-daemon Getting one of my latest project TVShowManager that uses my EZTV Python API.
-        
-        </span>
-        
-          ... <a class="read-more-symbol" href="/posts/python-plus-transmission-daemon-equals-download-easily-your-favorite-tv-show/">➦</a>
         
         </div>
         
@@ -479,7 +491,7 @@ Basically, with this tutorial you'll set up your Raspberry box by :
         </div>
         
   
-  <script defer src="https://use.fontawesome.com/releases/v5.11.2/js/all.js" integrity="sha384-b3ua1l97aVGAPEIe48b4TC60WUQbQaGi2jqAWM90y0OZXZeyaTCWtBTKtjW2GXG1" crossorigin="anonymous"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.12.1/js/all.js" integrity="sha384-ZbbbT1gw3joYkKRqh0kWyRp32UAvdqkpbLedQJSlnI8iLQcFVxaGyrOgOJiDQTTR" crossorigin="anonymous"></script>
 
 
     </body>
