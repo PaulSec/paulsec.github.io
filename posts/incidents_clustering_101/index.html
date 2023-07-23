@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    
+    
+
+
+    <head>
+    <link href="https://gmpg.org/xfn/11" rel="profile">
+    
+    <link rel="canonical" href="http://paulsec.github.io/posts/incidents_clustering_101/">
+    
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!-- Enable responsiveness on mobile devices -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="generator" content="Hugo 0.107.0">
+
+    
+    
+    
+
+<title>Incidents clustering using TF-IDF and KMeans • </title>
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Incidents clustering using TF-IDF and KMeans"/>
+<meta name="twitter:description" content="Incident clustering, also known as event clustering or anomaly clustering, is a technique used in data analysis and machine learning to group similar incidents or events together based on their characteristics or patterns.
+In order to deep dive into this, we used sklearn and matplotlib to both do machine learning and visualize results in an easy way. In few words:
+Scikit-learn is a powerful and popular open-source machine learning library in Python."/>
+
+<meta property="og:title" content="Incidents clustering using TF-IDF and KMeans" />
+<meta property="og:description" content="Incident clustering, also known as event clustering or anomaly clustering, is a technique used in data analysis and machine learning to group similar incidents or events together based on their characteristics or patterns.
+In order to deep dive into this, we used sklearn and matplotlib to both do machine learning and visualize results in an easy way. In few words:
+Scikit-learn is a powerful and popular open-source machine learning library in Python." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://paulsec.github.io/posts/incidents_clustering_101/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-07-23T21:05:29+02:00" />
+<meta property="article:modified_time" content="2023-07-23T21:05:29+02:00" /><meta property="og:site_name" content="PaulSec&#39;s Blog" />
+
+
+
+    
+
+
+
+
+
+
+<link rel="stylesheet" href="/scss/hyde-hyde.3081c4981fb69a2783dd36ecfdd0e6ba7a158d4cbfdd290ebce8f78ba0469fc6.css" integrity="sha256-MIHEmB&#43;2mieD3Tbs/dDmunoVjUy/3SkOvOj3i6BGn8Y=">
+
+
+<link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
+
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+    <link rel="shortcut icon" href="/favicon.png">
+    
+    
+
+</head>
+
+
+    <body class=" ">
+    
+<div class="sidebar">
+  <div class="container ">
+    <div class="sidebar-about">
+      <span class="site__title">
+        <a href="http://paulsec.github.io/">
+        
+          
+        
+        </a>
+      </span>
+      
+        
+        
+        
+        <div class="author-image">
+          <img src="http://paulsec.github.io/img/profile.png" alt="Author Image" class="img--circle img--headshot element--center">
+        </div>
+        
+      
+      
+      <p class="site__description">
+         PaulSec&#39;s Blog. Security &amp; lulz. 
+      </p>
+    </div>
+    <div class="collapsible-menu">
+      <input type="checkbox" id="menuToggle">
+      <label for="menuToggle"></label>
+      <div class="menu-content">
+        <div>
+	<ul class="sidebar-nav">
+		 
+		 
+			 
+				<li>
+					<a href="/">
+						<span>Home</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/posts/">
+						<span>Posts</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/about/">
+						<span>About</span>
+					</a>
+				</li>
+			 
+		
+	</ul>
+</div>
+
+        <section class="social">
+	
+	<a href="https://twitter.com/@PaulWebSec" rel="me"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	<a href="https://github.com/PaulSec" rel="me"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</section>
+
+      </div>
+    </div>
+    
+<div class="copyright">
+  &copy; 2023 Paul A.
+  
+    <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>
+  
+</div>
+
+
+<div class="builtwith">
+Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.com/htr3n/hyde-hyde">hyde-hyde</a>.
+</div>
+
+
+  </div>
+</div>
+
+        <div class="content container">
+            
+    
+<article>
+  <header>
+    <h1>Incidents clustering using TF-IDF and KMeans</h1>
+    
+    
+<div class="post__meta">
+    
+    
+      <i class="fas fa-calendar-alt"></i> Jul 23, 2023
+    
+    
+    
+    
+    
+    <br/>
+    <i class="fas fa-clock"></i> 4 min read
+</div>
+
+
+  </header>
+  
+  
+  <div class="post">
+    <p><img src="/img/clusters.png" alt="Incidents clustering"></p>
+<blockquote>
+<p>Incident clustering, also known as event clustering or anomaly clustering, is a technique used in data analysis and machine learning to group similar incidents or events together based on their characteristics or patterns.</p>
+</blockquote>
+<p>In order to deep dive into this, we used <code>sklearn</code> and <code>matplotlib</code> to both do machine learning and visualize results in an easy way.
+In few words:</p>
+<ul>
+<li>Scikit-learn is a powerful and popular open-source machine learning library in Python. It provides a wide range of tools for various machine learning tasks such as classification, regression, clustering, dimensionality reduction, and more. Scikit-learn is built on top of other Python libraries like NumPy, SciPy, and matplotlib and integrates well with the scientific Python ecosystem.</li>
+<li>Matplotlib is a 2D plotting library in Python that allows you to create a wide variety of static, animated, and interactive visualizations. It is highly customizable and can be used to visualize data in the form of line plots, scatter plots, bar plots, histograms, and more.</li>
+</ul>
+<p>The main idea is quite simple - clustering incidents and try to find &ldquo;clusters&rdquo; - aka ~incidents categories so that we group them and go from 900 dedicated incidents to 10 categories, easier when we want to tackle big subjects which will ease our work in the upcoming days.</p>
+<p>Since we will deal with incidents written by users (and mainly) English speakers, we will use NLTK which is a powerful Python library for working with human language data, particularly text processing and analysis. NLTK provides a wide range of tools and resources for tasks such as tokenization, stemming, lemmatization, part-of-speech tagging, syntactic parsing, and more. It is widely used in the fields of natural language processing (NLP), computational linguistics, and text analytics.</p>
+<p>Also, as we try to find root causes of multiple incidents, we will perform TF-IDF (Term Frequency-Inverse Document Frequency) vectorization, a popular technique used in natural language processing (NLP) and information retrieval to convert a collection of text documents into numerical vectors. It aims to represent the importance of words in each document relative to the entire corpus. In our case, our incidents.</p>
+<p>We created a simple function to remove stop words from any string:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">remove_stop_words</span>(string):
+</span></span><span style="display:flex;"><span>    stop_words <span style="color:#f92672">=</span> set(stopwords<span style="color:#f92672">.</span>words(<span style="color:#e6db74">&#34;english&#34;</span>))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    string_tokens <span style="color:#f92672">=</span> word_tokenize(string)
+</span></span><span style="display:flex;"><span>    string_tokens <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>        token <span style="color:#66d9ef">for</span> token <span style="color:#f92672">in</span> string_tokens <span style="color:#66d9ef">if</span> token<span style="color:#f92672">.</span>lower() <span style="color:#f92672">not</span> <span style="color:#f92672">in</span> stop_words
+</span></span><span style="display:flex;"><span>    ]
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34; &#34;</span><span style="color:#f92672">.</span>join(string_tokens)
+</span></span></code></pre></div><p>Then, come the interesting part where we load all incidents, and perform the TF-IDF vectorization on incident descriptions.
+In our case, we went for that field, it could have been any other. Also, if we wanted to perform it on multiple fields, we could have appended all those fields together.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Load incidents from JSON file</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">with</span> open(<span style="color:#e6db74">&#34;incidents.json&#34;</span>) <span style="color:#66d9ef">as</span> f:
+</span></span><span style="display:flex;"><span>    incidents <span style="color:#f92672">=</span> json<span style="color:#f92672">.</span>load(f)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Extract relevant information from incidents</span>
+</span></span><span style="display:flex;"><span>incident_numbers <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>descriptions <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> incident <span style="color:#f92672">in</span> incidents[<span style="color:#e6db74">&#34;records&#34;</span>]:
+</span></span><span style="display:flex;"><span>    incident_numbers<span style="color:#f92672">.</span>append(incident[<span style="color:#e6db74">&#34;number&#34;</span>])
+</span></span><span style="display:flex;"><span>    description <span style="color:#f92672">=</span> remove_stop_words(incident[<span style="color:#e6db74">&#34;short_description&#34;</span>])
+</span></span><span style="display:flex;"><span>    descriptions<span style="color:#f92672">.</span>append(description)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Perform TF-IDF vectorization on incident descriptions</span>
+</span></span><span style="display:flex;"><span>vectorizer <span style="color:#f92672">=</span> TfidfVectorizer()
+</span></span><span style="display:flex;"><span>X <span style="color:#f92672">=</span> vectorizer<span style="color:#f92672">.</span>fit_transform(descriptions)
+</span></span></code></pre></div><p>After getting our vectorized result, we&rsquo;re able to perform K-Means clustering,  a popular unsupervised machine learning algorithm used for clustering data points into K distinct clusters based on their similarity. It is a straightforward and efficient algorithm that is widely used for various data analysis and pattern recognition tasks. In our case, this is perfect! We just specify the number of clusterrs we want (there&rsquo;s a bit of trial and error here and where vizualisation of those clusters comes in).</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Perform K-means clustering</span>
+</span></span><span style="display:flex;"><span>num_clusters <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>  <span style="color:#75715e"># Set the desired number of clusters</span>
+</span></span><span style="display:flex;"><span>kmeans <span style="color:#f92672">=</span> KMeans(n_clusters<span style="color:#f92672">=</span>num_clusters)
+</span></span><span style="display:flex;"><span>kmeans<span style="color:#f92672">.</span>fit(X)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Assign cluster labels to incidents</span>
+</span></span><span style="display:flex;"><span>cluster_labels <span style="color:#f92672">=</span> kmeans<span style="color:#f92672">.</span>labels_
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Print cluster assignments with incident criticality</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(len(incident_numbers)):
+</span></span><span style="display:flex;"><span>    incident_number <span style="color:#f92672">=</span> incident_numbers[i]
+</span></span><span style="display:flex;"><span>    description <span style="color:#f92672">=</span> descriptions[i]
+</span></span><span style="display:flex;"><span>    cluster_label <span style="color:#f92672">=</span> cluster_labels[i]
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Incident: </span><span style="color:#e6db74">{</span>incident_number<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Description: </span><span style="color:#e6db74">{</span>description<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Cluster: </span><span style="color:#e6db74">{</span>cluster_label<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>    print()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Print cluster centroids (representative incidents)</span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;Cluster Centroids:&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> cluster_id, centroid <span style="color:#f92672">in</span> enumerate(kmeans<span style="color:#f92672">.</span>cluster_centers_):
+</span></span><span style="display:flex;"><span>    centroid_idx <span style="color:#f92672">=</span> centroid<span style="color:#f92672">.</span>argsort()[::<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Cluster </span><span style="color:#e6db74">{</span>cluster_id<span style="color:#e6db74">}</span><span style="color:#e6db74">:&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> idx <span style="color:#f92672">in</span> centroid_idx[:<span style="color:#ae81ff">5</span>]:  <span style="color:#75715e"># Print top 5 words in centroid</span>
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;- </span><span style="color:#e6db74">{</span>vectorizer<span style="color:#f92672">.</span>get_feature_names_out()[idx]<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>    print()
+</span></span></code></pre></div><p>This is great as this will show us in the command line the different clusters &ldquo;centroids&rdquo; (aka the main criteria which led to that cluster) but this is where vizualisation is also really important. We&rsquo;re using t-SNE (t-distributed Stochastic Neighbor Embedding) a dimensionality reduction technique used for visualizing high-dimensional data in a lower-dimensional space. It is particularly useful for visualizing complex datasets and preserving the local structure and relationships between data points.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Perform t-SNE to reduce dimensionality for visualization</span>
+</span></span><span style="display:flex;"><span>tsne <span style="color:#f92672">=</span> TSNE(n_components<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>, random_state<span style="color:#f92672">=</span><span style="color:#ae81ff">42</span>)
+</span></span><span style="display:flex;"><span>X_tsne <span style="color:#f92672">=</span> tsne<span style="color:#f92672">.</span>fit_transform(X<span style="color:#f92672">.</span>toarray())
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Visualize clusters</span>
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>figure(figsize<span style="color:#f92672">=</span>(<span style="color:#ae81ff">8</span>, <span style="color:#ae81ff">6</span>))
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(num_clusters):
+</span></span><span style="display:flex;"><span>    plt<span style="color:#f92672">.</span>scatter(
+</span></span><span style="display:flex;"><span>        X_tsne[cluster_labels <span style="color:#f92672">==</span> i, <span style="color:#ae81ff">0</span>],
+</span></span><span style="display:flex;"><span>        X_tsne[cluster_labels <span style="color:#f92672">==</span> i, <span style="color:#ae81ff">1</span>],
+</span></span><span style="display:flex;"><span>        label<span style="color:#f92672">=</span><span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Cluster </span><span style="color:#e6db74">{</span>i<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>,
+</span></span><span style="display:flex;"><span>    )
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>title(<span style="color:#e6db74">&#34;Visualization of Incidents Clusters&#34;</span>)
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>legend()
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>show()
+</span></span></code></pre></div><p>And&hellip; that&rsquo;s it! Here is an example on 900 incidents which are categorised within 10 clusters and the results are really interesting.
+There would be way more on that as we could learn from previous incidents (and go from unsupervised to supervised) but also have some API capabilities to train the model directly with a single HTTP request.</p>
+<p><img src="/img/clusters.png" alt="Incidents clustering"></p>
+
+  </div>
+  
+
+<div class="navigation navigation-single">
+    
+    <a href="/posts/i-quitted-infosec/" class="navigation-prev">
+      <i aria-hidden="true" class="fa fa-chevron-left"></i>
+      <span class="navigation-tittle">I quitted Infosec and I couldn&#39;t be happier.</span>
+    </a>
+    
+    
+</div>
+
+
+  
+
+  
+    
+
+
+</article>
+
+
+        </div>
+        
+    
+
+<script defer src="https://use.fontawesome.com/releases/v5.12.1/js/all.js" integrity="sha384-ZbbbT1gw3joYkKRqh0kWyRp32UAvdqkpbLedQJSlnI8iLQcFVxaGyrOgOJiDQTTR" crossorigin="anonymous"></script>
+
+
+
+
+    
+
+
+
+    </body>
+</html>
