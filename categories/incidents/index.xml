@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>incidents on </title>
+    <link>http://paulsec.github.io/categories/incidents/</link>
+    <description>Recent content in incidents on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 23 Jul 2023 21:05:29 +0200</lastBuildDate><atom:link href="http://paulsec.github.io/categories/incidents/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Incidents clustering using TF-IDF and KMeans</title>
+      <link>http://paulsec.github.io/posts/incidents_clustering_101/</link>
+      <pubDate>Sun, 23 Jul 2023 21:05:29 +0200</pubDate>
+      
+      <guid>http://paulsec.github.io/posts/incidents_clustering_101/</guid>
+      <description>Incident clustering, also known as event clustering or anomaly clustering, is a technique used in data analysis and machine learning to group similar incidents or events together based on their characteristics or patterns.
+In order to deep dive into this, we used sklearn and matplotlib to both do machine learning and visualize results in an easy way. In few words:
+Scikit-learn is a powerful and popular open-source machine learning library in Python.</description>
+    </item>
+    
+  </channel>
+</rss>
