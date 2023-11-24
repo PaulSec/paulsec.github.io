@@ -6,7 +6,17 @@
     <description>Recent content in Posts on </description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 23 Jul 2023 21:05:29 +0200</lastBuildDate><atom:link href="http://paulsec.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 24 Nov 2023 20:24:13 +0100</lastBuildDate><atom:link href="http://paulsec.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>GitOps is the new black</title>
+      <link>http://paulsec.github.io/posts/gitops-the-new-black/</link>
+      <pubDate>Fri, 24 Nov 2023 20:24:13 +0100</pubDate>
+      
+      <guid>http://paulsec.github.io/posts/gitops-the-new-black/</guid>
+      <description>In the ever-evolving landscape of software development, GitOps has emerged as a powerful paradigm, initially associated with cloud-native applications. However, its significance personally extends beyond the realms of modern, containerized environments. GitOps has proven to be a valuable concept for legacy (or &amp;ldquo;more traditional&amp;rdquo;) applications too, providing a bridge that captures technical expertise and establishes deterministic operations resulting in a better quality of service.
+The Essence of GitOps GitOps is fundamentally rooted in the principles of declarative infrastructure and version control.</description>
+    </item>
+    
     <item>
       <title>Incidents clustering using TF-IDF and KMeans</title>
       <link>http://paulsec.github.io/posts/incidents_clustering_101/</link>

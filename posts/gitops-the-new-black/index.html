@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    
+    
+
+
+    <head>
+    <link href="https://gmpg.org/xfn/11" rel="profile">
+    <link rel="stylesheet" href="/css/syntax.css">
+    
+    <link rel="canonical" href="http://paulsec.github.io/posts/gitops-the-new-black/">
+    
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!-- Enable responsiveness on mobile devices -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="generator" content="Hugo 0.107.0">
+
+    
+    
+    
+
+<title>GitOps is the new black • </title>
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="GitOps is the new black"/>
+<meta name="twitter:description" content="In the ever-evolving landscape of software development, GitOps has emerged as a powerful paradigm, initially associated with cloud-native applications. However, its significance personally extends beyond the realms of modern, containerized environments. GitOps has proven to be a valuable concept for legacy (or &ldquo;more traditional&rdquo;) applications too, providing a bridge that captures technical expertise and establishes deterministic operations resulting in a better quality of service.
+The Essence of GitOps GitOps is fundamentally rooted in the principles of declarative infrastructure and version control."/>
+
+<meta property="og:title" content="GitOps is the new black" />
+<meta property="og:description" content="In the ever-evolving landscape of software development, GitOps has emerged as a powerful paradigm, initially associated with cloud-native applications. However, its significance personally extends beyond the realms of modern, containerized environments. GitOps has proven to be a valuable concept for legacy (or &ldquo;more traditional&rdquo;) applications too, providing a bridge that captures technical expertise and establishes deterministic operations resulting in a better quality of service.
+The Essence of GitOps GitOps is fundamentally rooted in the principles of declarative infrastructure and version control." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://paulsec.github.io/posts/gitops-the-new-black/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-11-24T20:24:13+01:00" />
+<meta property="article:modified_time" content="2023-11-24T20:24:13+01:00" /><meta property="og:site_name" content="PaulSec&#39;s Blog" />
+
+
+
+    
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/monokai.min.css">
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/scss/hyde-hyde.3081c4981fb69a2783dd36ecfdd0e6ba7a158d4cbfdd290ebce8f78ba0469fc6.css" integrity="sha256-MIHEmB&#43;2mieD3Tbs/dDmunoVjUy/3SkOvOj3i6BGn8Y=">
+
+
+<link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
+
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+    <link rel="shortcut icon" href="/favicon.png">
+    
+    
+
+</head>
+
+
+    <body class=" ">
+    
+<div class="sidebar">
+  <div class="container ">
+    <div class="sidebar-about">
+      <span class="site__title">
+        <a href="http://paulsec.github.io/">
+        
+          
+        
+        </a>
+      </span>
+      
+        
+        
+        
+        <div class="author-image">
+          <img src="http://paulsec.github.io/img/profile.png" alt="Author Image" class="img--circle img--headshot element--center">
+        </div>
+        
+      
+      
+      <p class="site__description">
+         PaulSec&#39;s Blog. Security &amp; lulz. 
+      </p>
+    </div>
+    <div class="collapsible-menu">
+      <input type="checkbox" id="menuToggle">
+      <label for="menuToggle"></label>
+      <div class="menu-content">
+        <div>
+	<ul class="sidebar-nav">
+		 
+		 
+			 
+				<li>
+					<a href="/">
+						<span>Home</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/posts/">
+						<span>Posts</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/about/">
+						<span>About</span>
+					</a>
+				</li>
+			 
+		
+	</ul>
+</div>
+
+        <section class="social">
+	
+	<a href="https://twitter.com/@PaulWebSec" rel="me"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	<a href="https://github.com/PaulSec" rel="me"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</section>
+
+      </div>
+    </div>
+    
+<div class="copyright">
+  &copy; 2023 Paul A.
+  
+    <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>
+  
+</div>
+
+
+<div class="builtwith">
+Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.com/htr3n/hyde-hyde">hyde-hyde</a>.
+</div>
+
+
+  </div>
+</div>
+
+        <div class="content container">
+            
+    
+<article>
+  <header>
+    <h1>GitOps is the new black</h1>
+    
+    
+<div class="post__meta">
+    
+    
+      <i class="fas fa-calendar-alt"></i> Nov 24, 2023
+    
+    
+    
+    
+    
+    <br/>
+    <i class="fas fa-clock"></i> 5 min read
+</div>
+
+
+  </header>
+  
+  
+  <div class="post">
+    <p><img src="/img/legacy.jpeg" alt="Legacy system is w00t"></p>
+<blockquote>
+<p>In the ever-evolving landscape of software development, GitOps has emerged as a powerful paradigm, initially associated with cloud-native applications. However, its significance personally extends beyond the realms of modern, containerized environments. GitOps has proven to be a valuable concept for legacy (or &ldquo;more traditional&rdquo;) applications too, providing a bridge that captures technical expertise and establishes deterministic operations resulting in a better quality of service.</p>
+</blockquote>
+<h3 id="the-essence-of-gitops">The Essence of GitOps</h3>
+<p>GitOps is fundamentally rooted in the principles of declarative infrastructure and version control. At its core, it leverages Git repositories as the single source of truth for both application code and infrastructure configurations. Changes to the system are managed through pull requests, allowing for collaboration, versioning, and a clear audit trail.</p>
+<h3 id="cloud-native-foundations">Cloud-Native Foundations</h3>
+<p>In cloud-native environments, GitOps gained prominence due to its seamless integration with container orchestration platforms like Kubernetes. The dynamic and distributed nature of these applications necessitated a robust approach to configuration management and continuous delivery.</p>
+<p>GitOps for cloud-native applications brings several advantages, including automated deployments, version-controlled infrastructure, and the ability to roll back to previous states effortlessly. This approach aligns with the principles of Infrastructure as Code (IaC), promoting scalability, resilience, and collaboration among development and operations teams.</p>
+<h3 id="extending-gitops-to-legacy-or-more-traditional-applications">Extending GitOps to Legacy (or &ldquo;<em>more traditional</em>&rdquo;) Applications</h3>
+<p>While GitOps found its initial footing in cloud-native ecosystems, its principles are adaptable to more traditional, legacy applications. Legacy systems often pose unique challenges, such as monolithic architectures, manual processes, and a lack of version control. GitOps can serve as a transformative force in addressing these challenges.</p>
+<h3 id="operations--software-development--">Operations + Software Development = 😍</h3>
+<p>GitLab and other source control platforms have undergone a transformative shift, offering a plethora of integrations (APIs, webhooks, &hellip;) that revolutionize how we manage workflows.</p>
+<p>With the integration of these APIs and webhooks, developers can seamlessly automate processes, particularly in triggering CI/CD pipelines automatically based on specific events or changes in the codebase. This capability extends far beyond code deployment; it serves as a gateway for plugging in alerting, monitoring, and ultimately bservability systems directly into the heart of the development lifecycle.</p>
+<p>By bridging the gap between source control and these operational tools, organizations can cultivate a more proactive approach to software management. The synergy created allows for real-time monitoring of applications and, critically, the ability to trigger actionable runbooks in response to incidents. This integration not only enhances the overall efficiency of the development pipeline but also strengthens the collaboration between development and operations teams, fostering a culture of continuous improvement and rapid response to challenges.</p>
+<p>Developer platforms, along with its integration-rich counterparts, emerges not just as a code repository but as a dynamic orchestrator that harmonizes development, monitoring, and operational processes.</p>
+<h3 id="capturing-technical-expertise">&ldquo;<em>Capturing Technical Expertise</em>&ldquo;™</h3>
+<p>I <em>stole</em> this from my colleague Guillaume S. and I just find this expression enlightening!</p>
+<p>Legacy applications are frequently accompanied by a wealth of institutional knowledge and expertise, often residing in the minds of experienced team members. GitOps provides a means to codify and document this knowledge by representing infrastructure configurations and deployment processes as code. This not only preserves institutional wisdom but also facilitates knowledge transfer within the team.</p>
+<p>By encapsulating deployment procedures, runbooks and other write-ups in version-controlled repositories, organizations can ensure that critical operational knowledge is not lost due to personnel changes or transitions.</p>
+<h3 id="deterministic-operations">Deterministic Operations</h3>
+<p>One of the core tenets of GitOps is the ability to achieve deterministic operations, ensuring that the system state is well-defined and predictable. This aspect is particularly valuable in legacy environments where intricate dependencies and manual interventions might introduce uncertainties.</p>
+<p>GitOps enables organizations to define and track the desired state of their applications and infrastructure. Any deviations can be identified and rectified through the GitOps workflow, promoting consistency and reducing the likelihood of configuration drift.</p>
+<h3 id="other-benefits">Other benefits</h3>
+<p>Performing operations through development platforms offers a profound advantage in terms of auditability, traceability, and accountability, especially when dealing with critical systems.</p>
+<p>Each operation executed through them is captured within the version-controlled infrastructure-as-code (IaC), providing a comprehensive audit trail. This visibility into the entire history of changes, deployments, and configurations ensures that every action can be traced back to its source, contributing to robust traceability.</p>
+<p>Additionally, the declarative nature of IaC allows for clear documentation of the desired system state, fostering a transparent and accountable environment. Any modifications made to the infrastructure are not only visible but also accountable, as they are tied to specific commits or pipelines. This level of transparency becomes paramount in critical systems, where the ability to trace changes, understand their context, and assign accountability is crucial for maintaining a secure and stable environment.</p>
+<p>In essence, leveraging developer platforms enhances the overall reliability and security of critical systems by providing a solid foundation for auditability and accountability.</p>
+<h3 id="glueing-all-this-together">Glueing all this together</h3>
+<p>Harnessing the power of Ansible playbooks, we have achieved a remarkable level of automation that extends beyond traditional server configuration.
+Our playbook orchestration has been finely tuned to not only configure servers, managing tasks like setting up systemd services, but also to dynamically generate and execute standard actions across our infrastructure.</p>
+<p>Notably, we&rsquo;ve crafted a generic pipeline that accepts parameters such as service names and hostnames, enabling us to perform standardized operations like restarting services with ease.
+This adaptability has proven invaluable in seamlessly integrating our monitoring system, as we can now trigger Ansible pipelines through webhooks. This integration acts as a proactive measure, allowing us to address potential issues before they escalate into real production incidents. The combination of Ansible&rsquo;s flexibility and the integration with our monitoring system has elevated our operational efficiency, ensuring a more responsive and preemptive approach to maintaining the health and reliability of our infrastructure.</p>
+<h3 id="conclusion">Conclusion</h3>
+<p>In conclusion, my takes is GitOps is not confined to cloud-native applications but serves as a versatile concept applicable to legacy systems. By embracing GitOps principles, organizations can leverage version control, collaboration, and automation to streamline operations, capture technical expertise, and establish deterministic practices which will ultimately result in a best-in-class quality of service (QoS).</p>
+<p>Whether managing modern microservices or navigating the intricacies of legacy monoliths, GitOps emerges as a unifying force that aligns development and operations, fostering a culture of collaboration and reliability across diverse application landscapes.</p>
+
+  </div>
+  
+
+<div class="navigation navigation-single">
+    
+    <a href="/posts/incidents_clustering_101/" class="navigation-prev">
+      <i aria-hidden="true" class="fa fa-chevron-left"></i>
+      <span class="navigation-tittle">Incidents clustering using TF-IDF and KMeans</span>
+    </a>
+    
+    
+</div>
+
+
+  
+
+  
+    
+
+
+</article>
+
+
+        </div>
+        
+    
+
+<script defer src="https://use.fontawesome.com/releases/v5.12.1/js/all.js" integrity="sha384-ZbbbT1gw3joYkKRqh0kWyRp32UAvdqkpbLedQJSlnI8iLQcFVxaGyrOgOJiDQTTR" crossorigin="anonymous"></script>
+
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
+        
+    <script type="text/javascript">
+        
+        hljs.initHighlightingOnLoad();
+    </script>
+    
+
+
+
+    
+
+
+
+    </body>
+</html>
