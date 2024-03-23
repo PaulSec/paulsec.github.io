@@ -6,12 +6,12 @@
     <description>Recent content in javascript on </description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 20 Mar 2014 00:00:00 +0000</lastBuildDate><atom:link href="http://paulsec.github.io/categories/javascript/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 20 Mar 2014 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://paulsec.github.io/categories/javascript/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>XSS Callback</title>
       <link>http://paulsec.github.io/posts/xss-callback/</link>
       <pubDate>Thu, 20 Mar 2014 00:00:00 +0000</pubDate>
-      
       <guid>http://paulsec.github.io/posts/xss-callback/</guid>
       <description>This post deals with a project I developed : XSS Callback.
 This is not going to be (at least, I hope) a boring post about XSS exploitation. No.
@@ -19,18 +19,15 @@ Well, one scenario of using XSS would be to steal victim&amp;rsquo;s cookie and 
 However, some issues are present using this technique, let&amp;rsquo;s take an example :
 You target a website Unfortunately, it&amp;rsquo;s too late (or too early depending on your situation) and you go to sleep.</description>
     </item>
-    
     <item>
       <title>Dealing with HTML submits conflicts</title>
       <link>http://paulsec.github.io/posts/dealing-with-html-submits-conflict/</link>
       <pubDate>Sun, 09 Mar 2014 00:00:00 +0000</pubDate>
-      
       <guid>http://paulsec.github.io/posts/dealing-with-html-submits-conflict/</guid>
       <description>This first post is related with one of my project : CSRFT. CSRFT is a Cross Site Request Forgery (CSRF) vulnerabilities Toolkit.
 My toolkit allows you to exploit either GET and POST HTTP Requests. During some testings, I had issues with some specific forms.
 Let&amp;rsquo;s take an example of such form :
 &amp;lt;form action=&amp;#34;http://website.com/blog/&amp;#34; id=&amp;#34;form&amp;#34; method=&amp;#34;get&amp;#34;&amp;gt; &amp;lt;label class=&amp;#34;assistive-text&amp;#34; for=&amp;#34;s&amp;#34;&amp;gt;Search&amp;lt;/label&amp;gt; &amp;lt;input class=&amp;#34;field&amp;#34; id=&amp;#34;s&amp;#34; name=&amp;#34;s&amp;#34; placeholder=&amp;#34;Search&amp;#34; type=&amp;#34;text&amp;#34; value=&amp;#34;Search Value&amp;#34;/&amp;gt; &amp;lt;input class=&amp;#34;submit&amp;#34; id=&amp;#34;searchsubmit&amp;#34; name=&amp;#34;submit&amp;#34; type=&amp;#34;submit&amp;#34; value=&amp;#34;Search&amp;#34;/&amp;gt; &amp;lt;/form&amp;gt; The code injected on the page to submit the form was like that :</description>
     </item>
-    
   </channel>
 </rss>

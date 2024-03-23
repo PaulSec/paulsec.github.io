@@ -14,7 +14,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.107.0">
+<meta name="generator" content="Hugo 0.120.4">
 
     
     
@@ -29,6 +29,7 @@
 Here is a small blog post regarding Kafka experiments and &ldquo;foundations&rdquo; I&rsquo;ve started working on. I will also take the opportunity to thank Maxence S. (https://twitter.com/maxenceschmitt) for his precious help on this topic.
 Instanciating the Jungle! ZooKeeper and Kafka First off, I instanciated a Kafka (and ZooKeeper) instance
 version: &#39;2&#39; services: zookeeper: image: wurstmeister/zookeeper:3.4.6 expose: - &#34;2181&#34; kafka: image: wurstmeister/kafka:2.11-2.0.0 depends_on: - zookeeper ports: - &#34;9092:9092&#34; environment: KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092 KAFKA_LISTENERS: PLAINTEXT://0."/>
+<meta name="twitter:site" content="@PaulWebSec"/>
 
 <meta property="og:title" content="Kafka Experiments" />
 <meta property="og:description" content="Hey everyone,
@@ -169,7 +170,7 @@ version: &#39;2&#39; services: zookeeper: image: wurstmeister/zookeeper:3.4.6 ex
     </div>
     
 <div class="copyright">
-  &copy; 2023 Paul A.
+  &copy; 2024 Paul A.
   
     <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>
   

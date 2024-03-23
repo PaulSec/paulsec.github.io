@@ -14,7 +14,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.107.0">
+<meta name="generator" content="Hugo 0.120.4">
 
     
     
@@ -28,6 +28,7 @@
 <meta name="twitter:description" content="Hi everyone!
 This article aims at providing you survival steps while tinkering around with Smali &amp; Android applications. The name of the original application I did my search on will remain secret but I created a dummy application doing the same so that you can do it on your own. The link of the MainActivity.java and MainActivity.smali is here
 Create a dummy application with Android Studio and just import this. PLACEHOLDER_* strings will have to be replaced with proper ones if you want to try."/>
+<meta name="twitter:site" content="@PaulWebSec"/>
 
 <meta property="og:title" content="Android Instrumentation with Smali: A survival guide" />
 <meta property="og:description" content="Hi everyone!
@@ -167,7 +168,7 @@ Create a dummy application with Android Studio and just import this. PLACEHOLDER
     </div>
     
 <div class="copyright">
-  &copy; 2023 Paul A.
+  &copy; 2024 Paul A.
   
     <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>
   
@@ -288,23 +289,23 @@ The link of the <a href="https://gist.github.com/PaulSec/6beab513af069646a5355f6
 </span></span></code></pre></div><p>This works almost everything time for me.</p>
 <h4 id="decrypting-part">Decrypting part</h4>
 <p>I got couple of hits and got this specific one which looked quite promising, a simple method taking a byte array and returning a new byte array for the decrypted string.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">byte</span><span style="color:#f92672">[]</span> <span style="color:#a6e22e">b</span><span style="color:#f92672">(</span><span style="color:#66d9ef">byte</span><span style="color:#f92672">[]</span> bArr<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>    String str<span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>    String str2<span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>    Logger logger<span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>        Cipher instance <span style="color:#f92672">=</span> Cipher<span style="color:#f92672">.</span><span style="color:#a6e22e">getInstance</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;AES/CBC/PKCS5Padding&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;BC&#34;</span><span style="color:#f92672">);</span>
-</span></span><span style="display:flex;"><span>        instance<span style="color:#f92672">.</span><span style="color:#a6e22e">init</span><span style="color:#f92672">(</span><span style="color:#ae81ff">2</span><span style="color:#f92672">,</span> <span style="color:#66d9ef">new</span> SecretKeySpec<span style="color:#f92672">(</span><span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">f11885c</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;AES&#34;</span><span style="color:#f92672">),</span> <span style="color:#66d9ef">new</span> IvParameterSpec<span style="color:#f92672">(</span><span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">f11884b</span><span style="color:#f92672">),</span> <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">f11883a</span><span style="color:#f92672">);</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> instance<span style="color:#f92672">.</span><span style="color:#a6e22e">doFinal</span><span style="color:#f92672">(</span>bArr<span style="color:#f92672">);</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>NoSuchAlgorithmException e2<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>        logger <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">f11886d</span><span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>        str <span style="color:#f92672">=</span> e2<span style="color:#f92672">.</span><span style="color:#a6e22e">getLocalizedMessage</span><span style="color:#f92672">();</span>
-</span></span><span style="display:flex;"><span>        str2 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;invalid algorithm: &#34;</span><span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>        logger<span style="color:#f92672">.</span><span style="color:#a6e22e">warn</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;DECIPHER&#34;</span><span style="color:#f92672">,</span> <span style="color:#f92672">(</span>Object<span style="color:#f92672">)</span> str2<span style="color:#f92672">,</span> <span style="color:#f92672">(</span>Object<span style="color:#f92672">)</span> str<span style="color:#f92672">);</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">byte</span><span style="color:#f92672">[</span><span style="color:#ae81ff">0</span><span style="color:#f92672">];</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// truncated
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">}</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">byte</span><span style="color:#f92672">[]</span> <span style="color:#a6e22e">b</span>(<span style="color:#66d9ef">byte</span><span style="color:#f92672">[]</span> bArr) {
+</span></span><span style="display:flex;"><span>    String str;
+</span></span><span style="display:flex;"><span>    String str2;
+</span></span><span style="display:flex;"><span>    Logger logger;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>        Cipher instance <span style="color:#f92672">=</span> Cipher.<span style="color:#a6e22e">getInstance</span>(<span style="color:#e6db74">&#34;AES/CBC/PKCS5Padding&#34;</span>, <span style="color:#e6db74">&#34;BC&#34;</span>);
+</span></span><span style="display:flex;"><span>        instance.<span style="color:#a6e22e">init</span>(2, <span style="color:#66d9ef">new</span> SecretKeySpec(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">f11885c</span>, <span style="color:#e6db74">&#34;AES&#34;</span>), <span style="color:#66d9ef">new</span> IvParameterSpec(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">f11884b</span>), <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">f11883a</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> instance.<span style="color:#a6e22e">doFinal</span>(bArr);
+</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">catch</span> (NoSuchAlgorithmException e2) {
+</span></span><span style="display:flex;"><span>        logger <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">f11886d</span>;
+</span></span><span style="display:flex;"><span>        str <span style="color:#f92672">=</span> e2.<span style="color:#a6e22e">getLocalizedMessage</span>();
+</span></span><span style="display:flex;"><span>        str2 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;invalid algorithm: &#34;</span>;
+</span></span><span style="display:flex;"><span>        logger.<span style="color:#a6e22e">warn</span>(<span style="color:#e6db74">&#34;DECIPHER&#34;</span>, (Object) str2, (Object) str);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">byte</span><span style="color:#f92672">[</span>0<span style="color:#f92672">]</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// truncated</span>
+</span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>I decided to create a simple Android Studio project, compile similar code in a basic Android Activity and see how it worked under the hood.
 By doing so, I had a lot of flexibility to start writing Java code and see the corresponding Smali code, which can be a bit overwhelming, at least at the beginning.</p>
 <h5 id="logging-it-all-out">Logging it all out</h5>
@@ -362,7 +363,7 @@ ActivityManager: Killing 5682:com.foobar.barfoo/u0a101 (adj 900): crash
 </code></pre><p>Why did I get those kind of errors? Well, I basically started using registers which were not declared. And it crashed. The whole application. Multiple times.</p>
 <p>To give you some ideas, one Java line for printing a Log resulted in about ~11 lines of Smali code and let&rsquo;s dive in this to give you some heads-up.
 Let&rsquo;s take this specific like :</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Log<span style="color:#f92672">.</span><span style="color:#a6e22e">i</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;My Activity&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;KEY = &#34;</span> <span style="color:#f92672">+</span> <span style="color:#66d9ef">new</span> String<span style="color:#f92672">(</span>key<span style="color:#f92672">));</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Log.<span style="color:#a6e22e">i</span>(<span style="color:#e6db74">&#34;My Activity&#34;</span>, <span style="color:#e6db74">&#34;KEY = &#34;</span> <span style="color:#f92672">+</span> <span style="color:#66d9ef">new</span> String(key));
 </span></span></code></pre></div><p>And this results in Smali code with:</p>
 <pre tabindex="0"><code>const-string v1, &#34;My Activity&#34;
 

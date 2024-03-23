@@ -6,98 +6,90 @@
     <description>Recent content in Posts on </description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 24 Nov 2023 20:24:13 +0100</lastBuildDate><atom:link href="http://paulsec.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 23 Mar 2024 21:02:57 +0100</lastBuildDate>
+    <atom:link href="http://paulsec.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Making My Garage Door Smart (Meross MSG100 to TUBAUTO ProCom 7-3)</title>
+      <link>http://paulsec.github.io/posts/making-my-garage-door-smart/</link>
+      <pubDate>Sat, 23 Mar 2024 21:02:57 +0100</pubDate>
+      <guid>http://paulsec.github.io/posts/making-my-garage-door-smart/</guid>
+      <description>Connecting Meross MSG100 to TUBAUTO ProCom 7-3 Garage Door: A Quick Guide
+Modernizing your garage door to be smart-enabled can greatly enhance convenience and security. The Meross MSG100 Smart Wi-Fi Garage Door Opener offers an easy solution to connect your garage door to your home network, allowing you to control it remotely through the Meross application. If you have a TUBAUTO ProCom 7-3 garage door opener, integrating it with the Meross MSG100 is straightforward with the right guidance.</description>
+    </item>
     <item>
       <title>GitOps is the new black</title>
       <link>http://paulsec.github.io/posts/gitops-the-new-black/</link>
       <pubDate>Fri, 24 Nov 2023 20:24:13 +0100</pubDate>
-      
       <guid>http://paulsec.github.io/posts/gitops-the-new-black/</guid>
       <description>In the ever-evolving landscape of software development, GitOps has emerged as a powerful paradigm, initially associated with cloud-native applications. However, its significance personally extends beyond the realms of modern, containerized environments. GitOps has proven to be a valuable concept for legacy (or &amp;ldquo;more traditional&amp;rdquo;) applications too, providing a bridge that captures technical expertise and establishes deterministic operations resulting in a better quality of service.
 The Essence of GitOps GitOps is fundamentally rooted in the principles of declarative infrastructure and version control.</description>
     </item>
-    
     <item>
       <title>Incidents clustering using TF-IDF and KMeans</title>
       <link>http://paulsec.github.io/posts/incidents_clustering_101/</link>
       <pubDate>Sun, 23 Jul 2023 21:05:29 +0200</pubDate>
-      
       <guid>http://paulsec.github.io/posts/incidents_clustering_101/</guid>
       <description>Incident clustering, also known as event clustering or anomaly clustering, is a technique used in data analysis and machine learning to group similar incidents or events together based on their characteristics or patterns.
 In order to deep dive into this, we used sklearn and matplotlib to both do machine learning and visualize results in an easy way. In few words:
 Scikit-learn is a powerful and popular open-source machine learning library in Python.</description>
     </item>
-    
     <item>
       <title>I quitted Infosec and I couldn&#39;t be happier.</title>
       <link>http://paulsec.github.io/posts/i-quitted-infosec/</link>
       <pubDate>Tue, 31 Jan 2023 20:00:24 +0100</pubDate>
-      
       <guid>http://paulsec.github.io/posts/i-quitted-infosec/</guid>
       <description>This article aims at providing you some insights about the experience I had in the &amp;ldquo;infosec world&amp;rdquo; for the past few years. I had an amazing journey and grateful for everything that happened. Don&amp;rsquo;t get me wrong with the title, even if the road was sometimes &amp;ldquo;bumpy&amp;rdquo; (aka &amp;lsquo;bad&amp;rsquo; experiences), I got some good lessons learnt through them and live by them. I am not trying to convince anyone with this article, except just do what&amp;rsquo;s good for you and preserve yourself.</description>
     </item>
-    
     <item>
       <title>A quick primer on Frida and Android Instrumentation</title>
       <link>http://paulsec.github.io/posts/frida-android-primer/</link>
       <pubDate>Fri, 13 Aug 2021 17:25:35 +0200</pubDate>
-      
       <guid>http://paulsec.github.io/posts/frida-android-primer/</guid>
       <description>Hi everyone!
 Here is a pretty quick blog post on some Frida/Objection things I&amp;rsquo;ve been tinkering with.
 I had this Android application which had premium features and wanted to understand how that mechanism worked and if it was robust enough. Let&amp;rsquo;s see what was the journey on how I&amp;rsquo;ve bypassed it using Frida.
 After disassembling the application with Jadx, I was able to perform a simple grep -r -i &#39;premium&#39; .</description>
     </item>
-    
     <item>
       <title>&#34;DevOps&#34; ramblings and observations</title>
       <link>http://paulsec.github.io/posts/devoops-ramblings/</link>
       <pubDate>Wed, 17 Feb 2021 14:40:19 +0100</pubDate>
-      
       <guid>http://paulsec.github.io/posts/devoops-ramblings/</guid>
       <description>&amp;ldquo;DevOps&amp;rdquo; movement started &amp;ldquo;publicly&amp;rdquo; (first time we heard this term) circa 2007. Based on that, we (you?) might think that in 2021 that thing is utterly oudated but I totally disagree and I thought I would share some thoughts about DevOps in 2021, and what it means in real life.
 I am quite uncomfortable using the word &amp;ldquo;DevOps&amp;rdquo;. I&amp;rsquo;m serious. I guess it&amp;rsquo;s because we&amp;rsquo;re putting so many things behind it and I feel we might have lost track of the real sense behind that term - &amp;ldquo;DevOps&amp;rdquo;.</description>
     </item>
-    
     <item>
       <title>Android Instrumentation with Smali: A survival guide</title>
       <link>http://paulsec.github.io/posts/android-smali-primer/</link>
       <pubDate>Fri, 22 May 2020 15:29:02 +0200</pubDate>
-      
       <guid>http://paulsec.github.io/posts/android-smali-primer/</guid>
       <description>Hi everyone!
 This article aims at providing you survival steps while tinkering around with Smali &amp;amp; Android applications. The name of the original application I did my search on will remain secret but I created a dummy application doing the same so that you can do it on your own. The link of the MainActivity.java and MainActivity.smali is here
 Create a dummy application with Android Studio and just import this. PLACEHOLDER_* strings will have to be replaced with proper ones if you want to try.</description>
     </item>
-    
     <item>
       <title>Tackling &#39;Cleartext Not Permitted&#39; error in Ionic v5</title>
       <link>http://paulsec.github.io/posts/ionic-cleartext-not-permitted/</link>
       <pubDate>Fri, 08 May 2020 17:29:40 +0200</pubDate>
-      
       <guid>http://paulsec.github.io/posts/ionic-cleartext-not-permitted/</guid>
       <description>While developing/maintaining the WHID Mobile Injector app, it turns out that I received messages and issues on Github telling me that users were:
 Able to access the ESPloit interface through the browser but not through the app and the toggle in the side-menu was staying RED (meaning it is unable to connect to the ESPloit interface). Weird.
 After some investigations, I was able to reproduce the issue on some phones at home, and while looking at logcat, I saw some strange lines like this:</description>
     </item>
-    
     <item>
       <title>FastAPI &#43; Zeit.co = 🚀</title>
       <link>http://paulsec.github.io/posts/fastapi_plus_zeit_serverless_fu/</link>
       <pubDate>Mon, 30 Mar 2020 20:12:25 +0200</pubDate>
-      
       <guid>http://paulsec.github.io/posts/fastapi_plus_zeit_serverless_fu/</guid>
       <description>Hey everyone,
 I will talk about some experiments I did with FastAPI and deploying on Zeit.co.
 Context: For one side-project, I needed a simple way to retrieve the information from a specific Android application (eg. io.shodan.app) on the Google Store and a download link from APKPure (if any).
 I thought that this would have been a great playground to get my hands on FastAPI, a very promising framework that I never had time to play with.</description>
     </item>
-    
     <item>
       <title>Working with Events on Ionic 5 </title>
       <link>http://paulsec.github.io/posts/ionic-5-events/</link>
       <pubDate>Wed, 18 Mar 2020 16:52:42 +0100</pubDate>
-      
       <guid>http://paulsec.github.io/posts/ionic-5-events/</guid>
       <description>Hi everyone,
 Here is a small blog post where I needed to work on an Ionic v5 project where (Angular) events were/are not working anymore.
@@ -105,115 +97,95 @@ Context: Basically, I was working on the side-menu &amp;lsquo;starter&amp;rsquo;
 Beforehand, in order to use the Events, it was as simple as:
 import { Events } from &amp;#39;@ionic/angular&amp;#39;; And finally work on your logic, but this got removed in Ionic 5.</description>
     </item>
-    
     <item>
       <title>Kafka Experiments</title>
       <link>http://paulsec.github.io/posts/kafka-experiments/</link>
       <pubDate>Wed, 05 Feb 2020 21:22:27 +0100</pubDate>
-      
       <guid>http://paulsec.github.io/posts/kafka-experiments/</guid>
       <description>Hey everyone,
 Here is a small blog post regarding Kafka experiments and &amp;ldquo;foundations&amp;rdquo; I&amp;rsquo;ve started working on. I will also take the opportunity to thank Maxence S. (https://twitter.com/maxenceschmitt) for his precious help on this topic.
 Instanciating the Jungle! ZooKeeper and Kafka First off, I instanciated a Kafka (and ZooKeeper) instance
 version: &amp;#39;2&amp;#39; services: zookeeper: image: wurstmeister/zookeeper:3.4.6 expose: - &amp;#34;2181&amp;#34; kafka: image: wurstmeister/kafka:2.11-2.0.0 depends_on: - zookeeper ports: - &amp;#34;9092:9092&amp;#34; environment: KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092 KAFKA_LISTENERS: PLAINTEXT://0.</description>
     </item>
-    
     <item>
       <title>Deploy a Django application through Github Actions</title>
       <link>http://paulsec.github.io/posts/deploy-django-github-actions/</link>
       <pubDate>Thu, 23 Jan 2020 14:02:07 +0100</pubDate>
-      
       <guid>http://paulsec.github.io/posts/deploy-django-github-actions/</guid>
       <description>Hi everyone,
 Here is a small article on how I successfully deployed my Django application through Github actions. Basically, what I needed was pretty simple, as soon as I push a new commit (on master), I want to:
 connect through SSH on my remote server restart my cfptime service (which will do all the magic) My cfptime.org project is something like ~3 years old and at the beginning, I was deploying by hand and I created a bash script in order to ease this part and this is what it looked like:</description>
     </item>
-    
     <item>
       <title>Throttling policies on specific Django Viewset</title>
       <link>http://paulsec.github.io/posts/django-viewset-throttling/</link>
       <pubDate>Tue, 14 Jan 2020 21:14:36 +0100</pubDate>
-      
       <guid>http://paulsec.github.io/posts/django-viewset-throttling/</guid>
       <description>Hi everyone!
 Here is a small article on some experiments I came across with the development of the new cfptime.org version. Goal: I needed to limit (anonymous) visitors on specific API endpoints (especially when creating/posting new Call For Papers to avoid flooding).
 It turns out someone had similar thoughts and his blog post was pretty interested and helped me a lot. You can find the blog post here: https://www.pedaldrivenprogramming.com/2017/05/throttling-django-rest-framwork-viewsets/.
 As the author states:</description>
     </item>
-    
     <item>
       <title>Angular 8 Deployment within Github Actions Pipeline</title>
       <link>http://paulsec.github.io/posts/angular8-deployment-pipeline-github-actions/</link>
       <pubDate>Thu, 02 Jan 2020 22:09:28 +0100</pubDate>
-      
       <guid>http://paulsec.github.io/posts/angular8-deployment-pipeline-github-actions/</guid>
       <description>Hello everyone,
 Here is a small article in order to explain you how I&amp;rsquo;ve deployed my Angular front-end to a server with Github actions.
 Context: You might know that I am the developer behind cfptime.org and I&amp;rsquo;ve had the chance during the holidays to start re-developing the front-end using Angular. If you want to check what it looks like: https://beta.cfptime.org.
 I&amp;rsquo;ve longer been a CircleCI user but it seems that the free plan is not enough in order to build my Angular project (and trust me, it&amp;rsquo;s nothing ground-breaking, just couple of API calls and that&amp;rsquo;s it).</description>
     </item>
-    
     <item>
       <title>Corelan Bootcamp Review</title>
       <link>http://paulsec.github.io/posts/corelan-bootcamp-review-2018/</link>
       <pubDate>Sat, 28 Dec 2019 15:58:01 +0100</pubDate>
-      
       <guid>http://paulsec.github.io/posts/corelan-bootcamp-review-2018/</guid>
       <description>Time to relieve this blog and I think that a review of the Corelan Bootcamp training is the perfect occasion! I had in mind to try the OSCE certification and I felt I needed to go beyond just basic buffer overflows that you might come by with OSCP for example.
 I&amp;rsquo;ve had the chance to attend this training at Hack in Paris in June 2018 and I will try to give as much insights as I can without telling too much (because of NDA).</description>
     </item>
-    
     <item>
       <title>BSidesCBR 2017 CTF Write-Up: Derpchat</title>
       <link>http://paulsec.github.io/posts/bsidescbr-2017-ctf-write-up-derpchat/</link>
       <pubDate>Sun, 07 May 2017 00:00:00 +0000</pubDate>
-      
       <guid>http://paulsec.github.io/posts/bsidescbr-2017-ctf-write-up-derpchat/</guid>
       <description>Hey there,
 Following my serie of write-ups for the BSidesCBR challs, I will discuss the DerpChat one.
 The instructions for this challenge were:
 This web-based challenge was worth 275 points. Run docker-compose up and then browse to https://web.shell.dance:4443/. After browsing to https://web.shell.dance:4443/, I arrived on a registration/login page. I registered the account test/test and I finally got a page with two inputs: – One too search some messages I suppose – And one in the middle of the page stating: “Hello, could you please send me the link I was after?</description>
     </item>
-    
     <item>
       <title>BSidesCBR 2017 CTF Write-Up: Needleinahaystack</title>
       <link>http://paulsec.github.io/posts/bsidescbr-2017-ctf-write-up-needleinahaystack/</link>
       <pubDate>Sat, 06 May 2017 00:00:00 +0000</pubDate>
-      
       <guid>http://paulsec.github.io/posts/bsidescbr-2017-ctf-write-up-needleinahaystack/</guid>
       <description>Hello everyone!
 Such a long time since I didn’t post any article. Here is a quick write-up for the BSidesCBR Cryto challenge for “needleinahaystack”.
 Before diving in the challenge, huge props to all the organizers and OJ for making those challs available to everyone with Docker containers and stuff (more write-ups coming soon).
 If you guys want to give it a shot, here you go, all challs are available here. The challenge we will discuss in this post (needleinahaystack) is located here.</description>
     </item>
-    
     <item>
       <title>Running SSLScan on 5k servers taken from Alexa&#39;s top 10k</title>
       <link>http://paulsec.github.io/posts/running-sslscan-on-5k-servers-taken-from-alexas-top-10k/</link>
       <pubDate>Sun, 07 Jun 2015 00:00:00 +0000</pubDate>
-      
       <guid>http://paulsec.github.io/posts/running-sslscan-on-5k-servers-taken-from-alexas-top-10k/</guid>
       <description>After analyzing the HTTP Security Headers from the top 10k Alexa websites, I decided looking at the SSL Ciphers used on those websites.
 These results are coming from a scan on port 443 for all those domains. Only 4715 servers replied.
 The OpenSSL version installed on my server did not support SSLv2 so SSLv2 ciphers have not been detected.
 Here are the results:</description>
     </item>
-    
     <item>
       <title>Experiments with UPnP</title>
       <link>http://paulsec.github.io/posts/experiments-with-upnp/</link>
       <pubDate>Thu, 03 Jul 2014 00:00:00 +0000</pubDate>
-      
       <guid>http://paulsec.github.io/posts/experiments-with-upnp/</guid>
       <description>This post deals with recent observations regarding UPnP (Universal Plug and Play) protocol &amp;amp; Routers. In few words, thanks to this protocol, devices (such as file sharing services, games, ..) can be easily connected/deployed.
 First, I started to do research on my box to find relevant UPnP functionalities by hand, found some but I had trouble to exploit them. Few days ago, David Middlehurst released a tool called &amp;ldquo;UPnP Pentest Toolkit&amp;rdquo;.</description>
     </item>
-    
     <item>
       <title>Kioptrix 3 Write-up</title>
       <link>http://paulsec.github.io/posts/kioptrix-3-write-up/</link>
       <pubDate>Thu, 12 Jun 2014 00:00:00 +0000</pubDate>
-      
       <guid>http://paulsec.github.io/posts/kioptrix-3-write-up/</guid>
       <description>This has been some long time I haven&amp;rsquo;t written another write-up. This one&amp;rsquo;s for Kioptrix 3 that you can find here.
 Host Discovery $ nmap -sP 192.168.56.1/24 and we got the IP address : 192.168.56.101.
@@ -221,24 +193,20 @@ As it was explained, you need to add 192.168.56.101 kioptrix3.com in your /etc/h
 Fingerprinting Then, let&amp;rsquo;s find what kind of services are running on the host machine.
 $ nmap 192.168.56.101 -sV -A Starting Nmap 6.46 ( http://nmap.</description>
     </item>
-    
     <item>
       <title>Diving into XSS googles game</title>
       <link>http://paulsec.github.io/posts/diving-into-xss-googles-game/</link>
       <pubDate>Mon, 02 Jun 2014 00:00:00 +0000</pubDate>
-      
       <guid>http://paulsec.github.io/posts/diving-into-xss-googles-game/</guid>
       <description>Hi there, this post deals with the game released by Google few days ago about XSS vulnerabilities that you can find here.
 I&amp;rsquo;ll enumerate some of the solution I found on the Internet which were (in my opnion) interesting/fun. This post contains the solutions for all levels. Big spoil.
 Level 1: Hello, world of XSS Well, this one was obvious:
 &amp;lt;script&amp;gt;alert(1);&amp;lt;/script&amp;gt; Level 2: Persistence is key For this one, you had different options:</description>
     </item>
-    
     <item>
       <title>Bobby Write-up</title>
       <link>http://paulsec.github.io/posts/bobby-write-up/</link>
       <pubDate>Thu, 15 May 2014 00:00:00 +0000</pubDate>
-      
       <guid>http://paulsec.github.io/posts/bobby-write-up/</guid>
       <description>Hi there,
 Quick blog post on the VM &amp;ldquo;Bobby&amp;rdquo; which is once of the nicest VM I did so far.
@@ -248,12 +216,10 @@ Let&amp;rsquo;s start to fingerprint the different services to exploit it.
 Fingerprinting Then, I used Nmap to retrieve the services running:
 $ nmap -sV 192.</description>
     </item>
-    
     <item>
       <title>HTTP Security Headers on top 10k Alexa websites</title>
       <link>http://paulsec.github.io/posts/http-security-headers-on-top-10k-alexa-websites/</link>
       <pubDate>Tue, 13 May 2014 00:00:00 +0000</pubDate>
-      
       <guid>http://paulsec.github.io/posts/http-security-headers-on-top-10k-alexa-websites/</guid>
       <description>EDIT: Added statistics of max-age option.
 Hi there,
@@ -261,12 +227,10 @@ This blog post deals with HTTP Security Headers on top 10k Alexa websites. Based
 To do this study, I did a GET HTTP Request and saved the headers in the HTTP response. This has been done using Python.
 First of all, I scanned 10000 hosts. 555 hosts didn&amp;rsquo;t respond so those statistics are based on 9445 hosts.</description>
     </item>
-    
     <item>
       <title>Blind HQL Injection in REST API using H2 DMBS</title>
       <link>http://paulsec.github.io/posts/blind-hql-injection-in-rest-api-using-h2-dbms/</link>
       <pubDate>Mon, 05 May 2014 00:00:00 +0000</pubDate>
-      
       <guid>http://paulsec.github.io/posts/blind-hql-injection-in-rest-api-using-h2-dbms/</guid>
       <description>This post deals with some research I just did regarding (Blind) HQL injections with H2 as the DataBase Management System.
 First, you should read this post which gives some really useful information regarding HQL injections in general: HQL for pentesters.
@@ -274,12 +238,10 @@ During the assessment, I checked the API calls by using Burp as a proxy and one 
 http://application/API/Users/?req=id=1 The output was a JSON response, such as:
 [{user: &amp;#34;admin&amp;#34;, id: &amp;#34;1&amp;#34;, firstName:&amp;#34;Admin&amp;#34;}] If you changed the id with the numeric value 2, and so on.</description>
     </item>
-    
     <item>
       <title>BSides Slides - CSRFT</title>
       <link>http://paulsec.github.io/posts/bsides-slides-csrft/</link>
       <pubDate>Tue, 29 Apr 2014 00:00:00 +0000</pubDate>
-      
       <guid>http://paulsec.github.io/posts/bsides-slides-csrft/</guid>
       <description>Hey,
 Just a quick post to give you the link to my slides for BSides London today: Here Don&amp;rsquo;t hesitate if you have any feedback, or any good feature.
@@ -288,12 +250,10 @@ Just few words about the conference which was absolutely amazing. Some really gr
 For sure, I&amp;rsquo;ll attend it next year.
 Cheers,</description>
     </item>
-    
     <item>
       <title>BWApp Write-Up</title>
       <link>http://paulsec.github.io/posts/bwapp-write-up/</link>
       <pubDate>Mon, 21 Apr 2014 00:00:00 +0000</pubDate>
-      
       <guid>http://paulsec.github.io/posts/bwapp-write-up/</guid>
       <description>This post contains the steps to get a root shell with bWapp VM
 Host discovery As always, we need to discover where the machine is on our network. To do so, let&amp;rsquo;s use Nmap:
@@ -302,24 +262,20 @@ nmap -sV 192.168.1.10 Fig. Nmap scan result
 A lot of services were open, such as: VNC, FTP, etc.
 As I saw it in the scan report, I decided to scan the port 80 with Nikto.</description>
     </item>
-    
     <item>
       <title>Scream Write-up</title>
       <link>http://paulsec.github.io/posts/scream-write-up/</link>
       <pubDate>Wed, 16 Apr 2014 00:00:00 +0000</pubDate>
-      
       <guid>http://paulsec.github.io/posts/scream-write-up/</guid>
       <description>This post contains the steps to get a root shell with Scream VM
 This VM can he found here. Have a look to find even more VMs. But before starting the report, I&amp;rsquo;d like to congratulate g0tmi1k for his awesome tool : VulnInjector.
 Ok, let&amp;rsquo;s do this write-up !
 Host discovery As always, we need to discover where the machine is on our network. To do so, let&amp;rsquo;s use Nmap:</description>
     </item>
-    
     <item>
       <title>Exploiting KB Vulnerable Web App 1 Write-Up</title>
       <link>http://paulsec.github.io/posts/exploit-kb-vulnerable-web-app-1-write-up/</link>
       <pubDate>Tue, 15 Apr 2014 00:00:00 +0000</pubDate>
-      
       <guid>http://paulsec.github.io/posts/exploit-kb-vulnerable-web-app-1-write-up/</guid>
       <description>This post contains the steps to get a root shell with Exploit KB Vulnerable Web App 1 VM
 This VM can he found here. Have a look to find even more VMs
@@ -327,12 +283,10 @@ Host discovery First, we need to discover where the machine is on our network. T
 nmap -sP 192.168.1.1/24 Fingerprinting After getting the IP address, we need to do some fingerprinting.
 nmap -sV 192.168.1.23 Fig.</description>
     </item>
-    
     <item>
       <title>Kioptrix 2 Write-up</title>
       <link>http://paulsec.github.io/posts/kioptrix-2-write-up/</link>
       <pubDate>Tue, 15 Apr 2014 00:00:00 +0000</pubDate>
-      
       <guid>http://paulsec.github.io/posts/kioptrix-2-write-up/</guid>
       <description>This post contains the steps to get a root shell with Kioptrix level 2 VM
 This VM can he found here. Have a look to find even more VMs
@@ -340,12 +294,10 @@ Host discovery First, we need to discover where the machine is on our network. T
 nmap -sP 192.168.1.1/24 Fingerprinting After getting the IP address, we need to do some fingerprinting.
 nmap -sV 192.168.1.42 Fig. Nmap scan result</description>
     </item>
-    
     <item>
       <title>Kioptrix 1 Write-up</title>
       <link>http://paulsec.github.io/posts/kioptrix-1-write-up/</link>
       <pubDate>Mon, 14 Apr 2014 00:00:00 +0000</pubDate>
-      
       <guid>http://paulsec.github.io/posts/kioptrix-1-write-up/</guid>
       <description>This post contains the steps to get a root shell with Kioptrix level 1 VM
 This VM can he found here. Have a look to find even more VMs
@@ -353,24 +305,20 @@ Host discovery First, we need to discover where the machine is on our network. T
 nmap -sP 192.168.1.1/24 Fingerprinting After getting the IP address, we need to do some fingerprinting.
 nmap -sV 192.168.1.2 Fig. Nmap scan result</description>
     </item>
-    
     <item>
       <title>SecOS-1 First VM Out</title>
       <link>http://paulsec.github.io/posts/secos-1-first-vm-out/</link>
       <pubDate>Mon, 14 Apr 2014 00:00:00 +0000</pubDate>
-      
       <guid>http://paulsec.github.io/posts/secos-1-first-vm-out/</guid>
       <description>Hey there,
 Quick blog post for the first VM I created to experiment some of your pentesting skills.
 The idea grew up when I developed some security tools (especially the one (CSRFT) I presented at BSides London few weeks ago) to create a legal environment where you could try it out.
 I really liked creating this Boot2root VM. So, I&amp;rsquo;ll create few more that will rely on each other so keep the flags because you&amp;rsquo;ll need it for the next ones.</description>
     </item>
-    
     <item>
       <title>Updating OpenFuck Exploit</title>
       <link>http://paulsec.github.io/posts/updating-openfuck-exploit/</link>
       <pubDate>Mon, 14 Apr 2014 00:00:00 +0000</pubDate>
-      
       <guid>http://paulsec.github.io/posts/updating-openfuck-exploit/</guid>
       <description>This blog post will be quite fast and will provide you the steps to update the OpenFuck exploit.
 This exploit is pretty old but you might need it if you have fun with some vulnerable VMs. Not giving any hint. :-)
@@ -378,12 +326,10 @@ Thanks to this blog, I&amp;rsquo;ve been able to update the exploit.
 Here are the steps to make this work :
 1) Add those headers : #include &amp;lt;openssl/rc4.h&amp;gt; #include &amp;lt;openssl/md5.h&amp;gt; 2) Update the URL of the C file.</description>
     </item>
-    
     <item>
       <title>VulnOS Write-up</title>
       <link>http://paulsec.github.io/posts/vulnos-write-up/</link>
       <pubDate>Tue, 08 Apr 2014 00:00:00 +0000</pubDate>
-      
       <guid>http://paulsec.github.io/posts/vulnos-write-up/</guid>
       <description>This contains the solution of the VM: VulnOS.
 This is my first write-up for a VM and I&amp;rsquo;m doing it for VulnOS which is hosted on VulnHub (Great resource if you want to improve your pentesting skills).
@@ -391,24 +337,20 @@ In this &amp;rsquo;tutorial&amp;rsquo;, I&amp;rsquo;m gonna give you the steps I
 Discovery First, start by scanning the network to discover where&amp;rsquo;s the host.
 nmap -sV 192.168.56.1/24 Starting Nmap 6.</description>
     </item>
-    
     <item>
       <title>Python &#43; Transmission daemon = Download easily your favorite TV Show</title>
       <link>http://paulsec.github.io/posts/python-plus-transmission-daemon-equals-download-easily-your-favorite-tv-show/</link>
       <pubDate>Fri, 28 Mar 2014 00:00:00 +0000</pubDate>
-      
       <guid>http://paulsec.github.io/posts/python-plus-transmission-daemon-equals-download-easily-your-favorite-tv-show/</guid>
       <description>This post is about my last project : my TV Show Manager.
 I decided to start it because I wanted something really simple to download my favorite TV Shows. In this post, I&amp;rsquo;ll explain step by step how to reproduce it at home.
 Basically, with this tutorial you&amp;rsquo;ll set up your Raspberry box by :
 Installing / set-uping transmission-daemon Getting one of my latest project TVShowManager that uses my EZTV Python API.</description>
     </item>
-    
     <item>
       <title>XSS Callback</title>
       <link>http://paulsec.github.io/posts/xss-callback/</link>
       <pubDate>Thu, 20 Mar 2014 00:00:00 +0000</pubDate>
-      
       <guid>http://paulsec.github.io/posts/xss-callback/</guid>
       <description>This post deals with a project I developed : XSS Callback.
 This is not going to be (at least, I hope) a boring post about XSS exploitation. No.
@@ -416,29 +358,24 @@ Well, one scenario of using XSS would be to steal victim&amp;rsquo;s cookie and 
 However, some issues are present using this technique, let&amp;rsquo;s take an example :
 You target a website Unfortunately, it&amp;rsquo;s too late (or too early depending on your situation) and you go to sleep.</description>
     </item>
-    
     <item>
       <title>Dealing with HTML submits conflicts</title>
       <link>http://paulsec.github.io/posts/dealing-with-html-submits-conflict/</link>
       <pubDate>Sun, 09 Mar 2014 00:00:00 +0000</pubDate>
-      
       <guid>http://paulsec.github.io/posts/dealing-with-html-submits-conflict/</guid>
       <description>This first post is related with one of my project : CSRFT. CSRFT is a Cross Site Request Forgery (CSRF) vulnerabilities Toolkit.
 My toolkit allows you to exploit either GET and POST HTTP Requests. During some testings, I had issues with some specific forms.
 Let&amp;rsquo;s take an example of such form :
 &amp;lt;form action=&amp;#34;http://website.com/blog/&amp;#34; id=&amp;#34;form&amp;#34; method=&amp;#34;get&amp;#34;&amp;gt; &amp;lt;label class=&amp;#34;assistive-text&amp;#34; for=&amp;#34;s&amp;#34;&amp;gt;Search&amp;lt;/label&amp;gt; &amp;lt;input class=&amp;#34;field&amp;#34; id=&amp;#34;s&amp;#34; name=&amp;#34;s&amp;#34; placeholder=&amp;#34;Search&amp;#34; type=&amp;#34;text&amp;#34; value=&amp;#34;Search Value&amp;#34;/&amp;gt; &amp;lt;input class=&amp;#34;submit&amp;#34; id=&amp;#34;searchsubmit&amp;#34; name=&amp;#34;submit&amp;#34; type=&amp;#34;submit&amp;#34; value=&amp;#34;Search&amp;#34;/&amp;gt; &amp;lt;/form&amp;gt; The code injected on the page to submit the form was like that :</description>
     </item>
-    
     <item>
       <title>Starting my own blog</title>
       <link>http://paulsec.github.io/posts/starting-my-own-blog/</link>
       <pubDate>Tue, 04 Mar 2014 00:00:00 +0000</pubDate>
-      
       <guid>http://paulsec.github.io/posts/starting-my-own-blog/</guid>
       <description>Starting my own blog has been something I really wanted to do. I&amp;rsquo;ll add post related to my different projects but also on Web security.
 Here are my different motivations :
 1. Provide a portfolio of my different projects. 2. Explain some problems I had and provide the solution 3. Talk about some geek stuffs. Let&amp;rsquo;s see :) Hope you&amp;rsquo;ll have fun to read me. Cheers and see you soon.</description>
     </item>
-    
   </channel>
 </rss>

@@ -6,24 +6,22 @@
     <description>Recent content in xss on </description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 02 Jun 2014 00:00:00 +0000</lastBuildDate><atom:link href="http://paulsec.github.io/categories/xss/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 02 Jun 2014 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://paulsec.github.io/categories/xss/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Diving into XSS googles game</title>
       <link>http://paulsec.github.io/posts/diving-into-xss-googles-game/</link>
       <pubDate>Mon, 02 Jun 2014 00:00:00 +0000</pubDate>
-      
       <guid>http://paulsec.github.io/posts/diving-into-xss-googles-game/</guid>
       <description>Hi there, this post deals with the game released by Google few days ago about XSS vulnerabilities that you can find here.
 I&amp;rsquo;ll enumerate some of the solution I found on the Internet which were (in my opnion) interesting/fun. This post contains the solutions for all levels. Big spoil.
 Level 1: Hello, world of XSS Well, this one was obvious:
 &amp;lt;script&amp;gt;alert(1);&amp;lt;/script&amp;gt; Level 2: Persistence is key For this one, you had different options:</description>
     </item>
-    
     <item>
       <title>XSS Callback</title>
       <link>http://paulsec.github.io/posts/xss-callback/</link>
       <pubDate>Thu, 20 Mar 2014 00:00:00 +0000</pubDate>
-      
       <guid>http://paulsec.github.io/posts/xss-callback/</guid>
       <description>This post deals with a project I developed : XSS Callback.
 This is not going to be (at least, I hope) a boring post about XSS exploitation. No.
@@ -31,6 +29,5 @@ Well, one scenario of using XSS would be to steal victim&amp;rsquo;s cookie and 
 However, some issues are present using this technique, let&amp;rsquo;s take an example :
 You target a website Unfortunately, it&amp;rsquo;s too late (or too early depending on your situation) and you go to sleep.</description>
     </item>
-    
   </channel>
 </rss>

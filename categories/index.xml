@@ -6,294 +6,231 @@
     <description>Recent content in Categories on </description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 23 Jul 2023 21:05:29 +0200</lastBuildDate><atom:link href="http://paulsec.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 23 Jul 2023 21:05:29 +0200</lastBuildDate>
+    <atom:link href="http://paulsec.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>clustering</title>
       <link>http://paulsec.github.io/categories/clustering/</link>
       <pubDate>Sun, 23 Jul 2023 21:05:29 +0200</pubDate>
-      
       <guid>http://paulsec.github.io/categories/clustering/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Data science</title>
       <link>http://paulsec.github.io/categories/data-science/</link>
       <pubDate>Sun, 23 Jul 2023 21:05:29 +0200</pubDate>
-      
       <guid>http://paulsec.github.io/categories/data-science/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>incidents</title>
       <link>http://paulsec.github.io/categories/incidents/</link>
       <pubDate>Sun, 23 Jul 2023 21:05:29 +0200</pubDate>
-      
       <guid>http://paulsec.github.io/categories/incidents/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>android</title>
       <link>http://paulsec.github.io/categories/android/</link>
       <pubDate>Fri, 13 Aug 2021 17:25:35 +0200</pubDate>
-      
       <guid>http://paulsec.github.io/categories/android/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>frida</title>
       <link>http://paulsec.github.io/categories/frida/</link>
       <pubDate>Fri, 13 Aug 2021 17:25:35 +0200</pubDate>
-      
       <guid>http://paulsec.github.io/categories/frida/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>instrumentation</title>
       <link>http://paulsec.github.io/categories/instrumentation/</link>
       <pubDate>Fri, 13 Aug 2021 17:25:35 +0200</pubDate>
-      
       <guid>http://paulsec.github.io/categories/instrumentation/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>objection</title>
       <link>http://paulsec.github.io/categories/objection/</link>
       <pubDate>Fri, 13 Aug 2021 17:25:35 +0200</pubDate>
-      
       <guid>http://paulsec.github.io/categories/objection/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>research</title>
       <link>http://paulsec.github.io/categories/research/</link>
       <pubDate>Fri, 22 May 2020 15:29:02 +0200</pubDate>
-      
       <guid>http://paulsec.github.io/categories/research/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>reverse</title>
       <link>http://paulsec.github.io/categories/reverse/</link>
       <pubDate>Fri, 22 May 2020 15:29:02 +0200</pubDate>
-      
       <guid>http://paulsec.github.io/categories/reverse/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>smali</title>
       <link>http://paulsec.github.io/categories/smali/</link>
       <pubDate>Fri, 22 May 2020 15:29:02 +0200</pubDate>
-      
       <guid>http://paulsec.github.io/categories/smali/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>bugfix</title>
       <link>http://paulsec.github.io/categories/bugfix/</link>
       <pubDate>Fri, 08 May 2020 17:29:40 +0200</pubDate>
-      
       <guid>http://paulsec.github.io/categories/bugfix/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>ionic</title>
       <link>http://paulsec.github.io/categories/ionic/</link>
       <pubDate>Fri, 08 May 2020 17:29:40 +0200</pubDate>
-      
       <guid>http://paulsec.github.io/categories/ionic/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>whid</title>
       <link>http://paulsec.github.io/categories/whid/</link>
       <pubDate>Fri, 08 May 2020 17:29:40 +0200</pubDate>
-      
       <guid>http://paulsec.github.io/categories/whid/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>ctf</title>
       <link>http://paulsec.github.io/categories/ctf/</link>
       <pubDate>Sun, 07 May 2017 00:00:00 +0000</pubDate>
-      
       <guid>http://paulsec.github.io/categories/ctf/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>write-up</title>
       <link>http://paulsec.github.io/categories/write-up/</link>
       <pubDate>Sun, 07 May 2017 00:00:00 +0000</pubDate>
-      
       <guid>http://paulsec.github.io/categories/write-up/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>sslscan</title>
       <link>http://paulsec.github.io/categories/sslscan/</link>
       <pubDate>Sun, 07 Jun 2015 00:00:00 +0000</pubDate>
-      
       <guid>http://paulsec.github.io/categories/sslscan/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>upnp</title>
       <link>http://paulsec.github.io/categories/upnp/</link>
       <pubDate>Thu, 03 Jul 2014 00:00:00 +0000</pubDate>
-      
       <guid>http://paulsec.github.io/categories/upnp/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>vuln</title>
       <link>http://paulsec.github.io/categories/vuln/</link>
       <pubDate>Thu, 03 Jul 2014 00:00:00 +0000</pubDate>
-      
       <guid>http://paulsec.github.io/categories/vuln/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>vulnhub</title>
       <link>http://paulsec.github.io/categories/vulnhub/</link>
       <pubDate>Thu, 12 Jun 2014 00:00:00 +0000</pubDate>
-      
       <guid>http://paulsec.github.io/categories/vulnhub/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>web</title>
       <link>http://paulsec.github.io/categories/web/</link>
       <pubDate>Mon, 02 Jun 2014 00:00:00 +0000</pubDate>
-      
       <guid>http://paulsec.github.io/categories/web/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>xss</title>
       <link>http://paulsec.github.io/categories/xss/</link>
       <pubDate>Mon, 02 Jun 2014 00:00:00 +0000</pubDate>
-      
       <guid>http://paulsec.github.io/categories/xss/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>hql</title>
       <link>http://paulsec.github.io/categories/hql/</link>
       <pubDate>Mon, 05 May 2014 00:00:00 +0000</pubDate>
-      
       <guid>http://paulsec.github.io/categories/hql/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>conference</title>
       <link>http://paulsec.github.io/categories/conference/</link>
       <pubDate>Tue, 29 Apr 2014 00:00:00 +0000</pubDate>
-      
       <guid>http://paulsec.github.io/categories/conference/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>slides</title>
       <link>http://paulsec.github.io/categories/slides/</link>
       <pubDate>Tue, 29 Apr 2014 00:00:00 +0000</pubDate>
-      
       <guid>http://paulsec.github.io/categories/slides/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>talk</title>
       <link>http://paulsec.github.io/categories/talk/</link>
       <pubDate>Tue, 29 Apr 2014 00:00:00 +0000</pubDate>
-      
       <guid>http://paulsec.github.io/categories/talk/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>exploit</title>
       <link>http://paulsec.github.io/categories/exploit/</link>
       <pubDate>Mon, 14 Apr 2014 00:00:00 +0000</pubDate>
-      
       <guid>http://paulsec.github.io/categories/exploit/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>programming</title>
       <link>http://paulsec.github.io/categories/programming/</link>
       <pubDate>Fri, 28 Mar 2014 00:00:00 +0000</pubDate>
-      
       <guid>http://paulsec.github.io/categories/programming/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>python</title>
       <link>http://paulsec.github.io/categories/python/</link>
       <pubDate>Fri, 28 Mar 2014 00:00:00 +0000</pubDate>
-      
       <guid>http://paulsec.github.io/categories/python/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>javascript</title>
       <link>http://paulsec.github.io/categories/javascript/</link>
       <pubDate>Thu, 20 Mar 2014 00:00:00 +0000</pubDate>
-      
       <guid>http://paulsec.github.io/categories/javascript/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>html</title>
       <link>http://paulsec.github.io/categories/html/</link>
       <pubDate>Sun, 09 Mar 2014 00:00:00 +0000</pubDate>
-      
       <guid>http://paulsec.github.io/categories/html/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>blog</title>
       <link>http://paulsec.github.io/categories/blog/</link>
       <pubDate>Tue, 04 Mar 2014 00:00:00 +0000</pubDate>
-      
       <guid>http://paulsec.github.io/categories/blog/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>personal</title>
       <link>http://paulsec.github.io/categories/personal/</link>
       <pubDate>Tue, 04 Mar 2014 00:00:00 +0000</pubDate>
-      
       <guid>http://paulsec.github.io/categories/personal/</guid>
       <description></description>
     </item>
-    
   </channel>
 </rss>

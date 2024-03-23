@@ -6,45 +6,39 @@
     <description>Recent content in research on </description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 22 May 2020 15:29:02 +0200</lastBuildDate><atom:link href="http://paulsec.github.io/categories/research/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 22 May 2020 15:29:02 +0200</lastBuildDate>
+    <atom:link href="http://paulsec.github.io/categories/research/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Android Instrumentation with Smali: A survival guide</title>
       <link>http://paulsec.github.io/posts/android-smali-primer/</link>
       <pubDate>Fri, 22 May 2020 15:29:02 +0200</pubDate>
-      
       <guid>http://paulsec.github.io/posts/android-smali-primer/</guid>
       <description>Hi everyone!
 This article aims at providing you survival steps while tinkering around with Smali &amp;amp; Android applications. The name of the original application I did my search on will remain secret but I created a dummy application doing the same so that you can do it on your own. The link of the MainActivity.java and MainActivity.smali is here
 Create a dummy application with Android Studio and just import this. PLACEHOLDER_* strings will have to be replaced with proper ones if you want to try.</description>
     </item>
-    
     <item>
       <title>Running SSLScan on 5k servers taken from Alexa&#39;s top 10k</title>
       <link>http://paulsec.github.io/posts/running-sslscan-on-5k-servers-taken-from-alexas-top-10k/</link>
       <pubDate>Sun, 07 Jun 2015 00:00:00 +0000</pubDate>
-      
       <guid>http://paulsec.github.io/posts/running-sslscan-on-5k-servers-taken-from-alexas-top-10k/</guid>
       <description>After analyzing the HTTP Security Headers from the top 10k Alexa websites, I decided looking at the SSL Ciphers used on those websites.
 These results are coming from a scan on port 443 for all those domains. Only 4715 servers replied.
 The OpenSSL version installed on my server did not support SSLv2 so SSLv2 ciphers have not been detected.
 Here are the results:</description>
     </item>
-    
     <item>
       <title>Experiments with UPnP</title>
       <link>http://paulsec.github.io/posts/experiments-with-upnp/</link>
       <pubDate>Thu, 03 Jul 2014 00:00:00 +0000</pubDate>
-      
       <guid>http://paulsec.github.io/posts/experiments-with-upnp/</guid>
       <description>This post deals with recent observations regarding UPnP (Universal Plug and Play) protocol &amp;amp; Routers. In few words, thanks to this protocol, devices (such as file sharing services, games, ..) can be easily connected/deployed.
 First, I started to do research on my box to find relevant UPnP functionalities by hand, found some but I had trouble to exploit them. Few days ago, David Middlehurst released a tool called &amp;ldquo;UPnP Pentest Toolkit&amp;rdquo;.</description>
     </item>
-    
     <item>
       <title>HTTP Security Headers on top 10k Alexa websites</title>
       <link>http://paulsec.github.io/posts/http-security-headers-on-top-10k-alexa-websites/</link>
       <pubDate>Tue, 13 May 2014 00:00:00 +0000</pubDate>
-      
       <guid>http://paulsec.github.io/posts/http-security-headers-on-top-10k-alexa-websites/</guid>
       <description>EDIT: Added statistics of max-age option.
 Hi there,
@@ -52,12 +46,10 @@ This blog post deals with HTTP Security Headers on top 10k Alexa websites. Based
 To do this study, I did a GET HTTP Request and saved the headers in the HTTP response. This has been done using Python.
 First of all, I scanned 10000 hosts. 555 hosts didn&amp;rsquo;t respond so those statistics are based on 9445 hosts.</description>
     </item>
-    
     <item>
       <title>Blind HQL Injection in REST API using H2 DMBS</title>
       <link>http://paulsec.github.io/posts/blind-hql-injection-in-rest-api-using-h2-dbms/</link>
       <pubDate>Mon, 05 May 2014 00:00:00 +0000</pubDate>
-      
       <guid>http://paulsec.github.io/posts/blind-hql-injection-in-rest-api-using-h2-dbms/</guid>
       <description>This post deals with some research I just did regarding (Blind) HQL injections with H2 as the DataBase Management System.
 First, you should read this post which gives some really useful information regarding HQL injections in general: HQL for pentesters.
@@ -65,24 +57,20 @@ During the assessment, I checked the API calls by using Burp as a proxy and one 
 http://application/API/Users/?req=id=1 The output was a JSON response, such as:
 [{user: &amp;#34;admin&amp;#34;, id: &amp;#34;1&amp;#34;, firstName:&amp;#34;Admin&amp;#34;}] If you changed the id with the numeric value 2, and so on.</description>
     </item>
-    
     <item>
       <title>Python &#43; Transmission daemon = Download easily your favorite TV Show</title>
       <link>http://paulsec.github.io/posts/python-plus-transmission-daemon-equals-download-easily-your-favorite-tv-show/</link>
       <pubDate>Fri, 28 Mar 2014 00:00:00 +0000</pubDate>
-      
       <guid>http://paulsec.github.io/posts/python-plus-transmission-daemon-equals-download-easily-your-favorite-tv-show/</guid>
       <description>This post is about my last project : my TV Show Manager.
 I decided to start it because I wanted something really simple to download my favorite TV Shows. In this post, I&amp;rsquo;ll explain step by step how to reproduce it at home.
 Basically, with this tutorial you&amp;rsquo;ll set up your Raspberry box by :
 Installing / set-uping transmission-daemon Getting one of my latest project TVShowManager that uses my EZTV Python API.</description>
     </item>
-    
     <item>
       <title>XSS Callback</title>
       <link>http://paulsec.github.io/posts/xss-callback/</link>
       <pubDate>Thu, 20 Mar 2014 00:00:00 +0000</pubDate>
-      
       <guid>http://paulsec.github.io/posts/xss-callback/</guid>
       <description>This post deals with a project I developed : XSS Callback.
 This is not going to be (at least, I hope) a boring post about XSS exploitation. No.
@@ -90,6 +78,5 @@ Well, one scenario of using XSS would be to steal victim&amp;rsquo;s cookie and 
 However, some issues are present using this technique, let&amp;rsquo;s take an example :
 You target a website Unfortunately, it&amp;rsquo;s too late (or too early depending on your situation) and you go to sleep.</description>
     </item>
-    
   </channel>
 </rss>

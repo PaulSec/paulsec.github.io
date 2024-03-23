@@ -6,12 +6,12 @@
     <description>Recent content in vulnhub on </description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 12 Jun 2014 00:00:00 +0000</lastBuildDate><atom:link href="http://paulsec.github.io/categories/vulnhub/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 12 Jun 2014 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://paulsec.github.io/categories/vulnhub/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Kioptrix 3 Write-up</title>
       <link>http://paulsec.github.io/posts/kioptrix-3-write-up/</link>
       <pubDate>Thu, 12 Jun 2014 00:00:00 +0000</pubDate>
-      
       <guid>http://paulsec.github.io/posts/kioptrix-3-write-up/</guid>
       <description>This has been some long time I haven&amp;rsquo;t written another write-up. This one&amp;rsquo;s for Kioptrix 3 that you can find here.
 Host Discovery $ nmap -sP 192.168.56.1/24 and we got the IP address : 192.168.56.101.
@@ -19,12 +19,10 @@ As it was explained, you need to add 192.168.56.101 kioptrix3.com in your /etc/h
 Fingerprinting Then, let&amp;rsquo;s find what kind of services are running on the host machine.
 $ nmap 192.168.56.101 -sV -A Starting Nmap 6.46 ( http://nmap.</description>
     </item>
-    
     <item>
       <title>BWApp Write-Up</title>
       <link>http://paulsec.github.io/posts/bwapp-write-up/</link>
       <pubDate>Mon, 21 Apr 2014 00:00:00 +0000</pubDate>
-      
       <guid>http://paulsec.github.io/posts/bwapp-write-up/</guid>
       <description>This post contains the steps to get a root shell with bWapp VM
 Host discovery As always, we need to discover where the machine is on our network. To do so, let&amp;rsquo;s use Nmap:
@@ -33,24 +31,20 @@ nmap -sV 192.168.1.10 Fig. Nmap scan result
 A lot of services were open, such as: VNC, FTP, etc.
 As I saw it in the scan report, I decided to scan the port 80 with Nikto.</description>
     </item>
-    
     <item>
       <title>Scream Write-up</title>
       <link>http://paulsec.github.io/posts/scream-write-up/</link>
       <pubDate>Wed, 16 Apr 2014 00:00:00 +0000</pubDate>
-      
       <guid>http://paulsec.github.io/posts/scream-write-up/</guid>
       <description>This post contains the steps to get a root shell with Scream VM
 This VM can he found here. Have a look to find even more VMs. But before starting the report, I&amp;rsquo;d like to congratulate g0tmi1k for his awesome tool : VulnInjector.
 Ok, let&amp;rsquo;s do this write-up !
 Host discovery As always, we need to discover where the machine is on our network. To do so, let&amp;rsquo;s use Nmap:</description>
     </item>
-    
     <item>
       <title>Exploiting KB Vulnerable Web App 1 Write-Up</title>
       <link>http://paulsec.github.io/posts/exploit-kb-vulnerable-web-app-1-write-up/</link>
       <pubDate>Tue, 15 Apr 2014 00:00:00 +0000</pubDate>
-      
       <guid>http://paulsec.github.io/posts/exploit-kb-vulnerable-web-app-1-write-up/</guid>
       <description>This post contains the steps to get a root shell with Exploit KB Vulnerable Web App 1 VM
 This VM can he found here. Have a look to find even more VMs
@@ -58,12 +52,10 @@ Host discovery First, we need to discover where the machine is on our network. T
 nmap -sP 192.168.1.1/24 Fingerprinting After getting the IP address, we need to do some fingerprinting.
 nmap -sV 192.168.1.23 Fig.</description>
     </item>
-    
     <item>
       <title>Kioptrix 2 Write-up</title>
       <link>http://paulsec.github.io/posts/kioptrix-2-write-up/</link>
       <pubDate>Tue, 15 Apr 2014 00:00:00 +0000</pubDate>
-      
       <guid>http://paulsec.github.io/posts/kioptrix-2-write-up/</guid>
       <description>This post contains the steps to get a root shell with Kioptrix level 2 VM
 This VM can he found here. Have a look to find even more VMs
@@ -71,12 +63,10 @@ Host discovery First, we need to discover where the machine is on our network. T
 nmap -sP 192.168.1.1/24 Fingerprinting After getting the IP address, we need to do some fingerprinting.
 nmap -sV 192.168.1.42 Fig. Nmap scan result</description>
     </item>
-    
     <item>
       <title>Kioptrix 1 Write-up</title>
       <link>http://paulsec.github.io/posts/kioptrix-1-write-up/</link>
       <pubDate>Mon, 14 Apr 2014 00:00:00 +0000</pubDate>
-      
       <guid>http://paulsec.github.io/posts/kioptrix-1-write-up/</guid>
       <description>This post contains the steps to get a root shell with Kioptrix level 1 VM
 This VM can he found here. Have a look to find even more VMs
@@ -84,24 +74,20 @@ Host discovery First, we need to discover where the machine is on our network. T
 nmap -sP 192.168.1.1/24 Fingerprinting After getting the IP address, we need to do some fingerprinting.
 nmap -sV 192.168.1.2 Fig. Nmap scan result</description>
     </item>
-    
     <item>
       <title>SecOS-1 First VM Out</title>
       <link>http://paulsec.github.io/posts/secos-1-first-vm-out/</link>
       <pubDate>Mon, 14 Apr 2014 00:00:00 +0000</pubDate>
-      
       <guid>http://paulsec.github.io/posts/secos-1-first-vm-out/</guid>
       <description>Hey there,
 Quick blog post for the first VM I created to experiment some of your pentesting skills.
 The idea grew up when I developed some security tools (especially the one (CSRFT) I presented at BSides London few weeks ago) to create a legal environment where you could try it out.
 I really liked creating this Boot2root VM. So, I&amp;rsquo;ll create few more that will rely on each other so keep the flags because you&amp;rsquo;ll need it for the next ones.</description>
     </item>
-    
     <item>
       <title>Updating OpenFuck Exploit</title>
       <link>http://paulsec.github.io/posts/updating-openfuck-exploit/</link>
       <pubDate>Mon, 14 Apr 2014 00:00:00 +0000</pubDate>
-      
       <guid>http://paulsec.github.io/posts/updating-openfuck-exploit/</guid>
       <description>This blog post will be quite fast and will provide you the steps to update the OpenFuck exploit.
 This exploit is pretty old but you might need it if you have fun with some vulnerable VMs. Not giving any hint. :-)
@@ -109,12 +95,10 @@ Thanks to this blog, I&amp;rsquo;ve been able to update the exploit.
 Here are the steps to make this work :
 1) Add those headers : #include &amp;lt;openssl/rc4.h&amp;gt; #include &amp;lt;openssl/md5.h&amp;gt; 2) Update the URL of the C file.</description>
     </item>
-    
     <item>
       <title>VulnOS Write-up</title>
       <link>http://paulsec.github.io/posts/vulnos-write-up/</link>
       <pubDate>Tue, 08 Apr 2014 00:00:00 +0000</pubDate>
-      
       <guid>http://paulsec.github.io/posts/vulnos-write-up/</guid>
       <description>This contains the solution of the VM: VulnOS.
 This is my first write-up for a VM and I&amp;rsquo;m doing it for VulnOS which is hosted on VulnHub (Great resource if you want to improve your pentesting skills).
@@ -122,6 +106,5 @@ In this &amp;rsquo;tutorial&amp;rsquo;, I&amp;rsquo;m gonna give you the steps I
 Discovery First, start by scanning the network to discover where&amp;rsquo;s the host.
 nmap -sV 192.168.56.1/24 Starting Nmap 6.</description>
     </item>
-    
   </channel>
 </rss>

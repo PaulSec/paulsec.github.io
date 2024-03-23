@@ -6,18 +6,17 @@
     <description>Recent content in web on </description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 02 Jun 2014 00:00:00 +0000</lastBuildDate><atom:link href="http://paulsec.github.io/categories/web/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 02 Jun 2014 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://paulsec.github.io/categories/web/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Diving into XSS googles game</title>
       <link>http://paulsec.github.io/posts/diving-into-xss-googles-game/</link>
       <pubDate>Mon, 02 Jun 2014 00:00:00 +0000</pubDate>
-      
       <guid>http://paulsec.github.io/posts/diving-into-xss-googles-game/</guid>
       <description>Hi there, this post deals with the game released by Google few days ago about XSS vulnerabilities that you can find here.
 I&amp;rsquo;ll enumerate some of the solution I found on the Internet which were (in my opnion) interesting/fun. This post contains the solutions for all levels. Big spoil.
 Level 1: Hello, world of XSS Well, this one was obvious:
 &amp;lt;script&amp;gt;alert(1);&amp;lt;/script&amp;gt; Level 2: Persistence is key For this one, you had different options:</description>
     </item>
-    
   </channel>
 </rss>
