@@ -14,7 +14,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.120.4">
+<meta name="generator" content="Hugo 0.126.1">
 
     
     
@@ -23,26 +23,29 @@
 <title>Kioptrix 2 Write-up • </title>
 
 
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Kioptrix 2 Write-up"/>
-<meta name="twitter:description" content="This post contains the steps to get a root shell with Kioptrix level 2 VM
-This VM can he found here. Have a look to find even more VMs
-Host discovery First, we need to discover where the machine is on our network. To do so, let&rsquo;s use Nmap:
-nmap -sP 192.168.1.1/24 Fingerprinting After getting the IP address, we need to do some fingerprinting.
-nmap -sV 192.168.1.42 Fig. Nmap scan result"/>
-<meta name="twitter:site" content="@PaulWebSec"/>
 
-<meta property="og:title" content="Kioptrix 2 Write-up" />
-<meta property="og:description" content="This post contains the steps to get a root shell with Kioptrix level 2 VM
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Kioptrix 2 Write-up">
+  <meta name="twitter:description" content="This post contains the steps to get a root shell with Kioptrix level 2 VM
 This VM can he found here. Have a look to find even more VMs
-Host discovery First, we need to discover where the machine is on our network. To do so, let&rsquo;s use Nmap:
+Host discovery First, we need to discover where the machine is on our network. To do so, let’s use Nmap:
 nmap -sP 192.168.1.1/24 Fingerprinting After getting the IP address, we need to do some fingerprinting.
-nmap -sV 192.168.1.42 Fig. Nmap scan result" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="http://paulsec.github.io/posts/kioptrix-2-write-up/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2014-04-15T00:00:00+00:00" />
-<meta property="article:modified_time" content="2014-04-15T00:00:00+00:00" /><meta property="og:site_name" content="PaulSec&#39;s Blog" />
+nmap -sV 192.168.1.42 Fig. Nmap scan result">
+      <meta name="twitter:site" content="@PaulWebSec">
 
+<meta property="og:url" content="http://paulsec.github.io/posts/kioptrix-2-write-up/">
+  <meta property="og:site_name" content="PaulSec&#39;s Blog">
+  <meta property="og:title" content="Kioptrix 2 Write-up">
+  <meta property="og:description" content="This post contains the steps to get a root shell with Kioptrix level 2 VM
+This VM can he found here. Have a look to find even more VMs
+Host discovery First, we need to discover where the machine is on our network. To do so, let’s use Nmap:
+nmap -sP 192.168.1.1/24 Fingerprinting After getting the IP address, we need to do some fingerprinting.
+nmap -sV 192.168.1.42 Fig. Nmap scan result">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2014-04-15T00:00:00+00:00">
+    <meta property="article:modified_time" content="2014-04-15T00:00:00+00:00">
 
 
     
@@ -142,6 +145,7 @@ nmap -sV 192.168.1.42 Fig. Nmap scan result" />
         <section class="social">
 	
 	<a href="https://twitter.com/@PaulWebSec" rel="me"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a>
+	
 	
 	
 	

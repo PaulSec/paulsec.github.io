@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>personal on </title>
+    <title>Personal on </title>
     <link>http://paulsec.github.io/categories/personal/</link>
-    <description>Recent content in personal on </description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Personal on </description>
+    <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 04 Mar 2014 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://paulsec.github.io/categories/personal/index.xml" rel="self" type="application/rss+xml" />
@@ -13,9 +13,7 @@
       <link>http://paulsec.github.io/posts/starting-my-own-blog/</link>
       <pubDate>Tue, 04 Mar 2014 00:00:00 +0000</pubDate>
       <guid>http://paulsec.github.io/posts/starting-my-own-blog/</guid>
-      <description>Starting my own blog has been something I really wanted to do. I&amp;rsquo;ll add post related to my different projects but also on Web security.
-Here are my different motivations :
-1. Provide a portfolio of my different projects. 2. Explain some problems I had and provide the solution 3. Talk about some geek stuffs. Let&amp;rsquo;s see :) Hope you&amp;rsquo;ll have fun to read me. Cheers and see you soon.</description>
+      <description>Starting my own blog has been something I really wanted to do. I&amp;rsquo;ll add post related to my different projects but also on Web security.&#xA;Here are my different motivations :&#xA;1. Provide a portfolio of my different projects. 2. Explain some problems I had and provide the solution 3. Talk about some geek stuffs. Let&amp;rsquo;s see :) Hope you&amp;rsquo;ll have fun to read me. Cheers and see you soon.</description>
     </item>
   </channel>
 </rss>

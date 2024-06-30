@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>sslscan on </title>
+    <title>Sslscan on </title>
     <link>http://paulsec.github.io/categories/sslscan/</link>
-    <description>Recent content in sslscan on </description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Sslscan on </description>
+    <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 07 Jun 2015 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://paulsec.github.io/categories/sslscan/index.xml" rel="self" type="application/rss+xml" />
@@ -13,10 +13,7 @@
       <link>http://paulsec.github.io/posts/running-sslscan-on-5k-servers-taken-from-alexas-top-10k/</link>
       <pubDate>Sun, 07 Jun 2015 00:00:00 +0000</pubDate>
       <guid>http://paulsec.github.io/posts/running-sslscan-on-5k-servers-taken-from-alexas-top-10k/</guid>
-      <description>After analyzing the HTTP Security Headers from the top 10k Alexa websites, I decided looking at the SSL Ciphers used on those websites.
-These results are coming from a scan on port 443 for all those domains. Only 4715 servers replied.
-The OpenSSL version installed on my server did not support SSLv2 so SSLv2 ciphers have not been detected.
-Here are the results:</description>
+      <description>After analyzing the HTTP Security Headers from the top 10k Alexa websites, I decided looking at the SSL Ciphers used on those websites.&#xA;These results are coming from a scan on port 443 for all those domains. Only 4715 servers replied.&#xA;The OpenSSL version installed on my server did not support SSLv2 so SSLv2 ciphers have not been detected.&#xA;Here are the results:</description>
     </item>
   </channel>
 </rss>

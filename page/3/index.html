@@ -11,23 +11,25 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.120.4">
+<meta name="generator" content="Hugo 0.126.1">
 
     
 
 <title></title>
 
 
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content=""/>
-<meta name="twitter:description" content="PaulSec&#39;s Blog. Security &amp; lulz."/>
-<meta name="twitter:site" content="@PaulWebSec"/>
 
-<meta property="og:title" content="" />
-<meta property="og:description" content="PaulSec&#39;s Blog. Security &amp; lulz." />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="http://paulsec.github.io/" /><meta property="og:site_name" content="PaulSec&#39;s Blog" />
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="PaulSec&#39;s Blog">
+  <meta name="twitter:description" content="PaulSec&#39;s Blog. Security &amp; lulz.">
+      <meta name="twitter:site" content="@PaulWebSec">
 
+<meta property="og:url" content="http://paulsec.github.io/">
+  <meta property="og:site_name" content="PaulSec&#39;s Blog">
+  <meta property="og:title" content="PaulSec&#39;s Blog">
+  <meta property="og:description" content="PaulSec&#39;s Blog. Security &amp; lulz.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="website">
 
 
     
@@ -132,6 +134,7 @@
 	
 	
 	
+	
 	<a href="https://github.com/PaulSec" rel="me"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a>
 	
 	
@@ -178,6 +181,31 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
   <div class="post-list">
     
     
+      
+        
+      
+      <div class="post-list__item">
+        <span class="item__title--big">
+          <a href="/posts/kioptrix-3-write-up/" >Kioptrix 3 Write-up</a>
+        </span>
+        <span class="item__date">
+          Jun 12, 2014
+        </span>
+        <span >
+        
+        This has been some long time I haven&rsquo;t written another write-up. This one&rsquo;s for Kioptrix 3 that you can find here.
+Host Discovery $ nmap -sP 192.168.56.1/24 and we got the IP address : 192.168.56.101.
+As it was explained, you need to add 192.168.56.101 kioptrix3.com in your /etc/hosts.
+Fingerprinting Then, let&rsquo;s find what kind of services are running on the host machine.
+$ nmap 192.168.56.101 -sV -A Starting Nmap 6.46 ( http://nmap.
+        
+        </span>
+        
+          ... <a class="read-more-symbol" href="/posts/kioptrix-3-write-up/">➦</a>
+        
+        </div>
+        
+     
       
         
       
@@ -399,31 +427,6 @@ nmap -sV 192.168.1.42 Fig. Nmap scan result
         </span>
         
           ... <a class="read-more-symbol" href="/posts/kioptrix-2-write-up/">➦</a>
-        
-        </div>
-        
-     
-      
-        
-      
-      <div class="post-list__item">
-        <span class="item__title--big">
-          <a href="/posts/kioptrix-1-write-up/" >Kioptrix 1 Write-up</a>
-        </span>
-        <span class="item__date">
-          Apr 14, 2014
-        </span>
-        <span >
-        
-        This post contains the steps to get a root shell with Kioptrix level 1 VM
-This VM can he found here. Have a look to find even more VMs
-Host discovery First, we need to discover where the machine is on our network. To do so, let&rsquo;s use Nmap:
-nmap -sP 192.168.1.1/24 Fingerprinting After getting the IP address, we need to do some fingerprinting.
-nmap -sV 192.168.1.2 Fig. Nmap scan result
-        
-        </span>
-        
-          ... <a class="read-more-symbol" href="/posts/kioptrix-1-write-up/">➦</a>
         
         </div>
         

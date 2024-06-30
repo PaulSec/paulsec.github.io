@@ -14,7 +14,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.120.4">
+<meta name="generator" content="Hugo 0.126.1">
 
     
     
@@ -23,24 +23,27 @@
 <title>Dealing with HTML submits conflicts • </title>
 
 
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Dealing with HTML submits conflicts"/>
-<meta name="twitter:description" content="This first post is related with one of my project : CSRFT. CSRFT is a Cross Site Request Forgery (CSRF) vulnerabilities Toolkit.
-My toolkit allows you to exploit either GET and POST HTTP Requests. During some testings, I had issues with some specific forms.
-Let&rsquo;s take an example of such form :
-&lt;form action=&#34;http://website.com/blog/&#34; id=&#34;form&#34; method=&#34;get&#34;&gt; &lt;label class=&#34;assistive-text&#34; for=&#34;s&#34;&gt;Search&lt;/label&gt; &lt;input class=&#34;field&#34; id=&#34;s&#34; name=&#34;s&#34; placeholder=&#34;Search&#34; type=&#34;text&#34; value=&#34;Search Value&#34;/&gt; &lt;input class=&#34;submit&#34; id=&#34;searchsubmit&#34; name=&#34;submit&#34; type=&#34;submit&#34; value=&#34;Search&#34;/&gt; &lt;/form&gt; The code injected on the page to submit the form was like that :"/>
-<meta name="twitter:site" content="@PaulWebSec"/>
 
-<meta property="og:title" content="Dealing with HTML submits conflicts" />
-<meta property="og:description" content="This first post is related with one of my project : CSRFT. CSRFT is a Cross Site Request Forgery (CSRF) vulnerabilities Toolkit.
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Dealing with HTML submits conflicts">
+  <meta name="twitter:description" content="This first post is related with one of my project : CSRFT. CSRFT is a Cross Site Request Forgery (CSRF) vulnerabilities Toolkit.
 My toolkit allows you to exploit either GET and POST HTTP Requests. During some testings, I had issues with some specific forms.
-Let&rsquo;s take an example of such form :
-&lt;form action=&#34;http://website.com/blog/&#34; id=&#34;form&#34; method=&#34;get&#34;&gt; &lt;label class=&#34;assistive-text&#34; for=&#34;s&#34;&gt;Search&lt;/label&gt; &lt;input class=&#34;field&#34; id=&#34;s&#34; name=&#34;s&#34; placeholder=&#34;Search&#34; type=&#34;text&#34; value=&#34;Search Value&#34;/&gt; &lt;input class=&#34;submit&#34; id=&#34;searchsubmit&#34; name=&#34;submit&#34; type=&#34;submit&#34; value=&#34;Search&#34;/&gt; &lt;/form&gt; The code injected on the page to submit the form was like that :" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="http://paulsec.github.io/posts/dealing-with-html-submits-conflict/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2014-03-09T00:00:00+00:00" />
-<meta property="article:modified_time" content="2014-03-09T00:00:00+00:00" /><meta property="og:site_name" content="PaulSec&#39;s Blog" />
+Let’s take an example of such form :
+&lt;form action=&#34;http://website.com/blog/&#34; id=&#34;form&#34; method=&#34;get&#34;&gt; &lt;label class=&#34;assistive-text&#34; for=&#34;s&#34;&gt;Search&lt;/label&gt; &lt;input class=&#34;field&#34; id=&#34;s&#34; name=&#34;s&#34; placeholder=&#34;Search&#34; type=&#34;text&#34; value=&#34;Search Value&#34;/&gt; &lt;input class=&#34;submit&#34; id=&#34;searchsubmit&#34; name=&#34;submit&#34; type=&#34;submit&#34; value=&#34;Search&#34;/&gt; &lt;/form&gt; The code injected on the page to submit the form was like that :">
+      <meta name="twitter:site" content="@PaulWebSec">
 
+<meta property="og:url" content="http://paulsec.github.io/posts/dealing-with-html-submits-conflict/">
+  <meta property="og:site_name" content="PaulSec&#39;s Blog">
+  <meta property="og:title" content="Dealing with HTML submits conflicts">
+  <meta property="og:description" content="This first post is related with one of my project : CSRFT. CSRFT is a Cross Site Request Forgery (CSRF) vulnerabilities Toolkit.
+My toolkit allows you to exploit either GET and POST HTTP Requests. During some testings, I had issues with some specific forms.
+Let’s take an example of such form :
+&lt;form action=&#34;http://website.com/blog/&#34; id=&#34;form&#34; method=&#34;get&#34;&gt; &lt;label class=&#34;assistive-text&#34; for=&#34;s&#34;&gt;Search&lt;/label&gt; &lt;input class=&#34;field&#34; id=&#34;s&#34; name=&#34;s&#34; placeholder=&#34;Search&#34; type=&#34;text&#34; value=&#34;Search Value&#34;/&gt; &lt;input class=&#34;submit&#34; id=&#34;searchsubmit&#34; name=&#34;submit&#34; type=&#34;submit&#34; value=&#34;Search&#34;/&gt; &lt;/form&gt; The code injected on the page to submit the form was like that :">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2014-03-09T00:00:00+00:00">
+    <meta property="article:modified_time" content="2014-03-09T00:00:00+00:00">
 
 
     
@@ -140,6 +143,7 @@ Let&rsquo;s take an example of such form :
         <section class="social">
 	
 	<a href="https://twitter.com/@PaulWebSec" rel="me"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a>
+	
 	
 	
 	

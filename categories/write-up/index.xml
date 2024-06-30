@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>write-up on </title>
+    <title>Write-Up on </title>
     <link>http://paulsec.github.io/categories/write-up/</link>
-    <description>Recent content in write-up on </description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Write-Up on </description>
+    <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 07 May 2017 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://paulsec.github.io/categories/write-up/index.xml" rel="self" type="application/rss+xml" />
@@ -13,118 +13,77 @@
       <link>http://paulsec.github.io/posts/bsidescbr-2017-ctf-write-up-derpchat/</link>
       <pubDate>Sun, 07 May 2017 00:00:00 +0000</pubDate>
       <guid>http://paulsec.github.io/posts/bsidescbr-2017-ctf-write-up-derpchat/</guid>
-      <description>Hey there,
-Following my serie of write-ups for the BSidesCBR challs, I will discuss the DerpChat one.
-The instructions for this challenge were:
-This web-based challenge was worth 275 points. Run docker-compose up and then browse to https://web.shell.dance:4443/. After browsing to https://web.shell.dance:4443/, I arrived on a registration/login page. I registered the account test/test and I finally got a page with two inputs: – One too search some messages I suppose – And one in the middle of the page stating: “Hello, could you please send me the link I was after?</description>
+      <description>Hey there,&#xA;Following my serie of write-ups for the BSidesCBR challs, I will discuss the DerpChat one.&#xA;The instructions for this challenge were:&#xA;This web-based challenge was worth 275 points. Run docker-compose up and then browse to https://web.shell.dance:4443/. After browsing to https://web.shell.dance:4443/, I arrived on a registration/login page. I registered the account test/test and I finally got a page with two inputs: – One too search some messages I suppose – And one in the middle of the page stating: “Hello, could you please send me the link I was after?</description>
     </item>
     <item>
       <title>BSidesCBR 2017 CTF Write-Up: Needleinahaystack</title>
       <link>http://paulsec.github.io/posts/bsidescbr-2017-ctf-write-up-needleinahaystack/</link>
       <pubDate>Sat, 06 May 2017 00:00:00 +0000</pubDate>
       <guid>http://paulsec.github.io/posts/bsidescbr-2017-ctf-write-up-needleinahaystack/</guid>
-      <description>Hello everyone!
-Such a long time since I didn’t post any article. Here is a quick write-up for the BSidesCBR Cryto challenge for “needleinahaystack”.
-Before diving in the challenge, huge props to all the organizers and OJ for making those challs available to everyone with Docker containers and stuff (more write-ups coming soon).
-If you guys want to give it a shot, here you go, all challs are available here. The challenge we will discuss in this post (needleinahaystack) is located here.</description>
+      <description>Hello everyone!&#xA;Such a long time since I didn’t post any article. Here is a quick write-up for the BSidesCBR Cryto challenge for “needleinahaystack”.&#xA;Before diving in the challenge, huge props to all the organizers and OJ for making those challs available to everyone with Docker containers and stuff (more write-ups coming soon).&#xA;If you guys want to give it a shot, here you go, all challs are available here. The challenge we will discuss in this post (needleinahaystack) is located here.</description>
     </item>
     <item>
       <title>Kioptrix 3 Write-up</title>
       <link>http://paulsec.github.io/posts/kioptrix-3-write-up/</link>
       <pubDate>Thu, 12 Jun 2014 00:00:00 +0000</pubDate>
       <guid>http://paulsec.github.io/posts/kioptrix-3-write-up/</guid>
-      <description>This has been some long time I haven&amp;rsquo;t written another write-up. This one&amp;rsquo;s for Kioptrix 3 that you can find here.
-Host Discovery $ nmap -sP 192.168.56.1/24 and we got the IP address : 192.168.56.101.
-As it was explained, you need to add 192.168.56.101 kioptrix3.com in your /etc/hosts.
-Fingerprinting Then, let&amp;rsquo;s find what kind of services are running on the host machine.
-$ nmap 192.168.56.101 -sV -A Starting Nmap 6.46 ( http://nmap.</description>
+      <description>This has been some long time I haven&amp;rsquo;t written another write-up. This one&amp;rsquo;s for Kioptrix 3 that you can find here.&#xA;Host Discovery $ nmap -sP 192.168.56.1/24 and we got the IP address : 192.168.56.101.&#xA;As it was explained, you need to add 192.168.56.101 kioptrix3.com in your /etc/hosts.&#xA;Fingerprinting Then, let&amp;rsquo;s find what kind of services are running on the host machine.&#xA;$ nmap 192.168.56.101 -sV -A Starting Nmap 6.46 ( http://nmap.</description>
     </item>
     <item>
       <title>BWApp Write-Up</title>
       <link>http://paulsec.github.io/posts/bwapp-write-up/</link>
       <pubDate>Mon, 21 Apr 2014 00:00:00 +0000</pubDate>
       <guid>http://paulsec.github.io/posts/bwapp-write-up/</guid>
-      <description>This post contains the steps to get a root shell with bWapp VM
-Host discovery As always, we need to discover where the machine is on our network. To do so, let&amp;rsquo;s use Nmap:
-nmap -sP 192.168.1.1/24 Fingerprinting After getting the IP address (192.168.1.10), we need to do some fingerprinting.
-nmap -sV 192.168.1.10 Fig. Nmap scan result
-A lot of services were open, such as: VNC, FTP, etc.
-As I saw it in the scan report, I decided to scan the port 80 with Nikto.</description>
+      <description>This post contains the steps to get a root shell with bWapp VM&#xA;Host discovery As always, we need to discover where the machine is on our network. To do so, let&amp;rsquo;s use Nmap:&#xA;nmap -sP 192.168.1.1/24 Fingerprinting After getting the IP address (192.168.1.10), we need to do some fingerprinting.&#xA;nmap -sV 192.168.1.10 Fig. Nmap scan result&#xA;A lot of services were open, such as: VNC, FTP, etc.&#xA;As I saw it in the scan report, I decided to scan the port 80 with Nikto.</description>
     </item>
     <item>
       <title>Scream Write-up</title>
       <link>http://paulsec.github.io/posts/scream-write-up/</link>
       <pubDate>Wed, 16 Apr 2014 00:00:00 +0000</pubDate>
       <guid>http://paulsec.github.io/posts/scream-write-up/</guid>
-      <description>This post contains the steps to get a root shell with Scream VM
-This VM can he found here. Have a look to find even more VMs. But before starting the report, I&amp;rsquo;d like to congratulate g0tmi1k for his awesome tool : VulnInjector.
-Ok, let&amp;rsquo;s do this write-up !
-Host discovery As always, we need to discover where the machine is on our network. To do so, let&amp;rsquo;s use Nmap:</description>
+      <description>This post contains the steps to get a root shell with Scream VM&#xA;This VM can he found here. Have a look to find even more VMs. But before starting the report, I&amp;rsquo;d like to congratulate g0tmi1k for his awesome tool : VulnInjector.&#xA;Ok, let&amp;rsquo;s do this write-up !&#xA;Host discovery As always, we need to discover where the machine is on our network. To do so, let&amp;rsquo;s use Nmap:</description>
     </item>
     <item>
       <title>Exploiting KB Vulnerable Web App 1 Write-Up</title>
       <link>http://paulsec.github.io/posts/exploit-kb-vulnerable-web-app-1-write-up/</link>
       <pubDate>Tue, 15 Apr 2014 00:00:00 +0000</pubDate>
       <guid>http://paulsec.github.io/posts/exploit-kb-vulnerable-web-app-1-write-up/</guid>
-      <description>This post contains the steps to get a root shell with Exploit KB Vulnerable Web App 1 VM
-This VM can he found here. Have a look to find even more VMs
-Host discovery First, we need to discover where the machine is on our network. To do so, let&amp;rsquo;s use Nmap:
-nmap -sP 192.168.1.1/24 Fingerprinting After getting the IP address, we need to do some fingerprinting.
-nmap -sV 192.168.1.23 Fig.</description>
+      <description>This post contains the steps to get a root shell with Exploit KB Vulnerable Web App 1 VM&#xA;This VM can he found here. Have a look to find even more VMs&#xA;Host discovery First, we need to discover where the machine is on our network. To do so, let&amp;rsquo;s use Nmap:&#xA;nmap -sP 192.168.1.1/24 Fingerprinting After getting the IP address, we need to do some fingerprinting.&#xA;nmap -sV 192.168.1.23 Fig.</description>
     </item>
     <item>
       <title>Kioptrix 2 Write-up</title>
       <link>http://paulsec.github.io/posts/kioptrix-2-write-up/</link>
       <pubDate>Tue, 15 Apr 2014 00:00:00 +0000</pubDate>
       <guid>http://paulsec.github.io/posts/kioptrix-2-write-up/</guid>
-      <description>This post contains the steps to get a root shell with Kioptrix level 2 VM
-This VM can he found here. Have a look to find even more VMs
-Host discovery First, we need to discover where the machine is on our network. To do so, let&amp;rsquo;s use Nmap:
-nmap -sP 192.168.1.1/24 Fingerprinting After getting the IP address, we need to do some fingerprinting.
-nmap -sV 192.168.1.42 Fig. Nmap scan result</description>
+      <description>This post contains the steps to get a root shell with Kioptrix level 2 VM&#xA;This VM can he found here. Have a look to find even more VMs&#xA;Host discovery First, we need to discover where the machine is on our network. To do so, let&amp;rsquo;s use Nmap:&#xA;nmap -sP 192.168.1.1/24 Fingerprinting After getting the IP address, we need to do some fingerprinting.&#xA;nmap -sV 192.168.1.42 Fig. Nmap scan result</description>
     </item>
     <item>
       <title>Kioptrix 1 Write-up</title>
       <link>http://paulsec.github.io/posts/kioptrix-1-write-up/</link>
       <pubDate>Mon, 14 Apr 2014 00:00:00 +0000</pubDate>
       <guid>http://paulsec.github.io/posts/kioptrix-1-write-up/</guid>
-      <description>This post contains the steps to get a root shell with Kioptrix level 1 VM
-This VM can he found here. Have a look to find even more VMs
-Host discovery First, we need to discover where the machine is on our network. To do so, let&amp;rsquo;s use Nmap:
-nmap -sP 192.168.1.1/24 Fingerprinting After getting the IP address, we need to do some fingerprinting.
-nmap -sV 192.168.1.2 Fig. Nmap scan result</description>
+      <description>This post contains the steps to get a root shell with Kioptrix level 1 VM&#xA;This VM can he found here. Have a look to find even more VMs&#xA;Host discovery First, we need to discover where the machine is on our network. To do so, let&amp;rsquo;s use Nmap:&#xA;nmap -sP 192.168.1.1/24 Fingerprinting After getting the IP address, we need to do some fingerprinting.&#xA;nmap -sV 192.168.1.2 Fig. Nmap scan result</description>
     </item>
     <item>
       <title>SecOS-1 First VM Out</title>
       <link>http://paulsec.github.io/posts/secos-1-first-vm-out/</link>
       <pubDate>Mon, 14 Apr 2014 00:00:00 +0000</pubDate>
       <guid>http://paulsec.github.io/posts/secos-1-first-vm-out/</guid>
-      <description>Hey there,
-Quick blog post for the first VM I created to experiment some of your pentesting skills.
-The idea grew up when I developed some security tools (especially the one (CSRFT) I presented at BSides London few weeks ago) to create a legal environment where you could try it out.
-I really liked creating this Boot2root VM. So, I&amp;rsquo;ll create few more that will rely on each other so keep the flags because you&amp;rsquo;ll need it for the next ones.</description>
+      <description>Hey there,&#xA;Quick blog post for the first VM I created to experiment some of your pentesting skills.&#xA;The idea grew up when I developed some security tools (especially the one (CSRFT) I presented at BSides London few weeks ago) to create a legal environment where you could try it out.&#xA;I really liked creating this Boot2root VM. So, I&amp;rsquo;ll create few more that will rely on each other so keep the flags because you&amp;rsquo;ll need it for the next ones.</description>
     </item>
     <item>
       <title>Updating OpenFuck Exploit</title>
       <link>http://paulsec.github.io/posts/updating-openfuck-exploit/</link>
       <pubDate>Mon, 14 Apr 2014 00:00:00 +0000</pubDate>
       <guid>http://paulsec.github.io/posts/updating-openfuck-exploit/</guid>
-      <description>This blog post will be quite fast and will provide you the steps to update the OpenFuck exploit.
-This exploit is pretty old but you might need it if you have fun with some vulnerable VMs. Not giving any hint. :-)
-Thanks to this blog, I&amp;rsquo;ve been able to update the exploit.
-Here are the steps to make this work :
-1) Add those headers : #include &amp;lt;openssl/rc4.h&amp;gt; #include &amp;lt;openssl/md5.h&amp;gt; 2) Update the URL of the C file.</description>
+      <description>This blog post will be quite fast and will provide you the steps to update the OpenFuck exploit.&#xA;This exploit is pretty old but you might need it if you have fun with some vulnerable VMs. Not giving any hint. :-)&#xA;Thanks to this blog, I&amp;rsquo;ve been able to update the exploit.&#xA;Here are the steps to make this work :&#xA;1) Add those headers : #include &amp;lt;openssl/rc4.h&amp;gt; #include &amp;lt;openssl/md5.h&amp;gt; 2) Update the URL of the C file.</description>
     </item>
     <item>
       <title>VulnOS Write-up</title>
       <link>http://paulsec.github.io/posts/vulnos-write-up/</link>
       <pubDate>Tue, 08 Apr 2014 00:00:00 +0000</pubDate>
       <guid>http://paulsec.github.io/posts/vulnos-write-up/</guid>
-      <description>This contains the solution of the VM: VulnOS.
-This is my first write-up for a VM and I&amp;rsquo;m doing it for VulnOS which is hosted on VulnHub (Great resource if you want to improve your pentesting skills).
-In this &amp;rsquo;tutorial&amp;rsquo;, I&amp;rsquo;m gonna give you the steps I reproduced to get a shell on the machine.
-Discovery First, start by scanning the network to discover where&amp;rsquo;s the host.
-nmap -sV 192.168.56.1/24 Starting Nmap 6.</description>
+      <description>This contains the solution of the VM: VulnOS.&#xA;This is my first write-up for a VM and I&amp;rsquo;m doing it for VulnOS which is hosted on VulnHub (Great resource if you want to improve your pentesting skills).&#xA;In this &amp;rsquo;tutorial&amp;rsquo;, I&amp;rsquo;m gonna give you the steps I reproduced to get a shell on the machine.&#xA;Discovery First, start by scanning the network to discover where&amp;rsquo;s the host.&#xA;nmap -sV 192.168.56.1/24 Starting Nmap 6.</description>
     </item>
   </channel>
 </rss>

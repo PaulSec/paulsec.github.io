@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>objection on </title>
+    <title>Objection on </title>
     <link>http://paulsec.github.io/categories/objection/</link>
-    <description>Recent content in objection on </description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Objection on </description>
+    <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 13 Aug 2021 17:25:35 +0200</lastBuildDate>
     <atom:link href="http://paulsec.github.io/categories/objection/index.xml" rel="self" type="application/rss+xml" />
@@ -13,10 +13,7 @@
       <link>http://paulsec.github.io/posts/frida-android-primer/</link>
       <pubDate>Fri, 13 Aug 2021 17:25:35 +0200</pubDate>
       <guid>http://paulsec.github.io/posts/frida-android-primer/</guid>
-      <description>Hi everyone!
-Here is a pretty quick blog post on some Frida/Objection things I&amp;rsquo;ve been tinkering with.
-I had this Android application which had premium features and wanted to understand how that mechanism worked and if it was robust enough. Let&amp;rsquo;s see what was the journey on how I&amp;rsquo;ve bypassed it using Frida.
-After disassembling the application with Jadx, I was able to perform a simple grep -r -i &#39;premium&#39; .</description>
+      <description>Hi everyone!&#xA;Here is a pretty quick blog post on some Frida/Objection things I&amp;rsquo;ve been tinkering with.&#xA;I had this Android application which had premium features and wanted to understand how that mechanism worked and if it was robust enough. Let&amp;rsquo;s see what was the journey on how I&amp;rsquo;ve bypassed it using Frida.&#xA;After disassembling the application with Jadx, I was able to perform a simple grep -r -i &#39;premium&#39; .</description>
     </item>
   </channel>
 </rss>
