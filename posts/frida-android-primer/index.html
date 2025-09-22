@@ -14,7 +14,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.126.1">
+<meta name="generator" content="Hugo 0.142.0">
 
     
     
@@ -29,7 +29,7 @@
   <meta name="twitter:description" content="Hi everyone!
 Here is a pretty quick blog post on some Frida/Objection things I’ve been tinkering with.
 I had this Android application which had premium features and wanted to understand how that mechanism worked and if it was robust enough. Let’s see what was the journey on how I’ve bypassed it using Frida.
-After disassembling the application with Jadx, I was able to perform a simple grep -r -i &#39;premium&#39; .">
+After disassembling the application with Jadx, I was able to perform a simple grep -r -i &#39;premium&#39; . into the sources and leading me to where the Premium checks were done.">
       <meta name="twitter:site" content="@PaulWebSec">
 
 <meta property="og:url" content="http://paulsec.github.io/posts/frida-android-primer/">
@@ -38,7 +38,7 @@ After disassembling the application with Jadx, I was able to perform a simple gr
   <meta property="og:description" content="Hi everyone!
 Here is a pretty quick blog post on some Frida/Objection things I’ve been tinkering with.
 I had this Android application which had premium features and wanted to understand how that mechanism worked and if it was robust enough. Let’s see what was the journey on how I’ve bypassed it using Frida.
-After disassembling the application with Jadx, I was able to perform a simple grep -r -i &#39;premium&#39; .">
+After disassembling the application with Jadx, I was able to perform a simple grep -r -i &#39;premium&#39; . into the sources and leading me to where the Premium checks were done.">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
@@ -174,7 +174,7 @@ After disassembling the application with Jadx, I was able to perform a simple gr
     </div>
     
 <div class="copyright">
-  &copy; 2024 Paul A.
+  &copy; 2025 Paul A.
   
     <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>
   
@@ -360,38 +360,38 @@ Now, let&rsquo;s see how to use Frida to replace that return value with <code>3<
 <h3 id="resources">Resources</h3>
 <p>Here are some links I stumbled upon and which helped me in this small (but fun) journey.</p>
 <table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Frida Releases</td>
-<td><a href="https://github.com/frida/frida/releases">https://github.com/frida/frida/releases</a></td>
-</tr>
-<tr>
-<td>Frida docs</td>
-<td><a href="https://frida.re/docs/android/">https://frida.re/docs/android/</a></td>
-</tr>
-<tr>
-<td>Frida examples</td>
-<td><a href="https://www.fatalerrors.org/a/java-runtime-for-advanced-usage-of-frida-hook-android-app.html">https://www.fatalerrors.org/a/java-runtime-for-advanced-usage-of-frida-hook-android-app.html</a></td>
-</tr>
-<tr>
-<td>Frida snippets</td>
-<td><a href="https://erev0s.com/blog/frida-code-snippets-for-android/">https://erev0s.com/blog/frida-code-snippets-for-android/</a></td>
-</tr>
-<tr>
-<td>Objection</td>
-<td><a href="https://github.com/sensepost/objection">https://github.com/sensepost/objection</a></td>
-</tr>
-<tr>
-<td>Objection Wiki</td>
-<td><a href="https://github.com/sensepost/objection/wiki/Running-On-A-Rooted-Device">https://github.com/sensepost/objection/wiki/Running-On-A-Rooted-Device</a></td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th></th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Frida Releases</td>
+          <td><a href="https://github.com/frida/frida/releases">https://github.com/frida/frida/releases</a></td>
+      </tr>
+      <tr>
+          <td>Frida docs</td>
+          <td><a href="https://frida.re/docs/android/">https://frida.re/docs/android/</a></td>
+      </tr>
+      <tr>
+          <td>Frida examples</td>
+          <td><a href="https://www.fatalerrors.org/a/java-runtime-for-advanced-usage-of-frida-hook-android-app.html">https://www.fatalerrors.org/a/java-runtime-for-advanced-usage-of-frida-hook-android-app.html</a></td>
+      </tr>
+      <tr>
+          <td>Frida snippets</td>
+          <td><a href="https://erev0s.com/blog/frida-code-snippets-for-android/">https://erev0s.com/blog/frida-code-snippets-for-android/</a></td>
+      </tr>
+      <tr>
+          <td>Objection</td>
+          <td><a href="https://github.com/sensepost/objection">https://github.com/sensepost/objection</a></td>
+      </tr>
+      <tr>
+          <td>Objection Wiki</td>
+          <td><a href="https://github.com/sensepost/objection/wiki/Running-On-A-Rooted-Device">https://github.com/sensepost/objection/wiki/Running-On-A-Rooted-Device</a></td>
+      </tr>
+  </tbody>
 </table>
 
   </div>
@@ -416,7 +416,6 @@ Now, let&rsquo;s see how to use Frida to replace that return value with <code>3<
   
 
   
-    
 
 
 </article>
@@ -437,7 +436,6 @@ Now, let&rsquo;s see how to use Frida to replace that return value with <code>3<
         hljs.initHighlightingOnLoad();
     </script>
     
-
 
 
     

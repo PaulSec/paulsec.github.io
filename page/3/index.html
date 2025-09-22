@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-us">
     
-  <head>
+<head>
     <link href="https://gmpg.org/xfn/11" rel="profile">
     <link rel="stylesheet" href="/css/syntax.css">
     
@@ -11,7 +11,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.126.1">
+<meta name="generator" content="Hugo 0.142.0">
 
     
 
@@ -161,7 +161,7 @@
     </div>
     
 <div class="copyright">
-  &copy; 2024 Paul A.
+  &copy; 2025 Paul A.
   
     <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>
   
@@ -178,261 +178,335 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
 
         <div class="content container">
             
-  <div class="post-list">
+<div class="post-list">
+  
+  
+  
+  
+  
+  <div class="post-list__item">
+    <span class="item__title--big">
+      <a href="/posts/kioptrix-3-write-up/" >Kioptrix 3 Write-up</a>
+    </span>
+    <span class="item__date">
+      Jun 12, 2014
+    </span>
+    <span >
+      
+      <p>This has been some long time I haven&rsquo;t written another write-up.
+This one&rsquo;s for Kioptrix 3 that you can find <a href="">here</a>.</p>
+<h3 id="__host-discovery__"><strong>Host Discovery</strong></h3>
+<pre tabindex="0"><code>$ nmap -sP 192.168.56.1/24
+</code></pre><p>and we got the IP address : <code>192.168.56.101</code>.</p>
+<p>As it was explained, you need to add <code>192.168.56.101 kioptrix3.com</code> in your <strong>/etc/hosts</strong>.</p>
+<h3 id="__fingerprinting__"><strong>Fingerprinting</strong></h3>
+<p>Then, let&rsquo;s find what kind of services are running on the host machine.</p>
+<pre tabindex="0"><code>$ nmap 192.168.56.101 -sV -A 
+
+Starting Nmap 6.46 ( http://nmap.org ) at 2014-06-12 20:15 CEST
+Nmap scan report for malicious (192.168.56.101)
+Host is up (0.00034s latency).
+Not shown: 998 closed ports
+PORT   STATE SERVICE VERSION
+22/tcp open  ssh     OpenSSH 4.7p1 Debian 8ubuntu1.2 (protocol 2.0)
+| ssh-hostkey: 
+|   1024 30:e3:f6:dc:2e:22:5d:17:ac:46:02:39:ad:71:cb:49 (DSA)
+|_  2048 9a:82:e6:96:e4:7e:d6:a6:d7:45:44:cb:19:aa:ec:dd (RSA)
+80/tcp open  http    Apache httpd 2.2.8 ((Ubuntu) PHP/5.2.4-2ubuntu5.6 with Suhosin-Patch)
+|_http-methods: No Allow or Public header in OPTIONS response (status code 200)
+title = &#34;kioptrix 3 write up&#34;
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Service detection performed. Please report any incorrect results at http://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 10.59 seconds
+</code></pre><p>Quite obvious, let&rsquo;s check this Web server !</p>
+      
+    </span>
     
+    ... <a class="read-more-symbol" href="/posts/kioptrix-3-write-up/">➦</a>
     
-      
-        
-      
-      <div class="post-list__item">
-        <span class="item__title--big">
-          <a href="/posts/kioptrix-3-write-up/" >Kioptrix 3 Write-up</a>
-        </span>
-        <span class="item__date">
-          Jun 12, 2014
-        </span>
-        <span >
-        
-        This has been some long time I haven&rsquo;t written another write-up. This one&rsquo;s for Kioptrix 3 that you can find here.
-Host Discovery $ nmap -sP 192.168.56.1/24 and we got the IP address : 192.168.56.101.
-As it was explained, you need to add 192.168.56.101 kioptrix3.com in your /etc/hosts.
-Fingerprinting Then, let&rsquo;s find what kind of services are running on the host machine.
-$ nmap 192.168.56.101 -sV -A Starting Nmap 6.46 ( http://nmap.
-        
-        </span>
-        
-          ... <a class="read-more-symbol" href="/posts/kioptrix-3-write-up/">➦</a>
-        
-        </div>
-        
-     
-      
-        
-      
-      <div class="post-list__item">
-        <span class="item__title--big">
-          <a href="/posts/diving-into-xss-googles-game/" >Diving into XSS googles game</a>
-        </span>
-        <span class="item__date">
-          Jun 2, 2014
-        </span>
-        <span >
-        
-        Hi there, this post deals with the game released by Google few days ago about XSS vulnerabilities that you can find here.
-I&rsquo;ll enumerate some of the solution I found on the Internet which were (in my opnion) interesting/fun. This post contains the solutions for all levels. Big spoil.
-Level 1: Hello, world of XSS Well, this one was obvious:
-&lt;script&gt;alert(1);&lt;/script&gt; Level 2: Persistence is key For this one, you had different options:
-        
-        </span>
-        
-          ... <a class="read-more-symbol" href="/posts/diving-into-xss-googles-game/">➦</a>
-        
-        </div>
-        
-     
-      
-        
-      
-      <div class="post-list__item">
-        <span class="item__title--big">
-          <a href="/posts/bobby-write-up/" >Bobby Write-up</a>
-        </span>
-        <span class="item__date">
-          May 15, 2014
-        </span>
-        <span >
-        
-        Hi there,
-Quick blog post on the VM &ldquo;Bobby&rdquo; which is once of the nicest VM I did so far.
-Discovery The first step is always the same: discovering the machine on the network. To do so:
-$ nmap -sV 192.168.1.1/24 I managed to retrieve the IP address: 192.168.1.11.
-Let&rsquo;s start to fingerprint the different services to exploit it.
-Fingerprinting Then, I used Nmap to retrieve the services running:
-$ nmap -sV 192.
-        
-        </span>
-        
-          ... <a class="read-more-symbol" href="/posts/bobby-write-up/">➦</a>
-        
-        </div>
-        
-     
-      
-        
-      
-      <div class="post-list__item">
-        <span class="item__title--big">
-          <a href="/posts/http-security-headers-on-top-10k-alexa-websites/" >HTTP Security Headers on top 10k Alexa websites</a>
-        </span>
-        <span class="item__date">
-          May 13, 2014
-        </span>
-        <span >
-        
-        EDIT: Added statistics of max-age option.
-Hi there,
-This blog post deals with HTTP Security Headers on top 10k Alexa websites. Based on this discussion on netsec, I decided to do some statistics on Alexa ranking.
-To do this study, I did a GET HTTP Request and saved the headers in the HTTP response. This has been done using Python.
-First of all, I scanned 10000 hosts. 555 hosts didn&rsquo;t respond so those statistics are based on 9445 hosts.
-        
-        </span>
-        
-          ... <a class="read-more-symbol" href="/posts/http-security-headers-on-top-10k-alexa-websites/">➦</a>
-        
-        </div>
-        
-     
-      
-        
-      
-      <div class="post-list__item">
-        <span class="item__title--big">
-          <a href="/posts/blind-hql-injection-in-rest-api-using-h2-dbms/" >Blind HQL Injection in REST API using H2 DMBS</a>
-        </span>
-        <span class="item__date">
-          May 5, 2014
-        </span>
-        <span >
-        
-        This post deals with some research I just did regarding (Blind) HQL injections with H2 as the DataBase Management System.
-First, you should read this post which gives some really useful information regarding HQL injections in general: HQL for pentesters.
-During the assessment, I checked the API calls by using Burp as a proxy and one call was:
-http://application/API/Users/?req=id=1 The output was a JSON response, such as:
-[{user: &#34;admin&#34;, id: &#34;1&#34;, firstName:&#34;Admin&#34;}] If you changed the id with the numeric value 2, and so on.
-        
-        </span>
-        
-          ... <a class="read-more-symbol" href="/posts/blind-hql-injection-in-rest-api-using-h2-dbms/">➦</a>
-        
-        </div>
-        
-     
-      
-        
-      
-      <div class="post-list__item">
-        <span class="item__title--big">
-          <a href="/posts/bsides-slides-csrft/" >BSides Slides - CSRFT</a>
-        </span>
-        <span class="item__date">
-          Apr 29, 2014
-        </span>
-        <span >
-        
-        Hey,
-Just a quick post to give you the link to my slides for BSides London today: Here Don&rsquo;t hesitate if you have any feedback, or any good feature.
-You can reach me either on Github and Twitter
-Just few words about the conference which was absolutely amazing. Some really great people were here, good atmosphere and people were really helpful.
-For sure, I&rsquo;ll attend it next year.
-Cheers,
-        
-        </span>
-        
-        </div>
-        
-     
-      
-        
-      
-      <div class="post-list__item">
-        <span class="item__title--big">
-          <a href="/posts/bwapp-write-up/" >BWApp Write-Up</a>
-        </span>
-        <span class="item__date">
-          Apr 21, 2014
-        </span>
-        <span >
-        
-        This post contains the steps to get a root shell with bWapp VM
-Host discovery As always, we need to discover where the machine is on our network. To do so, let&rsquo;s use Nmap:
-nmap -sP 192.168.1.1/24 Fingerprinting After getting the IP address (192.168.1.10), we need to do some fingerprinting.
-nmap -sV 192.168.1.10 Fig. Nmap scan result
-A lot of services were open, such as: VNC, FTP, etc.
-As I saw it in the scan report, I decided to scan the port 80 with Nikto.
-        
-        </span>
-        
-          ... <a class="read-more-symbol" href="/posts/bwapp-write-up/">➦</a>
-        
-        </div>
-        
-     
-      
-        
-      
-      <div class="post-list__item">
-        <span class="item__title--big">
-          <a href="/posts/scream-write-up/" >Scream Write-up</a>
-        </span>
-        <span class="item__date">
-          Apr 16, 2014
-        </span>
-        <span >
-        
-        This post contains the steps to get a root shell with Scream VM
-This VM can he found here. Have a look to find even more VMs. But before starting the report, I&rsquo;d like to congratulate g0tmi1k for his awesome tool : VulnInjector.
-Ok, let&rsquo;s do this write-up !
-Host discovery As always, we need to discover where the machine is on our network. To do so, let&rsquo;s use Nmap:
-        
-        </span>
-        
-          ... <a class="read-more-symbol" href="/posts/scream-write-up/">➦</a>
-        
-        </div>
-        
-     
-      
-        
-      
-      <div class="post-list__item">
-        <span class="item__title--big">
-          <a href="/posts/exploit-kb-vulnerable-web-app-1-write-up/" >Exploiting KB Vulnerable Web App 1 Write-Up</a>
-        </span>
-        <span class="item__date">
-          Apr 15, 2014
-        </span>
-        <span >
-        
-        This post contains the steps to get a root shell with Exploit KB Vulnerable Web App 1 VM
-This VM can he found here. Have a look to find even more VMs
-Host discovery First, we need to discover where the machine is on our network. To do so, let&rsquo;s use Nmap:
-nmap -sP 192.168.1.1/24 Fingerprinting After getting the IP address, we need to do some fingerprinting.
-nmap -sV 192.168.1.23 Fig.
-        
-        </span>
-        
-          ... <a class="read-more-symbol" href="/posts/exploit-kb-vulnerable-web-app-1-write-up/">➦</a>
-        
-        </div>
-        
-     
-      
-        
-      
-      <div class="post-list__item">
-        <span class="item__title--big">
-          <a href="/posts/kioptrix-2-write-up/" >Kioptrix 2 Write-up</a>
-        </span>
-        <span class="item__date">
-          Apr 15, 2014
-        </span>
-        <span >
-        
-        This post contains the steps to get a root shell with Kioptrix level 2 VM
-This VM can he found here. Have a look to find even more VMs
-Host discovery First, we need to discover where the machine is on our network. To do so, let&rsquo;s use Nmap:
-nmap -sP 192.168.1.1/24 Fingerprinting After getting the IP address, we need to do some fingerprinting.
-nmap -sV 192.168.1.42 Fig. Nmap scan result
-        
-        </span>
-        
-          ... <a class="read-more-symbol" href="/posts/kioptrix-2-write-up/">➦</a>
-        
-        </div>
-        
-     
   </div>
   
+  
+  
+  
+  
+  <div class="post-list__item">
+    <span class="item__title--big">
+      <a href="/posts/diving-into-xss-googles-game/" >Diving into XSS googles game</a>
+    </span>
+    <span class="item__date">
+      Jun 2, 2014
+    </span>
+    <span >
+      
+      <p>Hi there, this post deals with the game released by Google few days ago about XSS vulnerabilities that you can find <a href="https://xss-game.appspot.com/">here</a>.</p>
+<p>I&rsquo;ll enumerate some of the solution I found on the Internet which were (in my opnion) interesting/fun.
+This post contains the solutions for all levels. <strong>Big spoil.</strong></p>
+<h2 id="level-1-hello-world-of-xss">Level 1: Hello, world of XSS</h2>
+<p>Well, this one was obvious:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">script</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">alert</span>(<span style="color:#ae81ff">1</span>);<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/script&gt;</span>
+</span></span></code></pre></div><h2 id="level-2-persistence-is-key">Level 2: Persistence is key</h2>
+<p>For this one, you had different options:</p>
+      
+    </span>
+    
+    ... <a class="read-more-symbol" href="/posts/diving-into-xss-googles-game/">➦</a>
+    
+  </div>
+  
+  
+  
+  
+  
+  <div class="post-list__item">
+    <span class="item__title--big">
+      <a href="/posts/bobby-write-up/" >Bobby Write-up</a>
+    </span>
+    <span class="item__date">
+      May 15, 2014
+    </span>
+    <span >
+      
+      <p>Hi there,</p>
+<p>Quick blog post on the VM &ldquo;Bobby&rdquo; which is once of the nicest VM I did so far.</p>
+<h4 id="discovery">Discovery</h4>
+<p>The first step is always the same: discovering the machine on the network.
+To do so:</p>
+<pre tabindex="0"><code>$ nmap -sV 192.168.1.1/24
+</code></pre><p>I managed to retrieve the IP address: <code>192.168.1.11</code>.</p>
+<p>Let&rsquo;s start to fingerprint the different services to exploit it.</p>
+<h4 id="fingerprinting">Fingerprinting</h4>
+<p>Then, I used Nmap to retrieve the services running:</p>
+<pre tabindex="0"><code>$ nmap -sV 192.168.1.11
+
+Starting Nmap 6.46 ( http://nmap.org ) at 2014-05-15 20:54 CEST
+Nmap scan report for 192.168.1.11
+Host is up (0.00037s latency).
+Not shown: 997 filtered ports
+PORT    STATE  SERVICE VERSION
+21/tcp  open   ftp     Microsoft ftpd
+80/tcp  open   http    Microsoft IIS httpd 5.1
+443/tcp closed https
+Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows
+
+Service detection performed. Please report any incorrect results at http://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 12.35 seconds
+</code></pre><p>Using Nikto as well:</p>
+      
+    </span>
+    
+    ... <a class="read-more-symbol" href="/posts/bobby-write-up/">➦</a>
+    
+  </div>
+  
+  
+  
+  
+  
+  <div class="post-list__item">
+    <span class="item__title--big">
+      <a href="/posts/http-security-headers-on-top-10k-alexa-websites/" >HTTP Security Headers on top 10k Alexa websites</a>
+    </span>
+    <span class="item__date">
+      May 13, 2014
+    </span>
+    <span >
+      
+      <!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p><strong>EDIT</strong>: Added statistics of <em>max-age</em> option.</p>
+<p>Hi there,</p>
+<p>This blog post deals with HTTP Security Headers on top 10k Alexa websites.
+Based on <a href="https://www.reddit.com/r/netsec/comments/254om6/how_common_are_http_security_headers_really_lzone/">this</a>  discussion on <a href="https://www.reddit.com/r/netsec/">netsec</a>, I decided to do some statistics on Alexa ranking.</p>
+<p>To do this study, I did a GET HTTP Request and saved the headers in the HTTP response. This has been done using Python.</p>
+      
+    </span>
+    
+    ... <a class="read-more-symbol" href="/posts/http-security-headers-on-top-10k-alexa-websites/">➦</a>
+    
+  </div>
+  
+  
+  
+  
+  
+  <div class="post-list__item">
+    <span class="item__title--big">
+      <a href="/posts/blind-hql-injection-in-rest-api-using-h2-dbms/" >Blind HQL Injection in REST API using H2 DMBS</a>
+    </span>
+    <span class="item__date">
+      May 5, 2014
+    </span>
+    <span >
+      
+      <p>This post deals with some research I just did regarding (Blind) HQL injections with H2 as the DataBase Management System.</p>
+<p>First, you should read this post which gives some really useful information regarding HQL injections in general: <a href="http://blog.h3xstream.com/2014/02/hql-for-pentesters.html">HQL for pentesters</a>.</p>
+<p>During the assessment, I checked the API calls by using Burp as a proxy and one call was:</p>
+<pre tabindex="0"><code>http://application/API/Users/?req=id=1
+</code></pre><p>The output was a JSON response, such as:</p>
+<pre tabindex="0"><code>[{user: &#34;admin&#34;, id: &#34;1&#34;, firstName:&#34;Admin&#34;}]
+</code></pre><p>If you changed the id with the numeric value <strong>2</strong>, and so on.. it was working.</p>
+      
+    </span>
+    
+    ... <a class="read-more-symbol" href="/posts/blind-hql-injection-in-rest-api-using-h2-dbms/">➦</a>
+    
+  </div>
+  
+  
+  
+  
+  
+  <div class="post-list__item">
+    <span class="item__title--big">
+      <a href="/posts/bsides-slides-csrft/" >BSides Slides - CSRFT</a>
+    </span>
+    <span class="item__date">
+      Apr 29, 2014
+    </span>
+    <span >
+      
+      <p>Hey,</p>
+<p>Just a quick post to give you the link to my slides for BSides London today: <a href="http://paulsec.github.io/bsides-london-2014/">Here</a>
+Don&rsquo;t hesitate if you have any feedback, or any good feature.</p>
+<p>You can reach me either on <a href="https://github.com/PaulSec">Github</a> and <a href="https://twitter.com/PaulWebSec">Twitter</a></p>
+<p>Just few words about the conference which was absolutely amazing.
+Some really great people were here, good atmosphere and people were really helpful.</p>
+<p>For sure, I&rsquo;ll attend it next year.</p>
+<p>Cheers,</p>
+      
+    </span>
+    
+  </div>
+  
+  
+  
+  
+  
+  <div class="post-list__item">
+    <span class="item__title--big">
+      <a href="/posts/bwapp-write-up/" >BWApp Write-Up</a>
+    </span>
+    <span class="item__date">
+      Apr 21, 2014
+    </span>
+    <span >
+      
+      <p><strong>This post contains the steps to get a root shell with bWapp VM</strong></p>
+<h3 id="__host-discovery__"><strong>Host discovery</strong></h3>
+<p>As always, we need to discover where the machine is on our network.
+To do so, let&rsquo;s use Nmap:</p>
+<pre tabindex="0"><code>nmap -sP 192.168.1.1/24 
+</code></pre><h3 id="__fingerprinting__"><strong>Fingerprinting</strong></h3>
+<p>After getting the IP address (<em>192.168.1.10</em>), we need to do some fingerprinting.</p>
+<pre tabindex="0"><code>nmap -sV 192.168.1.10
+</code></pre><!-- raw HTML omitted -->
+<p><em>Fig. Nmap scan result</em></p>
+<p>A lot of services were open, such as: VNC, FTP, etc.</p>
+      
+    </span>
+    
+    ... <a class="read-more-symbol" href="/posts/bwapp-write-up/">➦</a>
+    
+  </div>
+  
+  
+  
+  
+  
+  <div class="post-list__item">
+    <span class="item__title--big">
+      <a href="/posts/scream-write-up/" >Scream Write-up</a>
+    </span>
+    <span class="item__date">
+      Apr 16, 2014
+    </span>
+    <span >
+      
+      <p><strong>This post contains the steps to get a root shell with Scream VM</strong></p>
+<p>This VM can he found <a href="http://vulnhub.com/entry/devrandom_scream,47/">here</a>. Have a look to find even more VMs.
+But before starting the report, I&rsquo;d like to congratulate g0tmi1k for his <em>awesome</em> tool : <a href="https://github.com/g0tmi1k/VulnInjector">VulnInjector</a>.</p>
+<p>Ok, let&rsquo;s do this write-up !</p>
+<h3 id="__host-discovery__"><strong>Host discovery</strong></h3>
+<p>As always, we need to discover where the machine is on our network.
+To do so, let&rsquo;s use Nmap:</p>
+<pre tabindex="0"><code>nmap -sP 192.168.1.1/24 
+</code></pre><h3 id="__fingerprinting__"><strong>Fingerprinting</strong></h3>
+<p>After getting the IP address (<em>192.168.1.2</em>), we need to do some fingerprinting.</p>
+      
+    </span>
+    
+    ... <a class="read-more-symbol" href="/posts/scream-write-up/">➦</a>
+    
+  </div>
+  
+  
+  
+  
+  
+  <div class="post-list__item">
+    <span class="item__title--big">
+      <a href="/posts/exploit-kb-vulnerable-web-app-1-write-up/" >Exploiting KB Vulnerable Web App 1 Write-Up</a>
+    </span>
+    <span class="item__date">
+      Apr 15, 2014
+    </span>
+    <span >
+      
+      <p><strong>This post contains the steps to get a root shell with Exploit KB Vulnerable Web App 1 VM</strong></p>
+<p>This VM can he found <a href="http://vulnhub.com/entry/exploit-kb-vulnerable-web-app-1,44/">here</a>. Have a look to find even more VMs</p>
+<h3 id="__host-discovery__"><strong>Host discovery</strong></h3>
+<p>First, we need to discover where the machine is on our network.
+To do so, let&rsquo;s use Nmap:</p>
+<pre tabindex="0"><code>nmap -sP 192.168.1.1/24 
+</code></pre><h3 id="__fingerprinting__"><strong>Fingerprinting</strong></h3>
+<p>After getting the IP address, we need to do some fingerprinting.</p>
+<pre tabindex="0"><code>nmap -sV 192.168.1.23
+</code></pre><!-- raw HTML omitted -->
+<p><em>Fig. Nmap scan result</em></p>
+      
+    </span>
+    
+    ... <a class="read-more-symbol" href="/posts/exploit-kb-vulnerable-web-app-1-write-up/">➦</a>
+    
+  </div>
+  
+  
+  
+  
+  
+  <div class="post-list__item">
+    <span class="item__title--big">
+      <a href="/posts/kioptrix-2-write-up/" >Kioptrix 2 Write-up</a>
+    </span>
+    <span class="item__date">
+      Apr 15, 2014
+    </span>
+    <span >
+      
+      <p><strong>This post contains the steps to get a root shell with Kioptrix level 2 VM</strong></p>
+<p>This VM can he found <a href="http://vulnhub.com/entry/kioptrix-level-11-2,23/">here</a>. Have a look to find even more VMs</p>
+<h3 id="__host-discovery__"><strong>Host discovery</strong></h3>
+<p>First, we need to discover where the machine is on our network.
+To do so, let&rsquo;s use Nmap:</p>
+<pre tabindex="0"><code>nmap -sP 192.168.1.1/24 
+</code></pre><h3 id="__fingerprinting__"><strong>Fingerprinting</strong></h3>
+<p>After getting the IP address, we need to do some fingerprinting.</p>
+<pre tabindex="0"><code>nmap -sV 192.168.1.42
+</code></pre><!-- raw HTML omitted -->
+<p><em>Fig. Nmap scan result</em></p>
+      
+    </span>
+    
+    ... <a class="read-more-symbol" href="/posts/kioptrix-2-write-up/">➦</a>
+    
+  </div>
+  
+  
+</div>
+
 
 <ul class="pagination">
     
@@ -502,8 +576,8 @@ nmap -sV 192.168.1.42 Fig. Nmap scan result
 
         </div>
         
-  
-  <script defer src="https://use.fontawesome.com/releases/v5.12.1/js/all.js" integrity="sha384-ZbbbT1gw3joYkKRqh0kWyRp32UAvdqkpbLedQJSlnI8iLQcFVxaGyrOgOJiDQTTR" crossorigin="anonymous"></script>
+
+<script defer src="https://use.fontawesome.com/releases/v5.12.1/js/all.js" integrity="sha384-ZbbbT1gw3joYkKRqh0kWyRp32UAvdqkpbLedQJSlnI8iLQcFVxaGyrOgOJiDQTTR" crossorigin="anonymous"></script>
 
 
     </body>

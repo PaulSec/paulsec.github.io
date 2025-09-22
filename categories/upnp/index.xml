@@ -13,7 +13,7 @@
       <link>http://paulsec.github.io/posts/experiments-with-upnp/</link>
       <pubDate>Thu, 03 Jul 2014 00:00:00 +0000</pubDate>
       <guid>http://paulsec.github.io/posts/experiments-with-upnp/</guid>
-      <description>This post deals with recent observations regarding UPnP (Universal Plug and Play) protocol &amp;amp; Routers. In few words, thanks to this protocol, devices (such as file sharing services, games, ..) can be easily connected/deployed.&#xA;First, I started to do research on my box to find relevant UPnP functionalities by hand, found some but I had trouble to exploit them. Few days ago, David Middlehurst released a tool called &amp;ldquo;UPnP Pentest Toolkit&amp;rdquo;.</description>
+      <description>&lt;p&gt;This post deals with recent observations regarding UPnP (&lt;em&gt;Universal Plug and Play&lt;/em&gt;) protocol &amp;amp; Routers.&#xA;In few words, thanks to this protocol, devices (such as file sharing services, games, ..) can be easily connected/deployed.&lt;/p&gt;&#xA;&lt;p&gt;First, I started to do research on my box to find relevant UPnP functionalities by hand, found some but I had trouble to exploit them.&#xA;Few days ago, David Middlehurst released a tool called &lt;a href=&#34;https://github.com/nccgroup/UPnP-Pentest-Toolkit&#34;&gt;&amp;ldquo;UPnP Pentest Toolkit&amp;rdquo;&lt;/a&gt;.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

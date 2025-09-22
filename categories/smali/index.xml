@@ -13,7 +13,7 @@
       <link>http://paulsec.github.io/posts/android-smali-primer/</link>
       <pubDate>Fri, 22 May 2020 15:29:02 +0200</pubDate>
       <guid>http://paulsec.github.io/posts/android-smali-primer/</guid>
-      <description>Hi everyone!&#xA;This article aims at providing you survival steps while tinkering around with Smali &amp;amp; Android applications. The name of the original application I did my search on will remain secret but I created a dummy application doing the same so that you can do it on your own. The link of the MainActivity.java and MainActivity.smali is here&#xA;Create a dummy application with Android Studio and just import this. PLACEHOLDER_* strings will have to be replaced with proper ones if you want to try.</description>
+      <description>&lt;p&gt;Hi everyone!&lt;/p&gt;&#xA;&lt;p&gt;This article aims at providing you survival steps while tinkering around with Smali &amp;amp; Android applications.&#xA;The name of the original application I did my search on will remain secret but I created a dummy application doing the same so that you can do it on your own.&#xA;The link of the &lt;a href=&#34;https://gist.github.com/PaulSec/6beab513af069646a5355f66f2bb2329&#34;&gt;MainActivity.java&lt;/a&gt; and &lt;a href=&#34;https://gist.github.com/PaulSec/6beab513af069646a5355f66f2bb2329&#34;&gt;MainActivity.smali&lt;/a&gt; is &lt;a href=&#34;https://gist.github.com/PaulSec/6beab513af069646a5355f66f2bb2329&#34;&gt;here&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;Create a dummy application with Android Studio and just import this. &lt;code&gt;PLACEHOLDER_*&lt;/code&gt; strings will have to be replaced with proper ones if you want to try.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

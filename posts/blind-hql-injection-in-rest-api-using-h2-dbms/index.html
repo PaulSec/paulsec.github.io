@@ -14,7 +14,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.126.1">
+<meta name="generator" content="Hugo 0.142.0">
 
     
     
@@ -30,7 +30,7 @@
 First, you should read this post which gives some really useful information regarding HQL injections in general: HQL for pentesters.
 During the assessment, I checked the API calls by using Burp as a proxy and one call was:
 http://application/API/Users/?req=id=1 The output was a JSON response, such as:
-[{user: &#34;admin&#34;, id: &#34;1&#34;, firstName:&#34;Admin&#34;}] If you changed the id with the numeric value 2, and so on.">
+[{user: &#34;admin&#34;, id: &#34;1&#34;, firstName:&#34;Admin&#34;}] If you changed the id with the numeric value 2, and so on.. it was working.">
       <meta name="twitter:site" content="@PaulWebSec">
 
 <meta property="og:url" content="http://paulsec.github.io/posts/blind-hql-injection-in-rest-api-using-h2-dbms/">
@@ -40,7 +40,7 @@ http://application/API/Users/?req=id=1 The output was a JSON response, such as:
 First, you should read this post which gives some really useful information regarding HQL injections in general: HQL for pentesters.
 During the assessment, I checked the API calls by using Burp as a proxy and one call was:
 http://application/API/Users/?req=id=1 The output was a JSON response, such as:
-[{user: &#34;admin&#34;, id: &#34;1&#34;, firstName:&#34;Admin&#34;}] If you changed the id with the numeric value 2, and so on.">
+[{user: &#34;admin&#34;, id: &#34;1&#34;, firstName:&#34;Admin&#34;}] If you changed the id with the numeric value 2, and so on.. it was working.">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
@@ -176,7 +176,7 @@ http://application/API/Users/?req=id=1 The output was a JSON response, such as:
     </div>
     
 <div class="copyright">
-  &copy; 2024 Paul A.
+  &copy; 2025 Paul A.
   
     <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>
   
@@ -299,7 +299,6 @@ For this example, <a href="http://www.h2database.com/html/functions.html">H2 Dat
   
 
   
-    
 
 
 </article>
@@ -320,7 +319,6 @@ For this example, <a href="http://www.h2database.com/html/functions.html">H2 Dat
         hljs.initHighlightingOnLoad();
     </script>
     
-
 
 
     

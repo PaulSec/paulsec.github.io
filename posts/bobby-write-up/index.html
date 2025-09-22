@@ -14,7 +14,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.126.1">
+<meta name="generator" content="Hugo 0.142.0">
 
     
     
@@ -32,7 +32,7 @@ Discovery The first step is always the same: discovering the machine on the netw
 $ nmap -sV 192.168.1.1/24 I managed to retrieve the IP address: 192.168.1.11.
 Let’s start to fingerprint the different services to exploit it.
 Fingerprinting Then, I used Nmap to retrieve the services running:
-$ nmap -sV 192.">
+$ nmap -sV 192.168.1.11 Starting Nmap 6.46 ( http://nmap.org ) at 2014-05-15 20:54 CEST Nmap scan report for 192.168.1.11 Host is up (0.00037s latency). Not shown: 997 filtered ports PORT STATE SERVICE VERSION 21/tcp open ftp Microsoft ftpd 80/tcp open http Microsoft IIS httpd 5.1 443/tcp closed https Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows Service detection performed. Please report any incorrect results at http://nmap.org/submit/ . Nmap done: 1 IP address (1 host up) scanned in 12.35 seconds Using Nikto as well:">
       <meta name="twitter:site" content="@PaulWebSec">
 
 <meta property="og:url" content="http://paulsec.github.io/posts/bobby-write-up/">
@@ -44,7 +44,7 @@ Discovery The first step is always the same: discovering the machine on the netw
 $ nmap -sV 192.168.1.1/24 I managed to retrieve the IP address: 192.168.1.11.
 Let’s start to fingerprint the different services to exploit it.
 Fingerprinting Then, I used Nmap to retrieve the services running:
-$ nmap -sV 192.">
+$ nmap -sV 192.168.1.11 Starting Nmap 6.46 ( http://nmap.org ) at 2014-05-15 20:54 CEST Nmap scan report for 192.168.1.11 Host is up (0.00037s latency). Not shown: 997 filtered ports PORT STATE SERVICE VERSION 21/tcp open ftp Microsoft ftpd 80/tcp open http Microsoft IIS httpd 5.1 443/tcp closed https Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows Service detection performed. Please report any incorrect results at http://nmap.org/submit/ . Nmap done: 1 IP address (1 host up) scanned in 12.35 seconds Using Nikto as well:">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
@@ -180,7 +180,7 @@ $ nmap -sV 192.">
     </div>
     
 <div class="copyright">
-  &copy; 2024 Paul A.
+  &copy; 2025 Paul A.
   
     <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>
   
@@ -401,7 +401,6 @@ Cheers and see you soon!</p>
   
 
   
-    
 
 
 </article>
@@ -422,7 +421,6 @@ Cheers and see you soon!</p>
         hljs.initHighlightingOnLoad();
     </script>
     
-
 
 
     

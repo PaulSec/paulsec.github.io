@@ -14,7 +14,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.126.1">
+<meta name="generator" content="Hugo 0.142.0">
 
     
     
@@ -30,7 +30,7 @@
 This is my first write-up for a VM and I’m doing it for VulnOS which is hosted on VulnHub (Great resource if you want to improve your pentesting skills).
 In this ’tutorial’, I’m gonna give you the steps I reproduced to get a shell on the machine.
 Discovery First, start by scanning the network to discover where’s the host.
-nmap -sV 192.168.56.1/24 Starting Nmap 6.">
+nmap -sV 192.168.56.1/24 Starting Nmap 6.41SVN ( http://nmap.org ) at 2014-04-08 21:23 CEST Nmap scan report for 192.168.56.1 Host is up (0.00049s latency). Nmap scan report for 192.168.56.105 Host is up (0.00018s latency). We managed to get the IP of the machine. Let’s do some fingerprinting.">
       <meta name="twitter:site" content="@PaulWebSec">
 
 <meta property="og:url" content="http://paulsec.github.io/posts/vulnos-write-up/">
@@ -40,7 +40,7 @@ nmap -sV 192.168.56.1/24 Starting Nmap 6.">
 This is my first write-up for a VM and I’m doing it for VulnOS which is hosted on VulnHub (Great resource if you want to improve your pentesting skills).
 In this ’tutorial’, I’m gonna give you the steps I reproduced to get a shell on the machine.
 Discovery First, start by scanning the network to discover where’s the host.
-nmap -sV 192.168.56.1/24 Starting Nmap 6.">
+nmap -sV 192.168.56.1/24 Starting Nmap 6.41SVN ( http://nmap.org ) at 2014-04-08 21:23 CEST Nmap scan report for 192.168.56.1 Host is up (0.00049s latency). Nmap scan report for 192.168.56.105 Host is up (0.00018s latency). We managed to get the IP of the machine. Let’s do some fingerprinting.">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
@@ -176,7 +176,7 @@ nmap -sV 192.168.56.1/24 Starting Nmap 6.">
     </div>
     
 <div class="copyright">
-  &copy; 2024 Paul A.
+  &copy; 2025 Paul A.
   
     <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>
   
@@ -467,7 +467,6 @@ It&rsquo;s time to get a reverse shell !</p>
   
 
   
-    
 
 
 </article>
@@ -488,7 +487,6 @@ It&rsquo;s time to get a reverse shell !</p>
         hljs.initHighlightingOnLoad();
     </script>
     
-
 
 
     

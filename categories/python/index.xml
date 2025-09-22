@@ -13,7 +13,7 @@
       <link>http://paulsec.github.io/posts/python-plus-transmission-daemon-equals-download-easily-your-favorite-tv-show/</link>
       <pubDate>Fri, 28 Mar 2014 00:00:00 +0000</pubDate>
       <guid>http://paulsec.github.io/posts/python-plus-transmission-daemon-equals-download-easily-your-favorite-tv-show/</guid>
-      <description>This post is about my last project : my TV Show Manager.&#xA;I decided to start it because I wanted something really simple to download my favorite TV Shows. In this post, I&amp;rsquo;ll explain step by step how to reproduce it at home.&#xA;Basically, with this tutorial you&amp;rsquo;ll set up your Raspberry box by :&#xA;Installing / set-uping transmission-daemon Getting one of my latest project TVShowManager that uses my EZTV Python API.</description>
+      <description>&lt;p&gt;This post is about my last project : my &lt;em&gt;TV Show Manager&lt;/em&gt;.&lt;/p&gt;&#xA;&lt;p&gt;I decided to start it because I wanted something &lt;strong&gt;really&lt;/strong&gt; simple to download my favorite TV Shows.&#xA;In this post, I&amp;rsquo;ll explain step by step how to reproduce it at home.&lt;/p&gt;&#xA;&lt;p&gt;Basically, with this tutorial you&amp;rsquo;ll set up your &lt;strong&gt;Raspberry&lt;/strong&gt; box by :&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Installing / set-uping transmission-daemon&lt;/li&gt;&#xA;&lt;li&gt;Getting one of my latest project &lt;a href=&#34;https://github.com/PaulSec/TVShowsManager&#34;&gt;TVShowManager&lt;/a&gt; that uses my &lt;a href=&#34;https://github.com/PaulSec/eztv_api&#34;&gt;EZTV Python API&lt;/a&gt;.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;Well.. let&amp;rsquo;s start ?&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

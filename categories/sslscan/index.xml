@@ -13,7 +13,7 @@
       <link>http://paulsec.github.io/posts/running-sslscan-on-5k-servers-taken-from-alexas-top-10k/</link>
       <pubDate>Sun, 07 Jun 2015 00:00:00 +0000</pubDate>
       <guid>http://paulsec.github.io/posts/running-sslscan-on-5k-servers-taken-from-alexas-top-10k/</guid>
-      <description>After analyzing the HTTP Security Headers from the top 10k Alexa websites, I decided looking at the SSL Ciphers used on those websites.&#xA;These results are coming from a scan on port 443 for all those domains. Only 4715 servers replied.&#xA;The OpenSSL version installed on my server did not support SSLv2 so SSLv2 ciphers have not been detected.&#xA;Here are the results:</description>
+      <description>&lt;!-- raw HTML omitted --&gt;&#xA;&lt;!-- raw HTML omitted --&gt;&#xA;&lt;!-- raw HTML omitted --&gt;&#xA;&lt;p&gt;After analyzing the &lt;a href=&#34;https://paulsec.github.io/blog/2014/05/13/http-security-headers-on-top-10k-alexa-websites/&#34;&gt;HTTP Security Headers from the top 10k Alexa websites&lt;/a&gt;, I decided looking at the SSL Ciphers used on those websites.&lt;/p&gt;&#xA;&lt;p&gt;These results are coming from a scan on port 443 for all those domains.&#xA;Only &lt;strong&gt;4715&lt;/strong&gt; servers replied.&lt;/p&gt;&#xA;&lt;p&gt;The OpenSSL version installed on my server did not support SSLv2 so SSLv2 ciphers have not been detected.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

@@ -14,7 +14,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.126.1">
+<meta name="generator" content="Hugo 0.142.0">
 
     
     
@@ -30,7 +30,7 @@
 Host Discovery $ nmap -sP 192.168.56.1/24 and we got the IP address : 192.168.56.101.
 As it was explained, you need to add 192.168.56.101 kioptrix3.com in your /etc/hosts.
 Fingerprinting Then, let’s find what kind of services are running on the host machine.
-$ nmap 192.168.56.101 -sV -A Starting Nmap 6.46 ( http://nmap.">
+$ nmap 192.168.56.101 -sV -A Starting Nmap 6.46 ( http://nmap.org ) at 2014-06-12 20:15 CEST Nmap scan report for malicious (192.168.56.101) Host is up (0.00034s latency). Not shown: 998 closed ports PORT STATE SERVICE VERSION 22/tcp open ssh OpenSSH 4.7p1 Debian 8ubuntu1.2 (protocol 2.0) | ssh-hostkey: | 1024 30:e3:f6:dc:2e:22:5d:17:ac:46:02:39:ad:71:cb:49 (DSA) |_ 2048 9a:82:e6:96:e4:7e:d6:a6:d7:45:44:cb:19:aa:ec:dd (RSA) 80/tcp open http Apache httpd 2.2.8 ((Ubuntu) PHP/5.2.4-2ubuntu5.6 with Suhosin-Patch) |_http-methods: No Allow or Public header in OPTIONS response (status code 200) title = &#34;kioptrix 3 write up&#34; Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel Service detection performed. Please report any incorrect results at http://nmap.org/submit/ . Nmap done: 1 IP address (1 host up) scanned in 10.59 seconds Quite obvious, let’s check this Web server !">
       <meta name="twitter:site" content="@PaulWebSec">
 
 <meta property="og:url" content="http://paulsec.github.io/posts/kioptrix-3-write-up/">
@@ -40,7 +40,7 @@ $ nmap 192.168.56.101 -sV -A Starting Nmap 6.46 ( http://nmap.">
 Host Discovery $ nmap -sP 192.168.56.1/24 and we got the IP address : 192.168.56.101.
 As it was explained, you need to add 192.168.56.101 kioptrix3.com in your /etc/hosts.
 Fingerprinting Then, let’s find what kind of services are running on the host machine.
-$ nmap 192.168.56.101 -sV -A Starting Nmap 6.46 ( http://nmap.">
+$ nmap 192.168.56.101 -sV -A Starting Nmap 6.46 ( http://nmap.org ) at 2014-06-12 20:15 CEST Nmap scan report for malicious (192.168.56.101) Host is up (0.00034s latency). Not shown: 998 closed ports PORT STATE SERVICE VERSION 22/tcp open ssh OpenSSH 4.7p1 Debian 8ubuntu1.2 (protocol 2.0) | ssh-hostkey: | 1024 30:e3:f6:dc:2e:22:5d:17:ac:46:02:39:ad:71:cb:49 (DSA) |_ 2048 9a:82:e6:96:e4:7e:d6:a6:d7:45:44:cb:19:aa:ec:dd (RSA) 80/tcp open http Apache httpd 2.2.8 ((Ubuntu) PHP/5.2.4-2ubuntu5.6 with Suhosin-Patch) |_http-methods: No Allow or Public header in OPTIONS response (status code 200) title = &#34;kioptrix 3 write up&#34; Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel Service detection performed. Please report any incorrect results at http://nmap.org/submit/ . Nmap done: 1 IP address (1 host up) scanned in 10.59 seconds Quite obvious, let’s check this Web server !">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
@@ -176,7 +176,7 @@ $ nmap 192.168.56.101 -sV -A Starting Nmap 6.46 ( http://nmap.">
     </div>
     
 <div class="copyright">
-  &copy; 2024 Paul A.
+  &copy; 2025 Paul A.
   
     <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>
   
@@ -372,7 +372,6 @@ root@Kioptrix3:~#
   
 
   
-    
 
 
 </article>
@@ -393,7 +392,6 @@ root@Kioptrix3:~#
         hljs.initHighlightingOnLoad();
     </script>
     
-
 
 
     

@@ -13,7 +13,7 @@
       <link>http://paulsec.github.io/posts/ionic-cleartext-not-permitted/</link>
       <pubDate>Fri, 08 May 2020 17:29:40 +0200</pubDate>
       <guid>http://paulsec.github.io/posts/ionic-cleartext-not-permitted/</guid>
-      <description>While developing/maintaining the WHID Mobile Injector app, it turns out that I received messages and issues on Github telling me that users were:&#xA;Able to access the ESPloit interface through the browser but not through the app and the toggle in the side-menu was staying RED (meaning it is unable to connect to the ESPloit interface). Weird.&#xA;After some investigations, I was able to reproduce the issue on some phones at home, and while looking at logcat, I saw some strange lines like this:</description>
+      <description>&lt;p&gt;While developing/maintaining the WHID Mobile Injector app, it turns out that I received messages and &lt;a href=&#34;https://github.com/whid-injector/WHID-Mobile-Connector/issues/12&#34;&gt;issues on Github&lt;/a&gt; telling me that users were:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Able to access the ESPloit interface through the browser&lt;/li&gt;&#xA;&lt;li&gt;but not through the app and the toggle in the side-menu was staying RED (meaning it is unable to connect to the ESPloit interface).&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Weird.&lt;/p&gt;&#xA;&lt;p&gt;After some investigations, I was able to reproduce the issue on some phones at home, and while looking at logcat, I saw some strange lines like this:&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

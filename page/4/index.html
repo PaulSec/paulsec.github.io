@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-us">
     
-  <head>
+<head>
     <link href="https://gmpg.org/xfn/11" rel="profile">
     <link rel="stylesheet" href="/css/syntax.css">
     
@@ -11,7 +11,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.126.1">
+<meta name="generator" content="Hugo 0.142.0">
 
     
 
@@ -161,7 +161,7 @@
     </div>
     
 <div class="copyright">
-  &copy; 2024 Paul A.
+  &copy; 2025 Paul A.
   
     <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>
   
@@ -178,204 +178,252 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
 
         <div class="content container">
             
-  <div class="post-list">
+<div class="post-list">
+  
+  
+  
+  
+  
+  <div class="post-list__item">
+    <span class="item__title--big">
+      <a href="/posts/kioptrix-1-write-up/" >Kioptrix 1 Write-up</a>
+    </span>
+    <span class="item__date">
+      Apr 14, 2014
+    </span>
+    <span >
+      
+      <p><strong>This post contains the steps to get a root shell with Kioptrix level 1 VM</strong></p>
+<p>This VM can he found <a href="http://vulnhub.com/entry/kioptrix_level-1-1,22/">here</a>. Have a look to find even more VMs</p>
+<h4 id="__host-discovery__"><strong>Host discovery</strong></h4>
+<p>First, we need to discover where the machine is on our network.
+To do so, let&rsquo;s use Nmap:</p>
+<pre tabindex="0"><code>nmap -sP 192.168.1.1/24 
+</code></pre><h4 id="__fingerprinting__"><strong>Fingerprinting</strong></h4>
+<p>After getting the IP address, we need to do some fingerprinting.</p>
+<pre tabindex="0"><code>nmap -sV 192.168.1.2
+</code></pre><!-- raw HTML omitted -->
+<p><em>Fig. Nmap scan result</em></p>
+      
+    </span>
     
+    ... <a class="read-more-symbol" href="/posts/kioptrix-1-write-up/">➦</a>
     
-      
-        
-      
-      <div class="post-list__item">
-        <span class="item__title--big">
-          <a href="/posts/kioptrix-1-write-up/" >Kioptrix 1 Write-up</a>
-        </span>
-        <span class="item__date">
-          Apr 14, 2014
-        </span>
-        <span >
-        
-        This post contains the steps to get a root shell with Kioptrix level 1 VM
-This VM can he found here. Have a look to find even more VMs
-Host discovery First, we need to discover where the machine is on our network. To do so, let&rsquo;s use Nmap:
-nmap -sP 192.168.1.1/24 Fingerprinting After getting the IP address, we need to do some fingerprinting.
-nmap -sV 192.168.1.2 Fig. Nmap scan result
-        
-        </span>
-        
-          ... <a class="read-more-symbol" href="/posts/kioptrix-1-write-up/">➦</a>
-        
-        </div>
-        
-     
-      
-        
-      
-      <div class="post-list__item">
-        <span class="item__title--big">
-          <a href="/posts/secos-1-first-vm-out/" >SecOS-1 First VM Out</a>
-        </span>
-        <span class="item__date">
-          Apr 14, 2014
-        </span>
-        <span >
-        
-        Hey there,
-Quick blog post for the first VM I created to experiment some of your pentesting skills.
-The idea grew up when I developed some security tools (especially the one (CSRFT) I presented at BSides London few weeks ago) to create a legal environment where you could try it out.
-I really liked creating this Boot2root VM. So, I&rsquo;ll create few more that will rely on each other so keep the flags because you&rsquo;ll need it for the next ones.
-        
-        </span>
-        
-          ... <a class="read-more-symbol" href="/posts/secos-1-first-vm-out/">➦</a>
-        
-        </div>
-        
-     
-      
-        
-      
-      <div class="post-list__item">
-        <span class="item__title--big">
-          <a href="/posts/updating-openfuck-exploit/" >Updating OpenFuck Exploit</a>
-        </span>
-        <span class="item__date">
-          Apr 14, 2014
-        </span>
-        <span >
-        
-        This blog post will be quite fast and will provide you the steps to update the OpenFuck exploit.
-This exploit is pretty old but you might need it if you have fun with some vulnerable VMs. Not giving any hint. :-)
-Thanks to this blog, I&rsquo;ve been able to update the exploit.
-Here are the steps to make this work :
-1) Add those headers : #include &lt;openssl/rc4.h&gt; #include &lt;openssl/md5.h&gt; 2) Update the URL of the C file.
-        
-        </span>
-        
-          ... <a class="read-more-symbol" href="/posts/updating-openfuck-exploit/">➦</a>
-        
-        </div>
-        
-     
-      
-        
-      
-      <div class="post-list__item">
-        <span class="item__title--big">
-          <a href="/posts/vulnos-write-up/" >VulnOS Write-up</a>
-        </span>
-        <span class="item__date">
-          Apr 8, 2014
-        </span>
-        <span >
-        
-        This contains the solution of the VM: VulnOS.
-This is my first write-up for a VM and I&rsquo;m doing it for VulnOS which is hosted on VulnHub (Great resource if you want to improve your pentesting skills).
-In this &rsquo;tutorial&rsquo;, I&rsquo;m gonna give you the steps I reproduced to get a shell on the machine.
-Discovery First, start by scanning the network to discover where&rsquo;s the host.
-nmap -sV 192.168.56.1/24 Starting Nmap 6.
-        
-        </span>
-        
-          ... <a class="read-more-symbol" href="/posts/vulnos-write-up/">➦</a>
-        
-        </div>
-        
-     
-      
-        
-      
-      <div class="post-list__item">
-        <span class="item__title--big">
-          <a href="/posts/python-plus-transmission-daemon-equals-download-easily-your-favorite-tv-show/" >Python &#43; Transmission daemon = Download easily your favorite TV Show</a>
-        </span>
-        <span class="item__date">
-          Mar 28, 2014
-        </span>
-        <span >
-        
-        This post is about my last project : my TV Show Manager.
-I decided to start it because I wanted something really simple to download my favorite TV Shows. In this post, I&rsquo;ll explain step by step how to reproduce it at home.
-Basically, with this tutorial you&rsquo;ll set up your Raspberry box by :
-Installing / set-uping transmission-daemon Getting one of my latest project TVShowManager that uses my EZTV Python API.
-        
-        </span>
-        
-          ... <a class="read-more-symbol" href="/posts/python-plus-transmission-daemon-equals-download-easily-your-favorite-tv-show/">➦</a>
-        
-        </div>
-        
-     
-      
-        
-      
-      <div class="post-list__item">
-        <span class="item__title--big">
-          <a href="/posts/xss-callback/" >XSS Callback</a>
-        </span>
-        <span class="item__date">
-          Mar 20, 2014
-        </span>
-        <span >
-        
-        This post deals with a project I developed : XSS Callback.
-This is not going to be (at least, I hope) a boring post about XSS exploitation. No.
-Well, one scenario of using XSS would be to steal victim&rsquo;s cookie and access the page through his session. This technique is called Session Hijacking. Ok fair enough.
-However, some issues are present using this technique, let&rsquo;s take an example :
-You target a website Unfortunately, it&rsquo;s too late (or too early depending on your situation) and you go to sleep.
-        
-        </span>
-        
-          ... <a class="read-more-symbol" href="/posts/xss-callback/">➦</a>
-        
-        </div>
-        
-     
-      
-        
-      
-      <div class="post-list__item">
-        <span class="item__title--big">
-          <a href="/posts/dealing-with-html-submits-conflict/" >Dealing with HTML submits conflicts</a>
-        </span>
-        <span class="item__date">
-          Mar 9, 2014
-        </span>
-        <span >
-        
-        This first post is related with one of my project : CSRFT. CSRFT is a Cross Site Request Forgery (CSRF) vulnerabilities Toolkit.
-My toolkit allows you to exploit either GET and POST HTTP Requests. During some testings, I had issues with some specific forms.
-Let&rsquo;s take an example of such form :
-&lt;form action=&#34;http://website.com/blog/&#34; id=&#34;form&#34; method=&#34;get&#34;&gt; &lt;label class=&#34;assistive-text&#34; for=&#34;s&#34;&gt;Search&lt;/label&gt; &lt;input class=&#34;field&#34; id=&#34;s&#34; name=&#34;s&#34; placeholder=&#34;Search&#34; type=&#34;text&#34; value=&#34;Search Value&#34;/&gt; &lt;input class=&#34;submit&#34; id=&#34;searchsubmit&#34; name=&#34;submit&#34; type=&#34;submit&#34; value=&#34;Search&#34;/&gt; &lt;/form&gt; The code injected on the page to submit the form was like that :
-        
-        </span>
-        
-          ... <a class="read-more-symbol" href="/posts/dealing-with-html-submits-conflict/">➦</a>
-        
-        </div>
-        
-     
-      
-        
-      
-      <div class="post-list__item">
-        <span class="item__title--big">
-          <a href="/posts/starting-my-own-blog/" >Starting my own blog</a>
-        </span>
-        <span class="item__date">
-          Mar 4, 2014
-        </span>
-        <span >
-        
-        Starting my own blog has been something I really wanted to do. I&rsquo;ll add post related to my different projects but also on Web security.
-Here are my different motivations :
-1. Provide a portfolio of my different projects. 2. Explain some problems I had and provide the solution 3. Talk about some geek stuffs. Let&rsquo;s see :) Hope you&rsquo;ll have fun to read me. Cheers and see you soon.
-        
-        </span>
-        
-        </div>
-        
-     
   </div>
   
+  
+  
+  
+  
+  <div class="post-list__item">
+    <span class="item__title--big">
+      <a href="/posts/secos-1-first-vm-out/" >SecOS-1 First VM Out</a>
+    </span>
+    <span class="item__date">
+      Apr 14, 2014
+    </span>
+    <span >
+      
+      <p>Hey there,</p>
+<p>Quick blog post for the first VM I created to experiment some of your pentesting skills.</p>
+<p>The idea grew up when I developed some security tools (especially the one (<a href="https://github.com/PaulSec/CSRFT">CSRFT</a>) I presented at BSides London few weeks ago) to create a legal environment where you could try it out.</p>
+<p>I really liked creating this Boot2root VM.
+So, I&rsquo;ll create few more that will rely on each other so keep the flags because you&rsquo;ll need it for the next ones.</p>
+      
+    </span>
+    
+    ... <a class="read-more-symbol" href="/posts/secos-1-first-vm-out/">➦</a>
+    
+  </div>
+  
+  
+  
+  
+  
+  <div class="post-list__item">
+    <span class="item__title--big">
+      <a href="/posts/updating-openfuck-exploit/" >Updating OpenFuck Exploit</a>
+    </span>
+    <span class="item__date">
+      Apr 14, 2014
+    </span>
+    <span >
+      
+      <p>This blog post will be quite fast and will provide you the steps to update the <a href="http://www.exploit-db.com/exploits/764/">OpenFuck</a> exploit.</p>
+<p>This exploit is pretty old but you might need it if you have fun with some vulnerable VMs. Not giving any hint. :-)</p>
+<p>Thanks to this <a href="http://hackingbalg.blogspot.fr/">blog</a>, I&rsquo;ve been able to update the exploit.</p>
+<p>Here are the steps to make this work :</p>
+<ul>
+<li><strong>1) Add those headers :</strong></li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;openssl/rc4.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;openssl/md5.h&gt; </span><span style="color:#75715e">
+</span></span></span></code></pre></div><ul>
+<li><strong>2) Update the URL of the C file.</strong></li>
+</ul>
+<p>Search for <code>wget</code></p>
+      
+    </span>
+    
+    ... <a class="read-more-symbol" href="/posts/updating-openfuck-exploit/">➦</a>
+    
+  </div>
+  
+  
+  
+  
+  
+  <div class="post-list__item">
+    <span class="item__title--big">
+      <a href="/posts/vulnos-write-up/" >VulnOS Write-up</a>
+    </span>
+    <span class="item__date">
+      Apr 8, 2014
+    </span>
+    <span >
+      
+      <p><strong>This contains the solution of the VM: VulnOS.</strong></p>
+<p>This is my first write-up for a VM and I&rsquo;m doing it for VulnOS which is hosted on <a href="http://vulnhub.com/">VulnHub</a> (Great resource if you want to improve your pentesting skills).</p>
+<p>In this &rsquo;tutorial&rsquo;, I&rsquo;m gonna give you the steps I reproduced to get a shell on the machine.</p>
+<h4 id="discovery">Discovery</h4>
+<p>First, start by scanning the network to discover where&rsquo;s the host.</p>
+<pre tabindex="0"><code>nmap -sV 192.168.56.1/24
+
+Starting Nmap 6.41SVN ( http://nmap.org ) at 2014-04-08 21:23 CEST
+Nmap scan report for 192.168.56.1
+Host is up (0.00049s latency).
+Nmap scan report for 192.168.56.105
+Host is up (0.00018s latency).
+</code></pre><p>We managed to get the IP of the machine.
+Let&rsquo;s do some fingerprinting.</p>
+      
+    </span>
+    
+    ... <a class="read-more-symbol" href="/posts/vulnos-write-up/">➦</a>
+    
+  </div>
+  
+  
+  
+  
+  
+  <div class="post-list__item">
+    <span class="item__title--big">
+      <a href="/posts/python-plus-transmission-daemon-equals-download-easily-your-favorite-tv-show/" >Python &#43; Transmission daemon = Download easily your favorite TV Show</a>
+    </span>
+    <span class="item__date">
+      Mar 28, 2014
+    </span>
+    <span >
+      
+      <p>This post is about my last project : my <em>TV Show Manager</em>.</p>
+<p>I decided to start it because I wanted something <strong>really</strong> simple to download my favorite TV Shows.
+In this post, I&rsquo;ll explain step by step how to reproduce it at home.</p>
+<p>Basically, with this tutorial you&rsquo;ll set up your <strong>Raspberry</strong> box by :</p>
+<ul>
+<li>Installing / set-uping transmission-daemon</li>
+<li>Getting one of my latest project <a href="https://github.com/PaulSec/TVShowsManager">TVShowManager</a> that uses my <a href="https://github.com/PaulSec/eztv_api">EZTV Python API</a>.</li>
+</ul>
+<blockquote>
+<p>Well.. let&rsquo;s start ?</p>
+      
+    </span>
+    
+    ... <a class="read-more-symbol" href="/posts/python-plus-transmission-daemon-equals-download-easily-your-favorite-tv-show/">➦</a>
+    
+  </div>
+  
+  
+  
+  
+  
+  <div class="post-list__item">
+    <span class="item__title--big">
+      <a href="/posts/xss-callback/" >XSS Callback</a>
+    </span>
+    <span class="item__date">
+      Mar 20, 2014
+    </span>
+    <span >
+      
+      <p>This post deals with a project I developed : <a href="https://github.com/PaulSec/XSS-Callback/">XSS Callback</a>.</p>
+<p>This is not going to be (at least, I hope) a boring post about XSS exploitation. No.</p>
+<p>Well, one scenario of using XSS would be to steal victim&rsquo;s cookie and access the page through his session.
+This technique is called <strong>Session Hijacking</strong>. Ok fair enough.</p>
+<p>However, some issues are present using this technique, let&rsquo;s take an example :</p>
+<ul>
+<li>You target a website</li>
+<li>Unfortunately, it&rsquo;s too late (or too early depending on your situation) and you go to sleep.</li>
+<li>You wake up in the night and there are loads of victims&rsquo;s sessions. Great !</li>
+</ul>
+<p>The only problem : the user <em>might have logged out of the platform</em> <strong>or</strong> there might be a <em>timeout on the session</em>.</p>
+      
+    </span>
+    
+    ... <a class="read-more-symbol" href="/posts/xss-callback/">➦</a>
+    
+  </div>
+  
+  
+  
+  
+  
+  <div class="post-list__item">
+    <span class="item__title--big">
+      <a href="/posts/dealing-with-html-submits-conflict/" >Dealing with HTML submits conflicts</a>
+    </span>
+    <span class="item__date">
+      Mar 9, 2014
+    </span>
+    <span >
+      
+      <p>This first post is related with one of my project : CSRFT.
+CSRFT is a Cross Site Request Forgery (CSRF) vulnerabilities Toolkit.</p>
+<p>My toolkit allows you to exploit either GET and POST HTTP Requests.
+During some testings, I had issues with some specific forms.</p>
+<p>Let&rsquo;s take an example of such form :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">form</span> <span style="color:#a6e22e">action</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;http://website.com/blog/&#34;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;form&#34;</span> <span style="color:#a6e22e">method</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;get&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">label</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;assistive-text&#34;</span> <span style="color:#a6e22e">for</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;s&#34;</span>&gt;Search&lt;/<span style="color:#f92672">label</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;field&#34;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;s&#34;</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;s&#34;</span> <span style="color:#a6e22e">placeholder</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Search&#34;</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text&#34;</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Search Value&#34;</span>/&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;submit&#34;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;searchsubmit&#34;</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;submit&#34;</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;submit&#34;</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Search&#34;</span>/&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">form</span>&gt;
+</span></span></code></pre></div><p>The code injected on the page to submit the form was like that :</p>
+      
+    </span>
+    
+    ... <a class="read-more-symbol" href="/posts/dealing-with-html-submits-conflict/">➦</a>
+    
+  </div>
+  
+  
+  
+  
+  
+  <div class="post-list__item">
+    <span class="item__title--big">
+      <a href="/posts/starting-my-own-blog/" >Starting my own blog</a>
+    </span>
+    <span class="item__date">
+      Mar 4, 2014
+    </span>
+    <span >
+      
+      <p>Starting my own blog has been something I really wanted to do.
+I&rsquo;ll add post related to my different projects but also on Web security.</p>
+<p>Here are my different motivations :</p>
+<h4 id="1-provide-a-portfolio-of-my-different-projects">1. Provide a portfolio of my different projects.</h4>
+<h4 id="2-explain-some-problems-i-had-and-provide-the-solution">2. Explain some problems I had and provide the solution</h4>
+<h4 id="3-talk-about-some-geek-stuffs-lets-see-">3. Talk about some geek stuffs. Let&rsquo;s see :)</h4>
+<p>Hope you&rsquo;ll have fun to read me.
+Cheers and see you soon.</p>
+      
+    </span>
+    
+  </div>
+  
+  
+</div>
+
 
 <ul class="pagination">
     
@@ -445,8 +493,8 @@ Here are my different motivations :
 
         </div>
         
-  
-  <script defer src="https://use.fontawesome.com/releases/v5.12.1/js/all.js" integrity="sha384-ZbbbT1gw3joYkKRqh0kWyRp32UAvdqkpbLedQJSlnI8iLQcFVxaGyrOgOJiDQTTR" crossorigin="anonymous"></script>
+
+<script defer src="https://use.fontawesome.com/releases/v5.12.1/js/all.js" integrity="sha384-ZbbbT1gw3joYkKRqh0kWyRp32UAvdqkpbLedQJSlnI8iLQcFVxaGyrOgOJiDQTTR" crossorigin="anonymous"></script>
 
 
     </body>

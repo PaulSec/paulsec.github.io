@@ -13,7 +13,7 @@
       <link>http://paulsec.github.io/posts/frida-android-primer/</link>
       <pubDate>Fri, 13 Aug 2021 17:25:35 +0200</pubDate>
       <guid>http://paulsec.github.io/posts/frida-android-primer/</guid>
-      <description>Hi everyone!&#xA;Here is a pretty quick blog post on some Frida/Objection things I&amp;rsquo;ve been tinkering with.&#xA;I had this Android application which had premium features and wanted to understand how that mechanism worked and if it was robust enough. Let&amp;rsquo;s see what was the journey on how I&amp;rsquo;ve bypassed it using Frida.&#xA;After disassembling the application with Jadx, I was able to perform a simple grep -r -i &#39;premium&#39; .</description>
+      <description>&lt;p&gt;Hi everyone!&lt;/p&gt;&#xA;&lt;p&gt;Here is a pretty quick blog post on some &lt;a href=&#34;https://github.com/frida/frida&#34;&gt;Frida&lt;/a&gt;/&lt;a href=&#34;https://github.com/sensepost/objection&#34;&gt;Objection&lt;/a&gt; things I&amp;rsquo;ve been tinkering with.&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;I had this Android application which had premium features and wanted to understand how that mechanism worked and if it was robust enough. Let&amp;rsquo;s see what was the journey on how I&amp;rsquo;ve bypassed it using Frida.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;After disassembling the application with &lt;a href=&#34;https://github.com/skylot/jadx&#34;&gt;Jadx&lt;/a&gt;, I was able to perform a simple &lt;code&gt;grep -r -i &#39;premium&#39; .&lt;/code&gt; into the sources and leading me to where the &lt;code&gt;Premium&lt;/code&gt; checks were done.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
