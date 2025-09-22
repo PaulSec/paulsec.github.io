@@ -6,8 +6,15 @@
     <description>Recent content in Posts on </description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 26 Jun 2024 21:01:09 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 17 Sep 2025 22:31:42 -0400</lastBuildDate>
     <atom:link href="http://paulsec.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How to Make Successful Teams Last (or at least try to)</title>
+      <link>http://paulsec.github.io/posts/how-to-make-successful-teams-last/</link>
+      <pubDate>Wed, 17 Sep 2025 22:31:42 -0400</pubDate>
+      <guid>http://paulsec.github.io/posts/how-to-make-successful-teams-last/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;http://paulsec.github.io/img/team.jpeg&#34; alt=&#34;Side projects ftw&#34;&gt;&lt;/p&gt;&#xA;&lt;h3 id=&#34;key-takeaways&#34;&gt;Key Takeaways&lt;/h3&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;strong&gt;Take care of your team, and your team will take care of you.&lt;/strong&gt;&lt;br&gt;&#xA;My role has been closer to a coach than a commander. The more I invested in the team’s well being and clarity, the more they owned the product and exceeded expectations.&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;strong&gt;Challenge the status quo relentlessly.&lt;/strong&gt;&lt;br&gt;&#xA;Efficiency is not about hitting KPIs blindly. It is about constantly asking: could we do this better? That curiosity must be part of the team DNA.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>The Benefits of side projects : Keep tinkering 🥷</title>
       <link>http://paulsec.github.io/posts/the-benefits-of-a-side-project/</link>
