@@ -186,6 +186,33 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
   
   <div class="post-list__item">
     <span class="item__title--big">
+      <a href="/posts/running-sslscan-on-5k-servers-taken-from-alexas-top-10k/" >Running SSLScan on 5k servers taken from Alexa&#39;s top 10k</a>
+    </span>
+    <span class="item__date">
+      Jun 7, 2015
+    </span>
+    <span >
+      
+      <!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>After analyzing the <a href="https://paulsec.github.io/blog/2014/05/13/http-security-headers-on-top-10k-alexa-websites/">HTTP Security Headers from the top 10k Alexa websites</a>, I decided looking at the SSL Ciphers used on those websites.</p>
+<p>These results are coming from a scan on port 443 for all those domains.
+Only <strong>4715</strong> servers replied.</p>
+<p>The OpenSSL version installed on my server did not support SSLv2 so SSLv2 ciphers have not been detected.</p>
+      
+    </span>
+    
+    ... <a class="read-more-symbol" href="/posts/running-sslscan-on-5k-servers-taken-from-alexas-top-10k/">➦</a>
+    
+  </div>
+  
+  
+  
+  
+  
+  <div class="post-list__item">
+    <span class="item__title--big">
       <a href="/posts/experiments-with-upnp/" >Experiments with UPnP</a>
     </span>
     <span class="item__date">
@@ -463,37 +490,6 @@ To do so, let&rsquo;s use Nmap:</p>
     </span>
     
     ... <a class="read-more-symbol" href="/posts/scream-write-up/">➦</a>
-    
-  </div>
-  
-  
-  
-  
-  
-  <div class="post-list__item">
-    <span class="item__title--big">
-      <a href="/posts/exploit-kb-vulnerable-web-app-1-write-up/" >Exploiting KB Vulnerable Web App 1 Write-Up</a>
-    </span>
-    <span class="item__date">
-      Apr 15, 2014
-    </span>
-    <span >
-      
-      <p><strong>This post contains the steps to get a root shell with Exploit KB Vulnerable Web App 1 VM</strong></p>
-<p>This VM can he found <a href="http://vulnhub.com/entry/exploit-kb-vulnerable-web-app-1,44/">here</a>. Have a look to find even more VMs</p>
-<h3 id="__host-discovery__"><strong>Host discovery</strong></h3>
-<p>First, we need to discover where the machine is on our network.
-To do so, let&rsquo;s use Nmap:</p>
-<pre tabindex="0"><code>nmap -sP 192.168.1.1/24 
-</code></pre><h3 id="__fingerprinting__"><strong>Fingerprinting</strong></h3>
-<p>After getting the IP address, we need to do some fingerprinting.</p>
-<pre tabindex="0"><code>nmap -sV 192.168.1.23
-</code></pre><!-- raw HTML omitted -->
-<p><em>Fig. Nmap scan result</em></p>
-      
-    </span>
-    
-    ... <a class="read-more-symbol" href="/posts/exploit-kb-vulnerable-web-app-1-write-up/">➦</a>
     
   </div>
   
