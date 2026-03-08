@@ -4,11 +4,10 @@
     
 
 
-    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <head>
     <link href="https://gmpg.org/xfn/11" rel="profile">
-    <link rel="stylesheet" href="/css/syntax.css">
     
-    <link rel="canonical" href="http://localhost:1313/posts/blackstone-smoker-and-telegram-bot/">
+    <link rel="canonical" href="http://paulsec.github.io/posts/blackstone-smoker-and-telegram-bot/">
     
     <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -30,7 +29,7 @@
 But there was still friction. During a cook, I’d have to open Grafana on my phone, navigate to the dashboard, squint at the graph, and try to mentally extrapolate when my brisket would hit 203°F. I wanted something I could just ask. From the backyard. While holding a beer.">
       <meta name="twitter:site" content="@PaulWebSec">
 
-<meta property="og:url" content="http://localhost:1313/posts/blackstone-smoker-and-telegram-bot/">
+<meta property="og:url" content="http://paulsec.github.io/posts/blackstone-smoker-and-telegram-bot/">
   <meta property="og:site_name" content="PaulSec&#39;s Blog">
   <meta property="og:title" content="Blackstone Smoker and Telegram Bot">
   <meta property="og:description" content="Building a Telegram BBQ Pitmaster with Live Grill Data and GPT-4o In the first post, I covered how I reverse-engineered the Blackstone Connect API to stream temperature data into Grafana Cloud. That gave me dashboards, historical graphs, and alerting — a massive upgrade over the stock app.
@@ -70,7 +69,7 @@ But there was still friction. During a cook, I’d have to open Grafana on my ph
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
     <link rel="shortcut icon" href="/favicon.png">
     
-    
+    <link rel="stylesheet" href="/css/syntax.css">
 
 </head>
 
@@ -81,7 +80,7 @@ But there was still friction. During a cook, I’d have to open Grafana on my ph
   <div class="container ">
     <div class="sidebar-about">
       <span class="site__title">
-        <a href="http://localhost:1313/">
+        <a href="http://paulsec.github.io/">
         
           
         
@@ -92,7 +91,7 @@ But there was still friction. During a cook, I’d have to open Grafana on my ph
         
         
         <div class="author-image">
-          <img src="http://localhost:1313/img/profile.png" alt="Author Image" class="img--circle img--headshot element--center">
+          <img src="http://paulsec.github.io/img/profile.png" alt="Author Image" class="img--circle img--headshot element--center">
         </div>
         
       
@@ -212,7 +211,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
   
   <div class="post">
     <h1 id="building-a-telegram-bbq-pitmaster-with-live-grill-data-and-gpt-4o">Building a Telegram BBQ Pitmaster with Live Grill Data and GPT-4o</h1>
-<p>In the <a href="/blog/blackstone-grill-monitor">first post</a>, I covered how I reverse-engineered the Blackstone Connect API to stream temperature data into Grafana Cloud. That gave me dashboards, historical graphs, and alerting — a massive upgrade over the stock app.</p>
+<p>In the <a href="/posts/grafana-dashboard-for-my-blackstone-smoker/">first post</a>, I covered how I reverse-engineered the Blackstone Connect API to stream temperature data into Grafana Cloud. That gave me dashboards, historical graphs, and alerting — a massive upgrade over the stock app.</p>
 <p>But there was still friction. During a cook, I&rsquo;d have to open Grafana on my phone, navigate to the dashboard, squint at the graph, and try to mentally extrapolate when my brisket would hit 203°F. I wanted something I could just <em>ask</em>. From the backyard. While holding a beer.</p>
 <p>So I built a Telegram bot that sits on top of the same Prometheus data, runs linear regression on the fly, pulls live weather data, and pipes everything through GPT-4o to act as an AI pitmaster. This is how it works.</p>
 <hr>
@@ -485,6 +484,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
 <p>But honestly? The current setup does 90% of what I need. I pull up Telegram, ask &ldquo;how&rsquo;s the cook?&rdquo;, and get a real answer with real data. That&rsquo;s the whole point.</p>
 <hr>
 <p><em>The full source code is on GitHub. The bot is <code>telegram_bot.py</code> — about 550 lines of Python including all the Prometheus queries, probe scoring, linear regression, weather integration, and LLM wiring. No framework beyond <code>python-telegram-bot</code> and LangChain for the OpenAI calls.</em></p>
+<p><strong>P.S.</strong> — This whole project was built to celebrate my 0x24th birthday. Nothing says &ldquo;I&rsquo;m turning 36&rdquo; quite like building an AI-powered BBQ monitoring system with linear regression and weather integration. 🎂🔥</p>
 
   </div>
   
@@ -503,6 +503,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
   
 
   
+    
 
 
 </article>
@@ -523,6 +524,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
         hljs.initHighlightingOnLoad();
     </script>
     
+
 
 
     

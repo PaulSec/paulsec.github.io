@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html lang="en-us">
     
-<head>
+  <head>
     <link href="https://gmpg.org/xfn/11" rel="profile">
-    <link rel="stylesheet" href="/css/syntax.css">
     
     <link rel="canonical" href="http://paulsec.github.io/">
     
@@ -61,7 +60,7 @@
     <link rel="shortcut icon" href="/favicon.png">
     <link rel="alternate" type="application/rss+xml" href="http://paulsec.github.io/index.xml" title="" />
 
-    
+    <link rel="stylesheet" href="/css/syntax.css">
 
 </head>
 
@@ -178,22 +177,22 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
 
         <div class="content container">
             
-<div class="post-list">
-  
-  
-  
-  
-  
-  <div class="post-list__item">
-    <span class="item__title--big">
-      <a href="/posts/scream-write-up/" >Scream Write-up</a>
-    </span>
-    <span class="item__date">
-      Apr 16, 2014
-    </span>
-    <span >
+  <div class="post-list">
+    
+    
       
-      <p><strong>This post contains the steps to get a root shell with Scream VM</strong></p>
+        
+      
+      <div class="post-list__item">
+        <span class="item__title--big">
+          <a href="/posts/scream-write-up/" >Scream Write-up</a>
+        </span>
+        <span class="item__date">
+          Apr 16, 2014
+        </span>
+        <span >
+        
+        <p><strong>This post contains the steps to get a root shell with Scream VM</strong></p>
 <p>This VM can he found <a href="http://vulnhub.com/entry/devrandom_scream,47/">here</a>. Have a look to find even more VMs.
 But before starting the report, I&rsquo;d like to congratulate g0tmi1k for his <em>awesome</em> tool : <a href="https://github.com/g0tmi1k/VulnInjector">VulnInjector</a>.</p>
 <p>Ok, let&rsquo;s do this write-up !</p>
@@ -203,27 +202,27 @@ To do so, let&rsquo;s use Nmap:</p>
 <pre tabindex="0"><code>nmap -sP 192.168.1.1/24 
 </code></pre><h3 id="__fingerprinting__"><strong>Fingerprinting</strong></h3>
 <p>After getting the IP address (<em>192.168.1.2</em>), we need to do some fingerprinting.</p>
+        
+        </span>
+        
+          ... <a class="read-more-symbol" href="/posts/scream-write-up/">➦</a>
+        
+        </div>
+        
+     
       
-    </span>
-    
-    ... <a class="read-more-symbol" href="/posts/scream-write-up/">➦</a>
-    
-  </div>
-  
-  
-  
-  
-  
-  <div class="post-list__item">
-    <span class="item__title--big">
-      <a href="/posts/exploit-kb-vulnerable-web-app-1-write-up/" >Exploiting KB Vulnerable Web App 1 Write-Up</a>
-    </span>
-    <span class="item__date">
-      Apr 15, 2014
-    </span>
-    <span >
+        
       
-      <p><strong>This post contains the steps to get a root shell with Exploit KB Vulnerable Web App 1 VM</strong></p>
+      <div class="post-list__item">
+        <span class="item__title--big">
+          <a href="/posts/exploit-kb-vulnerable-web-app-1-write-up/" >Exploiting KB Vulnerable Web App 1 Write-Up</a>
+        </span>
+        <span class="item__date">
+          Apr 15, 2014
+        </span>
+        <span >
+        
+        <p><strong>This post contains the steps to get a root shell with Exploit KB Vulnerable Web App 1 VM</strong></p>
 <p>This VM can he found <a href="http://vulnhub.com/entry/exploit-kb-vulnerable-web-app-1,44/">here</a>. Have a look to find even more VMs</p>
 <h3 id="__host-discovery__"><strong>Host discovery</strong></h3>
 <p>First, we need to discover where the machine is on our network.
@@ -234,27 +233,27 @@ To do so, let&rsquo;s use Nmap:</p>
 <pre tabindex="0"><code>nmap -sV 192.168.1.23
 </code></pre><img src="/images/exploit-kb/nmap-result.png" width="75%" height="75%"/>
 <p><em>Fig. Nmap scan result</em></p>
+        
+        </span>
+        
+          ... <a class="read-more-symbol" href="/posts/exploit-kb-vulnerable-web-app-1-write-up/">➦</a>
+        
+        </div>
+        
+     
       
-    </span>
-    
-    ... <a class="read-more-symbol" href="/posts/exploit-kb-vulnerable-web-app-1-write-up/">➦</a>
-    
-  </div>
-  
-  
-  
-  
-  
-  <div class="post-list__item">
-    <span class="item__title--big">
-      <a href="/posts/kioptrix-2-write-up/" >Kioptrix 2 Write-up</a>
-    </span>
-    <span class="item__date">
-      Apr 15, 2014
-    </span>
-    <span >
+        
       
-      <p><strong>This post contains the steps to get a root shell with Kioptrix level 2 VM</strong></p>
+      <div class="post-list__item">
+        <span class="item__title--big">
+          <a href="/posts/kioptrix-2-write-up/" >Kioptrix 2 Write-up</a>
+        </span>
+        <span class="item__date">
+          Apr 15, 2014
+        </span>
+        <span >
+        
+        <p><strong>This post contains the steps to get a root shell with Kioptrix level 2 VM</strong></p>
 <p>This VM can he found <a href="http://vulnhub.com/entry/kioptrix-level-11-2,23/">here</a>. Have a look to find even more VMs</p>
 <h3 id="__host-discovery__"><strong>Host discovery</strong></h3>
 <p>First, we need to discover where the machine is on our network.
@@ -266,27 +265,27 @@ To do so, let&rsquo;s use Nmap:</p>
 </code></pre><img src="/images/kioptrix/2/nmap-result.png" width="75%" height="75%"/>
 <p><em>Fig. Nmap scan result</em></p>
 <p>As I saw it in the scan report, I decided to scan the port 80 with <strong>Nikto</strong>.</p>
+        
+        </span>
+        
+          ... <a class="read-more-symbol" href="/posts/kioptrix-2-write-up/">➦</a>
+        
+        </div>
+        
+     
       
-    </span>
-    
-    ... <a class="read-more-symbol" href="/posts/kioptrix-2-write-up/">➦</a>
-    
-  </div>
-  
-  
-  
-  
-  
-  <div class="post-list__item">
-    <span class="item__title--big">
-      <a href="/posts/kioptrix-1-write-up/" >Kioptrix 1 Write-up</a>
-    </span>
-    <span class="item__date">
-      Apr 14, 2014
-    </span>
-    <span >
+        
       
-      <p><strong>This post contains the steps to get a root shell with Kioptrix level 1 VM</strong></p>
+      <div class="post-list__item">
+        <span class="item__title--big">
+          <a href="/posts/kioptrix-1-write-up/" >Kioptrix 1 Write-up</a>
+        </span>
+        <span class="item__date">
+          Apr 14, 2014
+        </span>
+        <span >
+        
+        <p><strong>This post contains the steps to get a root shell with Kioptrix level 1 VM</strong></p>
 <p>This VM can he found <a href="http://vulnhub.com/entry/kioptrix_level-1-1,22/">here</a>. Have a look to find even more VMs</p>
 <h4 id="__host-discovery__"><strong>Host discovery</strong></h4>
 <p>First, we need to discover where the machine is on our network.
@@ -298,52 +297,52 @@ To do so, let&rsquo;s use Nmap:</p>
 </code></pre><img src="/images/kioptrix/1/nmap.png" width="75%" height="75%"/>
 <p><em>Fig. Nmap scan result</em></p>
 <p>As I saw it in the scan report, I decided to scan on the port 80 and 443 with <strong>DirBuster</strong> and <strong>Nikto</strong>.</p>
+        
+        </span>
+        
+          ... <a class="read-more-symbol" href="/posts/kioptrix-1-write-up/">➦</a>
+        
+        </div>
+        
+     
       
-    </span>
-    
-    ... <a class="read-more-symbol" href="/posts/kioptrix-1-write-up/">➦</a>
-    
-  </div>
-  
-  
-  
-  
-  
-  <div class="post-list__item">
-    <span class="item__title--big">
-      <a href="/posts/secos-1-first-vm-out/" >SecOS-1 First VM Out</a>
-    </span>
-    <span class="item__date">
-      Apr 14, 2014
-    </span>
-    <span >
+        
       
-      <p>Hey there,</p>
+      <div class="post-list__item">
+        <span class="item__title--big">
+          <a href="/posts/secos-1-first-vm-out/" >SecOS-1 First VM Out</a>
+        </span>
+        <span class="item__date">
+          Apr 14, 2014
+        </span>
+        <span >
+        
+        <p>Hey there,</p>
 <p>Quick blog post for the first VM I created to experiment some of your pentesting skills.</p>
 <p>The idea grew up when I developed some security tools (especially the one (<a href="https://github.com/PaulSec/CSRFT">CSRFT</a>) I presented at BSides London few weeks ago) to create a legal environment where you could try it out.</p>
 <p>I really liked creating this Boot2root VM.
 So, I&rsquo;ll create few more that will rely on each other so keep the flags because you&rsquo;ll need it for the next ones.</p>
+        
+        </span>
+        
+          ... <a class="read-more-symbol" href="/posts/secos-1-first-vm-out/">➦</a>
+        
+        </div>
+        
+     
       
-    </span>
-    
-    ... <a class="read-more-symbol" href="/posts/secos-1-first-vm-out/">➦</a>
-    
-  </div>
-  
-  
-  
-  
-  
-  <div class="post-list__item">
-    <span class="item__title--big">
-      <a href="/posts/updating-openfuck-exploit/" >Updating OpenFuck Exploit</a>
-    </span>
-    <span class="item__date">
-      Apr 14, 2014
-    </span>
-    <span >
+        
       
-      <p>This blog post will be quite fast and will provide you the steps to update the <a href="http://www.exploit-db.com/exploits/764/">OpenFuck</a> exploit.</p>
+      <div class="post-list__item">
+        <span class="item__title--big">
+          <a href="/posts/updating-openfuck-exploit/" >Updating OpenFuck Exploit</a>
+        </span>
+        <span class="item__date">
+          Apr 14, 2014
+        </span>
+        <span >
+        
+        <p>This blog post will be quite fast and will provide you the steps to update the <a href="http://www.exploit-db.com/exploits/764/">OpenFuck</a> exploit.</p>
 <p>This exploit is pretty old but you might need it if you have fun with some vulnerable VMs. Not giving any hint. :-)</p>
 <p>Thanks to this <a href="http://hackingbalg.blogspot.fr/">blog</a>, I&rsquo;ve been able to update the exploit.</p>
 <p>Here are the steps to make this work :</p>
@@ -356,27 +355,27 @@ So, I&rsquo;ll create few more that will rely on each other so keep the flags be
 <li><strong>2) Update the URL of the C file.</strong></li>
 </ul>
 <p>Search for <code>wget</code></p>
+        
+        </span>
+        
+          ... <a class="read-more-symbol" href="/posts/updating-openfuck-exploit/">➦</a>
+        
+        </div>
+        
+     
       
-    </span>
-    
-    ... <a class="read-more-symbol" href="/posts/updating-openfuck-exploit/">➦</a>
-    
-  </div>
-  
-  
-  
-  
-  
-  <div class="post-list__item">
-    <span class="item__title--big">
-      <a href="/posts/vulnos-write-up/" >VulnOS Write-up</a>
-    </span>
-    <span class="item__date">
-      Apr 8, 2014
-    </span>
-    <span >
+        
       
-      <p><strong>This contains the solution of the VM: VulnOS.</strong></p>
+      <div class="post-list__item">
+        <span class="item__title--big">
+          <a href="/posts/vulnos-write-up/" >VulnOS Write-up</a>
+        </span>
+        <span class="item__date">
+          Apr 8, 2014
+        </span>
+        <span >
+        
+        <p><strong>This contains the solution of the VM: VulnOS.</strong></p>
 <p>This is my first write-up for a VM and I&rsquo;m doing it for VulnOS which is hosted on <a href="http://vulnhub.com/">VulnHub</a> (Great resource if you want to improve your pentesting skills).</p>
 <p>In this &rsquo;tutorial&rsquo;, I&rsquo;m gonna give you the steps I reproduced to get a shell on the machine.</p>
 <h4 id="discovery">Discovery</h4>
@@ -390,27 +389,27 @@ Nmap scan report for 192.168.56.105
 Host is up (0.00018s latency).
 </code></pre><p>We managed to get the IP of the machine.
 Let&rsquo;s do some fingerprinting.</p>
+        
+        </span>
+        
+          ... <a class="read-more-symbol" href="/posts/vulnos-write-up/">➦</a>
+        
+        </div>
+        
+     
       
-    </span>
-    
-    ... <a class="read-more-symbol" href="/posts/vulnos-write-up/">➦</a>
-    
-  </div>
-  
-  
-  
-  
-  
-  <div class="post-list__item">
-    <span class="item__title--big">
-      <a href="/posts/python-plus-transmission-daemon-equals-download-easily-your-favorite-tv-show/" >Python &#43; Transmission daemon = Download easily your favorite TV Show</a>
-    </span>
-    <span class="item__date">
-      Mar 28, 2014
-    </span>
-    <span >
+        
       
-      <p>This post is about my last project : my <em>TV Show Manager</em>.</p>
+      <div class="post-list__item">
+        <span class="item__title--big">
+          <a href="/posts/python-plus-transmission-daemon-equals-download-easily-your-favorite-tv-show/" >Python &#43; Transmission daemon = Download easily your favorite TV Show</a>
+        </span>
+        <span class="item__date">
+          Mar 28, 2014
+        </span>
+        <span >
+        
+        <p>This post is about my last project : my <em>TV Show Manager</em>.</p>
 <p>I decided to start it because I wanted something <strong>really</strong> simple to download my favorite TV Shows.
 In this post, I&rsquo;ll explain step by step how to reproduce it at home.</p>
 <p>Basically, with this tutorial you&rsquo;ll set up your <strong>Raspberry</strong> box by :</p>
@@ -420,27 +419,27 @@ In this post, I&rsquo;ll explain step by step how to reproduce it at home.</p>
 </ul>
 <blockquote>
 <p>Well.. let&rsquo;s start ?</p>
+        
+        </span>
+        
+          ... <a class="read-more-symbol" href="/posts/python-plus-transmission-daemon-equals-download-easily-your-favorite-tv-show/">➦</a>
+        
+        </div>
+        
+     
       
-    </span>
-    
-    ... <a class="read-more-symbol" href="/posts/python-plus-transmission-daemon-equals-download-easily-your-favorite-tv-show/">➦</a>
-    
-  </div>
-  
-  
-  
-  
-  
-  <div class="post-list__item">
-    <span class="item__title--big">
-      <a href="/posts/xss-callback/" >XSS Callback</a>
-    </span>
-    <span class="item__date">
-      Mar 20, 2014
-    </span>
-    <span >
+        
       
-      <p>This post deals with a project I developed : <a href="https://github.com/PaulSec/XSS-Callback/">XSS Callback</a>.</p>
+      <div class="post-list__item">
+        <span class="item__title--big">
+          <a href="/posts/xss-callback/" >XSS Callback</a>
+        </span>
+        <span class="item__date">
+          Mar 20, 2014
+        </span>
+        <span >
+        
+        <p>This post deals with a project I developed : <a href="https://github.com/PaulSec/XSS-Callback/">XSS Callback</a>.</p>
 <p>This is not going to be (at least, I hope) a boring post about XSS exploitation. No.</p>
 <p>Well, one scenario of using XSS would be to steal victim&rsquo;s cookie and access the page through his session.
 This technique is called <strong>Session Hijacking</strong>. Ok fair enough.</p>
@@ -451,27 +450,27 @@ This technique is called <strong>Session Hijacking</strong>. Ok fair enough.</p>
 <li>You wake up in the night and there are loads of victims&rsquo;s sessions. Great !</li>
 </ul>
 <p>The only problem : the user <em>might have logged out of the platform</em> <strong>or</strong> there might be a <em>timeout on the session</em>.</p>
+        
+        </span>
+        
+          ... <a class="read-more-symbol" href="/posts/xss-callback/">➦</a>
+        
+        </div>
+        
+     
       
-    </span>
-    
-    ... <a class="read-more-symbol" href="/posts/xss-callback/">➦</a>
-    
-  </div>
-  
-  
-  
-  
-  
-  <div class="post-list__item">
-    <span class="item__title--big">
-      <a href="/posts/dealing-with-html-submits-conflict/" >Dealing with HTML submits conflicts</a>
-    </span>
-    <span class="item__date">
-      Mar 9, 2014
-    </span>
-    <span >
+        
       
-      <p>This first post is related with one of my project : CSRFT.
+      <div class="post-list__item">
+        <span class="item__title--big">
+          <a href="/posts/dealing-with-html-submits-conflict/" >Dealing with HTML submits conflicts</a>
+        </span>
+        <span class="item__date">
+          Mar 9, 2014
+        </span>
+        <span >
+        
+        <p>This first post is related with one of my project : CSRFT.
 CSRFT is a Cross Site Request Forgery (CSRF) vulnerabilities Toolkit.</p>
 <p>My toolkit allows you to exploit either GET and POST HTTP Requests.
 During some testings, I had issues with some specific forms.</p>
@@ -482,16 +481,16 @@ During some testings, I had issues with some specific forms.</p>
 </span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;submit&#34;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;searchsubmit&#34;</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;submit&#34;</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;submit&#34;</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Search&#34;</span>/&gt;
 </span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">form</span>&gt;
 </span></span></code></pre></div><p>The code injected on the page to submit the form was like that :</p>
-      
-    </span>
-    
-    ... <a class="read-more-symbol" href="/posts/dealing-with-html-submits-conflict/">➦</a>
-    
+        
+        </span>
+        
+          ... <a class="read-more-symbol" href="/posts/dealing-with-html-submits-conflict/">➦</a>
+        
+        </div>
+        
+     
   </div>
   
-  
-</div>
-
 
 <ul class="pagination">
     
@@ -572,8 +571,8 @@ During some testings, I had issues with some specific forms.</p>
 
         </div>
         
-
-<script defer src="https://use.fontawesome.com/releases/v5.12.1/js/all.js" integrity="sha384-ZbbbT1gw3joYkKRqh0kWyRp32UAvdqkpbLedQJSlnI8iLQcFVxaGyrOgOJiDQTTR" crossorigin="anonymous"></script>
+  
+  <script defer src="https://use.fontawesome.com/releases/v5.12.1/js/all.js" integrity="sha384-ZbbbT1gw3joYkKRqh0kWyRp32UAvdqkpbLedQJSlnI8iLQcFVxaGyrOgOJiDQTTR" crossorigin="anonymous"></script>
 
 
     </body>
