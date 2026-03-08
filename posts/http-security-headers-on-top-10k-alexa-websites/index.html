@@ -26,19 +26,13 @@
 
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="HTTP Security Headers on top 10k Alexa websites">
-  <meta name="twitter:description" content="EDIT: Added statistics of max-age option.
-Hi there,
-This blog post deals with HTTP Security Headers on top 10k Alexa websites. Based on this discussion on netsec, I decided to do some statistics on Alexa ranking.
-To do this study, I did a GET HTTP Request and saved the headers in the HTTP response. This has been done using Python.">
+  <meta name="twitter:description" content="EDIT: Added statistics of max-age option.">
       <meta name="twitter:site" content="@PaulWebSec">
 
 <meta property="og:url" content="http://paulsec.github.io/posts/http-security-headers-on-top-10k-alexa-websites/">
   <meta property="og:site_name" content="PaulSec&#39;s Blog">
   <meta property="og:title" content="HTTP Security Headers on top 10k Alexa websites">
-  <meta property="og:description" content="EDIT: Added statistics of max-age option.
-Hi there,
-This blog post deals with HTTP Security Headers on top 10k Alexa websites. Based on this discussion on netsec, I decided to do some statistics on Alexa ranking.
-To do this study, I did a GET HTTP Request and saved the headers in the HTTP response. This has been done using Python.">
+  <meta property="og:description" content="EDIT: Added statistics of max-age option.">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
@@ -225,9 +219,123 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
   
   
   <div class="post">
-    <!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        // all headers
+        var data = google.visualization.arrayToDataTable([
+          ['Header', 'Value'],
+          ['X-Frame-Options', 799],
+          ['X-XSS-Protection', 374],
+          ['X-Content-Type-Options', 202],
+          ['Strict-Transport-Security', 97],
+          ['Content-Security-Policy', 16],
+          ['Content-Security-Policy-Report-Only', 2]
+        ]);
+
+        var options = {
+title = "http security headers on top 10k alexa websites"
+        };
+
+        var chart = new google.visualization.ColumnChart(document.getElementById('hosts-up'));
+        chart.draw(data, options);
+
+        // X-Frame-Options
+        var data = google.visualization.arrayToDataTable([
+          ['Value', 'Occurence'],  
+          ['SAMEORIGIN', 665],
+          ['DENY', 127],
+          ['ALLOW-FROM', 5],
+          ['ALLOWALL', 1],
+          ['GOFORIT', 1]
+        ]);
+
+        var options = {
+title = "http security headers on top 10k alexa websites"
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('x-frame-options-stats'));
+        chart.draw(data, options);
+
+        // X-XSS-Protection
+        var data = google.visualization.arrayToDataTable([
+          ['Value', 'Occurence'],  
+          ['1; mode=block', 340],
+          ['0', 24],
+          ['1', 10]
+        ]);
+
+        var options = {
+title = "http security headers on top 10k alexa websites"
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('x-xss-protection-stats'));
+        chart.draw(data, options);
+
+        // Strict-Transport-Security
+        var data = google.visualization.arrayToDataTable([
+          ['Value', 'Occurence'],  
+          ['Only max-age', 68],
+          ['max-age and includeSubDomains', 29]
+        ]);
+
+        var options = {
+title = "http security headers on top 10k alexa websites"
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('strict-transport-security-stats'));
+        chart.draw(data, options);
+
+        // max-age statistics
+        var data = google.visualization.arrayToDataTable([
+          ['Value', 'Occurence'],  
+          ['1', 1],
+          ['600', 1],
+          ['3600', 1],
+          ['14400', 1],
+          ['86400', 1],
+          ['86400', 1],
+          ['864000', 1],
+          ['1728000', 1],
+          ['2592000', 1],
+          ['2592000', 1],
+          ['3000000', 1],
+          ['5184000', 1],
+          ['7776000', 1],
+          ['8640000', 1],
+          ['10886400', 1],
+          ['15552000', 1],
+          ['15768000', 1],
+          ['15768000', 1],
+          ['16070400', 1],
+          ['31556926', 1],
+          ['31557600', 1],
+          ['47336400', 1],
+          ['63072000', 1],
+          ['86400000', 1],
+          ['631152000', 1],
+          ['31556926', 2],
+          ['63072000', 2],
+          ['631138519', 2],
+          ['15768000', 4],
+          ['604800', 5],
+          ['10893354', 7],
+          ['0', 8],
+          ['31536000', 8],
+          ['31536000', 32]
+        ]);
+
+        var options = {
+title = "http security headers on top 10k alexa websites"
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('max-age-stats'));
+        chart.draw(data, options);
+
+      }
+</script>
 <p><strong>EDIT</strong>: Added statistics of <em>max-age</em> option.</p>
 <p>Hi there,</p>
 <p>This blog post deals with HTTP Security Headers on top 10k Alexa websites.
@@ -246,16 +354,16 @@ OWASP provides a good resource <a href="https://www.owasp.org/index.php/List_of_
 <li>Content-Security-Policy-Report-Only</li>
 </ul>
 <p>Here are the results:</p>
-<!-- raw HTML omitted -->
+<div id="hosts-up" style="width: 900px; height: 500px;"></div>
 <p>Then, I decided to realize statistics on the different values for some of the most used HTTP header.</p>
 <h3 id="x-frame-options">X-Frame-Options</h3>
-<!-- raw HTML omitted -->
+<div id="x-frame-options-stats" style="width: 900px; height: 500px;"></div>
 <h3 id="x-xss-protection">X-XSS-Protection</h3>
-<!-- raw HTML omitted -->
+<div id="x-xss-protection-stats" style="width: 900px; height: 500px;"></div>
 <h3 id="strict-transport-security">Strict-Transport-Security</h3>
-<!-- raw HTML omitted -->
+<div id="strict-transport-security-stats" style="width: 900px; height: 500px;"></div>
 <h4 id="max-age-statistics">Max-age statistics</h4>
-<!-- raw HTML omitted -->
+<div id="max-age-stats" style="width: 900px; height: 500px;"></div>
 <h3 id="x-content-type-options">X-Content-Type-Options</h3>
 <p>This header doesn&rsquo;t allow options so the only value is <code>NOSNIFF</code>.
 All <strong>202</strong> hosts had this value.</p>

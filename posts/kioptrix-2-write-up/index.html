@@ -30,7 +30,8 @@
 This VM can he found here. Have a look to find even more VMs
 Host discovery First, we need to discover where the machine is on our network. To do so, let’s use Nmap:
 nmap -sP 192.168.1.1/24 Fingerprinting After getting the IP address, we need to do some fingerprinting.
-nmap -sV 192.168.1.42 Fig. Nmap scan result">
+nmap -sV 192.168.1.42 Fig. Nmap scan result
+As I saw it in the scan report, I decided to scan the port 80 with Nikto.">
       <meta name="twitter:site" content="@PaulWebSec">
 
 <meta property="og:url" content="http://paulsec.github.io/posts/kioptrix-2-write-up/">
@@ -40,7 +41,8 @@ nmap -sV 192.168.1.42 Fig. Nmap scan result">
 This VM can he found here. Have a look to find even more VMs
 Host discovery First, we need to discover where the machine is on our network. To do so, let’s use Nmap:
 nmap -sP 192.168.1.1/24 Fingerprinting After getting the IP address, we need to do some fingerprinting.
-nmap -sV 192.168.1.42 Fig. Nmap scan result">
+nmap -sV 192.168.1.42 Fig. Nmap scan result
+As I saw it in the scan report, I decided to scan the port 80 with Nikto.">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
@@ -239,17 +241,17 @@ To do so, let&rsquo;s use Nmap:</p>
 </code></pre><h3 id="__fingerprinting__"><strong>Fingerprinting</strong></h3>
 <p>After getting the IP address, we need to do some fingerprinting.</p>
 <pre tabindex="0"><code>nmap -sV 192.168.1.42
-</code></pre><!-- raw HTML omitted -->
+</code></pre><img src="/images/kioptrix/2/nmap-result.png" width="75%" height="75%"/>
 <p><em>Fig. Nmap scan result</em></p>
 <p>As I saw it in the scan report, I decided to scan the port 80 with <strong>Nikto</strong>.</p>
-<!-- raw HTML omitted -->
+<img src="/images/kioptrix/2/nikto-result.png" width="75%" height="75%"/>
 <p><em>Fig. Nikto report on ports 80 (HTTP)</em></p>
 <p>There was no interesting file or any &lsquo;obvious&rsquo; vulnerability.
 So, I decided to check the Web application.</p>
 <h3 id="__exploitation__"><strong>Exploitation</strong></h3>
 <p>When you arrive on the Index page, you have a login page.
 No Stylesheet file, etc. So I decided to check if the login form was vulnerable to SQL injection..</p>
-<!-- raw HTML omitted -->
+<img src="/images/kioptrix/2/login-sqli.png" width="40%" height="40%"/>
 <p><em>Fig. Testing SQL Injection in Login form</em></p>
 <p>**Bingo, it was ! **</p>
 <p>Thanks to this flaw, we had access to a &ldquo;admin panel&rdquo; to launch <em>ping</em> commands.
@@ -257,10 +259,10 @@ Seems there might be a Command Execution vulnerability.</p>
 <p>I tried using payload like : <code>; ls</code></p>
 <p>And guess what ? It worked !</p>
 <p>Then, let&rsquo;s get the <code>/etc/passwd</code> file.</p>
-<!-- raw HTML omitted -->
+<img src="/images/kioptrix/2/command-exec-etc-passwd-cmd.png" width="75%" height="75%"/>
 <p><em>Fig. Command injected to display /etc/passwd</em></p>
 <p>And the result :</p>
-<!-- raw HTML omitted -->
+<img src="/images/kioptrix/2/command-exec-etc-passwd.png" width="75%" height="75%"/>
 <p><em>Fig. Output when using the Command exec to display /etc/passwd</em></p>
 <p>After this, we were able to launch commands on the system but the shell was under apache&rsquo;s user. No privilege..</p>
 <h3 id="__privilege-escalation__"><strong>Privilege Escalation</strong></h3>
@@ -282,7 +284,7 @@ USER     TTY      FROM              LOGIN@   IDLE   JCPU   PCPU WHAT
 uid=48(apache) gid=48(apache) groups=48(apache)
 sh: no job control in this shell
 </code></pre><p>Then, download the Root exploit, compile it, run it and you&rsquo;re root.</p>
-<!-- raw HTML omitted -->
+<img src="/images/kioptrix/2/privilege-escalation-root-id.png" width="75%" height="75%"/>
 <p><em>Fig. Exploit worked and we&rsquo;re now root</em></p>
 <p>Then, we read the <strong>/etc/shadow</strong>, crack the password etc.</p>
 <p>Hope you liked it and good evening !</p>

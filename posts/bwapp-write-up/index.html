@@ -30,7 +30,8 @@
 Host discovery As always, we need to discover where the machine is on our network. To do so, let’s use Nmap:
 nmap -sP 192.168.1.1/24 Fingerprinting After getting the IP address (192.168.1.10), we need to do some fingerprinting.
 nmap -sV 192.168.1.10 Fig. Nmap scan result
-A lot of services were open, such as: VNC, FTP, etc.">
+A lot of services were open, such as: VNC, FTP, etc.
+As I saw it in the scan report, I decided to scan the port 80 with Nikto.">
       <meta name="twitter:site" content="@PaulWebSec">
 
 <meta property="og:url" content="http://paulsec.github.io/posts/bwapp-write-up/">
@@ -40,7 +41,8 @@ A lot of services were open, such as: VNC, FTP, etc.">
 Host discovery As always, we need to discover where the machine is on our network. To do so, let’s use Nmap:
 nmap -sP 192.168.1.1/24 Fingerprinting After getting the IP address (192.168.1.10), we need to do some fingerprinting.
 nmap -sV 192.168.1.10 Fig. Nmap scan result
-A lot of services were open, such as: VNC, FTP, etc.">
+A lot of services were open, such as: VNC, FTP, etc.
+As I saw it in the scan report, I decided to scan the port 80 with Nikto.">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
@@ -238,18 +240,18 @@ To do so, let&rsquo;s use Nmap:</p>
 </code></pre><h3 id="__fingerprinting__"><strong>Fingerprinting</strong></h3>
 <p>After getting the IP address (<em>192.168.1.10</em>), we need to do some fingerprinting.</p>
 <pre tabindex="0"><code>nmap -sV 192.168.1.10
-</code></pre><!-- raw HTML omitted -->
+</code></pre><img src="/images/bWAPP/nmap-result.png" width="75%" height="75%"/>
 <p><em>Fig. Nmap scan result</em></p>
 <p>A lot of services were open, such as: VNC, FTP, etc.</p>
 <p>As I saw it in the scan report, I decided to scan the port 80 with <strong>Nikto</strong>.</p>
-<!-- raw HTML omitted -->
+<img src="/images/bWAPP/nikto.png" width="75%" height="75%"/>
 <p><em>Fig. Nikto report on ports 80 (HTTP)</em></p>
 <p>Moreover, I decided to launch <em>DirBuster</em> to retrieve folders/documents.</p>
-<!-- raw HTML omitted -->
+<img src="/images/bWAPP/dirbuster.png" width="75%" height="75%"/>
 <p><em>Fig. Launching DirBuster on port 80</em></p>
 <p>To conclude, I checked the FTP (ProFTPD 1.3) and I was able to connect as an <strong>anonymous</strong> user.
 We only had access to a folder full of PDF documents.</p>
-<!-- raw HTML omitted -->
+<img src="/images/bWAPP/ftp-access-anonymous.png" width="75%" height="75%"/>
 <p><em>Fig. Anonymous access on FTP Server</em></p>
 <p>Thanks to DirBuster result, I saw that the <em>/webdav/</em> folder (accessible through HTTP) was linked to the folder we were connected through the FTP session.</p>
 <p>Let&rsquo;s talk now about the exploitation</p>
@@ -257,11 +259,11 @@ We only had access to a folder full of PDF documents.</p>
 <p>###<strong>Exploiting VNC</strong></p>
 <p>I started by exploiting VNC Service using <strong>Hydra</strong> to crack the password :</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hydra -p <span style="color:#e6db74">&#34;password&#34;</span> 192.168.1.10 vnc
-</span></span></code></pre></div><!-- raw HTML omitted -->
+</span></span></code></pre></div><img src="/images/bWAPP/hydra-crack.png" width="75%" height="75%"/>
 <p><em>Fig. Checking that VNC uses default password</em></p>
 <p>The output was clear: the password was the default one.
 We were able connect using <em>vncviewer</em> and we were &hellip; <strong>r00t</strong>.</p>
-<!-- raw HTML omitted -->
+<img src="/images/bWAPP/vnc.png" width="50%" height="50%"/>
 <p><em>Fig. Root access through VNC</em></p>
 <p>Then, I extracted the /etc/shadow :</p>
 <pre tabindex="0"><code>root:$1$6.aigTP1$FC1TuoITEYSQwRV0hi6gj/:15792:0:99999:7:::
@@ -321,31 +323,31 @@ trinity          (neo)
 <p>###<strong>Exploiting Webdav</strong></p>
 <p>As we saw: we have FTP access in a folder accessible through HTTP.
 Then, we can upload a (PHP) Backdoor.</p>
-<!-- raw HTML omitted -->
+<img src="/images/bWAPP/webdav-activated.png" width="75%" height="75%"/>
 <p><em>Fig. Checking that Webdav was activated</em></p>
-<!-- raw HTML omitted -->
+<img src="/images/bWAPP/ftp-upload-backdoor.png" width="50%" height="50%"/>
 <p><em>Fig. Uploading our backdoor on the Server</em></p>
 <p>Then, the backdoor is accessible in the folder <code>/webdav</code></p>
 <p>Let&rsquo;s access it and we&rsquo;ll have access on the server (but limited shell) so this was not really interested compared to the other vulns.</p>
-<!-- raw HTML omitted -->
+<img src="/images/bWAPP/webdav-backdoor.png" width="75%" height="75%"/>
 <p><em>Fig. Executing commands with our Backdoor</em></p>
 <p>###<strong>Exploiting Heartbleed</strong></p>
 <p>Everybody heard about Heartbleed and bWAPP integrates a vulnerable version of OpenSSL.
 You can then practice it and try all the scripts that have been released on the internet.</p>
-<!-- raw HTML omitted -->
+<img src="/images/bWAPP/heartbleed-config.png" width="75%" height="75%"/>
 <p><em>Fig. Configuring Heartbleed on port 8443</em></p>
-<!-- raw HTML omitted -->
+<img src="/images/bWAPP/heartbleed-exploit.png" width="75%" height="75%"/>
 <p><em>Fig. Exploiting Heartbleed attack</em></p>
 <p>For this experiment, I wanted to have fun with the Metasploit&rsquo;s one but try the one you prefer.
 Moreover, you can give it a try to steal private keys :-).</p>
 <p>###<strong>Exploiting SNMP</strong></p>
 <p>The last step was to exploit SNMP service.
 First, I bruteforce the login and we found two (default) logins :</p>
-<!-- raw HTML omitted -->
+<img src="/images/bWAPP/snmp-login.png" width="75%" height="75%"/>
 <p><em>Fig. Bruteforcing SNMP Logins</em></p>
 <p>Then, we exploited the service to gather lot of information such as the Computer Name, the processes running on the system etc.
 And this is basically due to a (default and not secure) installation of SNMP Service.</p>
-<!-- raw HTML omitted -->
+<img src="/images/bWAPP/snmp-exploit.png" width="75%" height="75%"/>
 <p><em>Fig. Exploiting SNMP Service</em></p>
 <p>###<strong>Thoughts</strong></p>
 <p>I just checked for few hours the VM and it contains a lot of (interesting) exercices to practice with.

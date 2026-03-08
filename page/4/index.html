@@ -232,7 +232,7 @@ To do so, let&rsquo;s use Nmap:</p>
 </code></pre><h3 id="__fingerprinting__"><strong>Fingerprinting</strong></h3>
 <p>After getting the IP address, we need to do some fingerprinting.</p>
 <pre tabindex="0"><code>nmap -sV 192.168.1.23
-</code></pre><!-- raw HTML omitted -->
+</code></pre><img src="/images/exploit-kb/nmap-result.png" width="75%" height="75%"/>
 <p><em>Fig. Nmap scan result</em></p>
       
     </span>
@@ -263,8 +263,9 @@ To do so, let&rsquo;s use Nmap:</p>
 </code></pre><h3 id="__fingerprinting__"><strong>Fingerprinting</strong></h3>
 <p>After getting the IP address, we need to do some fingerprinting.</p>
 <pre tabindex="0"><code>nmap -sV 192.168.1.42
-</code></pre><!-- raw HTML omitted -->
+</code></pre><img src="/images/kioptrix/2/nmap-result.png" width="75%" height="75%"/>
 <p><em>Fig. Nmap scan result</em></p>
+<p>As I saw it in the scan report, I decided to scan the port 80 with <strong>Nikto</strong>.</p>
       
     </span>
     
@@ -294,8 +295,9 @@ To do so, let&rsquo;s use Nmap:</p>
 </code></pre><h4 id="__fingerprinting__"><strong>Fingerprinting</strong></h4>
 <p>After getting the IP address, we need to do some fingerprinting.</p>
 <pre tabindex="0"><code>nmap -sV 192.168.1.2
-</code></pre><!-- raw HTML omitted -->
+</code></pre><img src="/images/kioptrix/1/nmap.png" width="75%" height="75%"/>
 <p><em>Fig. Nmap scan result</em></p>
+<p>As I saw it in the scan report, I decided to scan on the port 80 and 443 with <strong>DirBuster</strong> and <strong>Nikto</strong>.</p>
       
     </span>
     

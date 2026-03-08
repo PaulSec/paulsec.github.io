@@ -30,7 +30,8 @@
 This VM can he found here. Have a look to find even more VMs
 Host discovery First, we need to discover where the machine is on our network. To do so, let’s use Nmap:
 nmap -sP 192.168.1.1/24 Fingerprinting After getting the IP address, we need to do some fingerprinting.
-nmap -sV 192.168.1.2 Fig. Nmap scan result">
+nmap -sV 192.168.1.2 Fig. Nmap scan result
+As I saw it in the scan report, I decided to scan on the port 80 and 443 with DirBuster and Nikto.">
       <meta name="twitter:site" content="@PaulWebSec">
 
 <meta property="og:url" content="http://paulsec.github.io/posts/kioptrix-1-write-up/">
@@ -40,7 +41,8 @@ nmap -sV 192.168.1.2 Fig. Nmap scan result">
 This VM can he found here. Have a look to find even more VMs
 Host discovery First, we need to discover where the machine is on our network. To do so, let’s use Nmap:
 nmap -sP 192.168.1.1/24 Fingerprinting After getting the IP address, we need to do some fingerprinting.
-nmap -sV 192.168.1.2 Fig. Nmap scan result">
+nmap -sV 192.168.1.2 Fig. Nmap scan result
+As I saw it in the scan report, I decided to scan on the port 80 and 443 with DirBuster and Nikto.">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
@@ -239,13 +241,13 @@ To do so, let&rsquo;s use Nmap:</p>
 </code></pre><h4 id="__fingerprinting__"><strong>Fingerprinting</strong></h4>
 <p>After getting the IP address, we need to do some fingerprinting.</p>
 <pre tabindex="0"><code>nmap -sV 192.168.1.2
-</code></pre><!-- raw HTML omitted -->
+</code></pre><img src="/images/kioptrix/1/nmap.png" width="75%" height="75%"/>
 <p><em>Fig. Nmap scan result</em></p>
 <p>As I saw it in the scan report, I decided to scan on the port 80 and 443 with <strong>DirBuster</strong> and <strong>Nikto</strong>.</p>
 <p>Here are the reports :</p>
-<!-- raw HTML omitted -->
+<img src="/images/kioptrix/1/dirbuster.png" width="75%" height="75%"/>
 <p><em>Fig. DirBuster Report on the port 80</em></p>
-<!-- raw HTML omitted -->
+<img src="/images/kioptrix/1/nikto.png" width="75%" height="75%"/>
 <p><em>Fig. Nikto report on ports 80 (HTTP) and 443 (HTTPS)</em></p>
 <p>There was no vulnerable web application or any interesting file.
 However, the Apache version is vulnerable..</p>
@@ -255,15 +257,15 @@ Then, I decided to look on the internet and I found this expoit: <a href="http:/
 <p>I had issues with this exploit because it&rsquo;s quite an old one and the instructions were outdated.
 You can follow the instructions <a href="http://paulsec.github.io/blog/2014/04/14/updating-openfuck-exploit/">here</a> to update the exploit and run it on your computer. (Tested on <a href="http://www.kali.org/">Kali Linux</a>).</p>
 <p>We had information on the box and I did a <code>grep</code> to see what OS were vulnerable to Apache 1.3.20 :</p>
-<!-- raw HTML omitted -->
+<img src="/images/kioptrix/1/openfuck_select.png" width="75%" height="75%"/>
 <p><em>Fig. Selecting the option (depending on the OS) for the exploit</em></p>
 <p>Then, I tried the exploit :</p>
-<!-- raw HTML omitted -->
+<img src="/images/kioptrix/1/openfuck_exploit.png" width="75%" height="75%"/>
 <p><em>Fig. Using OpenFuck Exploit after multiple attempts</em></p>
 <h4 id="__interesting-files__"><strong>Interesting files</strong></h4>
 <p>We got the root shell and that was the goal of this VM.
 Then, you can do everything like get content of <code>/etc/shadow</code>.</p>
-<!-- raw HTML omitted -->
+<img src="/images/kioptrix/1/cat_shadow.png" width="75%" height="75%"/>
 <p><em>Fig. Shadow file on the vulnerable server</em></p>
 <p>Hope you liked it ! Cheers.</p>
 <p>ps: I&rsquo;ll add exploitation using Samba in the next few days. Keep tuned !</p>
