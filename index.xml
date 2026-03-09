@@ -6,8 +6,15 @@
     <description>Recent content on </description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 10 Jan 2026 11:01:05 -0500</lastBuildDate>
+    <lastBuildDate>Tue, 03 Mar 2026 21:23:05 -0500</lastBuildDate>
     <atom:link href="http://paulsec.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Blackstone Smoker and Telegram Bot - 0x24th Birthday Edition 🎂</title>
+      <link>http://paulsec.github.io/posts/blackstone-smoker-and-telegram-bot/</link>
+      <pubDate>Tue, 03 Mar 2026 21:23:05 -0500</pubDate>
+      <guid>http://paulsec.github.io/posts/blackstone-smoker-and-telegram-bot/</guid>
+      <description>&lt;p&gt;In the &lt;a href=&#34;http://paulsec.github.io/posts/grafana-dashboard-for-my-blackstone-smoker/&#34;&gt;first post&lt;/a&gt;, I covered how I got the Blackstone Connect API to stream temperature data into Grafana Cloud. That gave me dashboards, graphs, and alerting.&lt;/p&gt;&#xA;&lt;p&gt;The thing is, during a cook, I&amp;rsquo;d still have to open Grafana on my phone, navigate to the dashboard, look at the graph, and try to figure out when my brisket would hit 203°F. What I really wanted was something I could just ask a question to from the backyard.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>(Ramblings) Why Data structuring is the forgotten key to unlocking real value from AI</title>
       <link>http://paulsec.github.io/posts/data-structuring-forgotten-key-to-unlocking-real-value/</link>
@@ -27,7 +34,7 @@
       <link>http://paulsec.github.io/posts/how-to-make-successful-teams-last/</link>
       <pubDate>Wed, 17 Sep 2025 22:31:42 -0400</pubDate>
       <guid>http://paulsec.github.io/posts/how-to-make-successful-teams-last/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;http://paulsec.github.io/img/team.jpeg&#34; alt=&#34;Side projects ftw&#34;&gt;&lt;/p&gt;&#xA;&lt;h3 id=&#34;key-takeaways&#34;&gt;Key Takeaways&lt;/h3&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;strong&gt;Take care of your team, and your team will take care of you.&lt;/strong&gt;&lt;br&gt;&#xA;My role has been closer to a coach than a commander. The more I invested in the team’s well being and clarity, the more they owned the product and exceeded expectations.&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;strong&gt;Challenge the status quo relentlessly.&lt;/strong&gt;&lt;br&gt;&#xA;Efficiency is not about hitting KPIs blindly. It is about constantly asking: could we do this better? That curiosity must be part of the team DNA.&lt;/p&gt;</description>
+      <description>&lt;p&gt;&lt;img src=&#34;http://paulsec.github.io/img/blackstone_telegram.png&#34; alt=&#34;Side projects ftw&#34;&gt;&lt;/p&gt;&#xA;&lt;h3 id=&#34;key-takeaways&#34;&gt;Key Takeaways&lt;/h3&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;strong&gt;Take care of your team, and your team will take care of you.&lt;/strong&gt;&lt;br&gt;&#xA;My role has been closer to a coach than a commander. The more I invested in the team’s well being and clarity, the more they owned the product and exceeded expectations.&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;strong&gt;Challenge the status quo relentlessly.&lt;/strong&gt;&lt;br&gt;&#xA;Efficiency is not about hitting KPIs blindly. It is about constantly asking: could we do this better? That curiosity must be part of the team DNA.&lt;/p&gt;</description>
     </item>
     <item>
       <title>The Benefits of side projects : Keep tinkering 🥷</title>

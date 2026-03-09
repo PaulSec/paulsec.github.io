@@ -19,21 +19,21 @@
     
     
 
-<title>Blackstone Smoker and Telegram Bot • </title>
+<title>Blackstone Smoker and Telegram Bot - 0x24th Birthday Edition 🎂 • </title>
 
 
 
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Blackstone Smoker and Telegram Bot">
-  <meta name="twitter:description" content="Building a Telegram BBQ Pitmaster with Live Grill Data and GPT-4o In the first post, I covered how I reverse-engineered the Blackstone Connect API to stream temperature data into Grafana Cloud. That gave me dashboards, historical graphs, and alerting — a massive upgrade over the stock app.
-But there was still friction. During a cook, I’d have to open Grafana on my phone, navigate to the dashboard, squint at the graph, and try to mentally extrapolate when my brisket would hit 203°F. I wanted something I could just ask. From the backyard. While holding a beer.">
+  <meta name="twitter:title" content="Blackstone Smoker and Telegram Bot - 0x24th Birthday Edition 🎂">
+  <meta name="twitter:description" content="In the first post, I covered how I got the Blackstone Connect API to stream temperature data into Grafana Cloud. That gave me dashboards, graphs, and alerting.
+The thing is, during a cook, I’d still have to open Grafana on my phone, navigate to the dashboard, look at the graph, and try to figure out when my brisket would hit 203°F. What I really wanted was something I could just ask a question to from the backyard.">
       <meta name="twitter:site" content="@PaulWebSec">
 
 <meta property="og:url" content="http://paulsec.github.io/posts/blackstone-smoker-and-telegram-bot/">
   <meta property="og:site_name" content="PaulSec&#39;s Blog">
-  <meta property="og:title" content="Blackstone Smoker and Telegram Bot">
-  <meta property="og:description" content="Building a Telegram BBQ Pitmaster with Live Grill Data and GPT-4o In the first post, I covered how I reverse-engineered the Blackstone Connect API to stream temperature data into Grafana Cloud. That gave me dashboards, historical graphs, and alerting — a massive upgrade over the stock app.
-But there was still friction. During a cook, I’d have to open Grafana on my phone, navigate to the dashboard, squint at the graph, and try to mentally extrapolate when my brisket would hit 203°F. I wanted something I could just ask. From the backyard. While holding a beer.">
+  <meta property="og:title" content="Blackstone Smoker and Telegram Bot - 0x24th Birthday Edition 🎂">
+  <meta property="og:description" content="In the first post, I covered how I got the Blackstone Connect API to stream temperature data into Grafana Cloud. That gave me dashboards, graphs, and alerting.
+The thing is, during a cook, I’d still have to open Grafana on my phone, navigate to the dashboard, look at the graph, and try to figure out when my brisket would hit 203°F. What I really wanted was something I could just ask a question to from the backyard.">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
@@ -189,7 +189,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     
 <article>
   <header>
-    <h1>Blackstone Smoker and Telegram Bot</h1>
+    <h1>Blackstone Smoker and Telegram Bot - 0x24th Birthday Edition 🎂</h1>
     
     
 <div class="post__meta">
@@ -202,7 +202,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     
     
     <br/>
-    <i class="fas fa-clock"></i> 10 min read
+    <i class="fas fa-clock"></i> 8 min read
 </div>
 
 
@@ -210,24 +210,23 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
   
   
   <div class="post">
-    <h1 id="building-a-telegram-bbq-pitmaster-with-live-grill-data-and-gpt-4o">Building a Telegram BBQ Pitmaster with Live Grill Data and GPT-4o</h1>
-<p>In the <a href="/posts/grafana-dashboard-for-my-blackstone-smoker/">first post</a>, I covered how I reverse-engineered the Blackstone Connect API to stream temperature data into Grafana Cloud. That gave me dashboards, historical graphs, and alerting — a massive upgrade over the stock app.</p>
-<p>But there was still friction. During a cook, I&rsquo;d have to open Grafana on my phone, navigate to the dashboard, squint at the graph, and try to mentally extrapolate when my brisket would hit 203°F. I wanted something I could just <em>ask</em>. From the backyard. While holding a beer.</p>
-<p>So I built a Telegram bot that sits on top of the same Prometheus data, runs linear regression on the fly, pulls live weather data, and pipes everything through GPT-4o to act as an AI pitmaster. This is how it works.</p>
+    <p>In the <a href="/posts/grafana-dashboard-for-my-blackstone-smoker/">first post</a>, I covered how I got the Blackstone Connect API to stream temperature data into Grafana Cloud. That gave me dashboards, graphs, and alerting.</p>
+<p>The thing is, during a cook, I&rsquo;d still have to open Grafana on my phone, navigate to the dashboard, look at the graph, and try to figure out when my brisket would hit 203°F. What I really wanted was something I could just ask a question to from the backyard.</p>
+<p>So I built a Telegram bot that sits on top of the same Prometheus data, runs linear regression, pulls live weather data, and pipes everything through an LLM. Here is how it works.</p>
 <hr>
-<h2 id="why-telegram">Why Telegram?</h2>
-<p>I considered a few options — a custom web app, a Slack bot, push notifications via Grafana — but Telegram won for a few practical reasons:</p>
+<h3 id="why-telegram">Why Telegram?</h3>
+<p>I considered a few options (custom web app, Slack bot, push notifications via Grafana) but Telegram won for practical reasons:</p>
 <ul>
-<li><strong>It&rsquo;s already on my phone.</strong> No extra app to install.</li>
-<li><strong>The bot API is dead simple.</strong> <code>python-telegram-bot</code> handles all the boilerplate.</li>
-<li><strong>It supports rich text, inline keyboards, and markdown.</strong> Good enough for formatted temperature readouts.</li>
-<li><strong>It works from anywhere.</strong> My wife can check the cook status too without needing Grafana access.</li>
+<li>It&rsquo;s already on my phone, no extra app to install.</li>
+<li>The bot API is simple, <code>python-telegram-bot</code> handles all the boilerplate.</li>
+<li>It supports rich text, inline keyboards, and markdown, good enough for temperature readouts.</li>
+<li>It works from anywhere, my wife can check the cook status too without needing Grafana access.</li>
 </ul>
-<p>The bot runs as a systemd service on a cheap VPS. I deploy with a single script. More on that later.</p>
+<p>The bot runs via docker-compose on a VPS. More on that later.</p>
 <hr>
-<h2 id="architecture">Architecture</h2>
-<p>The Telegram bot doesn&rsquo;t talk to the Blackstone API directly. That&rsquo;s still <code>main.py</code>&rsquo;s job — it keeps polling the grill and pushing metrics to Grafana Cloud. The bot reads <em>from</em> Prometheus (Grafana Cloud&rsquo;s query API) and layers intelligence on top.</p>
-<p>Here&rsquo;s how the pieces fit together:</p>
+<h3 id="architecture">Architecture</h3>
+<p>The Telegram bot doesn&rsquo;t talk to the Blackstone API directly. That&rsquo;s still <code>main.py</code>&rsquo;s job, it keeps polling the grill and pushing metrics to Grafana Cloud. The bot reads from Prometheus (Grafana Cloud&rsquo;s query API) and adds the intelligence layer on top.</p>
+<p>Here is how the pieces fit together:</p>
 <pre tabindex="0"><code>┌─────────────────────┐
 │  Blackstone Grill   │
 │  (WiFi, 4 probes)   │
@@ -255,9 +254,9 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
    │   │ Context + Question
    │   ▼
    │ ┌──────────────┐
-   │ │  Azure       │
-   │ │  OpenAI      │
-   │ │  (GPT-4o)    │
+   │ │    LLM       │
+   │ │              │
+   │ │              │
    │ └──────┬───────┘
    │        │ Answer
    │◄───────┘
@@ -268,10 +267,10 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
 │  Open-Meteo  │
 │  (Weather)   │
 └──────────────┘
-</code></pre><p>The bot queries Prometheus for the last N minutes of data, runs its own analysis (linear regression, probe scoring, stall detection), builds a rich context string, and sends it all to GPT-4o along with the user&rsquo;s question. The LLM doesn&rsquo;t guess — it has real numbers to work with.</p>
+</code></pre><p>The bot queries Prometheus for the last N minutes of data, runs its own analysis (linear regression, probe scoring, stall detection), builds a context string, and sends it all to the LLM along with the user&rsquo;s question.</p>
 <hr>
-<h2 id="the-commands">The Commands</h2>
-<p>The bot exposes a handful of slash commands. Each one is purpose-built for the kind of questions you actually ask during a cook:</p>
+<h3 id="the-commands">The Commands</h3>
+<p>The bot exposes a handful of slash commands:</p>
 <table>
   <thead>
       <tr>
@@ -286,7 +285,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
       </tr>
       <tr>
           <td><code>/eta 203</code></td>
-          <td>&ldquo;When will I hit 203°F?&rdquo; — linear regression + LLM analysis</td>
+          <td>&ldquo;When will I hit 203°F?&rdquo; - linear regression + LLM analysis</td>
       </tr>
       <tr>
           <td><code>/remaining 165</code></td>
@@ -318,42 +317,42 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
       </tr>
   </tbody>
 </table>
-<p>You can also just type a question without any command — the bot will pick it up and answer using live data.</p>
+<p>You can also just type a question without any command and the bot will pick it up and answer using live data.</p>
 <!-- 📸 SCREENSHOT: Show a /status response with real temperature data -->
 <hr>
-<h2 id="smart-probe-selection">Smart Probe Selection</h2>
-<p>This was one of those features I didn&rsquo;t plan but ended up being essential. I have 4 probes but rarely use all of them. Sometimes one is dangling off the grill doing nothing, sometimes one has a flaky connection. I don&rsquo;t want ETA predictions based on a dead sensor reading ambient temperature.</p>
+<h3 id="smart-probe-selection">Smart Probe Selection</h3>
+<p>I didn&rsquo;t plan this one but it ended up being pretty essential. I have 4 probes but rarely use all of them. Sometimes one is dangling off the grill doing nothing, sometimes one has a flaky connection. I don&rsquo;t want ETA predictions based on a dead sensor reading ambient temperature.</p>
 <p>The bot scores each probe on 5 criteria:</p>
 <ol>
-<li><strong>Temperature range</strong> — Is it between 32-500°F? (+30 points)</li>
-<li><strong>Variance</strong> — Is the reading actually changing? A stuck sensor gets zero. (+20)</li>
-<li><strong>Smoothness</strong> — How big are the jumps between consecutive readings? Erratic probes get penalized. (+20)</li>
-<li><strong>Above ambient</strong> — A probe reading 72°F probably isn&rsquo;t in meat. (+15)</li>
-<li><strong>Data completeness</strong> — More data points = more reliable. (+15)</li>
+<li><strong>Temperature range</strong> - Is it between 32-500°F? (+30 points)</li>
+<li><strong>Variance</strong> - Is the reading actually changing? A stuck sensor gets zero. (+20)</li>
+<li><strong>Smoothness</strong> - How big are the jumps between consecutive readings? Erratic probes get penalized. (+20)</li>
+<li><strong>Above ambient</strong> - A probe reading 72°F probably isn&rsquo;t in meat. (+15)</li>
+<li><strong>Data completeness</strong> - More data points = more reliable. (+15)</li>
 </ol>
-<p>The probe with the highest score out of 100 gets used for all calculations. You can see the full breakdown with <code>/probe</code>:</p>
+<p>The probe with the highest score out of 100 gets used for all calculations. You can see the breakdown with <code>/probe</code>:</p>
 <!-- 📸 SCREENSHOT: Show /probe output with the scoring breakdown for all 4 probes -->
-<p>If the auto-selection is wrong (it happens — maybe you just inserted a probe and it hasn&rsquo;t warmed up yet), you can override it:</p>
+<p>If the auto-selection picks the wrong one (it happens, maybe you just inserted a probe and it hasn&rsquo;t warmed up yet), you can override it:</p>
 <pre tabindex="0"><code>/setprobe 2     → Lock all calculations to Probe 2
 /setprobe auto  → Back to automatic
-</code></pre><p>The override is per-chat, so my wife and I can each track different probes from our own Telegram if needed.</p>
+</code></pre><p>The override is per-chat, so my wife and I can each track different probes from our own Telegram.</p>
 <hr>
-<h2 id="temperature-prediction">Temperature Prediction</h2>
-<p>The ETA prediction is the feature I use the most. &ldquo;When will this be done?&rdquo; is <em>the</em> question during any long cook.</p>
+<h3 id="temperature-prediction">Temperature Prediction</h3>
+<p>The ETA prediction is the feature I use the most. &ldquo;When will this be done?&rdquo; is the question during any long cook.</p>
 <p>The approach is straightforward: take the last 30 minutes of data, run linear regression, and extrapolate to the target temperature.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Normalize timestamps to minutes, fit a line</span>
 </span></span><span style="display:flex;"><span>t_minutes <span style="color:#f92672">=</span> (timestamps <span style="color:#f92672">-</span> timestamps[<span style="color:#ae81ff">0</span>]) <span style="color:#f92672">/</span> <span style="color:#ae81ff">60.0</span>
 </span></span><span style="display:flex;"><span>coeffs <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>polyfit(t_minutes, temps, <span style="color:#ae81ff">1</span>)
 </span></span><span style="display:flex;"><span>slope <span style="color:#f92672">=</span> coeffs[<span style="color:#ae81ff">0</span>]  <span style="color:#75715e"># °F per minute</span>
-</span></span></code></pre></div><p>But a naive linear fit isn&rsquo;t great by itself. A few refinements make it actually useful:</p>
-<p><strong>Short-term vs. long-term trend.</strong> The bot computes both the overall slope (all data) and the recent slope (last 10 points). It uses the more conservative of the two. If the meat is slowing down, you want to know.</p>
-<p><strong>Stall detection.</strong> If the current temperature is between 150-170°F and the rate drops below 0.5°F/min, the bot flags it as a stall. This is huge — the stall can add <em>hours</em> to a cook if you don&rsquo;t wrap.</p>
-<p><strong>Confidence scoring.</strong> The bot computes R² (goodness of fit). High R² with lots of data points = high confidence. Noisy data with few points = low confidence. This gets passed to GPT-4o so it can caveat its answer appropriately.</p>
-<p><strong>LLM layer on top.</strong> The raw regression numbers are a starting point. GPT-4o gets all of this data plus the current weather (wind, humidity, outside temperature) and combines it with BBQ domain knowledge. Wind at 20 mph? The LLM knows that means heat loss and will adjust its estimate.</p>
+</span></span></code></pre></div><p>But a naive linear fit isn&rsquo;t great by itself. A few things make it more useful:</p>
+<p><strong>Short-term vs. long-term trend.</strong> The bot computes both the overall slope (all data) and the recent slope (last 10 points). It uses the more conservative of the two.</p>
+<p><strong>Stall detection.</strong> If the current temperature is between 150-170°F and the rate drops below 0.5°F/min, the bot flags it as a stall. The stall can add hours to a cook if you don&rsquo;t wrap.</p>
+<p><strong>Confidence scoring.</strong> The bot computes R² (goodness of fit). High R² with lots of data points = high confidence. Noisy data with few points = low confidence. This gets passed to the LLM so it can caveat its answer.</p>
+<p><strong>LLM on top.</strong> The raw regression numbers are a starting point. The LLM gets all of this data plus the current weather (wind, humidity, outside temperature) and combines it with BBQ knowledge. Wind at 20 mph? It knows that means heat loss and will adjust the estimate.</p>
 <!-- 📸 SCREENSHOT: Show /eta 203 response with the LLM's detailed prediction -->
 <hr>
-<h2 id="weather-integration">Weather Integration</h2>
-<p>Outdoor cooking is weather-dependent. A 15 mph wind or 35°F ambient temperature will slow your cook noticeably. The bot pulls weather data from <a href="https://open-meteo.com/">Open-Meteo</a> (free, no API key needed) with OpenWeatherMap as a fallback.</p>
+<h3 id="weather-integration">Weather Integration</h3>
+<p>Outdoor cooking is weather-dependent. A 15 mph wind or 35°F ambient temperature will slow your cook noticeably. The bot pulls weather data from <a href="https://open-meteo.com/">Open-Meteo</a> (free, no API key needed) with OpenWeatherMap as fallback.</p>
 <p>The <code>/weather</code> command shows conditions and directly tells you the impact:</p>
 <ul>
 <li>Cold temps → more pellet consumption, slower cook</li>
@@ -361,11 +360,12 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
 <li>High humidity → better smoke absorption</li>
 <li>Dry air → meat dries out faster, consider spritzing</li>
 </ul>
-<p>This data also gets injected into every LLM prompt, so when you ask &ldquo;when will my brisket be done?&rdquo;, the AI factors in that it&rsquo;s 38°F and windy outside.</p>
+<p>This data also gets injected into every LLM prompt, so when you ask &ldquo;when will my brisket be done?&rdquo;, it factors in that it&rsquo;s 38°F and windy outside.</p>
 <!-- 📸 SCREENSHOT: Show /weather output -->
+<p><img src="/img/blackstone_telegram.png" alt="Side projects ftw"></p>
 <hr>
-<h2 id="the-llm-layer">The LLM Layer</h2>
-<p>Every command that involves analysis — <code>/eta</code>, <code>/stall</code>, <code>/ask</code>, and free-form messages — goes through GPT-4o (Azure OpenAI). But it&rsquo;s not a generic chatbot. The system prompt gives it a very specific role and very specific data:</p>
+<h3 id="the-llm-layer">The LLM Layer</h3>
+<p>Every command that involves analysis (<code>/eta</code>, <code>/stall</code>, <code>/ask</code>, and free-form messages) goes through an LLM. The system prompt gives it a specific role and specific data:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>BBQ_SYSTEM_PROMPT <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;&#34;You are an expert BBQ Pitmaster and intelligent cooking assistant.
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">You are monitoring a Blackstone pellet grill in real-time via temperature probes.
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">You are located in </span><span style="color:#e6db74">{location}</span><span style="color:#e6db74">.
@@ -384,17 +384,18 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- Current temperature: </span><span style="color:#e6db74">{current_temp:.1f}</span><span style="color:#e6db74">°F
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74"></span><span style="color:#e6db74">{stall_info}</span><span style="color:#e6db74">
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span>
-</span></span></code></pre></div><p>The prompt includes the full time-series data (30 minutes of readings with timestamps), all current probe values, weather, the linear regression rate, and whether a stall was detected. The LLM doesn&rsquo;t hallucinate temperatures — it reads them.</p>
-<p>The really nice thing about this setup is free-form queries. You can just type a message like:</p>
+</span></span></code></pre></div><p>The prompt includes the full time-series data (30 minutes of readings with timestamps), all current probe values, weather, the linear regression rate, and whether a stall was detected. Since the LLM has actual numbers to work with, the answers are pretty useful.</p>
+<p>The nice thing is free-form queries. You can just type something like:</p>
 <blockquote>
 <p>&ldquo;Should I wrap now or wait?&rdquo;</p>
 </blockquote>
-<p>And the bot will look at your current temperature, the rate of climb, whether you&rsquo;re in a stall, and give you a real answer based on <em>your cook</em>, not generic advice.</p>
+<p>And the bot will look at your current temperature, the rate of climb, whether you&rsquo;re in a stall, and give you an answer based on your actual cook data.</p>
 <!-- 📸 SCREENSHOT: Show a free-form conversation where you ask a cooking question and get a contextual answer -->
+<p><img src="/img/blackstone_telegram_cooking.png" alt="Cooking tips"></p>
 <hr>
-<h2 id="how-its-deployed">How It&rsquo;s Deployed</h2>
-<p>The bot runs 24/7 on a Linux VPS as a systemd service. Here&rsquo;s the setup:</p>
-<p><strong>Dockerfile</strong> — minimal, just Python 3.11-slim with the bot script and config:</p>
+<h3 id="how-its-deployed">How It&rsquo;s Deployed</h3>
+<p>The bot runs 24/7 on a Linux VPS via docker-compose. Here is the setup:</p>
+<p><strong>Dockerfile</strong> - Python 3.11-slim with the bot script and config:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dockerfile" data-lang="dockerfile"><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> python:3.11-slim</span><span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">WORKDIR</span><span style="color:#e6db74"> /app</span><span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">COPY</span> requirements.txt .<span style="color:#960050;background-color:#1e0010">
@@ -402,24 +403,10 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">COPY</span> telegram_bot.py .<span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">COPY</span> grafana_config.py .<span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">CMD</span> [<span style="color:#e6db74">&#34;python&#34;</span>, <span style="color:#e6db74">&#34;telegram_bot.py&#34;</span>]<span style="color:#960050;background-color:#1e0010">
-</span></span></span></code></pre></div><p><strong>Systemd service</strong> — for bare-metal deploys. Auto-restarts on failure, runs as a dedicated <code>blackstone</code> user with hardened security (read-only filesystem, no privilege escalation, private tmp):</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ini" data-lang="ini"><span style="display:flex;"><span><span style="color:#66d9ef">[Service]</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Type</span><span style="color:#f92672">=</span><span style="color:#e6db74">simple</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">User</span><span style="color:#f92672">=</span><span style="color:#e6db74">blackstone</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ExecStart</span><span style="color:#f92672">=</span><span style="color:#e6db74">/opt/blackstone/venv/bin/python3 /opt/blackstone/telegram_bot.py</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Restart</span><span style="color:#f92672">=</span><span style="color:#e6db74">on-failure</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">NoNewPrivileges</span><span style="color:#f92672">=</span><span style="color:#e6db74">true</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ProtectSystem</span><span style="color:#f92672">=</span><span style="color:#e6db74">strict</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ProtectHome</span><span style="color:#f92672">=</span><span style="color:#e6db74">true</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">PrivateTmp</span><span style="color:#f92672">=</span><span style="color:#e6db74">true</span>
-</span></span></code></pre></div><p><strong>One-command deploy</strong> — <code>sudo bash deploy.sh</code> handles everything: creates the system user, copies files, sets up a venv, installs deps, enables the service.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo bash deploy.sh
-</span></span><span style="display:flex;"><span>sudo nano /opt/blackstone/.env    <span style="color:#75715e"># set your tokens</span>
-</span></span><span style="display:flex;"><span>sudo systemctl start blackstone-telegram-bot
-</span></span></code></pre></div><p>That&rsquo;s it. Logs go to journald (<code>journalctl -u blackstone-telegram-bot -f</code>).</p>
+</span></span></span></code></pre></div><p>Then a <code>docker-compose up -d</code> and it just works. Restart policy is set to <code>unless-stopped</code> so it survives reboots. Logs via <code>docker-compose logs -f</code>.</p>
 <hr>
-<h2 id="data-flow-what-happens-when-you-type-eta-203">Data Flow: What Happens When You Type /eta 203</h2>
-<p>Let&rsquo;s trace a real request end to end:</p>
+<h3 id="data-flow-what-happens-when-you-type-eta-203">Data Flow: What Happens When You Type /eta 203</h3>
+<p>Here is what happens end to end:</p>
 <pre tabindex="0"><code>You type: /eta 203
      │
      ▼
@@ -455,7 +442,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
 ┌─ ask_llm() ────────────────────────────────────────────────┐
 │                                                             │
 │  System prompt + all context + user question                │
-│  → Azure OpenAI GPT-4o                                      │
+│  → LLM                                                      │
 │  → Returns pitmaster-style answer with ETA estimate         │
 │                                                             │
 └────────────────────────┬───────────────────────────────────-┘
@@ -466,25 +453,12 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
 └─────────────────────────────────────────────────────────────┘
 </code></pre><p>The whole thing takes 2-4 seconds depending on LLM response time. The Prometheus queries are fast (&lt; 200ms each).</p>
 <hr>
-<h2 id="things-i-learned">Things I Learned</h2>
-<p><strong>Linear regression is surprisingly good for BBQ.</strong> Meat temperature rise is roughly linear within any 30-minute window (outside of the stall). Simple <code>numpy.polyfit</code> with degree 1 nails it. I tried polynomial fits — they overfit on noise and gave wild predictions.</p>
-<p><strong>Probe auto-selection saves you from yourself.</strong> I can&rsquo;t count how many times I would have been tracking a dangling probe if the bot hadn&rsquo;t flagged it. The scoring system is simple but catches the obvious failure modes: dead sensors, probes reading ambient, erratic connections.</p>
-<p><strong>Weather matters more than you&rsquo;d think.</strong> A 20°F drop in ambient temperature or 15 mph winds can add 30-60 minutes to a long cook. Having the LLM factor this in automatically makes the estimates significantly more realistic.</p>
-<p><strong>Telegram&rsquo;s bot API is a joy to work with.</strong> The <code>python-telegram-bot</code> library handles polling, command parsing, async execution — you just write handler functions. Went from zero to working bot in an afternoon.</p>
-<p><strong>The LLM needs data, not vibes.</strong> The whole reason this works is that GPT-4o gets actual numbers — 30 minutes of timestamped readings, computed rates, R² values, probe scores, weather data. When you give an LLM concrete data plus domain expertise in the prompt, the answers are genuinely useful. When you don&rsquo;t, you get generic BBQ tips from the internet.</p>
-<hr>
-<h2 id="whats-next">What&rsquo;s Next</h2>
-<p>A few ideas I&rsquo;m kicking around:</p>
-<ul>
-<li><strong>Cook session recording</strong> — save the full temperature curve for each cook with notes. Build a personal recipe database with actual data.</li>
-<li><strong>Predictive alerts</strong> — &ldquo;Your brisket will hit 165°F in about 20 minutes, want me to remind you to wrap?&rdquo;</li>
-<li><strong>Multi-grill support</strong> — for when I inevitably buy another smoker.</li>
-<li><strong>Photo analysis</strong> — snap a pic of the meat, send it to the bot, get a doneness assessment via vision API.</li>
-</ul>
-<p>But honestly? The current setup does 90% of what I need. I pull up Telegram, ask &ldquo;how&rsquo;s the cook?&rdquo;, and get a real answer with real data. That&rsquo;s the whole point.</p>
-<hr>
-<p><em>The full source code is on GitHub. The bot is <code>telegram_bot.py</code> — about 550 lines of Python including all the Prometheus queries, probe scoring, linear regression, weather integration, and LLM wiring. No framework beyond <code>python-telegram-bot</code> and LangChain for the OpenAI calls.</em></p>
-<p><strong>P.S.</strong> — This whole project was built to celebrate my 0x24th birthday. Nothing says &ldquo;I&rsquo;m turning 36&rdquo; quite like building an AI-powered BBQ monitoring system with linear regression and weather integration. 🎂🔥</p>
+<h3 id="things-i-learned">Things I Learned</h3>
+<p>Linear regression is surprisingly good for BBQ. Meat temperature rise is roughly linear within any 30-minute window (outside of the stall). Simple <code>numpy.polyfit</code> with degree 1 works great. I tried polynomial fits but they overfit on noise and gave wild predictions.</p>
+<p>Probe auto-selection turned out to be more useful than expected. I can&rsquo;t count how many times I would have been tracking a dangling probe if the bot hadn&rsquo;t flagged it. The scoring catches the obvious failure modes: dead sensors, probes reading ambient, erratic connections.</p>
+<p>Weather matters more than I thought. A 20°F drop in ambient or 15 mph winds can add 30-60 minutes to a long cook.</p>
+<p>The <code>python-telegram-bot</code> library handles polling, command parsing, async execution, you just write handler functions. Went from zero to working bot in an afternoon.</p>
+<p>I now pull up Telegram, ask &ldquo;how&rsquo;s the cook?&rdquo;, and get an answer with actual data. Next steps? I will keep enjoying and improving the current setup as I go.</p>
 
   </div>
   

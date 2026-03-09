@@ -185,6 +185,38 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
       
       <div class="post-list__item">
         <span class="item__title--big">
+          <a href="/posts/bwapp-write-up/" >BWApp Write-Up</a>
+        </span>
+        <span class="item__date">
+          Apr 21, 2014
+        </span>
+        <span >
+        
+        <p><strong>This post contains the steps to get a root shell with bWapp VM</strong></p>
+<h3 id="__host-discovery__"><strong>Host discovery</strong></h3>
+<p>As always, we need to discover where the machine is on our network.
+To do so, let&rsquo;s use Nmap:</p>
+<pre tabindex="0"><code>nmap -sP 192.168.1.1/24 
+</code></pre><h3 id="__fingerprinting__"><strong>Fingerprinting</strong></h3>
+<p>After getting the IP address (<em>192.168.1.10</em>), we need to do some fingerprinting.</p>
+<pre tabindex="0"><code>nmap -sV 192.168.1.10
+</code></pre><img src="/images/bWAPP/nmap-result.png" width="75%" height="75%"/>
+<p><em>Fig. Nmap scan result</em></p>
+<p>A lot of services were open, such as: VNC, FTP, etc.</p>
+<p>As I saw it in the scan report, I decided to scan the port 80 with <strong>Nikto</strong>.</p>
+        
+        </span>
+        
+          ... <a class="read-more-symbol" href="/posts/bwapp-write-up/">➦</a>
+        
+        </div>
+        
+     
+      
+        
+      
+      <div class="post-list__item">
+        <span class="item__title--big">
           <a href="/posts/scream-write-up/" >Scream Write-up</a>
         </span>
         <span class="item__date">
@@ -454,37 +486,6 @@ This technique is called <strong>Session Hijacking</strong>. Ok fair enough.</p>
         </span>
         
           ... <a class="read-more-symbol" href="/posts/xss-callback/">➦</a>
-        
-        </div>
-        
-     
-      
-        
-      
-      <div class="post-list__item">
-        <span class="item__title--big">
-          <a href="/posts/dealing-with-html-submits-conflict/" >Dealing with HTML submits conflicts</a>
-        </span>
-        <span class="item__date">
-          Mar 9, 2014
-        </span>
-        <span >
-        
-        <p>This first post is related with one of my project : CSRFT.
-CSRFT is a Cross Site Request Forgery (CSRF) vulnerabilities Toolkit.</p>
-<p>My toolkit allows you to exploit either GET and POST HTTP Requests.
-During some testings, I had issues with some specific forms.</p>
-<p>Let&rsquo;s take an example of such form :</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">form</span> <span style="color:#a6e22e">action</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;http://website.com/blog/&#34;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;form&#34;</span> <span style="color:#a6e22e">method</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;get&#34;</span>&gt;
-</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">label</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;assistive-text&#34;</span> <span style="color:#a6e22e">for</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;s&#34;</span>&gt;Search&lt;/<span style="color:#f92672">label</span>&gt;
-</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;field&#34;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;s&#34;</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;s&#34;</span> <span style="color:#a6e22e">placeholder</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Search&#34;</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text&#34;</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Search Value&#34;</span>/&gt;
-</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;submit&#34;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;searchsubmit&#34;</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;submit&#34;</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;submit&#34;</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Search&#34;</span>/&gt;
-</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">form</span>&gt;
-</span></span></code></pre></div><p>The code injected on the page to submit the form was like that :</p>
-        
-        </span>
-        
-          ... <a class="read-more-symbol" href="/posts/dealing-with-html-submits-conflict/">➦</a>
         
         </div>
         
