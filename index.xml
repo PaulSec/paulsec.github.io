@@ -6,8 +6,15 @@
     <description>Recent content on </description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 03 Mar 2026 21:23:05 -0500</lastBuildDate>
+    <lastBuildDate>Fri, 03 Apr 2026 06:45:34 -0400</lastBuildDate>
     <atom:link href="http://paulsec.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Some of my thoughts on Context Engineering</title>
+      <link>http://paulsec.github.io/posts/some-of-my-thoughts-on-context-engineering/</link>
+      <pubDate>Fri, 03 Apr 2026 06:45:34 -0400</pubDate>
+      <guid>http://paulsec.github.io/posts/some-of-my-thoughts-on-context-engineering/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;http://paulsec.github.io/img/federated-knowledge.png&#34; alt=&#34;Side projects ftw&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;We talk a lot about AI right now.&lt;/p&gt;&#xA;&lt;p&gt;We talk about copilots, agents, RAG, vector databases, knowledge graphs, data platforms, and automation everywhere. We talk about models getting smarter, inference getting cheaper, and interfaces getting more natural.&lt;/p&gt;&#xA;&lt;p&gt;But I think one of the most important topics is still not discussed enough: &lt;strong&gt;context&lt;/strong&gt;.&lt;/p&gt;&#xA;&lt;p&gt;Not just data.&lt;/p&gt;&#xA;&lt;p&gt;Not just documentation.&lt;/p&gt;&#xA;&lt;p&gt;Not just prompts.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Context.&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;And more importantly, &lt;strong&gt;how we engineer context for the next generation of enterprise applications&lt;/strong&gt;.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Blackstone Smoker and Telegram Bot - 0x24th Birthday Edition 🎂</title>
       <link>http://paulsec.github.io/posts/blackstone-smoker-and-telegram-bot/</link>

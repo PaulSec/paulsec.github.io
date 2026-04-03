@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    
+    
+
+
+    <head>
+    <link href="https://gmpg.org/xfn/11" rel="profile">
+    
+    <link rel="canonical" href="http://paulsec.github.io/posts/some-of-my-thoughts-on-context-engineering/">
+    
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!-- Enable responsiveness on mobile devices -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="generator" content="Hugo 0.142.0">
+
+    
+    
+    
+
+<title>Some of my thoughts on Context Engineering • </title>
+
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Some of my thoughts on Context Engineering">
+  <meta name="twitter:description" content="We talk a lot about AI right now.
+We talk about copilots, agents, RAG, vector databases, knowledge graphs, data platforms, and automation everywhere. We talk about models getting smarter, inference getting cheaper, and interfaces getting more natural.
+But I think one of the most important topics is still not discussed enough: context.
+Not just data.
+Not just documentation.
+Not just prompts.
+Context.
+And more importantly, how we engineer context for the next generation of enterprise applications.">
+      <meta name="twitter:site" content="@PaulWebSec">
+
+<meta property="og:url" content="http://paulsec.github.io/posts/some-of-my-thoughts-on-context-engineering/">
+  <meta property="og:site_name" content="PaulSec&#39;s Blog">
+  <meta property="og:title" content="Some of my thoughts on Context Engineering">
+  <meta property="og:description" content="We talk a lot about AI right now.
+We talk about copilots, agents, RAG, vector databases, knowledge graphs, data platforms, and automation everywhere. We talk about models getting smarter, inference getting cheaper, and interfaces getting more natural.
+But I think one of the most important topics is still not discussed enough: context.
+Not just data.
+Not just documentation.
+Not just prompts.
+Context.
+And more importantly, how we engineer context for the next generation of enterprise applications.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-04-03T06:45:34-04:00">
+    <meta property="article:modified_time" content="2026-04-03T06:45:34-04:00">
+
+
+    
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/monokai.min.css">
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/scss/hyde-hyde.3081c4981fb69a2783dd36ecfdd0e6ba7a158d4cbfdd290ebce8f78ba0469fc6.css" integrity="sha256-MIHEmB&#43;2mieD3Tbs/dDmunoVjUy/3SkOvOj3i6BGn8Y=">
+
+
+<link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
+
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+    <link rel="shortcut icon" href="/favicon.png">
+    
+    <link rel="stylesheet" href="/css/syntax.css">
+
+</head>
+
+
+    <body class=" ">
+    
+<div class="sidebar">
+  <div class="container ">
+    <div class="sidebar-about">
+      <span class="site__title">
+        <a href="http://paulsec.github.io/">
+        
+          
+        
+        </a>
+      </span>
+      
+        
+        
+        
+        <div class="author-image">
+          <img src="http://paulsec.github.io/img/profile.png" alt="Author Image" class="img--circle img--headshot element--center">
+        </div>
+        
+      
+      
+      <p class="site__description">
+         PaulSec&#39;s Blog. Security &amp; lulz. 
+      </p>
+    </div>
+    <div class="collapsible-menu">
+      <input type="checkbox" id="menuToggle">
+      <label for="menuToggle"></label>
+      <div class="menu-content">
+        <div>
+	<ul class="sidebar-nav">
+		 
+		 
+			 
+				<li>
+					<a href="/">
+						<span>Home</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/posts/">
+						<span>Posts</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/about/">
+						<span>About</span>
+					</a>
+				</li>
+			 
+		
+	</ul>
+</div>
+
+        <section class="social">
+	
+	<a href="https://twitter.com/@PaulWebSec" rel="me"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	<a href="https://github.com/PaulSec" rel="me"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</section>
+
+      </div>
+    </div>
+    
+<div class="copyright">
+  &copy; 2026 Paul A.
+  
+    <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>
+  
+</div>
+
+
+<div class="builtwith">
+Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.com/htr3n/hyde-hyde">hyde-hyde</a>.
+</div>
+
+
+  </div>
+</div>
+
+        <div class="content container">
+            
+    
+<article>
+  <header>
+    <h1>Some of my thoughts on Context Engineering</h1>
+    
+    
+<div class="post__meta">
+    
+    
+      <i class="fas fa-calendar-alt"></i> Apr 3, 2026
+    
+    
+    
+    
+    
+    <br/>
+    <i class="fas fa-clock"></i> 16 min read
+</div>
+
+
+  </header>
+  
+  
+  <div class="post">
+    <p><img src="/img/federated-knowledge.png" alt="Side projects ftw"></p>
+<p>We talk a lot about AI right now.</p>
+<p>We talk about copilots, agents, RAG, vector databases, knowledge graphs, data platforms, and automation everywhere. We talk about models getting smarter, inference getting cheaper, and interfaces getting more natural.</p>
+<p>But I think one of the most important topics is still not discussed enough: <strong>context</strong>.</p>
+<p>Not just data.</p>
+<p>Not just documentation.</p>
+<p>Not just prompts.</p>
+<p><strong>Context.</strong></p>
+<p>And more importantly, <strong>how we engineer context for the next generation of enterprise applications</strong>.</p>
+<p>Because in the end, an AI system without context is just a very convincing probabilistic machine. It can sound smart. It can generate something plausible. It can even appear useful for a while.</p>
+<p>But without the right context, it does not understand your company, your processes, your constraints, your history, your trade-offs, or your operating reality.</p>
+<p>That is where, in my opinion, the real work begins.</p>
+<p>That is where <strong>context engineering</strong> starts to matter.</p>
+<h3 id="every-team-already-has-context">Every team already has context</h3>
+<p>In any company, every team has context.</p>
+<p>Every platform has context. Every business unit has context. Every domain, every product, every support team, every architecture group, every operational flow has context that is specific to them.</p>
+<p>That context lives in many places:</p>
+<ul>
+<li>documentation</li>
+<li>tickets</li>
+<li>runbooks</li>
+<li>diagrams</li>
+<li>architecture decisions</li>
+<li>integration flows</li>
+<li>business rules</li>
+<li>production incidents</li>
+<li>tribal knowledge</li>
+<li>naming conventions</li>
+<li>process exceptions</li>
+<li>historical decisions nobody wrote down properly, but everybody somehow remembers</li>
+</ul>
+<p>So the problem is not that companies have no context.</p>
+<p>The problem is that this context is <strong>fragmented, uneven, local, and often trapped</strong>.</p>
+<p>For years, enterprises have tried to solve this by centralizing data. Push everything into data lakes. Consolidate into reporting platforms. Standardize governance. Build a golden source. Try to create one place where everything is supposed to become coherent.</p>
+<p>That effort has value, of course.</p>
+<p>But I do not think it solves the full problem.</p>
+<p>Because context in a real enterprise is not naturally centralized. It is <strong>distributed</strong>, <strong>decentralized</strong>, and constantly evolving.</p>
+<p>And honestly, it will stay that way.</p>
+<p>So maybe the goal should not be to centralize everything into a single giant system of truth.</p>
+<p>Maybe the goal should be to <strong>federate distributed knowledge without destroying the richness of local context</strong>.</p>
+<p>That is a very different design problem.</p>
+<h3 id="the-future-is-not-hyper-centralization-it-is-federation">The future is not hyper-centralization, it is federation</h3>
+<p>I increasingly believe that the next wave of enterprise architecture will not be built around one platform trying to own everything.</p>
+<p>The useful knowledge is created everywhere.</p>
+<p>It is created by engineering teams, product teams, support teams, architects, process owners, operations, finance, logistics, integration specialists, and sometimes by the few people who have simply been around long enough to remember why something was built a certain way.</p>
+<p>Trying to flatten all of that too early into a rigid central model usually creates two bad outcomes.</p>
+<p>First, you lose nuance.</p>
+<p>Second, people stop contributing, because the system becomes too heavy, too abstract, or too far from how they actually work.</p>
+<p>So the challenge is not to erase local knowledge.</p>
+<p>The challenge is to <strong>make local knowledge composable</strong>.</p>
+<p>That means each team should be able to build and maintain its own context, in its own domain, while still contributing to a larger enterprise-wide knowledge fabric.</p>
+<p>That is what I mean by context engineering.</p>
+<h3 id="if-you-want-to-break-silos-start-with-domains-bounded-contexts-and-end-to-end-flows">If you want to break silos, start with domains, bounded contexts, and end-to-end flows</h3>
+<p>One of the biggest mistakes we still make in IT is that we model the enterprise too much through applications.</p>
+<p>We think app by app. Team by team. System by system.</p>
+<p>But that is not how value flows through the business.</p>
+<p>The most meaningful context in an enterprise is rarely application-centric. It is usually tied to <strong>domains</strong>, <strong>bounded contexts</strong>, <strong>business processes</strong>, <strong>value chains</strong>, and the <strong>flows</strong> that cut across them.</p>
+<p>This is where ideas from <strong>domain-driven design</strong> become especially relevant.</p>
+<p>Because if we want context to be useful, reusable, and eventually consumable by AI systems, then we need much better structure around the business itself. We need to understand where a domain starts, where it ends, what language it uses, what business objects it owns, and how it interacts with other domains.</p>
+<p>That is exactly the value of bounded contexts.</p>
+<p>They help us define coherent areas of meaning inside the enterprise. They help us avoid mixing concepts that should stay distinct. And they give us a much stronger foundation for building knowledge systems that reflect reality instead of flattening it.</p>
+<p>But bounded contexts alone are not enough.</p>
+<p>Because value does not stop at the boundary of a single domain.</p>
+<p>It moves through <strong>end-to-end business processes</strong> and across <strong>value chains</strong>.</p>
+<p>A customer order.<br>
+A supply chain exception.<br>
+A stock reconciliation.<br>
+A financial posting.<br>
+A warehouse event.<br>
+An intercontinental logistics flow.<br>
+A customer promise that needs to be fulfilled across multiple systems.</p>
+<p>These are not just technical flows. They are business flows moving across domains, platforms, interfaces, and operational teams.</p>
+<p>That is why context engineering has to care deeply about what I would call <strong>architecture for flows</strong>.</p>
+<p>Not just application architecture.<br>
+Not just data architecture.<br>
+Not just integration architecture.</p>
+<p><strong>Architecture for flows.</strong></p>
+<p>How does information move across the enterprise?<br>
+How does a business object evolve from one step to another?<br>
+Where are the handoffs?<br>
+Where are the breaks in meaning?<br>
+Where are the frictions, the delays, the rework loops, the hidden dependencies?</p>
+<p>If we can document and structure those flows properly, in a way that is transverse, explicit, and consistent, then we create something extremely valuable.</p>
+<p>We create a shared understanding of how the enterprise actually operates.</p>
+<p>And that is where I think the opportunity is huge.</p>
+<p>Because once those business processes, bounded contexts, and cross-domain flows are described in a structured and uniform way, they become much easier to:</p>
+<ul>
+<li>understand</li>
+<li>govern</li>
+<li>evolve</li>
+<li>connect to applications and interfaces</li>
+<li>expose to support and operations</li>
+<li>and eventually serve to AI systems</li>
+</ul>
+<p>That is the real goal.</p>
+<p>To make the flow across the enterprise as visible, as smooth, and as intelligible as possible.</p>
+<p>Not only in runtime, but also in the way we document, govern, and improve it.</p>
+<p>Because the better we structure these flows, the easier it becomes to build systems, teams, and agents that can operate on top of them intelligently.</p>
+<h3 id="knowledge-should-be-treated-like-a-platform-asset">Knowledge should be treated like a platform asset</h3>
+<p>I think one of the biggest mindset shifts we need is this:</p>
+<p><strong>knowledge is not a side artifact, it is a platform asset.</strong></p>
+<p>It should not be treated as an afterthought.<br>
+It should not be treated as a project deliverable that gets stale the day after go-live.<br>
+It should not live in closed systems where it is hard to update, hard to version, hard to search, and impossible to reuse properly.</p>
+<p>If knowledge matters, then it needs an operating model.</p>
+<p>Personally, I strongly believe in a model where knowledge is:</p>
+<ul>
+<li>written in Markdown</li>
+<li>stored in an open, versioned, automatable platform</li>
+<li>reviewed through pull requests or merge requests</li>
+<li>traceable</li>
+<li>auditable</li>
+<li>versioned over time</li>
+<li>automatically processable through pipelines</li>
+</ul>
+<p>I am using <strong>GitLab</strong> here as a concrete example, because it naturally offers many of the capabilities that make this approach practical. But the point is not GitLab alone. It could absolutely be another platform with the same kind of characteristics.</p>
+<p>What matters is not the brand of the tool. What matters is the model behind it.</p>
+<p>You need a platform that gives you, at minimum:</p>
+<ul>
+<li>version control</li>
+<li>collaborative review workflows</li>
+<li>history and traceability</li>
+<li>ownership and governance</li>
+<li>automation hooks</li>
+<li>API access</li>
+<li>pipeline integration</li>
+<li>strong support for open formats like Markdown</li>
+</ul>
+<p>GitLab happens to be a very relevant example for this kind of use case, but it is not the only possible answer. The broader point is that enterprises need platforms that can treat knowledge as something living, governed, reusable, and machine-consumable.</p>
+<p>We already know how to operate code this way.</p>
+<p>Now we need to apply the same discipline to knowledge.</p>
+<p>Not just documentation as code.</p>
+<p><strong>Knowledge as code.</strong></p>
+<p>That changes everything.</p>
+<h3 id="a-collective-playground-for-business-build-and-operations">A collective playground for business, build, and operations</h3>
+<p>What makes this model especially powerful is that this type of platform can become much more than a repository.</p>
+<p>It can become a <strong>collective playground</strong>.</p>
+<p>A shared environment where different parts of the organization contribute to the same living body of knowledge, each from their own perspective, each adding a piece of the truth.</p>
+<p>You can imagine business teams capturing functional expertise:</p>
+<ul>
+<li>what the process is really trying to achieve</li>
+<li>what the critical business rules are</li>
+<li>where the exceptions matter</li>
+<li>what the real pain points are</li>
+<li>what outcomes the business actually cares about</li>
+</ul>
+<p>Then project and build teams can enrich that same body of knowledge with implementation reality:</p>
+<ul>
+<li>interfaces</li>
+<li>workflows</li>
+<li>dependencies</li>
+<li>integration patterns</li>
+<li>technical constraints</li>
+<li>architectural choices</li>
+<li>known trade-offs</li>
+</ul>
+<p>And then operations and support teams can keep grounding that knowledge in frontline reality:</p>
+<ul>
+<li>how the system behaves in production</li>
+<li>what the happy paths look like</li>
+<li>what the unhappy paths look like</li>
+<li>what actually breaks</li>
+<li>how incidents are diagnosed</li>
+<li>what workarounds exist</li>
+<li>what business continuity mechanisms are in place</li>
+<li>where the real operational fragility sits</li>
+</ul>
+<p>This is where it becomes very interesting.</p>
+<p>Because instead of having fragmented documents for business, separate specs for delivery, and disconnected runbooks for support, you start building a <strong>shared contextual layer</strong> that reflects how the service really works end to end.</p>
+<p>That is far more valuable than static documentation.</p>
+<p>That becomes operational knowledge.</p>
+<h3 id="from-frontline-reality-back-into-the-context-system">From frontline reality back into the context system</h3>
+<p>What I find especially compelling is the feedback loop this creates.</p>
+<p>The document is no longer something written once and forgotten.</p>
+<p>It becomes something that evolves based on what happens on the frontline.</p>
+<p>A production incident teaches you something, update the context.<br>
+A support team discovers a recurrent failure mode, update the context.<br>
+A business team clarifies a rule or an exception, update the context.<br>
+An architecture decision changes an interface or a dependency, update the context.</p>
+<p>That means the knowledge base is no longer disconnected from reality.</p>
+<p>It becomes the place where the organization continuously captures what it is learning.</p>
+<p>And that matters a lot, because continuity does not come from writing documentation once. It comes from building a system where documentation keeps getting fed by delivery, operations, and business usage.</p>
+<p>Done well, this kind of living documentation could become the <strong>main reference artifact</strong>.</p>
+<p>Honestly, I think that is where we should head.</p>
+<p>Not dozens of disconnected documents, each with partial truth, each aging at a different speed.</p>
+<p>But a smaller number of living, governed, versioned knowledge artifacts that serve as the actual reference layer for how the service works.</p>
+<h3 id="from-knowledge-repositories-to-context-pipelines">From knowledge repositories to context pipelines</h3>
+<p>Once knowledge is structured in open, versioned, machine-readable formats, something really interesting happens.</p>
+<p>It stops being passive.</p>
+<p>It becomes something you can process.</p>
+<p>You can build <strong>context pipelines</strong>.</p>
+<p>Instead of storing documents and hoping people find them, you can build automated flows that:</p>
+<ul>
+<li>collect curated Markdown knowledge</li>
+<li>enrich it with metadata</li>
+<li>map it to business domains, bounded contexts, processes, and systems</li>
+<li>split it into meaningful chunks</li>
+<li>generate embeddings</li>
+<li>create semantic search indexes</li>
+<li>expose that context to applications, copilots, or agents</li>
+</ul>
+<p>This is where technologies like <strong>FAISS</strong> become really exciting.</p>
+<p>FAISS makes similarity search over vectors practical at scale. In simple terms, it gives you a way to search for meaning, not just for keywords.</p>
+<p>And that matters a lot in enterprise environments.</p>
+<p>Because real enterprise knowledge is messy. Different teams use different words. The same concept appears in different forms. Processes evolve. Terminology drifts. New systems inherit old names. Some of the most important information is not expressed in a perfectly normalized way.</p>
+<p>Traditional keyword search is often not enough.</p>
+<p>You need systems that can retrieve semantically relevant knowledge from a distributed body of context.</p>
+<p>And once you can do that reliably, you stop building isolated AI demos and start building actual enterprise capabilities.</p>
+<h3 id="the-real-ai-opportunity-is-not-better-prompting-it-is-better-context-systems">The real AI opportunity is not better prompting, it is better context systems</h3>
+<p>A lot of AI work in the enterprise still feels too prompt-centric.</p>
+<p>People focus on the model.<br>
+They focus on the interface.<br>
+They focus on the agent behavior.<br>
+They focus on the orchestration logic.</p>
+<p>All of that matters, but I think the bigger differentiator will be elsewhere.</p>
+<p>The real advantage will come from companies that know how to <strong>build, govern, and serve context well</strong>.</p>
+<p>Because an agent is only as useful as the context it can access.</p>
+<p>If it does not know:</p>
+<ul>
+<li>which systems matter</li>
+<li>which business objects are canonical</li>
+<li>which rules are binding</li>
+<li>which exceptions are tolerated</li>
+<li>which flows are critical</li>
+<li>which systems are sources of truth</li>
+<li>which historical decisions shaped the current state</li>
+</ul>
+<p>then it will produce output that looks polished but lacks operational depth.</p>
+<p>That is not intelligence.</p>
+<p>That is surface area.</p>
+<p>The companies that win will be the ones that transform their internal knowledge into something structured, accessible, governable, and reusable across AI use cases.</p>
+<h3 id="a-portal-of-context-not-just-a-pile-of-documents">A portal of context, not just a pile of documents</h3>
+<p><img src="/img/faiss-library.png" alt="Side projects ftw"></p>
+<p>One idea I find compelling is to think about context as a <strong>catalog of reusable enterprise knowledge assets</strong>.</p>
+<p>Imagine an internal portal, or library, where teams publish governed context packages by domain.</p>
+<p>For example:</p>
+<ul>
+<li>finance</li>
+<li>supply chain</li>
+<li>customer orders</li>
+<li>intercontinental flows</li>
+<li>warehouse operations</li>
+<li>enterprise architecture</li>
+<li>incident knowledge</li>
+<li>support runbooks</li>
+<li>product capabilities</li>
+<li>integration patterns</li>
+</ul>
+<p>Each package could expose curated knowledge artifacts, metadata, embeddings, semantic indexes, and ownership information.</p>
+<p>Then, instead of building every AI use case from scratch, you could compose agents from trusted context domains.</p>
+<p>You want to build an agent for finance plus intercontinental supply chain processes?</p>
+<p>Fine. Use those two context packages.</p>
+<p>You want a support copilot that understands architecture decisions, integration dependencies, and historical incidents?</p>
+<p>Fine. Pull those context layers together.</p>
+<p>That creates a completely different foundation for AI.</p>
+<p>The agent is no longer a disconnected experiment.</p>
+<p>It becomes a consumer of enterprise context products.</p>
+<p>That is a much stronger model.</p>
+<h3 id="the-future-sdlc-will-be-far-more-contextual-and-far-more-automated">The future SDLC will be far more contextual, and far more automated</h3>
+<p>I do not believe software engineering is going to disappear.</p>
+<p>But I do think it is going to change significantly.</p>
+<p>I think a growing part of the work will move upstream, closer to the business, closer to process understanding, closer to decision-making, and closer to system intent.</p>
+<p>In practice, that means engineers will likely spend more time with business stakeholders asking better questions:</p>
+<ul>
+<li>what are the actual inflection points you want to create?</li>
+<li>what business cases matter most?</li>
+<li>what trade-offs are acceptable?</li>
+<li>what should change in the process, and what should not?</li>
+<li>where do we need flexibility, and where do we need control?</li>
+</ul>
+<p>That conversation becomes even more powerful once you have agents operating on top of a strong context system.</p>
+<p>You can imagine agents that:</p>
+<ul>
+<li>capture business requirements</li>
+<li>challenge those requirements against the current as-is architecture</li>
+<li>compare them with existing process knowledge</li>
+<li>identify dependencies and conflicts</li>
+<li>propose different implementation options</li>
+<li>surface trade-offs between option A, option B, and option C</li>
+<li>generate specifications for delivery teams</li>
+<li>prepare implementation artifacts for engineering workflows</li>
+</ul>
+<p>This is where things get very real.</p>
+<p>The future SDLC could become much more automated than what we know today.</p>
+<p>Not because humans disappear.</p>
+<p>But because humans move to higher-value activities, while more of the translation layer becomes machine-assisted.</p>
+<p>Business intent is captured.<br>
+Context is retrieved.<br>
+Architecture is checked.<br>
+Options are proposed.<br>
+Specifications are generated.<br>
+Delivery workflows are prepared.<br>
+Engineering teams review, refine, and execute.</p>
+<p>That is not science fiction anymore.</p>
+<p>That starts to look like a plausible operating model.</p>
+<h3 id="accessibility-and-interoperability-are-now-non-negotiable">Accessibility and interoperability are now non-negotiable</h3>
+<p>If this vision makes sense, then a few consequences follow immediately.</p>
+<p>First, knowledge has to be <strong>accessible</strong>.</p>
+<p>Not necessarily open to everyone, of course. Access control still matters. But knowledge must be technically accessible through usable formats, APIs, metadata, and reliable ingestion mechanisms.</p>
+<p>Second, knowledge has to be <strong>interoperable</strong>.</p>
+<p>That means:</p>
+<ul>
+<li>open formats</li>
+<li>consistent structures</li>
+<li>portable content</li>
+<li>clear identifiers</li>
+<li>links between business concepts and technical implementations</li>
+<li>standards for how context is described and published</li>
+</ul>
+<p>Third, knowledge has to be <strong>governable over time</strong>.</p>
+<p>You need to know:</p>
+<ul>
+<li>where it came from</li>
+<li>who owns it</li>
+<li>who changed it</li>
+<li>why it changed</li>
+<li>what was valid at a given moment</li>
+<li>what other artifacts depend on it</li>
+</ul>
+<p>In other words, context must be trustworthy.</p>
+<p>Without trust, you cannot scale AI on top of it.</p>
+<h3 id="itsm-tools-should-be-destinations-not-the-center-of-gravity">ITSM tools should be destinations, not the center of gravity</h3>
+<p>This also changes how I think about enterprise tools, especially ITSM platforms.</p>
+<p>ITSM tools still matter. They can remain valuable operating systems for incidents, problems, changes, requests, and knowledge distribution.</p>
+<p>But I do not think they should automatically be treated as the central system of knowledge.</p>
+<p>If they have good APIs, good exportability, good integration patterns, and support open content models, great.</p>
+<p>If they can consume and publish Markdown-based knowledge, even better.</p>
+<p>But if they are closed, hard to integrate, weak on interoperability, and poor at participating in modern context pipelines, then we need to be honest about their role.</p>
+<p>They should be treated as <strong>one endpoint among others</strong>, not as the source around which everything else must orbit.</p>
+<p>That is a big shift.</p>
+<p>The center should not be the tool.</p>
+<p>The center should be the <strong>knowledge model</strong> and the <strong>context engineering architecture</strong> around it.</p>
+<p>Tools should plug into that model, not define its limits.</p>
+<h3 id="closed-platforms-are-going-to-struggle">Closed platforms are going to struggle</h3>
+<p>I think we are entering a moment where this becomes unavoidable.</p>
+<p>The rise of AI is putting pressure on every enterprise system to become easier to ingest, easier to integrate, easier to version, and easier to understand programmatically.</p>
+<p>The success of Markdown and documentation as code is not a coincidence. It reflects a deeper demand for simplicity, openness, portability, and composability.</p>
+<p>Platforms that cannot:</p>
+<ul>
+<li>expose knowledge cleanly</li>
+<li>integrate through APIs</li>
+<li>support open content formats</li>
+<li>participate in pipelines</li>
+<li>fit into AI-native architectures</li>
+</ul>
+<p>will increasingly feel outdated.</p>
+<p>Not because they suddenly stopped working.</p>
+<p>But because they do not fit the direction the enterprise needs to go.</p>
+<p>The question is no longer just: does this platform support my process?</p>
+<p>The more important question is: <strong>does this platform contribute cleanly to my enterprise context system?</strong></p>
+<p>That is a much tougher test.</p>
+<p>And I think it is going to become a major selection criterion in the years ahead.</p>
+<h3 id="final-thought">Final thought</h3>
+<p>I do not think the next enterprise advantage will come only from having access to better models.</p>
+<p>And I do not think it will come only from having more data.</p>
+<p>I think it will come from being able to <strong>engineer context</strong>.</p>
+<p>To make distributed knowledge explicit.<br>
+To version it.<br>
+To govern it.<br>
+To connect it to business processes.<br>
+To relate it to applications and integrations.<br>
+To keep its history.<br>
+To make it accessible to both humans and machines.</p>
+<p>In many ways, the real challenge is not just to document systems. It is to document the enterprise as a set of domains, bounded contexts, value chains, and transverse flows. Because that is where meaning lives. That is where coordination happens. And that is where AI systems will need clarity if they are to become truly useful inside complex organizations.</p>
+<p>The real challenge is not just to connect AI to enterprise data.</p>
+<p>The real challenge is to build <strong>context systems</strong> that connect business meaning, operational knowledge, technical reality, and organizational memory.</p>
+<p>And if we do that well, I think we will end up with something much more powerful than better documentation.</p>
+<p>We will end up with a shared contextual layer for the enterprise. A place where business, engineering, architecture, support, and operations continuously enrich the same living system of knowledge. A place where the frontline feeds the model, where delivery reuses it, where AI can consume it, and where future systems can be built on top of it.</p>
+<p>That, to me, is where the next generation of enterprise applications will be built.</p>
+<p>And honestly, that is where some of the most interesting engineering work is about to happen.</p>
+
+  </div>
+  
+
+<div class="navigation navigation-single">
+    
+    <a href="/posts/blackstone-smoker-and-telegram-bot/" class="navigation-prev">
+      <i aria-hidden="true" class="fa fa-chevron-left"></i>
+      <span class="navigation-tittle">Blackstone Smoker and Telegram Bot - 0x24th Birthday Edition 🎂</span>
+    </a>
+    
+    
+</div>
+
+
+  
+
+  
+    
+
+
+</article>
+
+
+        </div>
+        
+    
+
+<script defer src="https://use.fontawesome.com/releases/v5.12.1/js/all.js" integrity="sha384-ZbbbT1gw3joYkKRqh0kWyRp32UAvdqkpbLedQJSlnI8iLQcFVxaGyrOgOJiDQTTR" crossorigin="anonymous"></script>
+
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
+        
+    <script type="text/javascript">
+        
+        hljs.initHighlightingOnLoad();
+    </script>
+    
+
+
+
+    
+
+
+
+    </body>
+</html>
