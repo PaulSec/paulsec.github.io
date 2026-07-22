@@ -6,8 +6,15 @@
     <description>Recent content on </description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 03 Apr 2026 06:45:34 -0400</lastBuildDate>
+    <lastBuildDate>Wed, 22 Jul 2026 18:29:43 -0400</lastBuildDate>
     <atom:link href="http://paulsec.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Software Engineering is dead. Long live Software Engineering</title>
+      <link>http://paulsec.github.io/posts/software-engineering-is-dead-long-live-software-engineering/</link>
+      <pubDate>Wed, 22 Jul 2026 18:29:43 -0400</pubDate>
+      <guid>http://paulsec.github.io/posts/software-engineering-is-dead-long-live-software-engineering/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;http://paulsec.github.io/img/aidlc.png&#34; alt=&#34;AIDLC ftw&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;I have been thinking a lot recently about how software delivery is going to evolve over the next few years, and I increasingly believe that we are approaching a much deeper transformation than the one we usually describe when we talk about AI in software engineering. Most of the current discussion still focuses on developer productivity: how AI can help us write code faster, generate tests, explain an unfamiliar codebase, or produce a first version of a pull request. Those capabilities are already useful, and they will obviously continue to improve, but I do not think they represent the most important change ahead of us.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Some of my thoughts on Context Engineering</title>
       <link>http://paulsec.github.io/posts/some-of-my-thoughts-on-context-engineering/</link>

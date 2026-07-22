@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    
+    
+
+
+    <head>
+    <link href="https://gmpg.org/xfn/11" rel="profile">
+    
+    <link rel="canonical" href="http://paulsec.github.io/posts/software-engineering-is-dead-long-live-software-engineering/">
+    
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!-- Enable responsiveness on mobile devices -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="generator" content="Hugo 0.142.0">
+
+    
+    
+    
+
+<title>Software Engineering is dead. Long live Software Engineering • </title>
+
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Software Engineering is dead. Long live Software Engineering">
+  <meta name="twitter:description" content="I have been thinking a lot recently about how software delivery is going to evolve over the next few years, and I increasingly believe that we are approaching a much deeper transformation than the one we usually describe when we talk about AI in software engineering. Most of the current discussion still focuses on developer productivity: how AI can help us write code faster, generate tests, explain an unfamiliar codebase, or produce a first version of a pull request. Those capabilities are already useful, and they will obviously continue to improve, but I do not think they represent the most important change ahead of us.">
+      <meta name="twitter:site" content="@PaulWebSec">
+
+<meta property="og:url" content="http://paulsec.github.io/posts/software-engineering-is-dead-long-live-software-engineering/">
+  <meta property="og:site_name" content="PaulSec&#39;s Blog">
+  <meta property="og:title" content="Software Engineering is dead. Long live Software Engineering">
+  <meta property="og:description" content="I have been thinking a lot recently about how software delivery is going to evolve over the next few years, and I increasingly believe that we are approaching a much deeper transformation than the one we usually describe when we talk about AI in software engineering. Most of the current discussion still focuses on developer productivity: how AI can help us write code faster, generate tests, explain an unfamiliar codebase, or produce a first version of a pull request. Those capabilities are already useful, and they will obviously continue to improve, but I do not think they represent the most important change ahead of us.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-07-22T18:29:43-04:00">
+    <meta property="article:modified_time" content="2026-07-22T18:29:43-04:00">
+
+
+    
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/monokai.min.css">
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/scss/hyde-hyde.3081c4981fb69a2783dd36ecfdd0e6ba7a158d4cbfdd290ebce8f78ba0469fc6.css" integrity="sha256-MIHEmB&#43;2mieD3Tbs/dDmunoVjUy/3SkOvOj3i6BGn8Y=">
+
+
+<link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
+
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+    <link rel="shortcut icon" href="/favicon.png">
+    
+    <link rel="stylesheet" href="/css/syntax.css">
+
+</head>
+
+
+    <body class=" ">
+    
+<div class="sidebar">
+  <div class="container ">
+    <div class="sidebar-about">
+      <span class="site__title">
+        <a href="http://paulsec.github.io/">
+        
+          
+        
+        </a>
+      </span>
+      
+        
+        
+        
+        <div class="author-image">
+          <img src="http://paulsec.github.io/img/profile.png" alt="Author Image" class="img--circle img--headshot element--center">
+        </div>
+        
+      
+      
+      <p class="site__description">
+         PaulSec&#39;s Blog. Security &amp; lulz. 
+      </p>
+    </div>
+    <div class="collapsible-menu">
+      <input type="checkbox" id="menuToggle">
+      <label for="menuToggle"></label>
+      <div class="menu-content">
+        <div>
+	<ul class="sidebar-nav">
+		 
+		 
+			 
+				<li>
+					<a href="/">
+						<span>Home</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/posts/">
+						<span>Posts</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/about/">
+						<span>About</span>
+					</a>
+				</li>
+			 
+		
+	</ul>
+</div>
+
+        <section class="social">
+	
+	<a href="https://twitter.com/@PaulWebSec" rel="me"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	<a href="https://github.com/PaulSec" rel="me"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</section>
+
+      </div>
+    </div>
+    
+<div class="copyright">
+  &copy; 2026 Paul A.
+  
+    <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>
+  
+</div>
+
+
+<div class="builtwith">
+Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.com/htr3n/hyde-hyde">hyde-hyde</a>.
+</div>
+
+
+  </div>
+</div>
+
+        <div class="content container">
+            
+    
+<article>
+  <header>
+    <h1>Software Engineering is dead. Long live Software Engineering</h1>
+    
+    
+<div class="post__meta">
+    
+    
+      <i class="fas fa-calendar-alt"></i> Jul 22, 2026
+    
+    
+    
+    
+    
+    <br/>
+    <i class="fas fa-clock"></i> 17 min read
+</div>
+
+
+  </header>
+  
+  
+  <div class="post">
+    <p><img src="/img/aidlc.png" alt="AIDLC ftw"></p>
+<p>I have been thinking a lot recently about how software delivery is going to evolve over the next few years, and I increasingly believe that we are approaching a much deeper transformation than the one we usually describe when we talk about AI in software engineering. Most of the current discussion still focuses on developer productivity: how AI can help us write code faster, generate tests, explain an unfamiliar codebase, or produce a first version of a pull request. Those capabilities are already useful, and they will obviously continue to improve, but I do not think they represent the most important change ahead of us.</p>
+<p>The real transformation begins when we stop thinking about AI as a coding assistant and start thinking about agents as active participants in the entire software delivery lifecycle.</p>
+<p>When you look at the way software is delivered in a large organization today, a significant part of the work has very little to do with writing code. A developer receives a Jira issue, tries to understand what was actually requested, reads several comments to recover some context, searches through documentation that may or may not be up to date, asks a few people who remember how the application works, explores the codebase, identifies dependencies with other systems, makes the change, creates a merge request, waits for a review, updates tests, checks the pipeline, and perhaps updates some documentation before moving on to the next topic.</p>
+<p>We have become so familiar with this way of working that we often forget how much of it is essentially information retrieval, coordination, context reconstruction and manual translation between systems.</p>
+<p>That is exactly the kind of environment where agentic workflows can fundamentally change the way we operate.</p>
+<p>Imagine an agent connected through MCP or similar mechanisms to Jira, GitLab, application repositories, architecture documentation, observability platforms and internal knowledge bases. When a new issue arrives, the agent does not simply generate code from the description. It first retrieves the wider context. It looks at related Jira issues, previous decisions, historical merge requests, the structure of the application, existing tests, architectural constraints and potentially even previous production incidents related to the same capability.</p>
+<p>From there, it can propose a modification, identify which parts of the codebase are impacted, implement a first version, run tests and create a merge request. Another agent could review the proposed change from a code quality perspective. A different one could look specifically at security implications. Another could verify architectural consistency, while another determines whether documentation, runbooks or operational procedures need to be updated.</p>
+<p>At that point, we are no longer talking about AI-assisted coding. We are talking about a delivery system in which humans and agents work together across the complete lifecycle.</p>
+<p>That distinction is important because it also changes the role of the software engineer.</p>
+<h2 id="the-software-engineer-as-an-orchestrator">The Software Engineer as an Orchestrator</h2>
+<p>One of the most interesting consequences of this evolution is that software engineers may gradually become managers, although not necessarily in the traditional sense of managing people. They will increasingly manage and orchestrate agents.</p>
+<p>An engineer could work with a set of specialized agents, each with a specific role and context. One may understand the application codebase in depth. Another may specialize in testing. Another may focus on security, observability, documentation or architecture. Some agents may be deeply specialized in a particular application, while others may operate at the level of an entire information system and understand relationships between multiple platforms.</p>
+<p>The engineer&rsquo;s role in that environment becomes less about manually executing every single step and more about ensuring that the overall system of work is producing the right result.</p>
+<p>That means defining the problem properly, providing the right context, determining constraints, validating assumptions, challenging proposed solutions and recognizing when an apparently correct technical answer is actually wrong from a business or architectural perspective.</p>
+<p>This is why I do not believe the future of software engineering is simply about fewer engineers doing more coding with AI. I think the role itself will evolve toward orchestration, judgment and problem solving.</p>
+<p>In many ways, this may actually bring software engineering closer to what engineering should have always been.</p>
+<p>The ability to write code remains important, but code is only one implementation mechanism. The real objective is to understand a problem, understand the constraints around it, design an appropriate solution and ensure that the solution produces value.</p>
+<h2 id="the-real-bottleneck-may-move-upstream">The Real Bottleneck May Move Upstream</h2>
+<p>The more I think about this, the more I believe that the most important impact of AI will not be on coding itself. It will be on everything that happens before coding starts.</p>
+<p>In many organizations, we have gradually accepted a model where a business request can be expressed in one or two lines and then handed over to a software team with the expectation that the team will somehow reconstruct the actual need behind it.</p>
+<p>&ldquo;We need a new status.&rdquo;</p>
+<p>&ldquo;We need this information exposed.&rdquo;</p>
+<p>&ldquo;We need a new screen.&rdquo;</p>
+<p>&ldquo;We need another field.&rdquo;</p>
+<p>&ldquo;We need this integration.&rdquo;</p>
+<p>The delivery process then begins from a statement that is already framed as a solution, even though the underlying problem may not have been properly understood.</p>
+<p>The software team starts asking questions, usually asynchronously and often across several organizational boundaries. People interpret the request differently. Assumptions are made. A backlog is created. Development starts. Several weeks or months later, the solution is delivered and somebody realizes that the original requirement did not actually address the real business problem.</p>
+<p>AI does not automatically fix this.</p>
+<p>In fact, I think AI will make this weakness much more visible.</p>
+<p>If implementation becomes dramatically faster, then unclear problem definition becomes the new bottleneck. There is little value in being able to implement the wrong solution in two days instead of two months.</p>
+<p>This is why I believe software engineers will need to spend more time with the business, not less.</p>
+<p>They will need to understand how the business process actually works, where the friction exists, what decisions people are trying to make, what information is missing and what outcome the organization is really trying to achieve.</p>
+<p>The quality of the problem statement will become one of the most important inputs into the entire agentic delivery system.</p>
+<h2 id="from-requirements-to-business-problems">From Requirements to Business Problems</h2>
+<p>I can imagine a future software delivery lifecycle that starts very differently from the one we know today.</p>
+<p>Instead of beginning with a technical request such as &ldquo;add a new field to Application X&rdquo;, the process begins with a business problem.</p>
+<p>For example, a supply chain team might say that they are losing visibility at a certain point in the fulfillment process, creating manual work, delaying decisions and increasing the risk of inventory inconsistencies.</p>
+<p>That is a much richer starting point.</p>
+<p>From there, humans and agents can work together to understand the current environment. Which applications are involved? Where does the relevant information originate? How is it transformed? Which teams own the different systems? Which business rules apply? Are there existing capabilities elsewhere in the organization that already solve part of the problem? Is the issue really technical, or is it partly caused by the way the current process has been designed?</p>
+<p>An agent that has access to the architecture of the information system, application documentation, code repositories and business process descriptions could then analyze the situation end to end.</p>
+<p>Instead of immediately producing a backlog, it might propose several scenarios.</p>
+<p>One scenario could involve relatively small changes to two existing applications and provide a fast implementation, but create additional coupling between systems.</p>
+<p>Another might introduce a new shared capability that requires more initial effort but creates a cleaner architecture over time.</p>
+<p>A third could reuse an existing enterprise capability while requiring a change in the current business process.</p>
+<p>This is where I think human involvement becomes particularly valuable.</p>
+<p>The business can evaluate the scenarios based on expected value, speed, operational impact and cost. Architects can evaluate long-term consequences. Engineers can challenge feasibility and complexity. Together, they can make an informed decision before implementation begins.</p>
+<p>Once a scenario is selected, much of the downstream delivery process becomes easier to automate.</p>
+<p>The system could identify the applications that need to change, determine ownership, create the necessary epics and backlog items in Jira, map dependencies between teams and provide each application-specific agent with the relevant piece of work and context.</p>
+<p>The important point is that the automation begins after the problem has been properly understood and the direction has been chosen.</p>
+<p>That is very different from simply asking an AI agent to implement whatever happened to be written in a ticket.</p>
+<h2 id="application-specific-agents-and-end-to-end-delivery">Application-Specific Agents and End-to-End Delivery</h2>
+<p>I also believe that software organizations will increasingly create agents that are specialized in specific applications or domains.</p>
+<p>Today, a large amount of application knowledge is accumulated informally over time by the people who work on a system. They know why certain design decisions were made, which components are fragile, which dependencies are poorly documented, which tests are reliable and which operational behaviors are normal.</p>
+<p>An application-specific agent could gradually accumulate and maintain much of that context.</p>
+<p>It could understand the repositories associated with the application, its architecture, coding standards, APIs, dependencies, deployment model, historical incidents and previous technical decisions.</p>
+<p>When a new piece of work is assigned, the agent would not begin from zero. It would already understand the environment in which the change needs to be made.</p>
+<p>This creates the possibility of a much more continuous delivery process.</p>
+<p>A business decision made at the beginning of the lifecycle could eventually flow through architecture analysis, backlog creation, implementation, testing, code review, documentation and deployment with much less manual translation between each stage.</p>
+<p>Humans would still be involved, but their involvement would increasingly focus on decisions rather than repetitive coordination.</p>
+<p>That is where I see the real potential for significant acceleration.</p>
+<p>Not because an individual developer can generate code 30 percent faster, but because the amount of friction between the stages of software delivery can be reduced dramatically.</p>
+<h2 id="documentation-becomes-part-of-the-product">Documentation Becomes Part of the Product</h2>
+<p>One of the areas where I think this evolution could have the biggest long-term impact is documentation.</p>
+<p>Documentation has been one of the most persistent problems in software organizations for decades. Everyone agrees that good documentation matters, but in practice it is often treated as secondary to delivery.</p>
+<p>The feature has to ship.</p>
+<p>The incident has to be fixed.</p>
+<p>The migration has to happen.</p>
+<p>The release date cannot move.</p>
+<p>Documentation is therefore updated later, inconsistently or not at all.</p>
+<p>Over time, more and more knowledge moves outside the formal system and into people&rsquo;s heads. Someone remembers why a particular integration works in a strange way. Someone knows the hidden operational dependency. Someone remembers a decision made during a migration three years ago. Someone knows that one configuration value must never be changed.</p>
+<p>Eventually, that person changes role or leaves the organization, and the knowledge disappears with them.</p>
+<p>Agentic software delivery creates a strong incentive to address this problem because agents require reliable context.</p>
+<p>If we expect agents to understand applications and make useful decisions, then architecture, ownership, business rules, operational procedures and design decisions need to exist as structured, maintainable knowledge.</p>
+<p>Documentation can no longer be something separate from software delivery. It has to become one of the artifacts produced and maintained by the delivery process.</p>
+<p>I think we should eventually treat documentation in much the same way we treat software artifacts.</p>
+<p>A Docker image has a version.</p>
+<p>A Helm chart has a version.</p>
+<p>An API has a version.</p>
+<p>A deployed application corresponds to a specific commit or release.</p>
+<p>The documentation describing that application should follow the same principle.</p>
+<p>If version 4.8 of an application is deployed in production, there should be a version of the documentation that accurately reflects version 4.8.</p>
+<p>This could include architecture diagrams, API documentation, operational runbooks, business rules, data flows and major architectural decisions.</p>
+<p>When a change is merged, agents could identify which knowledge artifacts are impacted and propose the appropriate modifications as part of the same delivery workflow.</p>
+<p>Documentation would stop being something that people are periodically reminded to update and become part of the definition of the product itself.</p>
+<p>That could also significantly reduce our dependence on tribal knowledge.</p>
+<p>Not because people suddenly become more disciplined about writing documentation, but because knowledge maintenance becomes systemic.</p>
+<h2 id="toward-a-living-model-of-the-information-system">Toward a Living Model of the Information System</h2>
+<p>If this idea is pushed further, I think we may eventually create something close to a living digital representation of the information system.</p>
+<p>Today, most large organizations have fragments of this information spread across many places.</p>
+<p>Architecture diagrams exist somewhere.</p>
+<p>Application inventories exist somewhere else.</p>
+<p>Source code is in Git.</p>
+<p>APIs are documented in another tool.</p>
+<p>Business processes may be described in PowerPoint or Visio.</p>
+<p>Operational knowledge is in a wiki.</p>
+<p>Incidents are in ServiceNow.</p>
+<p>Ownership is sometimes in people&rsquo;s heads.</p>
+<p>The information system exists, but our representation of it is fragmented.</p>
+<p>An agentic environment creates pressure to connect those pieces.</p>
+<p>If agents can understand application architecture, dependencies, APIs, ownership, runtime information, business capabilities and operational history, they can begin to reason about the information system as a whole.</p>
+<p>An engineer could ask a question such as:</p>
+<p>&ldquo;What would need to change if we introduced this new capability into our order fulfillment process?&rdquo;</p>
+<p>Instead of spending weeks identifying the right applications and teams, the system could analyze the existing landscape and provide a first end-to-end impact assessment.</p>
+<p>It could identify the relevant applications, interfaces, dependencies and ownership boundaries, then propose possible implementation strategies.</p>
+<p>This does not eliminate the need for architecture or engineering expertise.</p>
+<p>It makes that expertise much more effective because engineers spend less time reconstructing information that should already be available.</p>
+<h2 id="knowledge-has-to-be-federated-and-interoperable">Knowledge Has to Be Federated and Interoperable</h2>
+<p>There is, however, an important condition for this to work. I do not think the answer is to create one enormous central knowledge repository and expect a central team to maintain everything.</p>
+<p>That would probably recreate exactly the kind of bottleneck we are trying to remove.</p>
+<p>The model has to be federated.</p>
+<p>Each team should remain responsible for the knowledge associated with the applications, services and capabilities it owns. The people closest to a system are usually the best positioned to maintain its context, its architecture, its operational knowledge and the reasoning behind its evolution.</p>
+<p>But ownership of knowledge cannot mean isolation of knowledge.</p>
+<p>The key principle should be that knowledge produced by one team must be consumable by another team, or by another agent, without requiring a manual interaction every time someone needs access to it.</p>
+<p>In other words, knowledge has to become interoperable.</p>
+<p>If an agent analyzing an end-to-end business process needs to understand an application owned by another team, it should not have to open a ticket, schedule a meeting, ask someone to export a document or wait for somebody to manually validate every request.</p>
+<p>Assuming the appropriate access rights have already been granted, the knowledge should simply be available through a standard interface.</p>
+<p>I think there is an interesting parallel here with the API-first principles that have shaped modern software architecture.</p>
+<p>The famous API mandate often associated with Jeff Bezos was based on a relatively simple idea: teams should expose their capabilities through well-defined service interfaces rather than depending on private implementation details or informal coordination between teams.</p>
+<p>The same philosophy should increasingly apply to knowledge.</p>
+<p><strong>Every team should own its knowledge, but every team&rsquo;s knowledge should also be accessible as a service to the rest of the organization.</strong></p>
+<p>That does not necessarily mean that everything has to be exposed through a traditional REST API. The interface could be an API, an MCP server, a knowledge graph, structured documentation, searchable repositories or whatever mechanisms emerge over time.</p>
+<p>The technology itself is less important than the principle.</p>
+<p>A consuming team or agent should not need to understand where the knowledge physically lives.</p>
+<p>It should not need to know whether one team uses Markdown, another uses a wiki and another generates documentation from code.</p>
+<p>It should simply be able to ask for the information through a common, interoperable interface and receive a reliable answer.</p>
+<p>This also changes the way I think about autonomy.</p>
+<p>True team autonomy cannot simply mean that each team can build whatever it wants independently.</p>
+<p>It should also mean that teams can consume the capabilities and knowledge of other teams independently.</p>
+<p>If every interaction requires another team to manually intervene, then the organization is not really autonomous. It has simply distributed its dependencies across organizational boundaries.</p>
+<p>The same principle that applies to software services applies to organizational knowledge: dependency is acceptable, unnecessary coordination is not.</p>
+<p>This federated model also avoids another common trap in large organizations, where a central documentation or architecture function gradually becomes responsible for maintaining knowledge about systems it does not actually operate.</p>
+<p>That almost always creates a lag between reality and documentation.</p>
+<p>Instead, knowledge should remain close to the source, owned by the teams that create and change the systems, while standards make that knowledge discoverable and usable across the enterprise.</p>
+<p>In an agentic environment, this becomes even more important because the quality of an agent&rsquo;s decisions will depend heavily on the quality and accessibility of the context it can retrieve.</p>
+<p>An enterprise with hundreds of highly capable agents but fragmented, inaccessible knowledge will still spend enormous amounts of time rediscovering the same information.</p>
+<p>An enterprise where knowledge is federated, structured and interoperable creates something much more powerful: every team can improve its own context while automatically contributing to a larger understanding of the information system.</p>
+<p>That, to me, is one of the foundations required for agentic software delivery to work at scale.</p>
+<h2 id="we-should-not-simply-automate-todays-sdlc">We Should Not Simply Automate Today&rsquo;s SDLC</h2>
+<p>One of the biggest mistakes we could make is to take our existing software delivery lifecycle and simply put an AI agent into every step.</p>
+<p>An AI agent writes the requirements.</p>
+<p>Another writes the code.</p>
+<p>Another performs testing.</p>
+<p>Another writes documentation.</p>
+<p>Another handles deployment.</p>
+<p>The same process continues, just with more automation.</p>
+<p>That would certainly create productivity improvements, but it would miss the larger opportunity.</p>
+<p>Many of the processes we use today exist because of the limitations of human coordination.</p>
+<p>We create tickets because work needs to be passed between people.</p>
+<p>We create handoffs because teams operate in separate contexts.</p>
+<p>We create detailed workflows because information is fragmented.</p>
+<p>We schedule meetings because the right people do not have the same information at the same time.</p>
+<p>When agents can continuously access and reason across much of that context, we should question whether the process itself still makes sense.</p>
+<p>Why should a business request pass through several organizational layers before reaching the people who understand the application?</p>
+<p>Why do engineers repeatedly rediscover application dependencies?</p>
+<p>Why is documentation treated as a separate activity?</p>
+<p>Why do we manually translate one business decision into dozens of Jira items?</p>
+<p>Why do teams spend so much time figuring out who owns a system?</p>
+<p>Why do developers spend hours searching for information that already exists somewhere else in the organization?</p>
+<p>The opportunity is not simply to make those activities faster.</p>
+<p>The opportunity is to remove some of them entirely.</p>
+<h2 id="the-engineer-of-tomorrow">The Engineer of Tomorrow</h2>
+<p>All of this changes what I believe will make a software engineer valuable.</p>
+<p>Technical skills will still matter. Understanding software architecture, distributed systems, APIs, databases, cloud infrastructure and security will not suddenly become irrelevant.</p>
+<p>But pure implementation ability will become less differentiating as agents become better at producing code.</p>
+<p>What becomes more valuable is the ability to understand a complex environment and make good decisions within it.</p>
+<p>An engineer needs to understand the application, but also why the application exists.</p>
+<p>They need to understand the business process it supports.</p>
+<p>They need to understand how the system interacts with the rest of the enterprise.</p>
+<p>They need to understand which constraints matter and which ones are historical accidents.</p>
+<p>They need to be able to recognize when a proposed solution is technically elegant but solves the wrong problem.</p>
+<p>This is why I think domain knowledge will become increasingly important.</p>
+<p>An engineer working in supply chain should understand supply chain.</p>
+<p>An engineer working in manufacturing should understand manufacturing.</p>
+<p>An engineer working in finance should understand finance.</p>
+<p>Not because engineers need to become business analysts, but because solving the right problem requires understanding the environment in which that problem exists.</p>
+<p>The future engineer, in my view, will combine technical depth, business understanding, problem-solving ability and the capacity to orchestrate increasingly sophisticated agents.</p>
+<p>That is a very different role from simply receiving a Jira ticket and implementing what is written inside it.</p>
+<h2 id="long-live-software-engineering">Long Live Software Engineering</h2>
+<p>So when people say that AI could eventually kill software engineering, I think they may be both right and wrong.</p>
+<p>A certain version of software engineering may indeed disappear.</p>
+<p>The model where developers spend most of their time manually translating tickets into code, navigating fragmented documentation, searching for context, coordinating handoffs and maintaining repetitive delivery processes is likely to change significantly.</p>
+<p>I do not think we should be nostalgic about that.</p>
+<p>What may emerge instead is a version of software engineering that places much more emphasis on understanding problems, designing systems, making trade-offs and working directly with the business to create value.</p>
+<p>Engineers may write less code themselves, but they may have much greater responsibility for the systems that produce that code and for the decisions behind it.</p>
+<p>They may manage fewer individual implementation tasks and spend more time orchestrating agents, validating solutions and understanding complex end-to-end processes.</p>
+<p>In that sense, software engineering is not disappearing.</p>
+<p>It is moving up the value chain.</p>
+<p>And perhaps the best way to describe what is happening is exactly this:</p>
+<p><strong>Software engineering is dead. Long live software engineering.</strong></p>
+
+  </div>
+  
+
+<div class="navigation navigation-single">
+    
+    <a href="/posts/some-of-my-thoughts-on-context-engineering/" class="navigation-prev">
+      <i aria-hidden="true" class="fa fa-chevron-left"></i>
+      <span class="navigation-tittle">Some of my thoughts on Context Engineering</span>
+    </a>
+    
+    
+</div>
+
+
+  
+
+  
+    
+
+
+</article>
+
+
+        </div>
+        
+    
+
+<script defer src="https://use.fontawesome.com/releases/v5.12.1/js/all.js" integrity="sha384-ZbbbT1gw3joYkKRqh0kWyRp32UAvdqkpbLedQJSlnI8iLQcFVxaGyrOgOJiDQTTR" crossorigin="anonymous"></script>
+
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
+        
+    <script type="text/javascript">
+        
+        hljs.initHighlightingOnLoad();
+    </script>
+    
+
+
+
+    
+
+
+
+    </body>
+</html>

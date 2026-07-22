@@ -185,6 +185,33 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
       
       <div class="post-list__item">
         <span class="item__title--big">
+          <a href="/posts/blind-hql-injection-in-rest-api-using-h2-dbms/" >Blind HQL Injection in REST API using H2 DMBS</a>
+        </span>
+        <span class="item__date">
+          May 5, 2014
+        </span>
+        <span >
+        
+        <p>This post deals with some research I just did regarding (Blind) HQL injections with H2 as the DataBase Management System.</p>
+<p>First, you should read this post which gives some really useful information regarding HQL injections in general: <a href="http://blog.h3xstream.com/2014/02/hql-for-pentesters.html">HQL for pentesters</a>.</p>
+<p>During the assessment, I checked the API calls by using Burp as a proxy and one call was:</p>
+<pre tabindex="0"><code>http://application/API/Users/?req=id=1
+</code></pre><p>The output was a JSON response, such as:</p>
+<pre tabindex="0"><code>[{user: &#34;admin&#34;, id: &#34;1&#34;, firstName:&#34;Admin&#34;}]
+</code></pre><p>If you changed the id with the numeric value <strong>2</strong>, and so on.. it was working.</p>
+        
+        </span>
+        
+          ... <a class="read-more-symbol" href="/posts/blind-hql-injection-in-rest-api-using-h2-dbms/">➦</a>
+        
+        </div>
+        
+     
+      
+        
+      
+      <div class="post-list__item">
+        <span class="item__title--big">
           <a href="/posts/bsides-slides-csrft/" >BSides Slides - CSRFT</a>
         </span>
         <span class="item__date">
@@ -451,36 +478,6 @@ Let&rsquo;s do some fingerprinting.</p>
         </span>
         
           ... <a class="read-more-symbol" href="/posts/vulnos-write-up/">➦</a>
-        
-        </div>
-        
-     
-      
-        
-      
-      <div class="post-list__item">
-        <span class="item__title--big">
-          <a href="/posts/python-plus-transmission-daemon-equals-download-easily-your-favorite-tv-show/" >Python &#43; Transmission daemon = Download easily your favorite TV Show</a>
-        </span>
-        <span class="item__date">
-          Mar 28, 2014
-        </span>
-        <span >
-        
-        <p>This post is about my last project : my <em>TV Show Manager</em>.</p>
-<p>I decided to start it because I wanted something <strong>really</strong> simple to download my favorite TV Shows.
-In this post, I&rsquo;ll explain step by step how to reproduce it at home.</p>
-<p>Basically, with this tutorial you&rsquo;ll set up your <strong>Raspberry</strong> box by :</p>
-<ul>
-<li>Installing / set-uping transmission-daemon</li>
-<li>Getting one of my latest project <a href="https://github.com/PaulSec/TVShowsManager">TVShowManager</a> that uses my <a href="https://github.com/PaulSec/eztv_api">EZTV Python API</a>.</li>
-</ul>
-<blockquote>
-<p>Well.. let&rsquo;s start ?</p>
-        
-        </span>
-        
-          ... <a class="read-more-symbol" href="/posts/python-plus-transmission-daemon-equals-download-easily-your-favorite-tv-show/">➦</a>
         
         </div>
         
